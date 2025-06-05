@@ -28,38 +28,38 @@ const socialLinks = [
 
 export default function Hero() {
   return (
-    <section id="home" className="w-full flex items-center justify-center bg-white dark:bg-neutral-900">
-      <div className="w-full max-w-2xl flex flex-col items-start justify-center gap-4">
+    <section id="home" className="w-full min-h-screen flex items-center justify-center bg-white dark:bg-neutral-900 py-8 sm:py-12 md:py-16">
+      <div className="w-full max-w-2xl flex flex-col items-start justify-center gap-4 px-4 sm:px-6 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="w-full"
         >
-          <span className="text-light-accent dark:text-gumroad-pink text-lg font-semibold mb-2">Hey there, I'm-</span>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-neutral-900 dark:text-white leading-tight mb-2">
+          <span className="text-light-accent dark:text-gumroad-pink text-base sm:text-lg md:text-xl font-semibold mb-2">Hey there, I'm-</span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-neutral-900 dark:text-white leading-tight mb-2">
             Tanuj<br />Palaspagar<span className="text-light-accent dark:text-gumroad-pink">.</span>
           </h1>
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-neutral-900 dark:text-white mb-2">Software Developer Engineer.</h2>
-          <p className="text-base sm:text-lg md:text-xl text-neutral-700 dark:text-gray-400 font-medium mb-2">
+          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-neutral-900 dark:text-white mb-2">Software Developer Engineer.</h2>
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-neutral-700 dark:text-gray-400 font-medium mb-2">
             A graduate developer with an interest in Computer Science.
           </p>
           <div className="space-y-1 mb-4">
-            <div className="text-sm sm:text-base text-neutral-700 dark:text-gray-300 flex items-center gap-2">
+            <div className="text-xs sm:text-sm md:text-base text-neutral-700 dark:text-gray-300 flex items-center gap-2">
               <span>🚀</span> Specialized in <span className="font-semibold text-light-accent dark:text-gumroad-pink">Algorithms / Databases / Intelligent Systems</span>
             </div>
-            <div className="text-sm sm:text-base text-neutral-700 dark:text-gray-300 flex items-center gap-2">
+            <div className="text-xs sm:text-sm md:text-base text-neutral-700 dark:text-gray-300 flex items-center gap-2">
               <span>⚡</span> Worked as <a className="text-light-accent dark:text-gumroad-pink font-semibold hover:underline">Cloud Engineer / Backend Developer</a>
             </div>
           </div>
-          <div className="flex flex-wrap gap-3 mt-2">
+          <div className="flex flex-wrap gap-2 sm:gap-3 mt-2">
             {socialLinks.map((social) => (
               <a
                 key={social.name}
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-3 sm:px-4 py-2 rounded-full bg-gray-100 dark:bg-white/5 text-neutral-700 dark:text-gray-400 hover:bg-light-accent hover:text-white dark:hover:bg-gumroad-pink dark:hover:text-white font-medium text-sm sm:text-base shadow transition-colors duration-200 border border-gray-300 dark:border-gray-700"
+                className="inline-flex items-center px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-full bg-gray-100 dark:bg-white/5 text-neutral-700 dark:text-gray-400 hover:bg-light-accent hover:text-white dark:hover:bg-gumroad-pink dark:hover:text-white font-medium text-xs sm:text-sm md:text-base shadow transition-colors duration-200 border border-gray-300 dark:border-gray-700"
               >
                 {social.icon}
                 {social.name}
