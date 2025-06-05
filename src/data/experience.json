@@ -1,0 +1,58 @@
+{
+  "experiences": [
+    {
+      "id": 1,
+      "company": "HP Inc.",
+      "position": "System Software Engineer",
+      "location": "Houston, TX",
+      "period": "JUN 2024 - MAR 2025",
+      "shortDescription": "Back-End Developer",
+      "fullDescription": "• Architected cutting-edge microservices ecosystem for HP's Workforce Experience Platform (WXP), leveraging Spring Boot to deliver a transformative Device-as-a-Service solution enabling enterprise clients to seamlessly manage thousands of remote devices across diverse geographic locations.\n• Pioneered consolidation of fragmented REST endpoints into a unified GraphQL API architecture on AWS, reducing system complexity by 35% while dramatically enhancing service orchestration capabilities and enabling more intuitive data access patterns for enterprise clients.\n• Spearheaded development of strategic subscription-based service models, collaborating with cross-functional teams to define tiered product capabilities that directly aligned with enterprise client needs, resulting in a scalable revenue model positioned to increase service adoption by an estimated 28%.\n• Engineered sophisticated notification widgets with innovative per-tenant configurations, enabling seamless integration with Slack and Microsoft Teams through fastn.ai's unified webhook-API architecture, reducing alert response times by 45% and enhancing IT operational efficiency.\n• Orchestrated development and administration of HP's Go-based string-translation service, implementing robust access control mechanisms and efficient translation workflows supporting 20+ languages across the enterprise product portfolio, facilitating global product deployment.\n• Utilized Apache Maven for comprehensive dependency management, streamlining build processes that improved development velocity and reduced deployment cycle times by approximately 40% across the engineering team.\n• Implemented sophisticated multi-tenant architecture principles ensuring secure data isolation between enterprise clients while maintaining scalable shared infrastructure, enhancing both security posture and operational efficiency."
+    },
+    {
+      "id": 2,
+      "company": "HP Inc.",
+      "position": "Software Developer Intern",
+      "location": "Houston, TX",
+      "period": "MAY 2023 - AUG 2023",
+      "shortDescription": "Cloud Engineer",
+      "fullDescription": "• Transformed HP TechPulse's reporting capabilities by designing and implementing a revolutionary analytics solution that addressed critical limitations in data processing and visualization infrastructure, enabling comprehensive fleet health monitoring and predictive maintenance capabilities.\n• Engineered a sophisticated data pipeline utilizing AWS Kinesis and RedShift, dramatically boosting reporting efficiency by 65% through advanced data integration techniques and optimized processing algorithms that transformed raw telemetry into actionable insights.\n• Revolutionized real-time data transfer by implementing WMI events from Windows client applications, achieving breakthrough performance with end-to-end latency reduction from 60ms to an industry-leading under 17ms, enabling near-instantaneous device status monitoring across enterprise fleets.\n• Developed custom QuickSight integrations leveraging advanced AWS APIs, architecting a highly scalable analytics platform that empowered data-driven decision-making across enterprise environments, with intuitive visualizations that transformed complex telemetry data into clear operational insights.\n• Delivered exceptional business value by designing solutions that potentially saved enterprise clients an estimated $250,000 annually through dramatically improved operational efficiency, reduced IT overhead, and cutting-edge fleet management analytics that extended device lifecycles.\n• Implemented advanced data processing techniques that transformed millions of raw telemetry data points into structured, actionable intelligence for IT management, enabling proactive maintenance strategies that demonstrably reduced downtime and support escalations."
+    },
+    {
+      "id": 3,
+      "company": "CloudEnd Platform Pvt Ltd",
+      "position": "Software Developer",
+      "location": "Remote / India",
+      "period": "JAN 2022 - JUL 2022",
+      "shortDescription": "Backend Software Engineer",
+      "fullDescription": "• Optimized financial processing by refactoring SQL Server stored procedures with improved execution plans, accelerating billing cycles by 40%.\n• Automated Python-based ETL framework for billing data integration, reducing manual corrections by 95% and enhancing invoice accuracy.\n• Orchestrated billing pipeline using Apache Airflow, ensuring reliable financial delivery and total compliance with reporting SLAs.\n• Fortified deployment infrastructure with Git, Jenkins and Linux monitoring scripts, reducing failures by 65% for critical billing services.\n• Architected scalable billing on AWS services (S3, EC2, Lambda), supporting 3x transaction volume during peaks while decreasing costs by 30%.\n• Developed a comprehensive Python-based ETL automation framework for data extraction, transformation, and loading across multiple upstream systems, creating intelligent data pipelines that improved billing accuracy, reduced manual processing time by 55%, and ensured data integrity throughout the financial reconciliation lifecycle.\n• Designed and deployed Apache Airflow orchestration infrastructure to schedule, monitor, and maintain critical billing data pipelines, ensuring precise SLA compliance, automating alerts for potential processing delays, and enabling timely delivery of financial reports.\n• Implemented enterprise-grade CI/CD practices using Git, Jenkins, and Airflow to create robust, self-healing release automation across development, staging, and production environments, enhancing deployment consistency, eliminating manual configuration errors, and reducing rollback risks during critical updates to core billing logic.\n• Developed sophisticated Linux/Unix shell scripts for comprehensive system management, including automated log rotation, intelligent job monitoring with predictive failure detection, and environment-level automation tasks, significantly improving overall platform stability and creating proactive alerting systems that reduced billing run failures by 78%."
+    },
+    {
+      "id": 4,
+      "company": "Techobytes Technologies",
+      "position": "Data Science Intern",
+      "location": "Mumbai, India",
+      "period": "MAY 2020 - AUG 2020",
+      "shortDescription": "Data Science Intern",
+      "fullDescription": "• Devised time-series ML models using TensorFlow on COVID-19 case data, improving forecast accuracy by 35%, enabling outbreak alerts.\n• Performed risk-pattern analysis using data visualization pipelines, uncovering high-transmission clusters and enhancing epidemiological insight.\n• Built dashboards with FBProphet, automating daily trend updates - streamlining projection delivery for public health researchers and stakeholders.\n• Pioneered advanced machine learning models using TensorFlow for COVID-19 data analysis, achieving a remarkable 35% improvement in predictive trend accuracy through innovative algorithmic approaches and sophisticated feature engineering techniques.\n• Executed comprehensive Data Visualization and Analysis of novel COVID-19 datasets, uncovering critical transmission risk patterns through rigorous statistical methodologies that directly informed public health decision-making strategies and intervention planning.\n• Applied advanced time-series analysis techniques to epidemiological datasets, creating models that predicted regional outbreak patterns with precision substantially exceeding previous methodologies, directly supporting targeted public health interventions.\n• Collaborated with cross-functional teams of epidemiologists and public health officials to translate complex statistical findings into actionable insights, bridging the gap between data science and practical pandemic response strategies."
+    },
+    {
+      "id": 5,
+      "company": "Terna Speciality Hospital & Research Centre",
+      "position": "Medical Research Intern",
+      "location": "Navi Mumbai, India",
+      "period": "NOV 2019 - FEB 2020",
+      "shortDescription": "Medical Research Intern",
+      "fullDescription": "• Engineered sophisticated data processing solutions for critical medical devices, implementing Python-based systems for HL7 (Health Level Seven) standard data formats that enabled seamless integration across diverse clinical monitoring systems.\n• Developed advanced algorithms for medical sensor data transformation, extracting actionable insights from complex physiological readings that enhanced diagnostic capabilities and clinical decision-making processes in real-time patient monitoring scenarios.\n• Designed and implemented a robust real-time data pipeline that ensured seamless integration of medical device data, significantly improving patient monitoring accuracy by 28% and enhancing healthcare delivery efficiency in critical care environments.\n• Collaborated directly with medical professionals to understand complex clinical workflows, translating intricate healthcare requirements into technical specifications that guided development of intuitive data visualization dashboards for medical staff.\n• Implemented data validation routines that dramatically reduced erroneous readings from medical sensors, improving clinical reliability and patient safety through sophisticated error detection and correction methodologies."
+    },
+    {
+      "id": 6,
+      "company": "Lofti Zadeh Center of Excellence",
+      "position": "Computer Research Intern",
+      "location": "Navi Mumbai, India",
+      "period": "MAY 2019 - JUL 2019",
+      "shortDescription": "Computer Research Intern",
+      "fullDescription": "• Developed breakthrough algorithms for image segmentation using unsupervised learning techniques, achieving a 20% accuracy improvement over established methodologies through innovative approaches combining wavelet transform analysis and advanced clustering methods.\n• Implemented cutting-edge machine learning solutions for image-specific adaptive mask filters in MATLAB, incorporating advanced wavelet transform analysis that dynamically adapted to unique image characteristics for superior edge detection and feature extraction.\n• Applied sophisticated computational techniques combining wavelet analysis and unsupervised learning, demonstrating exceptional expertise in computer vision algorithms that successfully addressed challenging image segmentation scenarios where traditional methods failed.\n• Conducted rigorous comparative analysis of novel segmentation techniques against industry-standard methodologies, establishing quantitative performance benchmarks that demonstrated significant improvements in both processing efficiency and segmentation precision.\n• Collaborated with senior researchers to refine algorithmic approaches, incorporating feedback through multiple development iterations that progressively enhanced performance and reliability in varied image processing scenarios."
+    }
+  ]
+}

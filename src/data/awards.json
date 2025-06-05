@@ -1,0 +1,28 @@
+{
+  "awards": [
+    {
+      "id": 1,
+      "title": "Distinguished Delegate",
+      "organization": "Model United Nations (UNHRC)",
+      "category": "Award for outstanding delegate",
+      "date": "March 2020",
+      "description": "Awarded \"Distinguished Delegate\" for outstanding representation of Argentina at the Model United Nations (UNHRC) conference hosted by SIES Graduate School of Technology, demonstrating exceptional skills in diplomacy, public speaking, lobbying, and negotiation."
+    },
+    {
+      "id": 2,
+      "title": "Most Innovative Prototype",
+      "organization": "Tech Alegria 36hr Hackathon",
+      "category": "Hackathon Prize",
+      "date": "February 2020",
+      "description": "Awarded \"Most Innovative Prototype\" for designing and delivering a fully operational portable positioning device leveraging a mesh network of NodeMCU units. Engineered absolute GPS-based positioning for the master node, while implementing real-time relative triangulation across secondary nodes. Award recognized the solution's seamless hardware-software integration and its potential for scalable real-world deployment."
+    },
+    {
+      "id": 3,
+      "title": "National Top-12 Semi-Finalist",
+      "organization": "AICTE Vishwakarma Award",
+      "category": "National-Level Competition",
+      "date": "September 2019",
+      "description": "Selected as a Top-12 Semi-Finalist at the national AICTE Vishwakarma Awards for developing an Arduino- and IoT-based smart solid waste management and composting system. The project featured sensor-driven motorized composting, environmental monitoring, and segregation algorithms that improved composting efficiency by 40%, showcasing innovation in sustainable technology solutions."
+    }
+  ]
+} 

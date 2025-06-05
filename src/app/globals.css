@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 24, 24, 27; /* dark text */
+  --background-rgb: 255, 255, 255; /* white background */
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+html.dark {
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 26, 26, 26;
+}
+
+body.dark {
+  color: rgb(255,255,255);
+  background: #1A1A1A;
+}
+
+/* Custom cursor styles */
+.custom-cursor {
+  width: 20px;
+  height: 20px;
+  background: #FF90E8;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  transition: transform 0.2s ease;
+  z-index: 9999;
+}
+
+.custom-cursor.hover {
+  transform: scale(1.5);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f3f4f6; /* light gray */
+}
+
+/* Light mode scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background: #C30B4E; /* light-accent */
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a30b3a; /* slightly darker red */
+}
+
+/* Dark mode scrollbar thumb */
+html.dark ::-webkit-scrollbar-thumb {
+  background: #FF90E8;
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #ff6edf;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #1A1A1A;
+} 
