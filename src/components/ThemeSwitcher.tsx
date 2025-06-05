@@ -6,7 +6,13 @@ import { motion } from 'framer-motion';
 export default function ThemeSwitcher() {
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     if (typeof window !== 'undefined') {
-      return (localStorage.getItem('theme') as 'light' | 'dark') || 'light';
+      // Check localStorage first
+      const savedTheme = localStorage.getItem('theme') as 'light' | 'dark';
+      if (savedTheme) {
+        return savedTheme;
+      }
+      // If no saved theme, check system preference
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
     return 'light';
   });
@@ -25,6 +31,21 @@ export default function ThemeSwitcher() {
       localStorage.setItem('theme', 'light');
     }
   }, [theme]);
+
+  // Listen for system theme changes
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    const handleChange = (e: MediaQueryListEvent) => {
+      // Only update if user hasn't manually set a theme
+      if (!localStorage.getItem('theme')) {
+        setTheme(e.matches ? 'dark' : 'light');
+      }
+    };
+
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
 
   if (!mounted) return null;
 

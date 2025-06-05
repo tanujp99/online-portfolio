@@ -18,6 +18,35 @@ interface Project {
 
 const projects: Project[] = projectsData.projects;
 
+function renderDescription(description: string) {
+  // Split by lines and check if they start with a bullet
+  const lines = description.split('\n');
+  const bulletLines = lines.filter(line => line.trim().startsWith('•'));
+  const nonBulletLines = lines.filter(line => !line.trim().startsWith('•'));
+
+  if (bulletLines.length === lines.length) {
+    // All lines are bullets
+    return (
+      <ul className="list-disc pl-6 marker:text-light-accent dark:marker:text-gumroad-pink text-neutral-800 dark:text-gray-300">
+        {lines.map((line, idx) => (
+          <li key={idx}>{line.replace(/^•\s*/, '')}</li>
+        ))}
+      </ul>
+    );
+  } else {
+    // Mixed content
+    return lines.map((line, idx) =>
+      line.trim().startsWith('•') ? (
+        <ul key={idx} className="list-disc pl-6 marker:text-light-accent dark:marker:text-gumroad-pink text-neutral-800 dark:text-gray-300">
+          <li>{line.replace(/^•\s*/, '')}</li>
+        </ul>
+      ) : (
+        <p key={idx} className="text-neutral-800 dark:text-gray-300">{line}</p>
+      )
+    );
+  }
+}
+
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
 
@@ -53,6 +82,11 @@ export default function Projects() {
                   <p className="text-sm sm:text-base text-neutral-700 dark:text-gray-300 mb-4">{project.shortDescription}</p>
                   
                   <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4">
+                    {project.isResearch && (
+                      <span className="px-2 sm:px-3 py-0.5 sm:py-1 bg-light-accent dark:bg-gumroad-pink text-white dark:text-gumroad-dark rounded-full text-xs sm:text-sm">
+                        Research Paper
+                      </span>
+                    )}
                     {project.technologies.map((tech) => (
                       <span
                         key={tech}
@@ -62,12 +96,6 @@ export default function Projects() {
                       </span>
                     ))}
                   </div>
-
-                  {project.isResearch && (
-                    <span className="ml-2 px-2 py-0.5 sm:py-1 bg-blue-600 text-white rounded-full text-xs font-semibold">
-                      Research Paper
-                    </span>
-                  )}
 
                   {/* Animated arrow icon at bottom right */}
                   <motion.span
@@ -88,9 +116,9 @@ export default function Projects() {
                     transition={{ duration: 0.3 }}
                     className="mt-4 overflow-hidden"
                   >
-                    <p className="text-sm sm:text-base text-neutral-700 dark:text-gray-300 whitespace-pre-line mb-4">
-                      {project.fullDescription}
-                    </p>
+                    <div className="text-sm sm:text-base text-neutral-700 dark:text-gray-300 mb-4">
+                      {renderDescription(project.fullDescription)}
+                    </div>
                     {project.paperLink && (
                       <a
                         href={project.paperLink}
