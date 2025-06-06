@@ -28,7 +28,7 @@ const socialLinks = [
 
 export default function Hero() {
   return (
-    <section id="home" className="w-full min-h-screen flex items-center justify-center bg-white dark:bg-neutral-900 py-8 sm:py-12 md:py-16">
+    <section id="home" className="w-full min-h-screen flex items-center justify-center bg-neutral-50 dark:bg-transparent py-8 sm:py-12 md:py-16">
       <div className="w-full max-w-2xl flex flex-col items-start justify-center gap-4 px-4 sm:px-6 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

@@ -39,13 +39,13 @@ export default function Experience() {
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
   return (
-    <section id="experience" className="py-12 sm:py-16 md:py-20">
+    <section id="experience" className="py-8 sm:py-12 md:py-16">
       <div className="container mx-auto px-4 sm:px-6 md:px-8">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12 md:mb-16 text-neutral-900 dark:text-white"
+          className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-6 sm:mb-8 md:mb-12 text-neutral-900 dark:text-white"
         >
           Experience
         </motion.h2>
@@ -59,26 +59,26 @@ export default function Experience() {
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative pl-6 sm:pl-8 pb-8 sm:pb-12 last:pb-0"
+                className="relative pl-4 sm:pl-6 pb-6 sm:pb-8 last:pb-0"
               >
                 {/* Timeline line */}
-                <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-light-accent dark:bg-gumroad-pink/30" />
+                <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-light-accent dark:bg-gumroad-pink" />
                 {/* Timeline dot */}
-                <div className="absolute left-0 top-2 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-light-accent dark:bg-gumroad-pink transform -translate-x-1/2" />
+                <div className="absolute left-[1px] top-2 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-light-accent dark:bg-gumroad-pink transform -translate-x-1/2 shadow-lg shadow-light-accent/25 dark:shadow-gumroad-pink/25" />
 
                 <motion.div
-                  className="bg-white dark:bg-white/5 backdrop-blur-md rounded-xl p-4 sm:p-6 cursor-pointer border border-neutral-200 dark:border-neutral-800"
-                  whileHover={{ scale: 1.02 }}
+                  className="bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-2xl p-3 sm:p-4 cursor-pointer border border-neutral-200/50 dark:border-neutral-800/50 transition-all duration-300"
+                  whileHover={{ scale: 1.01, y: -2 }}
                   onClick={() => setExpandedId(isExpanded ? null : exp.id)}
                 >
-                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 sm:gap-4 mb-4">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1.5 sm:gap-3 mb-3">
                     <div>
                       <h3 className="text-lg sm:text-xl font-semibold text-neutral-900 dark:text-white">{exp.position}</h3>
-                      <p className="text-light-accent dark:text-gumroad-pink">{exp.company}</p>
+                      <p className="text-light-accent dark:text-gumroad-pink font-medium">{exp.company}</p>
                       <p className="text-neutral-500 dark:text-gray-400 text-xs sm:text-sm">{exp.location}</p>
                     </div>
-                    <div className="text-left sm:text-right">
-                      <p className="text-xs sm:text-sm text-neutral-500 dark:text-gray-400">{exp.period}</p>
+                    <div className="text-left sm:text-right flex items-center gap-1.5">
+                      <p className="text-xs sm:text-sm text-neutral-500 dark:text-gray-400 bg-neutral-100 dark:bg-neutral-800 px-2 py-0.5 rounded-lg">{exp.period}</p>
                     </div>
                   </div>
 
@@ -99,7 +99,7 @@ export default function Experience() {
                     initial={false}
                     animate={{ opacity: isExpanded ? 1 : 0, height: isExpanded ? 'auto' : 0 }}
                     transition={{ duration: 0.3 }}
-                    className="mt-4 overflow-hidden"
+                    className="mt-3 overflow-hidden"
                   >
                     <div className={isExpanded ? '' : 'pointer-events-none select-none opacity-0'}>
                       {renderDescription(exp.fullDescription)}
@@ -113,4 +113,4 @@ export default function Experience() {
       </div>
     </section>
   );
-} 
+}

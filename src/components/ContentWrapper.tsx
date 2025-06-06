@@ -20,14 +20,14 @@ export default function ContentWrapper() {
 
   return (
     <div className="flex flex-col h-full min-h-0">
-      {/* Navigation */}
-      <div className="flex-shrink-0 mb-4 lg:mb-6">
+      {/* Navigation - More refined */}
+      <div className="flex-shrink-0 mb-4">
         <Navbar setActiveTab={setActiveTab} activeTab={activeTab} />
       </div>
       
-      {/* Content Area - Unified scrolling behavior */}
-      <div className="flex-1 min-h-0 overflow-y-auto">
-        <div className="w-full">
+      {/* Content Area - Better scrolling */}
+      <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden">
+        <div className="w-full pr-1"> {/* Small right padding to account for scrollbar */}
           {currentTab?.component}
         </div>
       </div>

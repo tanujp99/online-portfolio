@@ -3,23 +3,24 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 24, 24, 27; /* dark text */
-  --background-rgb: 255, 255, 255; /* white background */
+  /* Material UI Light Theme Colors */
+  --foreground-rgb: 33, 33, 33; /* grey-900 */
+  --background-rgb: 250, 250, 250; /* grey-50 */
+  --card-bg: 255, 255, 255; /* grey-100 */
+  --border-color: 224, 224, 224; /* grey-300 */
+}
+
+html.dark {
+  /* Material UI Dark Theme Colors */
+  --foreground-rgb: 250, 250, 250; /* grey-50 */
+  --background-rgb: 18, 18, 18; /* grey-900 */
+  --card-bg: 33, 33, 33; /* grey-800 */
+  --border-color: 66, 66, 66; /* grey-700 */
 }
 
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
-}
-
-html.dark {
-  --foreground-rgb: 255, 255, 255;
-  --background-rgb: 26, 26, 26;
-}
-
-body.dark {
-  color: rgb(255,255,255);
-  background: #1A1A1A;
 }
 
 /* Responsive viewport handling - Fixed viewport for all devices */
@@ -73,7 +74,7 @@ html, body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f3f4f6; /* light gray */
+  background: rgb(var(--background-rgb));
 }
 
 /* Light mode scrollbar thumb */
@@ -94,7 +95,7 @@ html.dark ::-webkit-scrollbar-thumb:hover {
 }
 
 html.dark ::-webkit-scrollbar-track {
-  background: #1A1A1A;
+  background: rgb(var(--background-rgb));
 }
 
 /* Responsive text scaling */
