@@ -22,6 +22,34 @@ body.dark {
   background: #1A1A1A;
 }
 
+/* Responsive viewport handling - Fixed viewport for all devices */
+html, body {
+  scroll-behavior: smooth;
+  height: 100vh;
+  overflow: hidden;
+  /* Prevent horizontal overflow */
+  overflow-x: hidden;
+  /* Ensure proper mobile scaling */
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/* Remove mobile-specific overrides - use fixed viewport for all */
+@media (max-width: 1023px) {
+  html, body {
+    height: 100vh;
+    overflow: hidden;
+  }
+}
+
+/* Desktop layout constraints */
+@media (min-width: 1024px) {
+  html, body {
+    height: 100vh;
+    overflow: hidden;
+  }
+}
+
 /* Custom cursor styles */
 .custom-cursor {
   width: 20px;
@@ -37,11 +65,6 @@ body.dark {
 
 .custom-cursor.hover {
   transform: scale(1.5);
-}
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
 }
 
 /* Custom scrollbar */
@@ -72,4 +95,23 @@ html.dark ::-webkit-scrollbar-thumb:hover {
 
 html.dark ::-webkit-scrollbar-track {
   background: #1A1A1A;
-} 
+}
+
+/* Responsive text scaling */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1023px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 16px;
+  }
+}
