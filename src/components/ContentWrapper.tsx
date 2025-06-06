@@ -20,17 +20,17 @@ export default function ContentWrapper() {
 
   return (
     <div className="flex flex-col h-full min-h-0">
-      {/* Sticky Navbar */}
-      <div className="sticky top-0 z-10 bg-white dark:bg-gumroad-dark rounded-t-3xl border-b border-neutral-200 dark:border-neutral-800">
+      {/* Navigation */}
+      <div className="flex-shrink-0 mb-4 lg:mb-6">
         <Navbar setActiveTab={setActiveTab} activeTab={activeTab} />
       </div>
       
-      {/* Scrollable Content */}
-      <div className="flex-1 min-h-0 overflow-y-auto bg-white dark:bg-gumroad-dark">
+      {/* Content Area - Unified scrolling behavior */}
+      <div className="flex-1 min-h-0 overflow-y-auto">
         <div className="w-full">
           {currentTab?.component}
         </div>
       </div>
     </div>
   );
-} 
+}
