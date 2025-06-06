@@ -7,13 +7,13 @@ interface NavbarProps {
   activeTab: string;
 }
 
-const tabs = ['Experience', 'Projects', 'Awards', 'Contact'];
+const tabs = ['GitHub', 'Experience', 'Projects', 'Awards', 'Contact'];
 
 export default function Navbar({ setActiveTab, activeTab }: NavbarProps) {
   return (
     <nav className="w-full">
       <div className="flex items-center justify-center">
-        <div className="flex bg-white/80 dark:bg-neutral-800/80 rounded-full p-1.5 backdrop-blur-md shadow-[inset_0_2px_4px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)] border border-neutral-200/50 dark:border-neutral-700/50">
+        <div className="flex bg-[rgb(var(--card-bg))] rounded-full p-1.5 backdrop-blur-md shadow-[inset_0_2px_4px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)] border border-[rgb(var(--border-color))]">
           {tabs.map((tab) => (
             <button
               key={tab}
@@ -27,7 +27,7 @@ export default function Navbar({ setActiveTab, activeTab }: NavbarProps) {
               {activeTab === tab && (
                 <motion.div
                   layoutId="activeTab"
-                  className="absolute inset-0 bg-white/90 dark:bg-neutral-700/90 rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.1),0_2px_4px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_12px_rgba(0,0,0,0.2),0_2px_4px_rgba(0,0,0,0.1)] border border-neutral-200/50 dark:border-neutral-600/50"
+                  className="absolute inset-0 bg-[rgb(var(--card-bg))] rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.1),0_2px_4px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_12px_rgba(0,0,0,0.2),0_2px_4px_rgba(0,0,0,0.1)] border border-[rgb(var(--border-color))]"
                   initial={false}
                   transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                 />

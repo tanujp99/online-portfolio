@@ -2,12 +2,14 @@
 
 import { useState } from 'react';
 import Navbar from '@/components/Navbar';
+import GitHubProfile from '@/components/GitHubProfile';
 import Experience from '@/components/Experience';
 import Projects from '@/components/Projects';
 import Awards from '@/components/Awards';
 import Contact from '@/components/Contact';
 
 const TABS = [
+  { name: 'GitHub', component: <GitHubProfile /> },
   { name: 'Experience', component: <Experience /> },
   { name: 'Projects', component: <Projects /> },
   { name: 'Awards', component: <Awards /> },
@@ -15,7 +17,7 @@ const TABS = [
 ];
 
 export default function ContentWrapper() {
-  const [activeTab, setActiveTab] = useState('Experience');
+  const [activeTab, setActiveTab] = useState('GitHub');
   const currentTab = TABS.find(tab => tab.name === activeTab);
 
   return (
