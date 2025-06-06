@@ -53,7 +53,7 @@ export default function ThemeSwitcher() {
     <button
       aria-label="Toggle theme"
       onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-      className="fixed bottom-6 left-6 z-50 w-12 h-12 rounded-full bg-white dark:bg-neutral-900 shadow-lg flex items-center justify-center border border-neutral-200 dark:border-neutral-700 transition-colors hover:bg-gray-100 dark:hover:bg-neutral-800"
+      className="fixed bottom-6 left-6 z-50 w-12 h-12 rounded-full bg-[rgb(var(--card-bg))] shadow-lg flex items-center justify-center border border-[rgb(var(--border-color))] transition-colors hover:bg-[rgb(var(--card-bg))] dark:hover:bg-[rgb(var(--card-bg))]"
     >
       <motion.span
         key={theme}
@@ -63,8 +63,8 @@ export default function ThemeSwitcher() {
         style={{ display: 'flex' }}
       >
         {theme === 'light' ? (
-          // Improved sun icon
-          <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          // Sun icon with Material UI light mode color
+          <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 text-[#FFB74D]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <circle cx="12" cy="12" r="5" fill="currentColor" />
             <g stroke="currentColor" strokeLinecap="round" strokeWidth="2">
               <line x1="12" y1="1" x2="12" y2="3" />
@@ -78,8 +78,8 @@ export default function ThemeSwitcher() {
             </g>
           </svg>
         ) : (
-          // Crescent moon icon
-          <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 text-blue-400 transform rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          // Moon icon with Material UI dark mode color
+          <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 text-[#90CAF9] transform rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" fill="currentColor" />
           </svg>
         )}
