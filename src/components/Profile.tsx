@@ -45,7 +45,7 @@ interface PinnedRepo {
   forks: number;
 }
 
-export default function GitHubProfile() {
+export default function Profile() {
   const { theme } = useTheme();
   const [profile, setProfile] = useState<GitHubData | null>(null);
   const [pinnedRepos, setPinnedRepos] = useState<PinnedRepo[]>([]);
@@ -90,17 +90,8 @@ export default function GitHubProfile() {
   }
 
   return (
-    <section id="githubprofile" className="py-8 sm:py-12 md:py-16">
+    <section id="profile" className="py-8 sm:py-12 md:py-16">
       <div className="container mx-auto px-4 sm:px-6 md:px-8">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-6 sm:mb-8 md:mb-12 text-neutral-900 dark:text-white"
-        >
-          GitHub
-        </motion.h2>
-
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -7,7 +7,7 @@ interface NavbarProps {
   activeTab: string;
 }
 
-const tabs = ['GitHub', 'Experience', 'Projects', 'Awards', 'Contact'];
+const tabs = ['Profile', 'Experience', 'Projects', 'Awards', 'Contact'];
 
 export default function Navbar({ setActiveTab, activeTab }: NavbarProps) {
   return (
