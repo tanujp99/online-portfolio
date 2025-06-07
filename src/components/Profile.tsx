@@ -101,69 +101,69 @@ export default function Profile() {
           {/* Profile Header */}
           <div className="max-w-4xl mx-auto">
             <div className="bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-2xl p-3 sm:p-4 border border-neutral-200/50 dark:border-neutral-800/50">
-              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
-                <div className="relative">
-                  <img
-                    src={profile.avatar_url}
-                    alt={profile.name}
-                    className="w-32 h-32 rounded-full border-4 border-[rgb(var(--border-color))]"
-                  />
-                  <div className="absolute -bottom-2 -right-2 bg-[rgb(var(--card-bg))] rounded-full p-1 border border-[rgb(var(--border-color))]">
-                    <span className="text-2xl">🦄</span>
-                  </div>
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+              <div className="relative">
+                <img
+                  src={profile.avatar_url}
+                  alt={profile.name}
+                  className="w-32 h-32 rounded-full border-4 border-[rgb(var(--border-color))]"
+                />
+                <div className="absolute -bottom-2 -right-2 bg-[rgb(var(--card-bg))] rounded-full p-1 border border-[rgb(var(--border-color))]">
+                  <span className="text-2xl">🦄</span>
                 </div>
-                <div className="flex-1 text-center sm:text-left">
-                  <div className="flex items-center justify-center sm:justify-start gap-2 mb-2">
-                    <h1 className="text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-white">
-                      {profile.name}
-                    </h1>
-                    <span className="text-sm text-neutral-600 dark:text-gray-400">({profile.login})</span>
+              </div>
+              <div className="flex-1 text-center sm:text-left">
+                <div className="flex items-center justify-center sm:justify-start gap-2 mb-2">
+                  <h1 className="text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-white">
+                    {profile.name}
+                  </h1>
+                  <span className="text-sm text-neutral-600 dark:text-gray-400">({profile.login})</span>
+                </div>
+                <p className="text-neutral-700 dark:text-gray-300 mb-4">{profile.bio}</p>
+                <div className="flex flex-wrap justify-center sm:justify-start gap-4 text-sm">
+                  <div className="flex items-center gap-2 text-neutral-600 dark:text-gray-400">
+                    <FaUsers className="text-light-accent dark:text-gumroad-pink" />
+                    <span>{profile.followers} followers · {profile.following} following</span>
                   </div>
-                  <p className="text-neutral-700 dark:text-gray-300 mb-4">{profile.bio}</p>
-                  <div className="flex flex-wrap justify-center sm:justify-start gap-4 text-sm">
+                  {profile.location && (
                     <div className="flex items-center gap-2 text-neutral-600 dark:text-gray-400">
-                      <FaUsers className="text-light-accent dark:text-gumroad-pink" />
-                      <span>{profile.followers} followers · {profile.following} following</span>
+                      <FaMapMarkerAlt className="text-light-accent dark:text-gumroad-pink" />
+                      {profile.location}
                     </div>
-                    {profile.location && (
-                      <div className="flex items-center gap-2 text-neutral-600 dark:text-gray-400">
-                        <FaMapMarkerAlt className="text-light-accent dark:text-gumroad-pink" />
-                        {profile.location}
-                      </div>
-                    )}
-                    {profile.blog && (
-                      <a
-                        href={profile.blog}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-neutral-600 dark:text-gray-400 hover:text-light-accent dark:hover:text-gumroad-pink"
-                      >
-                        <FaLink className="text-light-accent dark:text-gumroad-pink" />
-                        {profile.blog}
-                      </a>
-                    )}
-                    {profile.twitter_username && (
-                      <a
-                        href={`https://twitter.com/${profile.twitter_username}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-neutral-600 dark:text-gray-400 hover:text-light-accent dark:hover:text-gumroad-pink"
-                      >
-                        <FaTwitter className="text-light-accent dark:text-gumroad-pink" />
-                        @{profile.twitter_username}
-                      </a>
-                    )}
-                  </div>
+                  )}
+                  {profile.blog && (
+                    <a
+                      href={profile.blog}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-neutral-600 dark:text-gray-400 hover:text-light-accent dark:hover:text-gumroad-pink"
+                    >
+                      <FaLink className="text-light-accent dark:text-gumroad-pink" />
+                      {profile.blog}
+                    </a>
+                  )}
+                  {profile.twitter_username && (
+                    <a
+                      href={`https://twitter.com/${profile.twitter_username}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-neutral-600 dark:text-gray-400 hover:text-light-accent dark:hover:text-gumroad-pink"
+                    >
+                      <FaTwitter className="text-light-accent dark:text-gumroad-pink" />
+                      @{profile.twitter_username}
+                    </a>
+                  )}
                 </div>
-                <a
-                  href={profile.html_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 bg-[rgb(var(--card-bg))] hover:bg-[rgb(var(--border-color))] rounded-lg border border-[rgb(var(--border-color))] text-neutral-700 dark:text-gray-300 transition-colors"
-                >
-                  <FaGithub className="text-light-accent dark:text-gumroad-pink" />
-                  Follow
-                </a>
+              </div>
+              <a
+                href={profile.html_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2 bg-[rgb(var(--card-bg))] hover:bg-[rgb(var(--border-color))] rounded-lg border border-[rgb(var(--border-color))] text-neutral-700 dark:text-gray-300 transition-colors"
+              >
+                <FaGithub className="text-light-accent dark:text-gumroad-pink" />
+                Follow
+              </a>
               </div>
             </div>
           </div>
@@ -204,35 +204,35 @@ export default function Profile() {
                       </button>
                     );
                   })}
-                </div>
+              </div>
 
                 {/* Year Selector - Mobile */}
                 <div className="lg:hidden w-full">
                   <div className="relative w-36 mx-auto">
-                    <select
-                      id="year-select"
-                      value={selectedYear}
-                      onChange={e => setSelectedYear(Number(e.target.value))}
-                      className="appearance-none rounded-lg border border-[rgb(var(--border-color))] bg-[rgb(var(--card-bg))] text-[rgb(var(--foreground-rgb))] px-4 py-2 font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500 transition w-36 pr-8 opacity-0 absolute inset-0 z-10 cursor-pointer"
-                    >
-                      {Array.from({ length: 7 }, (_, i) => {
-                        const year = new Date().getFullYear() - i;
-                        return (
-                          <option key={year} value={year}>{year}</option>
-                        );
-                      })}
-                    </select>
-                    <div className="flex items-center justify-between rounded-lg border border-[rgb(var(--border-color))] bg-[rgb(var(--card-bg))] text-[rgb(var(--foreground-rgb))] px-4 py-2 font-semibold w-36 pointer-events-none select-none relative z-0">
-                      <span className="text-gray-400 font-semibold">Year:</span>
-                      <span className="ml-2 text-[rgb(var(--foreground-rgb))] font-semibold">{selectedYear}</span>
+                  <select
+                    id="year-select"
+                    value={selectedYear}
+                    onChange={e => setSelectedYear(Number(e.target.value))}
+                    className="appearance-none rounded-lg border border-[rgb(var(--border-color))] bg-[rgb(var(--card-bg))] text-[rgb(var(--foreground-rgb))] px-4 py-2 font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500 transition w-36 pr-8 opacity-0 absolute inset-0 z-10 cursor-pointer"
+                  >
+                    {Array.from({ length: 7 }, (_, i) => {
+                      const year = new Date().getFullYear() - i;
+                      return (
+                        <option key={year} value={year}>{year}</option>
+                      );
+                    })}
+                  </select>
+                  <div className="flex items-center justify-between rounded-lg border border-[rgb(var(--border-color))] bg-[rgb(var(--card-bg))] text-[rgb(var(--foreground-rgb))] px-4 py-2 font-semibold w-36 pointer-events-none select-none relative z-0">
+                    <span className="text-gray-400 font-semibold">Year:</span>
+                    <span className="ml-2 text-[rgb(var(--foreground-rgb))] font-semibold">{selectedYear}</span>
                       <span className="absolute right-3">
-                        <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </span>
-                    </div>
+                      <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </span>
                   </div>
                 </div>
+              </div>
               </div>
             </div>
           </div>
@@ -240,71 +240,72 @@ export default function Profile() {
           {/* README Content */}
           <div className="max-w-4xl mx-auto">
             <div className="bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-2xl p-3 sm:p-4 border border-neutral-200/50 dark:border-neutral-800/50">
-              <div className="prose dark:prose-invert max-w-none">
-                {/* GitHub Profile Trophy */}
-                <div className="flex justify-center mb-8">
-                  <img
-                    src="https://github-profile-trophy.vercel.app/?username=tanujp99&rank=SECRET,SSS,SS,S,AAA,AA&theme=apprentice&column=3&margin-w=32&margin-h=15&no-bg=false&no-frame=true"
-                    alt="GitHub Profile Trophy"
-                    className="w-full max-w-[450px]"
-                  />
-                </div>
+            <div className="prose dark:prose-invert max-w-none">
+              {/* GitHub Profile Trophy */}
+              <div className="flex justify-center mb-8">
+                <img
+                  src="https://github-profile-trophy.vercel.app/?username=tanujp99&rank=SECRET,SSS,SS,S,AAA,AA&theme=apprentice&column=3&margin-w=32&margin-h=15&no-bg=false&no-frame=true"
+                  alt="GitHub Profile Trophy"
+                  className="w-full max-w-[450px]"
+                />
+              </div>
 
-                {/* Activity Graph */}
-                <div className="mb-8">
-                  <img
-                    src="https://github-readme-activity-graph.vercel.app/graph?username=tanujp99&theme=material"
-                    alt="Activity Graph"
-                    className="w-full rounded-2xl"
-                  />
-                </div>
+              {/* Activity Graph */}
+              <div className="mb-8">
+                <img
+                  src="https://github-readme-activity-graph.vercel.app/graph?username=tanujp99&theme=material"
+                  alt="Activity Graph"
+                  className="w-full rounded-2xl"
+                  style={{ clipPath: 'inset(2px)' }}
+                />
+              </div>
 
-                {/* Social Links */}
-                <div className="flex flex-wrap justify-center gap-2 mb-8">
-                  <a href="https://github.com/tanujp99" target="_blank" rel="noopener noreferrer">
-                    <img alt="GitHub followers" src="https://img.shields.io/github/followers/tanujp99?label=Github&style=social" />
-                  </a>
-                  <a href="https://www.linkedin.com/in/tanujp/" target="_blank" rel="noopener noreferrer">
-                    <img alt="LinkedIn URL" src="https://img.shields.io/twitter/url?label=LinkedIn&logo=linkedin&style=social&url=https%3A%2F%2Fwww.linkedin.com%2Fin%2Ftanujp%2F" />
-                  </a>
-                  <a href="https://twitter.com/tanujpalaspagar" target="_blank" rel="noopener noreferrer">
-                    <img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/tanujp99?label=Twitter&style=social" />
-                  </a>
-                  <a href="https://instagram.com/tanujpalaspagar" target="_blank" rel="noopener noreferrer">
-                    <img alt="Twitter URL" src="https://img.shields.io/twitter/url?label=instagram&logo=instagram&style=social&url=https%3A%2F%2Finstagram.com%2Ftanujp99" />
-                  </a>
-                  <a href="https://discord.com/users/your-discord-id" target="_blank" rel="noopener noreferrer">
-                    <img alt="Discord" src="https://img.shields.io/twitter/url?label=CarmineCrown%236263&logo=discord&style=social&url=https%3A%2F%2Fwww.linkedin.com%2Fin%2Ftanujp%2F" />
-                  </a>
-                  <a href="http://live.xbox.com/Profile?Gamertag=%3CCarmineCrown%3E" target="_blank" rel="noopener noreferrer">
-                    <img alt="Twitter URL" src="https://img.shields.io/twitter/url?label=Xbox&logo=xbox&style=social&url=http%3A%2F%2Flive.xbox.com%2FProfile%3FGamertag%3D%253CCarmineCrown%253E" />
-                  </a>
-                  <a href="https://steamcommunity.com/id/carminecrown/" target="_blank" rel="noopener noreferrer">
-                    <img alt="Twitter URL" src="https://img.shields.io/twitter/url?label=steam&logo=steam&style=social&url=http%3A%2F%2Fsteamcommunity.com%2Fid%2Ftanujp%2F" />
-                  </a>
-                  <a href="https://www.reddit.com/user/CarmineCrown" target="_blank" rel="noopener noreferrer">
-                    <img alt="Reddit User Karma" src="https://img.shields.io/reddit/user-karma/combined/carminecrown?label=%E2%80%8Eu%2Fcarminecrown&style=social" />
-                  </a>
-                  <a href="https://www.reddit.com/user/tanujp" target="_blank" rel="noopener noreferrer">
-                    <img alt="Reddit User Karma" src="https://img.shields.io/reddit/user-karma/combined/tanujp?label=%E2%80%8F%E2%80%8F%E2%80%8E%20%E2%80%8Eu%2Ftanujp&style=social" />
-                  </a>
-                  <a href="https://open.spotify.com/user/kpp010?si=VB36HuQZQ8-qG0p5Eyu3Lg" target="_blank" rel="noopener noreferrer">
-                    <img alt="Spotify URL" src="https://img.shields.io/twitter/url?label=spotify&logo=spotify&style=social&url=https%3A%2F%2Fopen.spotify.com%2Fuser%2Fkpp010%3Fsi%3DVB36HuQZQ8-qG0p5Eyu3Lg" />
-                  </a>
-                  <a href="https://paypal.me/ptanuj" target="_blank" rel="noopener noreferrer">
-                    <img alt="Donate to buy me a cup of coffee" src="https://img.shields.io/twitter/url?label=paypal&logo=paypal&style=social&url=https%3A%2F%2Fpaypal.me%2Ftanujp99" />
-                  </a>
-                  <a href="https://patreon.com/user?0=u&1=%3D&2=6&3=7&4=8&5=2&6=1&7=0&8=1&9=4&utm_medium=social&utm_source=twitter&utm_campaign=creatorshare" target="_blank" rel="noopener noreferrer">
-                    <img alt="Support me on Patreon" src="https://img.shields.io/twitter/url?label=patreon&logo=patreon&style=social&url=https%3A%2F%2Fpatreon.com%2Fuser%3F0%3Du%261%3D%253D%262%3D6%263%3D7%264%3D8%265%3D2%266%3D1%267%3D0%268%3D1%269%3D4%26utm_medium%3Dsocial%26utm_source%3Dtwitter%26utm_campaign%3Dcreatorshare" />
-                  </a>
-                </div>
+              {/* Social Links */}
+              <div className="flex flex-wrap justify-center gap-2 mb-8">
+                <a href="https://github.com/tanujp99" target="_blank" rel="noopener noreferrer">
+                  <img alt="GitHub followers" src="https://img.shields.io/github/followers/tanujp99?label=Github&style=social" />
+                </a>
+                <a href="https://www.linkedin.com/in/tanujp/" target="_blank" rel="noopener noreferrer">
+                  <img alt="LinkedIn URL" src="https://img.shields.io/twitter/url?label=LinkedIn&logo=linkedin&style=social&url=https%3A%2F%2Fwww.linkedin.com%2Fin%2Ftanujp%2F" />
+                </a>
+                <a href="https://twitter.com/tanujpalaspagar" target="_blank" rel="noopener noreferrer">
+                  <img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/tanujp99?label=Twitter&style=social" />
+                </a>
+                <a href="https://instagram.com/tanujpalaspagar" target="_blank" rel="noopener noreferrer">
+                  <img alt="Twitter URL" src="https://img.shields.io/twitter/url?label=instagram&logo=instagram&style=social&url=https%3A%2F%2Finstagram.com%2Ftanujp99" />
+                </a>
+                <a href="https://discord.com/users/your-discord-id" target="_blank" rel="noopener noreferrer">
+                  <img alt="Discord" src="https://img.shields.io/twitter/url?label=CarmineCrown%236263&logo=discord&style=social&url=https%3A%2F%2Fwww.linkedin.com%2Fin%2Ftanujp%2F" />
+                </a>
+                <a href="http://live.xbox.com/Profile?Gamertag=%3CCarmineCrown%3E" target="_blank" rel="noopener noreferrer">
+                  <img alt="Twitter URL" src="https://img.shields.io/twitter/url?label=Xbox&logo=xbox&style=social&url=http%3A%2F%2Flive.xbox.com%2FProfile%3FGamertag%3D%253CCarmineCrown%253E" />
+                </a>
+                <a href="https://steamcommunity.com/id/carminecrown/" target="_blank" rel="noopener noreferrer">
+                  <img alt="Twitter URL" src="https://img.shields.io/twitter/url?label=steam&logo=steam&style=social&url=http%3A%2F%2Fsteamcommunity.com%2Fid%2Ftanujp%2F" />
+                </a>
+                <a href="https://www.reddit.com/user/CarmineCrown" target="_blank" rel="noopener noreferrer">
+                  <img alt="Reddit User Karma" src="https://img.shields.io/reddit/user-karma/combined/carminecrown?label=%E2%80%8Eu%2Fcarminecrown&style=social" />
+                </a>
+                <a href="https://www.reddit.com/user/tanujp" target="_blank" rel="noopener noreferrer">
+                  <img alt="Reddit User Karma" src="https://img.shields.io/reddit/user-karma/combined/tanujp?label=%E2%80%8F%E2%80%8F%E2%80%8E%20%E2%80%8Eu%2Ftanujp&style=social" />
+                </a>
+                <a href="https://open.spotify.com/user/kpp010?si=VB36HuQZQ8-qG0p5Eyu3Lg" target="_blank" rel="noopener noreferrer">
+                  <img alt="Spotify URL" src="https://img.shields.io/twitter/url?label=spotify&logo=spotify&style=social&url=https%3A%2F%2Fopen.spotify.com%2Fuser%2Fkpp010%3Fsi%3DVB36HuQZQ8-qG0p5Eyu3Lg" />
+                </a>
+                <a href="https://paypal.me/ptanuj" target="_blank" rel="noopener noreferrer">
+                  <img alt="Donate to buy me a cup of coffee" src="https://img.shields.io/twitter/url?label=paypal&logo=paypal&style=social&url=https%3A%2F%2Fpaypal.me%2Ftanujp99" />
+                </a>
+                <a href="https://patreon.com/user?0=u&1=%3D&2=6&3=7&4=8&5=2&6=1&7=0&8=1&9=4&utm_medium=social&utm_source=twitter&utm_campaign=creatorshare" target="_blank" rel="noopener noreferrer">
+                  <img alt="Support me on Patreon" src="https://img.shields.io/twitter/url?label=patreon&logo=patreon&style=social&url=https%3A%2F%2Fpatreon.com%2Fuser%3F0%3Du%261%3D%253D%262%3D6%263%3D7%264%3D8%265%3D2%266%3D1%267%3D0%268%3D1%269%3D4%26utm_medium%3Dsocial%26utm_source%3Dtwitter%26utm_campaign%3Dcreatorshare" />
+                </a>
+              </div>
 
-                {/* Profile Views Counter */}
-                <div className="flex justify-center">
-                  <img
-                    src="https://komarev.com/ghpvc/?username=tanujp99&color=487260&style=flat&label=Profile+Visits"
-                    alt="Profile Views"
-                  />
+              {/* Profile Views Counter */}
+              <div className="flex justify-center">
+                <img
+                  src="https://komarev.com/ghpvc/?username=tanujp99&color=487260&style=flat&label=Profile+Visits"
+                  alt="Profile Views"
+                />
                 </div>
               </div>
             </div>
@@ -313,36 +314,36 @@ export default function Profile() {
           {/* Pinned Repositories */}
           {pinnedRepos.length > 0 && (
             <div className="max-w-4xl mx-auto">
-              <div className="bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-2xl p-3 sm:p-4 border border-neutral-200/50 dark:border-neutral-800/50">
-                <h2 className="text-xl font-semibold text-neutral-900 dark:text-white mb-6">Pinned</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {pinnedRepos.map((repo) => (
-                    <a
-                      key={repo.repo}
-                      href={repo.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block p-4 bg-[rgb(var(--card-bg))] rounded-lg border border-[rgb(var(--border-color))] hover:border-light-accent dark:hover:border-gumroad-pink transition-colors"
-                    >
-                      <div className="flex items-start justify-between mb-2">
+            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-2xl p-3 sm:p-4 border border-neutral-200/50 dark:border-neutral-800/50">
+              <h2 className="text-xl font-semibold text-neutral-900 dark:text-white mb-6">Pinned</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {pinnedRepos.map((repo) => (
+                  <a
+                    key={repo.repo}
+                    href={repo.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block p-4 bg-[rgb(var(--card-bg))] rounded-lg border border-[rgb(var(--border-color))] hover:border-light-accent dark:hover:border-gumroad-pink transition-colors"
+                  >
+                    <div className="flex items-start justify-between mb-2">
                         <h3 className="text-lg font-semibold text-neutral-900 dark:text-white">{repo.repo}</h3>
-                        {repo.language && (
-                          <span className="text-xs px-2 py-1 rounded-full bg-[rgb(var(--card-bg))] border border-[rgb(var(--border-color))] text-neutral-600 dark:text-gray-400">
-                            {repo.language}
-                          </span>
-                        )}
-                      </div>
-                      <p className="text-neutral-700 dark:text-gray-300 mb-2">{repo.description}</p>
-                      <div className="flex gap-4 text-sm text-neutral-600 dark:text-gray-400">
-                        {repo.stars !== undefined && (
-                          <span>★ {repo.stars}</span>
-                        )}
-                        {repo.forks !== undefined && (
-                          <span>🍴 {repo.forks}</span>
-                        )}
-                      </div>
-                    </a>
-                  ))}
+                      {repo.language && (
+                        <span className="text-xs px-2 py-1 rounded-full bg-[rgb(var(--card-bg))] border border-[rgb(var(--border-color))] text-neutral-600 dark:text-gray-400">
+                          {repo.language}
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-neutral-700 dark:text-gray-300 mb-2">{repo.description}</p>
+                    <div className="flex gap-4 text-sm text-neutral-600 dark:text-gray-400">
+                      {repo.stars !== undefined && (
+                        <span>★ {repo.stars}</span>
+                      )}
+                      {repo.forks !== undefined && (
+                        <span>🍴 {repo.forks}</span>
+                      )}
+                    </div>
+                  </a>
+                ))}
                 </div>
               </div>
             </div>
