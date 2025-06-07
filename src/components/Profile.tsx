@@ -53,6 +53,9 @@ export default function Profile() {
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const [calendarLoading, setCalendarLoading] = useState(true);
 
+  const currentYear = new Date().getFullYear();
+  const availableYears = Array.from({ length: 7 }, (_, i) => currentYear - i);
+
   useEffect(() => {
     const fetchGitHubData = async () => {
       try {
@@ -90,13 +93,8 @@ export default function Profile() {
     );
   }
 
-  function getAvailableYears(): number[] {
-    const currentYear = new Date().getFullYear();
-    return Array.from({ length: 7 }, (_, i) => currentYear - i);
-  }
-
   function handleYearChange(year: number) {
-    if (getAvailableYears().includes(year)) {
+    if (year >= Math.min(...availableYears) && year <= Math.max(...availableYears)) {
       setSelectedYear(year);
     }
   }
@@ -245,7 +243,7 @@ export default function Profile() {
                     <div className="flex items-center gap-2">
                       <button
                         onClick={() => handleYearChange(selectedYear - 1)}
-                        disabled={calendarLoading || !getAvailableYears().includes(selectedYear - 1)}
+                        disabled={selectedYear <= Math.min(...availableYears)}
                         className="p-1.5 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                         title="Previous year"
                       >
@@ -258,7 +256,7 @@ export default function Profile() {
                       </span>
                       <button
                         onClick={() => handleYearChange(selectedYear + 1)}
-                        disabled={calendarLoading || !getAvailableYears().includes(selectedYear + 1)}
+                        disabled={selectedYear >= Math.max(...availableYears)}
                         className="p-1.5 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                         title="Next year"
                       >
