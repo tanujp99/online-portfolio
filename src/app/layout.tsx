@@ -13,10 +13,17 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Tanuj Palaspagar - Software Developer',
-  description: 'Portfolio website showcasing my work and experience as a software developer',
+  title: 'Tanuj Palaspagar - Software Developer Engineer',
+  description: 'Portfolio website of Tanuj Palaspagar, a Software Developer Engineer specializing in Algorithms, Databases, and Intelligent Systems.',
+  keywords: ['Software Developer', 'Cloud Engineer', 'Backend Developer', 'Algorithms', 'Databases', 'Intelligent Systems'],
+  authors: [{ name: 'Tanuj Palaspagar' }],
+  openGraph: {
+    title: 'Tanuj Palaspagar - Software Developer Engineer',
+    description: 'Portfolio website of Tanuj Palaspagar, a Software Developer Engineer specializing in Algorithms, Databases, and Intelligent Systems.',
+    type: 'website',
+  },
   icons: {
-    icon: '/icon.svg?v=1',
+    icon: '/favicon.ico',
   },
 }
 
@@ -28,7 +35,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <head>
-        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body className={`${inter.className} bg-[rgb(var(--background-rgb))] text-[rgb(var(--foreground-rgb))] h-full overflow-hidden antialiased`}>
         <ThemeProvider>

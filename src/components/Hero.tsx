@@ -36,38 +36,69 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="w-full"
         >
-          <span className="text-light-accent dark:text-gumroad-pink text-base sm:text-lg md:text-xl font-semibold mb-2">Hey there, I'm-</span>
+          <span className="text-light-accent dark:text-gumroad-pink text-base sm:text-lg md:text-xl font-semibold mb-2 block">Hey there, I'm-</span>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-neutral-900 dark:text-white leading-tight mb-2">
             Tanuj<br />Palaspagar<span className="text-light-accent dark:text-gumroad-pink">.</span>
           </h1>
-          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-neutral-900 dark:text-white mb-2">Software Developer Engineer.</h2>
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-neutral-700 dark:text-gray-400 font-medium mb-2">
+          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-neutral-900 dark:text-white mb-3">Software Developer Engineer.</h2>
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-neutral-700 dark:text-gray-400 font-medium mb-4">
             A graduate developer with an interest in Computer Science.
           </p>
-          <div className="space-y-1 mb-4">
-            <div className="text-xs sm:text-sm md:text-base text-neutral-700 dark:text-gray-300 flex items-center gap-2">
-              <span>🚀</span> Specialized in <span className="font-semibold text-light-accent dark:text-gumroad-pink">Algorithms / Databases / Intelligent Systems</span>
+          
+          <div className="space-y-2 mb-6">
+            <div className="text-xs sm:text-sm md:text-base text-neutral-700 dark:text-gray-300">
+              <div className="flex items-start gap-2">
+                <span className="mt-0.5 flex-shrink-0">🚀</span> 
+                <div>
+                  <span className="block sm:inline">Specialized in</span>
+                  <span className="block sm:inline font-semibold text-light-accent dark:text-gumroad-pink">
+                    {' '}Algorithms / Databases / Intelligent Systems
+                  </span>
+                </div>
+              </div>
             </div>
-            <div className="text-xs sm:text-sm md:text-base text-neutral-700 dark:text-gray-300 flex items-center gap-2">
-              <span>⚡</span> Worked as <a className="text-light-accent dark:text-gumroad-pink font-semibold hover:underline">Cloud Engineer / Backend Developer</a>
+            
+            <div className="text-xs sm:text-sm md:text-base text-neutral-700 dark:text-gray-300">
+              <div className="flex items-start gap-2">
+                <span className="mt-0.5 flex-shrink-0">⚡</span>
+                <div>
+                  <span className="block sm:inline">Worked as</span>
+                  <span className="block sm:inline font-semibold text-light-accent dark:text-gumroad-pink hover:underline cursor-pointer">
+                    {' '}Cloud Engineer / Backend Developer
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="flex flex-wrap gap-2 sm:gap-3 mt-2">
+          
+          <div className="flex flex-wrap gap-2 sm:gap-3">
             {socialLinks.map((social) => (
               <a
                 key={social.name}
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-full bg-gray-100 dark:bg-white/5 text-neutral-700 dark:text-gray-400 hover:bg-light-accent hover:text-white dark:hover:bg-gumroad-pink dark:hover:text-white font-medium text-xs sm:text-sm md:text-base shadow transition-colors duration-200 border border-gray-300 dark:border-gray-700"
+                className="inline-flex items-center px-3 sm:px-4 py-2 rounded-full bg-gray-100 dark:bg-white/5 text-neutral-700 dark:text-gray-400 hover:bg-light-accent hover:text-white dark:hover:bg-gumroad-pink dark:hover:text-white font-medium text-xs sm:text-sm md:text-base shadow-sm transition-all duration-200 border border-gray-300 dark:border-gray-700 hover:shadow-md hover:scale-105"
               >
                 {social.icon}
                 {social.name}
               </a>
             ))}
+            <a
+              href="/data/resume.pdf"
+              download="Tanuj_Palaspagar_Resume.pdf"
+              className="inline-flex items-center px-3 sm:px-4 py-2 rounded-full bg-light-accent dark:bg-gumroad-pink text-white font-medium text-xs sm:text-sm md:text-base shadow-sm transition-all duration-200 hover:shadow-md hover:scale-105"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg className="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Resume
+            </a>
           </div>
         </motion.div>
       </div>
     </section>
   );
-} 
+}
