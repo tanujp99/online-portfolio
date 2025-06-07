@@ -85,8 +85,8 @@ export default function Hero() {
               </a>
             ))}
             <a
-              href="/data/resume.pdf"
-              download="Tanuj_Palaspagar-Resume.pdf"
+              href="/data/Tanuj_Palaspagar-resume.pdf"
+              download
               className="inline-flex items-center px-3 sm:px-4 py-2 rounded-full bg-light-accent dark:bg-gumroad-pink text-white font-medium text-xs sm:text-sm md:text-base shadow-sm transition-all duration-200 hover:shadow-md hover:scale-105"
               target="_blank"
               rel="noopener noreferrer"
