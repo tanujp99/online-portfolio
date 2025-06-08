@@ -13,6 +13,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://tanujp.dev'),
   title: 'Tanuj Palaspagar - Software Developer Engineer',
   description: 'Portfolio website of Tanuj Palaspagar, a Software Developer Engineer specializing in Algorithms, Databases, and Intelligent Systems.',
   keywords: ['Software Developer', 'Cloud Engineer', 'Backend Developer', 'Algorithms', 'Databases', 'Intelligent Systems'],

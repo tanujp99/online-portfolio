@@ -6,6 +6,7 @@ import { FaGithub, FaMapMarkerAlt, FaLink, FaUsers, FaCode, FaStar, FaCodeBranch
 import Image from 'next/image';
 import GitHubCalendar from 'react-github-calendar';
 import { useTheme } from '../context/ThemeContext';
+import ThemedIcon from './ThemedIcon';
 
 interface GitHubData {
   name: string;
@@ -113,11 +114,9 @@ export default function Profile() {
             <div className="bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-2xl p-3 sm:p-4 border border-neutral-200/50 dark:border-neutral-800/50">
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
               <div className="relative">
-                <img
-                  src={profile.avatar_url}
-                  alt={profile.name}
-                  className="w-32 h-32 rounded-full border-4 border-[rgb(var(--border-color))]"
-                />
+                <div className="w-32 h-32 rounded-full border-4 border-[rgb(var(--border-color))] overflow-hidden flex items-center justify-center">
+                  <ThemedIcon className="w-20 h-20" />
+                </div>
                 <div className="absolute -bottom-2 -right-2 bg-[rgb(var(--card-bg))] rounded-full p-1 border border-[rgb(var(--border-color))]">
                   <span className="text-2xl">🦄</span>
                 </div>
