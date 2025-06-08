@@ -117,9 +117,9 @@ export default function Profile() {
                 <div className="w-32 h-32 rounded-full border-4 border-[rgb(var(--border-color))] overflow-hidden flex items-center justify-center">
                   <ThemedIcon className="w-20 h-20" />
                 </div>
-                <div className="absolute -bottom-2 -right-2 bg-[rgb(var(--card-bg))] rounded-full p-1 border border-[rgb(var(--border-color))]">
-                  <span className="text-2xl">🦄</span>
-                </div>
+                {/* <div className="absolute -bottom-1 -right-1 bg-[rgb(var(--card-bg))] rounded-full p-1 border border-[rgb(var(--border-color))]">
+                  <span className="text-xl">🦄</span>
+                </div> */}
               </div>
               <div className="flex-1 text-center sm:text-left">
                 <div className="flex items-center justify-center sm:justify-start gap-2 mb-2">
@@ -180,7 +180,7 @@ export default function Profile() {
           {/* Contribution Calendar Section */}
           <div className="max-w-4xl mx-auto">
             <div className="bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-2xl p-3 sm:p-4 border border-neutral-200/50 dark:border-neutral-800/50">
-              <div className="flex flex-col lg:flex-row items-center justify-center gap-6">
+              <div className="flex flex-col lg:flex-row items-center justify-center">
                 {/* Stacked layout: title above, grid, legend below, all centered */}
                 <div className="flex flex-col items-center w-full">
                   {/* Title */}
@@ -188,7 +188,7 @@ export default function Profile() {
                     Contributions in {selectedYear}
                   </div>
                   {/* Calendar Grid */}
-                  <div className="overflow-x-auto custom-scrollbar w-full" style={{ WebkitOverflowScrolling: 'touch' }}>
+                  <div className="overflow-x-auto custom-scrollbar w-full flex flex-col lg:items-center justify-center" style={{ WebkitOverflowScrolling: 'touch' }}>
                     <div className="inline-block pb-4 lg:pb-0">
                       <GitHubCalendar
                         username="tanujp99"
@@ -206,11 +206,11 @@ export default function Profile() {
                   <div className="mt-2 flex items-center gap-2 text-sm">
                     <span>Less</span>
                     <span className="flex gap-1">
-                      <span className="inline-block w-4 h-4 rounded bg-[#161b22] border border-[#30363d]"></span>
-                      <span className="inline-block w-4 h-4 rounded bg-[#0e4429] border border-[#30363d]"></span>
-                      <span className="inline-block w-4 h-4 rounded bg-[#006d32] border border-[#30363d]"></span>
-                      <span className="inline-block w-4 h-4 rounded bg-[#26a641] border border-[#30363d]"></span>
-                      <span className="inline-block w-4 h-4 rounded bg-[#39d353] border border-[#30363d]"></span>
+                      <span className="inline-block w-4 h-4 rounded bg-[#ebedf0] dark:bg-[#161b22] border border-[#d1d5da] dark:border-[#30363d]"></span>
+                      <span className="inline-block w-4 h-4 rounded bg-[#9be9a8] dark:bg-[#0e4429] border border-[#d1d5da] dark:border-[#30363d]"></span>
+                      <span className="inline-block w-4 h-4 rounded bg-[#40c463] dark:bg-[#006d32] border border-[#d1d5da] dark:border-[#30363d]"></span>
+                      <span className="inline-block w-4 h-4 rounded bg-[#30a14e] dark:bg-[#26a641] border border-[#d1d5da] dark:border-[#30363d]"></span>
+                      <span className="inline-block w-4 h-4 rounded bg-[#216e39] dark:bg-[#39d353] border border-[#d1d5da] dark:border-[#30363d]"></span>
                     </span>
                     <span>More</span>
                   </div>
@@ -277,7 +277,11 @@ export default function Profile() {
               {/* GitHub Profile Trophy */}
               <div className="flex justify-center mb-8">
                 <img
-                  src="https://github-profile-trophy.vercel.app/?username=tanujp99&rank=SECRET,SSS,SS,S,AAA,AA&theme=apprentice&column=3&margin-w=32&margin-h=15&no-bg=false&no-frame=true"
+                  src={
+                    theme=== 'light' 
+                      ? "https://github-profile-trophy.vercel.app/?username=tanujp99&rank=SECRET,SSS,SS,S,AAA,AA&theme=false&column=3&margin-w=32&margin-h=15&no-bg=true" 
+                      : "https://github-profile-trophy.vercel.app/?username=tanujp99&rank=SECRET,SSS,SS,S,AAA,AA&theme=apprentice&column=3&margin-w=32&margin-h=15&no-bg=false&no-frame=true"
+                  }
                   alt="GitHub Profile Trophy"
                   className="w-full max-w-[450px]"
                 />
@@ -286,7 +290,11 @@ export default function Profile() {
               {/* Activity Graph */}
               <div className="mb-8">
                 <img
-                  src="https://github-readme-activity-graph.vercel.app/graph?username=tanujp99&theme=material"
+                  src={
+                    theme === 'light'
+                      ? 'https://github-readme-activity-graph.vercel.app/graph?username=tanujp99&bg_color=FAFAFA&color=212121&title_color=212121&line=a3cfb4&point=c30b4e&area_color=E3F2FD'
+                      : 'https://github-readme-activity-graph.vercel.app/graph?username=tanujp99&theme=material'
+                  }
                   alt="Activity Graph"
                   className="w-full rounded-2xl"
                   style={{ clipPath: 'inset(2px)' }}
@@ -334,9 +342,12 @@ export default function Profile() {
               </div>
 
               {/* Profile Views Counter */}
+              {/* 487260 */}
               <div className="flex justify-center">
                 <img
-                  src="https://komarev.com/ghpvc/?username=tanujp99&color=487260&style=flat&label=Profile+Visits"
+                  src={theme === 'light' 
+                    ? "https://komarev.com/ghpvc/?username=tanujp99&color=c30b4e&style=flat&label=Profile+Visits" 
+                    : "https://komarev.com/ghpvc/?username=tanujp99&color=ff90e8&style=flat&label=Profile+Visits"}
                   alt="Profile Views"
                 />
                 </div>
