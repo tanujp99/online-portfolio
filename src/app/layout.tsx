@@ -4,8 +4,7 @@ import './globals.css'
 import Hero from '@/components/Hero';
 import ContentWrapper from '@/components/ContentWrapper';
 import ThemeSwitcher from '@/components/ThemeSwitcher';
-import { ThemeProvider, useTheme } from '../context/ThemeContext';
-import { useEffect } from 'react';
+import { ThemeProvider } from '../context/ThemeContext';
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -29,27 +28,6 @@ export const metadata: Metadata = {
   },
 }
 
-// Client component for favicon switching
-'use client';
-function FaviconSwitcher() {
-  const { theme } = useTheme();
-
-  useEffect(() => {
-    const favicon = document.querySelector("link[rel*='icon']") as HTMLLinkElement;
-    const appleTouchIcon = document.querySelector("link[rel*='apple-touch-icon']") as HTMLLinkElement;
-    
-    if (favicon) {
-      favicon.href = theme === 'dark' ? '/icon-dark.svg' : '/icon.svg';
-    }
-    
-    if (appleTouchIcon) {
-      appleTouchIcon.href = theme === 'dark' ? '/icon-dark.svg' : '/icon.svg';
-    }
-  }, [theme]);
-
-  return null;
-}
-
 export default function RootLayout({
   children,
 }: {
@@ -64,7 +42,6 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} bg-[rgb(var(--background-rgb))] text-[rgb(var(--foreground-rgb))] h-full overflow-hidden antialiased`}>
         <ThemeProvider>
-          <FaviconSwitcher />
           <ThemeSwitcher />
           
           {/* Mobile Layout (Portrait) - Refined spacing */}

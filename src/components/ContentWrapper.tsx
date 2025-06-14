@@ -30,7 +30,7 @@ export default function ContentWrapper() {
       
       {/* Content Area - Better scrolling */}
       <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden">
-        <div className="w-full pr-1"> {/* Small right padding to account for scrollbar */}
+        <div className="w-full pr-full">
           <ErrorBoundary>
             {currentTab?.component}
           </ErrorBoundary>

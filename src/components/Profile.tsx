@@ -7,6 +7,7 @@ import Image from 'next/image';
 import GitHubCalendar from 'react-github-calendar';
 import { useTheme } from '../context/ThemeContext';
 import ThemedIcon from './ThemedIcon';
+import LoadingSpinner from './LoadingSpinner';
 
 interface GitHubData {
   name: string;
@@ -46,11 +47,15 @@ interface PinnedRepo {
   forks: number;
 }
 
+let cachedProfile: GitHubData | null = null;
+let cachedPinnedRepos: PinnedRepo[] = [];
+let dataFetched = false;
+
 export default function Profile() {
   const { theme } = useTheme();
-  const [profile, setProfile] = useState<GitHubData | null>(null);
-  const [pinnedRepos, setPinnedRepos] = useState<PinnedRepo[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [profile, setProfile] = useState<GitHubData | null>(cachedProfile);
+  const [pinnedRepos, setPinnedRepos] = useState<PinnedRepo[]>(cachedPinnedRepos);
+  const [loading, setLoading] = useState(!dataFetched);
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const [calendarLoading, setCalendarLoading] = useState(true);
 
@@ -58,15 +63,35 @@ export default function Profile() {
   const availableYears = Array.from({ length: 7 }, (_, i) => currentYear - i);
 
   useEffect(() => {
-    const fetchGitHubData = async () => {
-      try {
-        const profileResponse = await fetch('https://api.github.com/users/tanujp99');
-        const profileData = await profileResponse.json();
-        setProfile(profileData);
+    const fetchData = async () => {
+      if (dataFetched && cachedProfile) {
+        setProfile(cachedProfile);
+        setPinnedRepos(cachedPinnedRepos);
+        setLoading(false);
+        return;
+      }
 
-        const pinnedReposResponse = await fetch('https://gh-pinned-repos.egoist.dev/api?username=tanujp99');
-        const pinnedReposData = await pinnedReposResponse.json();
-        setPinnedRepos(Array.isArray(pinnedReposData) ? pinnedReposData : []);
+      try {
+        const minLoadingTime = new Promise(resolve => setTimeout(resolve, 2000));
+        
+        const fetchGitHubData = async () => {
+          const [profileResponse, pinnedReposResponse] = await Promise.all([
+            fetch('https://api.github.com/users/tanujp99'),
+            fetch('https://gh-pinned-repos.egoist.dev/api?username=tanujp99')
+          ]);
+          
+          const profileData = await profileResponse.json();
+          const pinnedReposData = await pinnedReposResponse.json();
+          
+          cachedProfile = profileData;
+          cachedPinnedRepos = Array.isArray(pinnedReposData) ? pinnedReposData : [];
+          dataFetched = true;
+          
+          setProfile(profileData);
+          setPinnedRepos(cachedPinnedRepos);
+        };
+
+        await Promise.all([minLoadingTime, fetchGitHubData()]);
       } catch (error) {
         console.error('Error fetching GitHub data:', error);
         setPinnedRepos([]);
@@ -75,22 +100,26 @@ export default function Profile() {
       }
     };
 
-    fetchGitHubData();
+    fetchData();
   }, []);
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-full">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-light-accent dark:border-gumroad-pink"></div>
-      </div>
+      <section id="profile" className="absolute inset-0 flex items-center justify-center">
+        <LoadingSpinner />
+      </section>
     );
   }
 
   if (!profile) {
     return (
-      <div className="flex items-center justify-center h-full">
-        <p className="text-neutral-700 dark:text-gray-300">Failed to load GitHub profile</p>
-      </div>
+      <section id="profile" className="py-8 sm:py-12 md:py-16 overflow-y-auto h-full">
+        <div className="container mx-auto px-4 sm:px-6 md:px-8">
+          <div className="flex items-center justify-center h-full min-h-[400px]">
+            <p className="text-neutral-700 dark:text-gray-300">Failed to load GitHub profile</p>
+          </div>
+        </div>
+      </section>
     );
   }
 
@@ -101,7 +130,7 @@ export default function Profile() {
   }
 
   return (
-    <section id="profile" className="py-8 sm:py-12 md:py-16">
+    <section id="profile" className="py-8 sm:py-12 md:py-16 overflow-y-auto">
       <div className="container mx-auto px-4 sm:px-6 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
