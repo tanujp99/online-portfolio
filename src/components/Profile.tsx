@@ -72,7 +72,7 @@ export default function Profile() {
       }
 
       try {
-        const minLoadingTime = new Promise(resolve => setTimeout(resolve, 2000));
+        const minLoadingTime = new Promise(resolve => setTimeout(resolve, 4000));
         
         const fetchGitHubData = async () => {
           const [profileResponse, pinnedReposResponse] = await Promise.all([
