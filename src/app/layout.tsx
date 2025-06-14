@@ -24,7 +24,11 @@ export const metadata: Metadata = {
     type: 'website',
   },
   icons: {
-    icon: '/icon.svg',
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    apple: '/apple-touch-icon.png',
   },
 }
 
@@ -35,11 +39,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-full">
-      <head>
-        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/icon.svg" />
-        <link rel="manifest" href="/site.webmanifest" />
-      </head>
       <body className={`${inter.className} bg-[rgb(var(--background-rgb))] text-[rgb(var(--foreground-rgb))] h-full overflow-hidden antialiased`}>
         <ThemeProvider>
           <ThemeSwitcher />
