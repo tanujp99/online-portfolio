@@ -63,7 +63,7 @@ export default function Hero() {
                 <span className="mt-0.5 flex-shrink-0">⚡</span>
                 <div>
                   <span className="block sm:inline">Worked as</span>
-                  <span className="block sm:inline font-semibold text-light-accent dark:text-gumroad-pink hover:underline cursor-pointer">
+                  <span className="block sm:inline font-semibold text-light-accent dark:text-gumroad-pink">
                     {' '}Cloud Engineer / Backend Developer
                   </span>
                 </div>
