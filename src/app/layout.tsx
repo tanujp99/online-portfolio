@@ -4,7 +4,8 @@ import './globals.css'
 import Hero from '@/components/Hero';
 import ContentWrapper from '@/components/ContentWrapper';
 import ThemeSwitcher from '@/components/ThemeSwitcher';
-import { ThemeProvider } from '../context/ThemeContext';
+import { ThemeProvider, useTheme } from '../context/ThemeContext';
+import { useEffect } from 'react';
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -24,8 +25,29 @@ export const metadata: Metadata = {
     type: 'website',
   },
   icons: {
-    icon: '/favicon.ico',
+    icon: '/icon.svg',
   },
+}
+
+// Client component for favicon switching
+'use client';
+function FaviconSwitcher() {
+  const { theme } = useTheme();
+
+  useEffect(() => {
+    const favicon = document.querySelector("link[rel*='icon']") as HTMLLinkElement;
+    const appleTouchIcon = document.querySelector("link[rel*='apple-touch-icon']") as HTMLLinkElement;
+    
+    if (favicon) {
+      favicon.href = theme === 'dark' ? '/icon-dark.svg' : '/icon.svg';
+    }
+    
+    if (appleTouchIcon) {
+      appleTouchIcon.href = theme === 'dark' ? '/icon-dark.svg' : '/icon.svg';
+    }
+  }, [theme]);
+
+  return null;
 }
 
 export default function RootLayout({
@@ -36,12 +58,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/icon.svg" />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body className={`${inter.className} bg-[rgb(var(--background-rgb))] text-[rgb(var(--foreground-rgb))] h-full overflow-hidden antialiased`}>
         <ThemeProvider>
+          <FaviconSwitcher />
           <ThemeSwitcher />
           
           {/* Mobile Layout (Portrait) - Refined spacing */}
