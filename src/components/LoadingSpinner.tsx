@@ -198,7 +198,7 @@ export default function LoadingSpinner() {
                   maskImage: 'linear-gradient(to bottom, transparent 50%, black 50%)',
                   WebkitMaskImage: 'linear-gradient(to bottom, transparent 50%, black 50%)'
                 }}
-                animate={{ rotate: [-90, -180, -180, -450, -450] }}
+                animate={{ rotate: [90, -90, -90, -360, -360] }}
                 transition={{
                   duration,
                   repeat: Infinity,
