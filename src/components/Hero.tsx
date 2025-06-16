@@ -48,7 +48,7 @@ export default function Hero() {
           <div className="space-y-2 mb-6">
             <div className="text-xs sm:text-sm md:text-base text-neutral-700 dark:text-gray-300">
               <div className="flex items-start gap-2">
-                <span className="mt-0.5 flex-shrink-0">🚀</span> 
+                {/* <span className="mt-0.5 flex-shrink-0">🚀</span>  */}
                 <div>
                   <span className="block sm:inline">Specialized in</span>
                   <span className="block sm:inline font-semibold text-light-accent dark:text-gumroad-pink">
@@ -60,7 +60,7 @@ export default function Hero() {
             
             <div className="text-xs sm:text-sm md:text-base text-neutral-700 dark:text-gray-300">
               <div className="flex items-start gap-2">
-                <span className="mt-0.5 flex-shrink-0">⚡</span>
+                {/* <span className="mt-0.5 flex-shrink-0">⚡</span> */}
                 <div>
                   <span className="block sm:inline">Worked as</span>
                   <span className="block sm:inline font-semibold text-light-accent dark:text-gumroad-pink">
