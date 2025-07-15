@@ -1,3 +1,5 @@
+# Project Structure
+
 src/
 ├── app/
 │   ├── globals.css          # Global styles and theme variables
@@ -38,4 +40,4 @@ docs/
 ├── colors.md             # Theme color documentation
 └── structure.md         # Project structure documentation
 
-tailwind.config.js       # Tailwind CSS configuration and theme customization 
+tailwind.config.js       # Tailwind CSS configuration and theme customization
