@@ -57,6 +57,7 @@ export default function Projects() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
           className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12 md:mb-16 text-neutral-900 dark:text-white"
         >
           Projects
@@ -71,12 +72,16 @@ export default function Projects() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
                 className="relative"
               >
                 <motion.div
                   className="bg-white dark:bg-white/5 backdrop-blur-md rounded-xl p-4 sm:p-6 cursor-pointer border border-neutral-200 dark:border-neutral-800"
                   whileHover={{ scale: 1.02 }}
-                  onClick={() => setSelectedProject(isExpanded ? null : project.id)}
+                  onClick={(e) => {
+                    if (window.getSelection && window.getSelection().toString()) return;
+                    setSelectedProject(isExpanded ? null : project.id);
+                  }}
                 >
                   <h3 className="text-lg sm:text-xl font-semibold mb-2 text-neutral-900 dark:text-white">{project.title}</h3>
                   <p className="text-sm sm:text-base text-neutral-700 dark:text-gray-300 mb-4">{project.shortDescription}</p>

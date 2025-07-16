@@ -45,6 +45,7 @@ export default function Experience() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
           className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-6 sm:mb-8 md:mb-12 text-neutral-900 dark:text-white"
         >
           Experience
@@ -59,6 +60,7 @@ export default function Experience() {
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
                 className="relative pl-4 sm:pl-6 pb-6 sm:pb-8 last:pb-0"
               >
                 {/* Timeline line */}
@@ -68,8 +70,11 @@ export default function Experience() {
 
                 <motion.div
                   className="bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-2xl p-3 sm:p-4 cursor-pointer border border-neutral-200/50 dark:border-neutral-800/50 transition-all duration-300"
-                  whileHover={{ scale: 1.01, y: -2 }}
-                  onClick={() => setExpandedId(isExpanded ? null : exp.id)}
+                  whileHover={{ scale: 1.02}}
+                  onClick={(e) => {
+                    if (window.getSelection && window.getSelection().toString()) return;
+                    setExpandedId(isExpanded ? null : exp.id);
+                  }}
                 >
                   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1.5 sm:gap-3 mb-3">
                     <div>
