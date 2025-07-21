@@ -72,7 +72,7 @@ export default function Experience() {
                   className="bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-2xl p-3 sm:p-4 cursor-pointer border border-neutral-200/50 dark:border-neutral-800/50 transition-all duration-300"
                   whileHover={{ scale: 1.02}}
                   onClick={(e) => {
-                    if (window.getSelection && window.getSelection().toString()) return;
+                    if (window.getSelection && window.getSelection() && window.getSelection()!.toString()) return;
                     setExpandedId(isExpanded ? null : exp.id);
                   }}
                 >
