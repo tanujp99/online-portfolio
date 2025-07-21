@@ -79,7 +79,7 @@ export default function Projects() {
                   className="bg-white dark:bg-white/5 backdrop-blur-md rounded-xl p-4 sm:p-6 cursor-pointer border border-neutral-200 dark:border-neutral-800"
                   whileHover={{ scale: 1.02 }}
                   onClick={(e) => {
-                    if (window.getSelection && window.getSelection().toString()) return;
+                    if (window.getSelection && window.getSelection() && window.getSelection()!.toString()) return;
                     setSelectedProject(isExpanded ? null : project.id);
                   }}
                 >
