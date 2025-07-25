@@ -46,7 +46,7 @@ export default function RootLayout({
           {/* Mobile Layout (Portrait) - Refined spacing */}
           <div className="block lg:hidden h-full flex flex-col overflow-hidden">
             {/* Hero Section - Better proportions */}
-            <div className="flex-shrink-0 h-[30vh] px-6 py-6">
+            <div className="flex-shrink-0 h-[25%] px-6 py-6">
               <div className="flex items-center justify-center h-full">
                 <Hero />
               </div>
