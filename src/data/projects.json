@@ -35,8 +35,8 @@
       "imageLight": "project-spp-light.png",
       "imageDark": "project-spp-dark.png",
       "imageAlt": "Stock Price Prediction",
-      "imageBgLight": "#f9f7f5",
-      "imageBgDark": "#161719"
+      "imageBgLight": "#fffffa",
+      "imageBgDark": "#091117"
     },
     {
       "id": 4,
@@ -49,7 +49,7 @@
       "imageDark": "project-swm-dark.png",
       "imageAlt": "Smart Solid Waste Management",
       "imageBgLight": "#f8f8f5",
-      "imageBgDark": "#161719"
+      "imageBgDark": "#0c131a"
     }
   ]
 }
