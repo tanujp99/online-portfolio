@@ -11,7 +11,6 @@ import LoadingSpinner from './LoadingSpinner';
 import { FaQuoteLeft, FaExternalLinkAlt } from 'react-icons/fa';
 import testimonialsData from '@/data/testimonials.json';
 
-
 interface GitHubData {
   name: string;
   avatar_url: string;
@@ -58,7 +57,7 @@ interface Testimonial {
   relationship: string;
   date: string;
   linkedinUrl: string;
-  profileImage?: string;
+  profileImagePath?: string; // Updated to use profileImagePath
   recommendation: string;
   verified?: boolean;
 }
@@ -76,7 +75,6 @@ export default function Profile() {
   const [calendarLoading, setCalendarLoading] = useState(true);
   const testimonials: Testimonial[] = testimonialsData.testimonials;
   const [expandedTestimonial, setExpandedTestimonial] = useState<number | null>(null);
-
 
   const currentYear = new Date().getFullYear();
   const availableYears = Array.from({ length: 7 }, (_, i) => currentYear - i);
@@ -170,76 +168,6 @@ export default function Profile() {
           transition={{ duration: 0.5 }}
           className="space-y-8"
         >
-          {/* Profile Header */}
-          {/* 
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-2xl p-3 sm:p-4 border border-neutral-200/50 dark:border-neutral-800/50">
-            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
-              <div className="relative">
-                <div className="w-32 h-32 rounded-full border-4 border-[rgb(var(--border-color))] overflow-hidden flex items-center justify-center">
-                  <ThemedIcon className="w-20 h-20" />
-                </div>
-                {/* <div className="absolute -bottom-1 -right-1 bg-[rgb(var(--card-bg))] rounded-full p-1 border border-[rgb(var(--border-color))]">*
-                  <span className="text-xl">🦄</span>
-                </div> 
-              </div>
-              <div className="flex-1 text-center sm:text-left">
-                <div className="flex items-center justify-center sm:justify-start gap-2 mb-2">
-                  <h1 className="text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-white">
-                    {profile.name}
-                  </h1>
-                  <span className="text-sm text-neutral-600 dark:text-gray-400">({profile.login})</span>
-                </div>
-                <p className="text-neutral-700 dark:text-gray-300 mb-4">{profile.bio}</p>
-                <div className="flex flex-wrap justify-center sm:justify-start gap-4 text-sm">
-                  <div className="flex items-center gap-2 text-neutral-600 dark:text-gray-400">
-                    <FaUsers className="text-light-accent dark:text-gumroad-pink" />
-                    <span>{profile.followers} followers · {profile.following} following</span>
-                  </div>
-                  {profile.location && (
-                    <div className="flex items-center gap-2 text-neutral-600 dark:text-gray-400">
-                      <FaMapMarkerAlt className="text-light-accent dark:text-gumroad-pink" />
-                      {profile.location}
-                    </div>
-                  )}
-                  {profile.blog && (
-                    <a
-                      href={profile.blog}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-neutral-600 dark:text-gray-400 hover:text-light-accent dark:hover:text-gumroad-pink"
-                    >
-                      <FaLink className="text-light-accent dark:text-gumroad-pink" />
-                      {profile.blog}
-                    </a>
-                  )}
-                  {profile.twitter_username && (
-                    <a
-                      href={`https://twitter.com/${profile.twitter_username}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-neutral-600 dark:text-gray-400 hover:text-light-accent dark:hover:text-gumroad-pink"
-                    >
-                      <FaTwitter className="text-light-accent dark:text-gumroad-pink" />
-                      @{profile.twitter_username}
-                    </a>
-                  )}
-                </div>
-              </div>
-              <a
-                href={profile.html_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 bg-[rgb(var(--card-bg))] hover:bg-[rgb(var(--border-color))] rounded-lg border border-[rgb(var(--border-color))] text-neutral-700 dark:text-gray-300 transition-colors"
-              >
-                <FaGithub className="text-light-accent dark:text-gumroad-pink" />
-                Follow
-              </a>
-              </div>
-            </div>
-          </div> 
-          */}
-
 
           {/* Skills & Technologies Section */}
           <div className="max-w-4xl mx-auto">
@@ -403,9 +331,9 @@ export default function Profile() {
                                 onClick={e => e.stopPropagation()}
                               >
                                 <div className="w-12 h-12 rounded-full overflow-hidden bg-gradient-to-br from-light-accent to-light-accent/70 dark:from-gumroad-pink dark:to-gumroad-pink/70 flex items-center justify-center group-hover:ring-2 group-hover:ring-[#0077B5] transition">
-                                  {testimonial.profileImage ? (
+                                  {testimonial.profileImagePath ? (
                                     <Image
-                                      src={testimonial.profileImage}
+                                      src={require(`@/data/images/${testimonial.profileImagePath}`)}
                                       alt={`${testimonial.name} profile picture`}
                                       width={48}
                                       height={48}
@@ -637,7 +565,6 @@ export default function Profile() {
                 </div>
 
                 {/* Profile Views Counter */}
-                {/* 487260 */}
                 <div className="flex justify-center">
                   <img
                     src={theme === 'light' 
@@ -691,4 +618,4 @@ export default function Profile() {
       </div>
     </section>
   );
-} 
+}
