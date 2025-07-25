@@ -44,7 +44,7 @@ export default function RootLayout({
           <ThemeSwitcher />
           
           {/* Mobile Layout (Portrait) - Refined spacing */}
-          <div className="block lg:hidden h-screen flex flex-col overflow-hidden">
+          <div className="block lg:hidden h-full flex flex-col overflow-hidden">
             {/* Hero Section - Better proportions */}
             <div className="flex-shrink-0 h-[30vh] px-6 py-6">
               <div className="flex items-center justify-center h-full">
@@ -61,9 +61,9 @@ export default function RootLayout({
           </div>
 
           {/* Desktop Layout (Landscape) - Refined spacing */}
-          <div className="hidden lg:flex min-h-screen w-full h-screen">
+          <div className="hidden lg:flex min-h-full w-full h-full">
             {/* Hero Section - Better proportions */}
-            <div className="w-[38%] xl:w-[35%] flex-shrink-0 sticky top-0 h-screen">
+            <div className="w-[38%] xl:w-[35%] flex-shrink-0 sticky top-0 h-full">
               <div className="w-full h-full flex items-center justify-center px-8 xl:px-12">
                 <Hero />
               </div>
@@ -71,7 +71,7 @@ export default function RootLayout({
             
             {/* Content Section - Refined container */}
             <div className="flex-1 flex items-start justify-center px-8 xl:px-12 py-8 xl:py-12 h-full">
-              <div className="w-full h-[calc(100vh-64px)] xl:h-[calc(100vh-96px)] bg-[rgb(var(--card-bg))] backdrop-blur-xl rounded-2xl border border-[rgb(var(--border-color))] p-8 flex flex-col overflow-hidden shadow-xl">
+              <div className="w-full h-full bg-[rgb(var(--card-bg))] backdrop-blur-xl rounded-2xl border border-[rgb(var(--border-color))] p-8 flex flex-col overflow-hidden shadow-xl">
                 <ContentWrapper />
               </div>
             </div>
