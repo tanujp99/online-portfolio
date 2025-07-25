@@ -7,7 +7,12 @@
       "fullDescription": "• Architected an enterprise-grade Kubernetes infrastructure comprising 9 HP Spectre SFF PC nodes running Ubuntu 20.04 LTS, implementing network segmentation using Calico CNI.\n• Engineered robust high-availability configurations with a distributed control plane, load balancing, and resource scheduling algorithms to optimize workload distribution and ensure system reliability.\n• Implemented infrastructure-as-code principles using Hashicorp Packer and a GitLab CI/CD pipeline for zero-downtime deployments.\n• Designed and implemented networking solutions, including a service mesh with Istio, for advanced traffic management and security.\n• Established monitoring and observability infrastructure utilizing Prometheus and Grafana, creating dashboards and alerting systems.\n• Leveraged Lens as a centralized management interface, integrating custom resource definitions and operators.",
       "technologies": ["Ubuntu", "Kubernetes", "Calico", "GitLab CI/CD", "Packer", "Lens", "Istio", "Prometheus", "Grafana"],
       "githubLink": "https://github.com/tanujp99",
-      "showGithubLink": true
+      "showGithubLink": true,
+      "imageLight": "project-hls-light.png",
+      "imageDark": "project-hls-dark.png",
+      "imageAlt": "Home Lab Server",
+      "imageBgLight": "#f8f8f5",
+      "imageBgDark": "#161719"
     },
     {
       "id": 2,
@@ -26,7 +31,12 @@
       "shortDescription": "Developed a stock price prediction system using time series regression, deep learning (LSTM), and Streamlit.",
       "fullDescription": "• Developed a stock price prediction system using time series regression and deep learning.\n• Engineered a real-time application with Streamlit for visualizations and forecasts.\n• Implemented FBProphet for time series forecasting.\n• Designed and implemented an LSTM network for enhanced prediction accuracy.",
       "technologies": ["Python", "FBProphet", "LSTM", "Streamlit"],
-      "githubLink": "https://github.com/tanujp99"
+      "githubLink": "https://github.com/tanujp99",
+      "imageLight": "project-spp-light.png",
+      "imageDark": "project-spp-dark.png",
+      "imageAlt": "Stock Price Prediction",
+      "imageBgLight": "#f9f7f5",
+      "imageBgDark": "#161719"
     },
     {
       "id": 4,
@@ -34,7 +44,12 @@
       "shortDescription": "Engineered an Arduino-based IoT prototype for automated organic waste composting.",
       "fullDescription": "• Engineered an Arduino-based waste management prototype with ESP32 microcontrollers.\n• Developed environmental control algorithms using sensor feeds.\n• Designed custom circuit architecture and power management systems.\n• Implemented data collection and analysis capabilities for system refinement.",
       "technologies": ["IoT", "Arduino", "Hardware-based", "ESP32"],
-      "githubLink": "https://github.com/tanujp99"
+      "githubLink": "https://github.com/tanujp99",
+      "imageLight": "project-swm-light.png",
+      "imageDark": "project-swm-dark.png",
+      "imageAlt": "Smart Solid Waste Management",
+      "imageBgLight": "#f8f8f5",
+      "imageBgDark": "#161719"
     }
   ]
 }

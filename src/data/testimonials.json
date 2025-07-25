@@ -1,0 +1,40 @@
+{
+    "testimonials": [
+      {
+        "id": 1,
+        "name": "Abhishek Ghosh",
+        "title": "Principal Architect - Enterprise Product",
+        "company": "HP Inc.",
+        "relationship": "Abhishek was Tanuj's mentor",
+        "recommendation": "I had the pleasure of working with Tanuj during his time at HP, where he initially joined our team as an intern and later transitioned into a full-time role. From the outset, Tanuj demonstrated a strong willingness to learn, a proactive attitude, and a solid foundation in technical skills that quickly made him a valuable member of the team.\n\nAs an intern, he showed great curiosity and commitment, often going beyond the assigned tasks to explore better solutions and improve existing processes. His transition to a full-time role was a natural progression, as he consistently delivered quality work, met deadlines, and collaborated well with cross-functional teams.\n\nTanuj's ability to pick up new technologies and adapt to the team's workflows was impressive. He approached challenges with a positive mindset and was always open to feedback, which helped him grow rapidly during his tenure with us.\n\nI am confident that Tanuj will continue to grow and succeed in his future endeavors. He would be a great addition to any team looking for a motivated and dependable junior professional.",
+        "linkedinUrl": "https://www.linkedin.com/in/abhishek-ghosh-1b881252",
+        "profileImage": "/images/1618463284424.jpeg",
+        "date": "May 11, 2025",
+        "verified": true
+      },
+      {
+        "id": 2,
+        "name": "Yash Kumar",
+        "title": "Research Assistant at Indiana University, Bloomington",
+        "company": "Indiana University",
+        "relationship": "Yash was senior to Tanuj but didn't manage Tanuj directly",
+        "recommendation": "Having worked with Tanuj on an Image Processing and Wavelets workshop for the Summer of 2019, I immediately noticed he was inquisitive about learning new things. Even though he did not possess the know-how, he would push our team to achieve different results with the available tools and resources to see how things worked out in a controlled environment. I can safely say I learned a lot more having Tanuj on the team than if I would've attended the seminar by myself, since his curious nature allowed us to uncover more of the technology we were exploring (MATLAB) than I expected to learn.\n\nI have also collaborated with Tanuj on two other separate occasions an Industry project and a Hackathon, in both of which he proved to be a commendable ally to the success of the endeavour.",
+        "linkedinUrl": "https://www.linkedin.com/in/kumar-yash",
+        "profileImage": "/images/1694194896459.jpeg",
+        "date": "August 17, 2022",
+        "verified": true
+      },
+      {
+        "id": 3,
+        "name": "Donga Kasi Pavan Kumar",
+        "title": "Software Engineer",
+        "company": "Various",
+        "relationship": "Donga Kasi Pavan and Tanuj studied together",
+        "recommendation": "I've known with Tanuj for past 5 years and must say, he is a bright & active person. Even under tough situations, he tries to be efficient & effective. He analyses all the aspects & performs a lot of research for projects he work on.",
+        "linkedinUrl": "https://www.linkedin.com/in/kasipavankumar",
+        "profileImage": "/images/1711258078940.jpeg",
+        "date": "July 31, 2022",
+        "verified": true
+      }
+    ]
+  }

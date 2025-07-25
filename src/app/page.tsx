@@ -4,13 +4,13 @@ import { useState } from 'react';
 import Experience from '@/components/Experience';
 import Projects from '@/components/Projects';
 import Awards from '@/components/Awards';
-import Contact from '@/components/Contact';
+import About from '../components/About';
 
 const TABS = [
   { name: 'Experience', component: <Experience /> },
   { name: 'Projects', component: <Projects /> },
   { name: 'Awards', component: <Awards /> },
-  { name: 'Contact', component: <Contact /> },
+  { name: 'About', component: <About /> },
 ];
 
 export default function Home() {

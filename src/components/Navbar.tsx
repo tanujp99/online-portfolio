@@ -7,13 +7,13 @@ interface NavbarProps {
   activeTab: string;
 }
 
-const tabs = ['Profile', 'Experience', 'Projects', 'Awards', 'Contact'];
+const tabs = ['Profile', 'Experience', 'Projects', 'Awards', 'About'];
 
 export default function Navbar({ setActiveTab, activeTab }: NavbarProps) {
   return (
     <nav className="w-full">
       <div className="flex items-center justify-center">
-        <div className="flex bg-[rgb(var(--card-bg))] rounded-full p-1.5 backdrop-blur-md shadow-[inset_0_2px_4px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)] border border-[rgb(var(--border-color))]">
+        <div className="flex bg-[rgb(var(--card-bg))] rounded-full p-1.5 backdrop-blur-md shadow-[inset_0_2px_4px_rgba(0,0,0,0.1),inset_0_-1px_3px_rgba(0,0,0,0.05)] dark:shadow-[inset_0_2px_4px_rgba(0,0,0,0.2),inset_0_-1px_3px_rgba(0,0,0,0.10)] border border-[rgb(var(--border-color))]">
           {tabs.map((tab) => (
             <button
               key={tab}

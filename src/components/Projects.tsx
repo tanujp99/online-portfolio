@@ -3,6 +3,9 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import projectsData from '@/data/projects.json';
+import { AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
+import { useTheme } from '../context/ThemeContext';
 
 interface Project {
   id: number;
@@ -14,6 +17,11 @@ interface Project {
   isResearch?: boolean;
   paperLink?: string;
   showGithubLink?: boolean;
+  imageLight?: string;
+  imageDark?: string;
+  imageAlt?: string;
+  imageBgLight?: string;
+  imageBgDark?: string;
 }
 
 const projects: Project[] = projectsData.projects;
@@ -49,6 +57,8 @@ function renderDescription(description: string) {
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
+  const [copiedProject, setCopiedProject] = useState<number | null>(null);
+  const { theme } = useTheme();
 
   return (
     <section id="projects" className="py-12 sm:py-16 md:py-20">
@@ -76,7 +86,7 @@ export default function Projects() {
                 className="relative"
               >
                 <motion.div
-                  className="bg-white dark:bg-white/5 backdrop-blur-md rounded-xl p-4 sm:p-6 cursor-pointer border border-neutral-200 dark:border-neutral-800"
+                  className="bg-white dark:bg-white/5 backdrop-blur-md rounded-xl p-4 sm:p-6 cursor-pointer border border-neutral-200 dark:border-neutral-800 shadow dark:shadow-none"
                   whileHover={{ scale: 1.02 }}
                   onClick={(e) => {
                     if (window.getSelection && window.getSelection() && window.getSelection()!.toString()) return;
@@ -86,12 +96,88 @@ export default function Projects() {
                   <h3 className="text-lg sm:text-xl font-semibold mb-2 text-neutral-900 dark:text-white">{project.title}</h3>
                   <p className="text-sm sm:text-base text-neutral-700 dark:text-gray-300 mb-4">{project.shortDescription}</p>
                   
+                  {/* Research paper or image box at the same position for all projects */}
+                  {project.isResearch ? (
+                    <div className="mb-4 p-3 bg-gradient-to-r from-light-accent/10 to-light-accent/5 dark:from-gumroad-pink/10 dark:to-gumroad-pink/5 rounded-lg border border-light-accent/20 dark:border-gumroad-pink/20">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="text-lg">🎓</span>
+                        <span className="text-sm font-semibold text-light-accent dark:text-gumroad-pink">Published Research</span>
+                      </div>
+                      <p className="text-xs text-neutral-600 dark:text-gray-400 mb-2">
+                        <strong>Journal:</strong> International Research Journal of Modernization in Engineering Technology and Science (IRJMETS)
+                      </p>
+                      <p className="text-xs text-neutral-600 dark:text-gray-400 mb-3">
+                        <strong>Citation:</strong> "Study of Machine Learning Algorithms for Credit Card Fraud Detection" - Vol 4, 2022
+                      </p>
+                      <div className="flex gap-2 relative">
+                        <AnimatePresence>
+                          {copiedProject === project.id && (
+                            <motion.div
+                              initial={{ opacity: 0, y: 10, scale: 0.8 }}
+                              animate={{ opacity: 1, y: 0, scale: 1 }}
+                              exit={{ opacity: 0, y: 10, scale: 0.8 }}
+                              className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-neutral-900/75 text-white px-3 py-1.5 rounded-md text-xs font-medium shadow-lg z-10"
+                            >
+                              <div className="flex items-center gap-1">
+                                <span>✓</span>
+                                Copied!
+                              </div>
+                              {/* Arrow pointing down */}
+                              <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-neutral-900/75"></div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                        {project.paperLink && (
+                          <a
+                            href={project.paperLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 px-3 py-1.5 bg-light-accent dark:bg-gumroad-pink text-white dark:text-gumroad-dark rounded-md hover:bg-light-accent/90 dark:hover:bg-gumroad-pink/90 transition-colors text-xs font-medium"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            Read Paper
+                          </a>
+                        )}
+                        <button
+                          className="inline-flex items-center gap-1 px-3 py-1.5 bg-white dark:bg-neutral-700 text-neutral-800 dark:text-gray-200 border border-neutral-300 dark:border-neutral-600 rounded-md hover:bg-neutral-50 dark:hover:bg-neutral-600 hover:border-light-accent dark:hover:border-gumroad-pink transition-colors text-xs font-medium"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            navigator.clipboard.writeText(
+                              'Palaspagar, T. (2022). Study of Machine Learning Algorithms for Credit Card Fraud Detection. International Research Journal of Modernization in Engineering Technology and Science, 4.'
+                            );
+                            setCopiedProject(project.id);
+                            setTimeout(() => setCopiedProject(null), 1000);
+                          }}
+                        >
+                          Copy Citation
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    project.imageLight && project.imageDark && (
+                      <div className="mb-4 p-3 bg-gradient-to-r from-light-accent/10 to-light-accent/5 dark:from-gumroad-pink/10 dark:to-gumroad-pink/5 rounded-lg border border-light-accent/20 dark:border-gumroad-pink/20 h-40 sm:h-44 md:h-48 lg:h-52 xl:h-56 2xl:h-60 flex items-center justify-center overflow-hidden">
+                        <div
+                          className="w-full h-full rounded-md flex items-center justify-center overflow-hidden"
+                          style={{ backgroundColor: theme === 'dark' ? project.imageBgDark || '#161719' : project.imageBgLight || '#f8f8f5' }}
+                        >
+                          <Image
+                            src={theme === 'dark'
+                              ? require(`@/data/images/${project.imageDark}`)
+                              : require(`@/data/images/${project.imageLight}`)}
+                            alt={project.imageAlt || project.title}
+                            fill={false}
+                            className="object-contain w-full h-full"
+                            style={{ maxWidth: '100%', maxHeight: '100%' }}
+                            sizes="(max-width: 768px) 100vw, 400px"
+                            priority={project.id === 1}
+                          />
+                        </div>
+                      </div>
+                    )
+                  )}
+
+                  {/* Technologies section */}
                   <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4">
-                    {project.isResearch && (
-                      <span className="px-2 sm:px-3 py-0.5 sm:py-1 bg-light-accent dark:bg-gumroad-pink text-white dark:text-gumroad-dark rounded-full text-xs sm:text-sm">
-                        Research Paper
-                      </span>
-                    )}
                     {project.technologies.map((tech) => (
                       <span
                         key={tech}
@@ -115,6 +201,7 @@ export default function Projects() {
                     </div>
                   </motion.span>
 
+                  {/* Expandable content */}
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: isExpanded ? 1 : 0, height: isExpanded ? 'auto' : 0 }}
@@ -153,4 +240,4 @@ export default function Projects() {
       </div>
     </section>
   );
-} 
+}

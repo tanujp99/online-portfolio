@@ -39,7 +39,7 @@ export default function Experience() {
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
   return (
-    <section id="experience" className="py-8 sm:py-12 md:py-16">
+    <section id="experience" className="py-12 sm:py-16 md:py-20">
       <div className="container mx-auto px-4 sm:px-6 md:px-8">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -66,10 +66,10 @@ export default function Experience() {
                 {/* Timeline line */}
                 <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-light-accent dark:bg-gumroad-pink" />
                 {/* Timeline dot */}
-                <div className="absolute left-[1px] top-2 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-light-accent dark:bg-gumroad-pink transform -translate-x-1/2 shadow-lg shadow-light-accent/25 dark:shadow-gumroad-pink/25" />
+                <div className="absolute left-[1px] top-2 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-light-accent dark:bg-gumroad-pink transform -translate-x-1/2 shadow dark:shadow-none" />
 
                 <motion.div
-                  className="bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-2xl p-3 sm:p-4 cursor-pointer border border-neutral-200/50 dark:border-neutral-800/50 transition-all duration-300"
+                  className="bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-2xl p-3 sm:p-4 cursor-pointer border border-neutral-200/50 dark:border-neutral-800/50 shadow dark:shadow-none transition-all duration-300"
                   whileHover={{ scale: 1.02}}
                   onClick={(e) => {
                     if (window.getSelection && window.getSelection() && window.getSelection()!.toString()) return;
