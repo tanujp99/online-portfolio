@@ -178,7 +178,7 @@ export default function Profile() {
                 {/* Backend Development */}
                 <div className="space-y-3">
                   <h3 className="text-lg font-medium text-light-accent dark:text-gumroad-pink flex items-center gap-2">
-                    <span>🔧</span> Backend Development
+                    Backend Development
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {['Java', 'Spring Boot', 'Python', 'Node.js', 'GraphQL', 'REST APIs', 'Microservices'].map((skill) => (
@@ -192,7 +192,7 @@ export default function Profile() {
                 {/* Cloud & Infrastructure */}
                 <div className="space-y-3">
                   <h3 className="text-lg font-medium text-light-accent dark:text-gumroad-pink flex items-center gap-2">
-                    <span>☁️</span> Cloud & Infrastructure
+                    Cloud & Infrastructure
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {['AWS', 'Kubernetes', 'Docker', 'Jenkins', 'GitLab CI/CD', 'Apache Airflow', 'Linux'].map((skill) => (
@@ -206,7 +206,7 @@ export default function Profile() {
                 {/* Data & Analytics */}
                 <div className="space-y-3">
                   <h3 className="text-lg font-medium text-light-accent dark:text-gumroad-pink flex items-center gap-2">
-                    <span>📊</span> Data & Analytics
+                    Data & Analytics
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {['Machine Learning', 'TensorFlow', 'Python', 'SQL Server', 'AWS Kinesis', 'RedShift', 'QuickSight'].map((skill) => (
@@ -220,7 +220,7 @@ export default function Profile() {
                 {/* Database Technologies */}
                 <div className="space-y-3">
                   <h3 className="text-lg font-medium text-light-accent dark:text-gumroad-pink flex items-center gap-2">
-                    <span>🗄️</span> Database Technologies
+                  Database Technologies
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {['SQL Server', 'PostgreSQL', 'MySQL', 'RedShift', 'Database Design', 'ETL Pipelines'].map((skill) => (
@@ -234,7 +234,7 @@ export default function Profile() {
                 {/* DevOps & Tools */}
                 <div className="space-y-3">
                   <h3 className="text-lg font-medium text-light-accent dark:text-gumroad-pink flex items-center gap-2">
-                    <span>🛠️</span> DevOps & Tools
+                    DevOps & Tools
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {['Git', 'Maven', 'Jenkins', 'Packer', 'Prometheus', 'Grafana', 'Istio'].map((skill) => (
@@ -248,7 +248,7 @@ export default function Profile() {
                 {/* Specialized Skills */}
                 <div className="space-y-3">
                   <h3 className="text-lg font-medium text-light-accent dark:text-gumroad-pink flex items-center gap-2">
-                    <span>🎯</span> Specialized Skills
+                    Specialized Skills
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {['IoT Development', 'Arduino', 'Computer Vision', 'MATLAB', 'System Architecture', 'Algorithm Design'].map((skill) => (
@@ -286,15 +286,15 @@ export default function Profile() {
 
           {/* LinkedIn Recommendations Section */}
           <div className="max-w-4xl mx-auto">
-            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-2xl p-3 sm:p-4 border border-neutral-200/50 dark:border-neutral-800/50 shadow dark:shadow-none">
-              <div className="flex items-center gap-3 mb-6 text-center">
+              <div className="bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-2xl p-3 sm:p-4 border border-neutral-200/50 dark:border-neutral-800/50 shadow dark:shadow-none ">
+                <div className="flex items-center gap-3 mb-6 text-center justify-center">
                 <FaLinkedin className="text-2xl text-[#0077B5]" />
-                <h2 className="text-xl font-semibold text-neutral-900 dark:text-white">
-                  LinkedIn Recommendations
+                <h2 className="text-xl font-semibold text-neutral-900 dark:text-white  text-center">
+                  Recommendations
                 </h2>
-                <span className="px-2 py-1 bg-green-100 dark:bg-green-900/20 text-green-700 dark:text-green-400 text-xs rounded-full">
+                {/* <span className="px-2 py-1 bg-green-100 dark:bg-green-900/20 text-green-700 dark:text-green-400 text-xs rounded-full">
                   Verified
-                </span>
+                </span> */}
               </div>
 
               <div className="space-y-4">
@@ -425,7 +425,7 @@ export default function Profile() {
               </div>
 
               {/* Call to Action */}
-              <div className="mt-6 text-center">
+              {/* <div className="mt-6 text-center">
                 <a
                   href="https://www.linkedin.com/in/tanujp/details/recommendations/?detailScreenTabIndex=0"
                   target="_blank"
@@ -435,7 +435,7 @@ export default function Profile() {
                   <FaLinkedin />
                   View All Recommendations on LinkedIn
                 </a>
-              </div>
+              </div> */}
             </div>
           </div>
 
