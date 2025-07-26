@@ -43,7 +43,7 @@ export default function ThemeSwitcher() {
     <button
       aria-label="Toggle theme"
       onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-      className="fixed bottom-6 left-6 z-50 w-12 h-12 rounded-full bg-[rgb(var(--card-bg))] shadow-lg flex items-center justify-center border border-[rgb(var(--border-color))] transition-colors hover:bg-[rgb(var(--card-bg))] dark:hover:bg-[rgb(var(--card-bg))]"
+      className="fixed top-4 right-4 lg:bottom-6 lg:left-6 lg:top-auto lg:right-auto z-50 w-12 h-12 rounded-full bg-[rgb(var(--card-bg))] shadow-lg flex items-center justify-center border border-[rgb(var(--border-color))] transition-colors hover:bg-[rgb(var(--card-bg))] dark:hover:bg-[rgb(var(--card-bg))]"
     >
       <motion.span
         key={theme}
