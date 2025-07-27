@@ -60,3 +60,22 @@
 - **Custom Cursor:** #FF90E8
 - **Card Border (Light):** rgba(255, 255, 255, 0.8) with border-neutral-200/50
 - **Card Border (Dark):** rgba(255, 255, 255, 0.05) with border-neutral-800/50
+
+### Typography System
+- **Bricolage Grotesque Variable Font**: Custom implementation with 3 axes (weight, width, optical size)
+- **Variable Font Parameters**: 
+  - Weight: 100-900 (thin to black)
+  - Width: 75%-125% (condensed to expanded)
+  - Optical Size: 12pt and 96pt masters
+- **Typography Classes**: 
+  - `text-hero`: Ultra-bold (900) + expanded width + 96pt optical
+  - `text-heading`: Bold (700) + expanded width + 96pt optical
+  - `text-subheading`: Semibold (600) + normal width + 12pt optical
+  - `text-body`: Normal (400) + normal width + 12pt optical
+  - `text-caption`: Medium (500) + condensed width + 12pt optical
+
+### Font Implementation
+- **CSS Custom Properties**: Defined for all font weights and widths
+- **Utility Classes**: Comprehensive set for font weight, width, and optical sizing
+- **Responsive Typography**: Scales appropriately across all device sizes
+- **Manual Optical Sizing**: Precise control over 12pt and 96pt optical masters
