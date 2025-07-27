@@ -14,13 +14,13 @@ export default function Hero() {
           className="w-full"
         >
           <span className="text-light-accent dark:text-gumroad-pink text-base sm:text-lg md:text-xl font-semibold mb-1 sm:mb-2">Hey there, I'm-</span>
-          <h1 className="flex flex-row sm:flex-col gap-x-2 sm:gap-x-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-neutral-900 dark:text-white leading-tight mb-1 sm:mb-2">
+          <h1 className="flex flex-row sm:flex-col gap-x-2 sm:gap-x-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-hero text-neutral-900 dark:text-white leading-tight mb-1 sm:mb-2">
             <span>Tanuj</span>
             <span>
               Palaspagar<span className="text-light-accent dark:text-gumroad-pink">.</span>
             </span>
           </h1>
-          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-neutral-900 dark:text-white mb-2 sm:mb-3">Software Developer Engineer.</h2>
+          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-heading text-neutral-900 dark:text-white mb-2 sm:mb-3">Software Developer Engineer.</h2>
           <p className="hidden sm:block text-sm sm:text-base md:text-lg lg:text-xl text-neutral-700 dark:text-gray-400 font-medium mb-4">
             A graduate developer with an interest in Computer Science.
           </p>

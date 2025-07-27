@@ -46,7 +46,7 @@ export default function Experience() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-6 sm:mb-8 md:mb-12 text-neutral-900 dark:text-white"
+          className="text-2xl sm:text-3xl md:text-4xl text-heading text-center mb-6 sm:mb-8 md:mb-12 text-neutral-900 dark:text-white"
         >
           Experience
         </motion.h2>

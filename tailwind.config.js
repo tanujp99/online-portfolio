@@ -8,6 +8,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'bricolage': ['Bricolage Grotesque', 'sans-serif'],
+      },
       colors: {
         'gumroad-pink': '#FF90E8',
         'gumroad-dark': '#1A1A1A',

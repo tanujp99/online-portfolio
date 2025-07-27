@@ -264,19 +264,19 @@ export default function Profile() {
               <div className="mt-8 pt-6 border-t border-neutral-300/50 dark:border-neutral-700/50">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                   <div className="p-3 bg-light-accent/5 dark:bg-gumroad-pink/5 rounded-lg">
-                    <div className="text-2xl font-bold text-light-accent dark:text-gumroad-pink">6+</div>
+                    <div className="text-2xl text-hero text-light-accent dark:text-gumroad-pink">6+</div>
                     <div className="text-sm text-neutral-600 dark:text-gray-400">Years Experience</div>
                   </div>
                   <div className="p-3 bg-light-accent/5 dark:bg-gumroad-pink/5 rounded-lg">
-                    <div className="text-2xl font-bold text-light-accent dark:text-gumroad-pink">15+</div>
+                    <div className="text-2xl text-hero text-light-accent dark:text-gumroad-pink">15+</div>
                     <div className="text-sm text-neutral-600 dark:text-gray-400">Technologies</div>
                   </div>
                   <div className="p-3 bg-light-accent/5 dark:bg-gumroad-pink/5 rounded-lg">
-                    <div className="text-2xl font-bold text-light-accent dark:text-gumroad-pink">3</div>
+                    <div className="text-2xl text-hero text-light-accent dark:text-gumroad-pink">3</div>
                     <div className="text-sm text-neutral-600 dark:text-gray-400">Major Awards</div>
                   </div>
                   <div className="p-3 bg-light-accent/5 dark:bg-gumroad-pink/5 rounded-lg">
-                    <div className="text-2xl font-bold text-light-accent dark:text-gumroad-pink">1</div>
+                    <div className="text-2xl text-hero text-light-accent dark:text-gumroad-pink">1</div>
                     <div className="text-sm text-neutral-600 dark:text-gray-400">Research Paper</div>
                   </div>
                 </div>

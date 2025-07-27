@@ -1,16 +1,15 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
 import Hero from '@/components/Hero';
 import ContentWrapper from '@/components/ContentWrapper';
 import ThemeSwitcher from '@/components/ThemeSwitcher';
 import { ThemeProvider } from '../context/ThemeContext';
 
-const inter = Inter({ 
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter'
-})
+// Bricolage Grotesque font configuration
+const bricolageGrotesque = {
+  className: 'font-bricolage',
+  variable: '--font-bricolage'
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://tanujp.com'),
@@ -39,7 +38,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-full">
-      <body className={`${inter.className} bg-[rgb(var(--background-rgb))] text-[rgb(var(--foreground-rgb))] h-full overflow-hidden antialiased`}>
+      <body className={`${bricolageGrotesque.className} font-expanded bg-[rgb(var(--background-rgb))] text-[rgb(var(--foreground-rgb))] h-full overflow-hidden antialiased`}>
         <ThemeProvider>
           <ThemeSwitcher />
           
