@@ -123,6 +123,14 @@ export default function About() {
                   {['Tailwind CSS', 'PostCSS', 'Autoprefixer'].map((tech) => (
                     <span key={tech} className="px-3 py-1 bg-gray-100 dark:bg-white/5 text-neutral-700 dark:text-gray-300 rounded-full text-xs sm:text-sm border border-gray-300 dark:border-gray-700 font-medium shadow-sm">{tech}</span>
                   ))}
+                  <a 
+                    href="https://ateliertriay.github.io/bricolage" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="px-3 py-1 bg-gray-100 dark:bg-white/5 text-neutral-700 dark:text-gray-300 rounded-full text-xs sm:text-sm border border-gray-300 dark:border-gray-700 font-medium shadow-sm hover:bg-light-accent hover:text-white dark:hover:bg-gumroad-pink dark:hover:text-white transition-all duration-200"
+                  >
+                    Bricolage Grotesque
+                  </a>
                 </div>
               </div>
               {/* Tooling & CI */}
