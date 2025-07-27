@@ -38,7 +38,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-full">
-      <body className={`${bricolageGrotesque.className} font-expanded bg-[rgb(var(--background-rgb))] text-[rgb(var(--foreground-rgb))] h-full overflow-hidden antialiased`}>
+      <body className={`${bricolageGrotesque.className} font-expanded bg-[var(--background)] text-[var(--foreground)] h-full overflow-hidden antialiased`}>
         <ThemeProvider>
           <ThemeSwitcher />
           
@@ -53,7 +53,7 @@ export default function RootLayout({
             
             {/* Content Section - Refined container */}
             <div className="flex-1 px-6 pb-6 min-h-0">
-              <div className="h-full bg-[rgb(var(--card-bg))] backdrop-blur-xl rounded-2xl border border-[rgb(var(--border-color))] p-5 flex flex-col overflow-hidden shadow-xl">
+              <div className="h-full bg-[var(--card-bg)] backdrop-blur-xl rounded-2xl border border-[var(--border-color)] p-5 flex flex-col overflow-hidden shadow-xl">
                 <ContentWrapper />
               </div>
             </div>
@@ -70,7 +70,7 @@ export default function RootLayout({
             
             {/* Content Section - Refined container */}
             <div className="flex-1 flex items-start justify-center px-8 xl:px-12 py-8 xl:py-12 h-full">
-              <div className="w-full h-[calc(100vh-64px)] xl:h-[calc(100vh-96px)] bg-[rgb(var(--card-bg))] backdrop-blur-xl rounded-2xl border border-[rgb(var(--border-color))] p-8 flex flex-col overflow-hidden shadow-xl">
+              <div className="w-full h-[calc(100vh-64px)] xl:h-[calc(100vh-96px)] bg-[var(--card-bg)] backdrop-blur-xl rounded-2xl border border-[var(--border-color)] p-8 flex flex-col overflow-hidden shadow-xl">
                 <ContentWrapper />
               </div>
             </div>

@@ -31,7 +31,7 @@
   - Crest: #C30B4E
 
 ## Dark Theme
-- **Accent (gumroad-pink):** #FF90E8
+- **Accent (dark-accent):** #FF90E8
 - **Background:** #121212 (from --background-rgb: 18, 18, 18)
 - **Card Background:** #212121 (from --card-bg: 33, 33, 33)
 - **Border Color:** #424242 (from --border-color: 66, 66, 66)

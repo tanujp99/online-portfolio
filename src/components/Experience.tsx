@@ -15,7 +15,7 @@ function renderDescription(description: string) {
   if (bulletLines.length === lines.length) {
     // All lines are bullets
     return (
-      <ul className="list-disc pl-6 marker:text-light-accent dark:marker:text-gumroad-pink text-neutral-800 dark:text-gray-300">
+      <ul className="list-disc pl-6 marker:text-light-accent dark:marker:text-dark-accent text-neutral-800 dark:text-gray-300">
         {lines.map((line, idx) => (
           <li key={idx}>{line.replace(/^•\s*/, '')}</li>
         ))}
@@ -25,7 +25,7 @@ function renderDescription(description: string) {
     // Mixed content
     return lines.map((line, idx) =>
       line.trim().startsWith('•') ? (
-        <ul key={idx} className="list-disc pl-6 marker:text-light-accent dark:marker:text-gumroad-pink text-neutral-800 dark:text-gray-300">
+        <ul key={idx} className="list-disc pl-6 marker:text-light-accent dark:marker:text-dark-accent text-neutral-800 dark:text-gray-300">
           <li>{line.replace(/^•\s*/, '')}</li>
         </ul>
       ) : (
@@ -64,12 +64,12 @@ export default function Experience() {
                 className="relative pl-4 sm:pl-6 pb-6 sm:pb-8 last:pb-0"
               >
                 {/* Timeline line */}
-                <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-light-accent dark:bg-gumroad-pink" />
+                <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-light-accent dark:bg-dark-accent" />
                 {/* Timeline dot */}
-                <div className="absolute left-[1px] top-2 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-light-accent dark:bg-gumroad-pink transform -translate-x-1/2 shadow dark:shadow-none" />
+                <div className="absolute left-[1px] top-2 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-light-accent dark:bg-dark-accent transform -translate-x-1/2 shadow-sm" />
 
                 <motion.div
-                  className="bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-2xl p-3 sm:p-4 cursor-pointer border border-neutral-200/50 dark:border-neutral-800/50 shadow dark:shadow-none transition-all duration-300"
+                  className="bg-[var(--card-bg)] backdrop-blur-md rounded-2xl p-3 sm:p-4 cursor-pointer border border-[var(--border-color)] shadow-card transition-all duration-300"
                   whileHover={{ scale: 1.02}}
                   onClick={(e) => {
                     if (window.getSelection && window.getSelection() && window.getSelection()!.toString()) return;
@@ -79,17 +79,17 @@ export default function Experience() {
                   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1.5 sm:gap-3 mb-3">
                     <div>
                       <h3 className="text-lg sm:text-xl font-semibold text-neutral-900 dark:text-white">{exp.position}</h3>
-                      <p className="text-light-accent dark:text-gumroad-pink font-medium">{exp.company}</p>
+                      <p className="text-light-accent dark:text-dark-accent font-medium">{exp.company}</p>
                       <p className="text-neutral-500 dark:text-gray-400 text-xs sm:text-sm">{exp.location}</p>
                     </div>
                     <div className="text-left sm:text-right flex items-center gap-1.5">
-                      <p className="text-xs sm:text-sm text-neutral-500 dark:text-gray-400 bg-neutral-100 dark:bg-neutral-800 px-2 py-0.5 rounded-lg">{exp.period}</p>
+                      <p className="text-xs sm:text-sm text-[var(--foreground)] bg-[var(--button-bg)] px-2 py-0.5 rounded-lg">{exp.period}</p>
                     </div>
                   </div>
 
                   {/* Animated arrow icon at bottom right */}
                   <motion.span
-                    className="absolute bottom-2 sm:bottom-3 right-3 sm:right-4 text-light-accent dark:text-gumroad-pink opacity-70 pointer-events-none"
+                    className="absolute bottom-2 sm:bottom-3 right-3 sm:right-4 text-light-accent dark:text-dark-accent opacity-70 pointer-events-none"
                     animate={{ rotate: isExpanded ? 180 : 0, opacity: 1 }}
                     transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                   >

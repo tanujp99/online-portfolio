@@ -33,10 +33,20 @@
   --font-optical-size-large: 96;
   
   /* Material UI Light Theme Colors */
-  --foreground-rgb: 33, 33, 33; /* grey-900 */
-  --background-rgb: 250, 250, 250; /* grey-50 */
-  --card-bg: 255, 255, 255; /* grey-100 */
-  --border-color: 224, 224, 224; /* grey-300 */
+  --foreground: #404040; /* grey-700 */
+  --background: #d5d9e2; /* New light background */
+  --card-bg: #eef0f2;
+  --border-color: #e0e0e0; /* grey-300 */
+  --button-bg: #f0f1f3; /* New button/navbar pill color */
+
+  /* Centralized Shadow Variables */
+  --shadow-card: 0 10px 15px -3px #0000001a, 0 4px 6px -2px #0000000d;
+  --shadow-button: 0 1px 3px 0 #0000001a, 0 1px 2px 0 #0000000f;
+  --shadow-navbar: inset 0 2px 4px #0000001a, inset 0 -1px 3px #0000000d;
+  --shadow-navbar-dark: inset 0 2px 4px #00000033, inset 0 -1px 3px #0000001a;
+  --shadow-pill: 0 4px 12px #0000001a, 0 2px 4px #0000000d;
+  --shadow-pill-dark: 0 4px 12px #00000033, 0 2px 4px #0000001a;
+  --shadow-hover: 0 4px 6px -1px #0000001a, 0 2px 4px -1px #0000000f;
 }
 
 @tailwind base;
@@ -118,6 +128,11 @@
   font-optical-sizing: 96; /* Large optical size for display text */
 }
 
+.text-hero-ultra {
+  font-weight: 950; /* Slightly heavier than black (900) */
+  font-stretch: var(--font-width-expanded);
+}
+
 .text-heading {
   font-weight: var(--font-weight-bold);
   font-stretch: var(--font-width-expanded);
@@ -142,17 +157,48 @@
   font-optical-sizing: 12; /* Small optical size for captions */
 }
 
+/* Centralized Shadow Utility Classes */
+.shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+.shadow-button {
+  box-shadow: var(--shadow-button);
+}
+
+.shadow-navbar {
+  box-shadow: var(--shadow-navbar);
+}
+
+.shadow-pill {
+  box-shadow: var(--shadow-pill);
+}
+
+.shadow-hover {
+  box-shadow: var(--shadow-hover);
+}
+
 html.dark {
-  /* Material UI Dark Theme Colors */
-  --foreground-rgb: 250, 250, 250; /* grey-50 */
-  --background-rgb: 18, 18, 18; /* grey-900 */
-  --card-bg: 33, 33, 33; /* grey-800 */
-  --border-color: 66, 66, 66; /* grey-700 */
+  /* Material UI Dark Theme Colors (updated to hex) */
+  --foreground: #fafafa; /* grey-50 */
+  --background: #2c2f3e; /* New dark background */
+  --card-bg: #3a3f53; /* #3a3f53 */
+  --border-color: #424242; /* grey-700 */
+  --button-bg: #5f6478; /* New dark button/navbar pill color */
+
+  /* Dark Theme Shadow Variables */
+  --shadow-card: 0 10px 15px -3px #0000004d, 0 4px 6px -2px #00000033;
+  --shadow-button: 0 1px 3px 0 #0000004d, 0 1px 2px 0 #00000033;
+  --shadow-navbar: inset 0 2px 4px #00000033, inset 0 -1px 3px #0000001a;
+  --shadow-navbar-dark: inset 0 2px 4px #00000033, inset 0 -1px 3px #0000001a;
+  --shadow-pill: 0 4px 12px #00000033, 0 2px 4px #0000001a;
+  --shadow-pill-dark: 0 4px 12px #00000033, 0 2px 4px #0000001a;
+  --shadow-hover: 0 4px 6px -1px #0000004d, 0 2px 4px -1px #00000033;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-rgb));
+  color: var(--foreground);
+  background: var(--background);
 }
 
 /* Responsive viewport handling - Fixed viewport for all devices */
@@ -206,7 +252,7 @@ html, body {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgb(var(--background-rgb));
+  background: var(--background);
 }
 
 /* Light mode scrollbar thumb */
@@ -227,7 +273,7 @@ html.dark ::-webkit-scrollbar-thumb:hover {
 }
 
 html.dark ::-webkit-scrollbar-track {
-  background: rgb(var(--background-rgb));
+  background: var(--background);
 }
 
 /* Responsive text scaling */
@@ -256,22 +302,22 @@ html.dark ::-webkit-scrollbar-track {
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: rgb(var(--card-bg));
+  background: var(--card-bg);
   border-radius: 4px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgb(var(--border-color));
+  background: var(--border-color);
   border-radius: 4px;
-  border: 2px solid rgb(var(--card-bg));
+  border: 2px solid var(--card-bg);
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgb(var(--foreground-rgb));
+  background: var(--foreground);
 }
 
 /* Firefox scrollbar styles */
 .custom-scrollbar {
   scrollbar-width: thin;
-  scrollbar-color: rgb(var(--border-color)) rgb(var(--card-bg));
+  scrollbar-color: var(--border-color) var(--card-bg);
 }

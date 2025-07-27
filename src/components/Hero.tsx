@@ -13,11 +13,11 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="w-full"
         >
-          <span className="text-light-accent dark:text-gumroad-pink text-base sm:text-lg md:text-xl font-semibold mb-1 sm:mb-2">Hey there, I'm-</span>
+          <span className="text-light-accent dark:text-dark-accent text-base sm:text-lg md:text-xl font-semibold mb-1 sm:mb-2">Hey there, I'm-</span>
           <h1 className="flex flex-row sm:flex-col gap-x-2 sm:gap-x-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-hero text-neutral-900 dark:text-white leading-tight mb-1 sm:mb-2">
             <span>Tanuj</span>
             <span>
-              Palaspagar<span className="text-light-accent dark:text-gumroad-pink">.</span>
+              Palaspagar<span className="text-light-accent dark:text-dark-accent">.</span>
             </span>
           </h1>
           <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-heading text-neutral-900 dark:text-white mb-2 sm:mb-3">Software Developer Engineer.</h2>
@@ -31,7 +31,7 @@ export default function Hero() {
                 {/* <span className="mt-0.5 flex-shrink-0">🚀</span>  */}
                 <div className="whitespace-nowrap">
                   <span className="inline">Specialized in</span>
-                  <span className="inline font-semibold text-light-accent dark:text-gumroad-pink">
+                  <span className="inline font-semibold text-light-accent dark:text-dark-accent">
                     {' '}Algorithms / Databases / Intelligent Systems
                   </span>
                 </div>
@@ -43,7 +43,7 @@ export default function Hero() {
                 {/* <span className="mt-0.5 flex-shrink-0">⚡</span> */}
                 <div className="whitespace-nowrap">
                   <span className="inline">Worked as</span>
-                  <span className="inline font-semibold text-light-accent dark:text-gumroad-pink">
+                  <span className="inline font-semibold text-light-accent dark:text-dark-accent">
                     {' '}Cloud Engineer / Backend Developer
                   </span>
                 </div>
@@ -58,7 +58,7 @@ export default function Hero() {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-3 sm:px-4 py-2 rounded-full bg-gray-100 dark:bg-white/5 text-neutral-700 dark:text-gray-400 hover:bg-light-accent hover:text-white dark:hover:bg-gumroad-pink dark:hover:text-white font-medium text-xs sm:text-sm md:text-base shadow-sm transition-all duration-200 border border-gray-300 dark:border-gray-700 hover:shadow-md hover:scale-105"
+                className="inline-flex items-center px-3 sm:px-4 py-2 rounded-full bg-[var(--card-bg)] text-[var(--foreground)] hover:bg-light-accent hover:text-white dark:hover:bg-dark-accent dark:hover:text-white font-medium text-xs sm:text-sm md:text-base shadow-sm transition-all duration-200 border border-[var(--border-color)] hover:shadow-md hover:scale-105"
               >
                 <svg
                   className={`w-5 h-5 ${idx < 3 ? 'mr-0 sm:mr-1' : 'mr-1'}`}
@@ -79,7 +79,7 @@ export default function Hero() {
             <a
               href="/data/Tanuj_Palaspagar-resume.pdf"
               download
-              className="inline-flex items-center px-4 py-1.5 rounded-full bg-light-accent/20 text-light-accent font-semibold text-base shadow-sm transition-all duration-200 border-none hover:bg-light-accent hover:text-white dark:bg-gumroad-pink/20 dark:text-gumroad-pink dark:hover:bg-gumroad-pink dark:hover:text-white hover:shadow-md hover:scale-105"
+              className="inline-flex items-center px-4 py-1.5 rounded-full bg-light-accent/20 text-light-accent font-semibold text-base shadow-sm transition-all duration-200 border-none hover:bg-light-accent hover:text-white dark:bg-dark-accent/20 dark:text-dark-accent dark:hover:bg-dark-accent dark:hover:text-white hover:shadow-md hover:scale-105"
               target="_blank"
               rel="noopener noreferrer"
             >

@@ -35,7 +35,7 @@ function renderDescription(description: string) {
   if (bulletLines.length === lines.length) {
     // All lines are bullets
     return (
-      <ul className="list-disc pl-6 marker:text-light-accent dark:marker:text-gumroad-pink text-neutral-800 dark:text-gray-300">
+      <ul className="list-disc pl-6 marker:text-light-accent dark:marker:text-dark-accent text-neutral-800 dark:text-gray-300">
         {lines.map((line, idx) => (
           <li key={idx}>{line.replace(/^•\s*/, '')}</li>
         ))}
@@ -45,7 +45,7 @@ function renderDescription(description: string) {
     // Mixed content
     return lines.map((line, idx) =>
       line.trim().startsWith('•') ? (
-        <ul key={idx} className="list-disc pl-6 marker:text-light-accent dark:marker:text-gumroad-pink text-neutral-800 dark:text-gray-300">
+        <ul key={idx} className="list-disc pl-6 marker:text-light-accent dark:marker:text-dark-accent text-neutral-800 dark:text-gray-300">
           <li>{line.replace(/^•\s*/, '')}</li>
         </ul>
       ) : (
@@ -86,7 +86,7 @@ export default function Projects() {
                 className="relative"
               >
                 <motion.div
-                  className="bg-white dark:bg-white/5 backdrop-blur-md rounded-xl p-4 sm:p-6 cursor-pointer border border-neutral-200 dark:border-neutral-800 shadow dark:shadow-none"
+                  className="bg-[var(--card-bg)] backdrop-blur-md rounded-xl p-4 sm:p-6 cursor-pointer border border-[var(--border-color)] shadow-card"
                   whileHover={{ scale: 1.02 }}
                   onClick={(e) => {
                     if (window.getSelection && window.getSelection() && window.getSelection()!.toString()) return;
@@ -98,10 +98,10 @@ export default function Projects() {
                   
                   {/* Research paper or image box at the same position for all projects */}
                   {project.isResearch ? (
-                    <div className="mb-4 p-3 bg-gradient-to-r from-light-accent/10 to-light-accent/5 dark:from-gumroad-pink/10 dark:to-gumroad-pink/5 rounded-lg border border-light-accent/20 dark:border-gumroad-pink/20">
+                    <div className="mb-4 p-3 bg-gradient-to-r from-light-accent/10 to-light-accent/5 dark:from-dark-accent/10 dark:to-dark-accent/5 rounded-lg border border-light-accent/20 dark:border-dark-accent/20">
                       <div className="flex items-center gap-2 mb-2">
                         <span className="text-lg">🎓</span>
-                        <span className="text-sm font-semibold text-light-accent dark:text-gumroad-pink">Published Research</span>
+                        <span className="text-sm font-semibold text-light-accent dark:text-dark-accent">Published Research</span>
                       </div>
                       <p className="text-xs text-neutral-600 dark:text-gray-400 mb-2">
                         <strong>Journal:</strong> International Research Journal of Modernization in Engineering Technology and Science (IRJMETS)
@@ -132,14 +132,14 @@ export default function Projects() {
                             href={project.paperLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 px-3 py-1.5 bg-light-accent dark:bg-gumroad-pink text-white dark:text-gumroad-dark rounded-md hover:bg-light-accent/90 dark:hover:bg-gumroad-pink/90 transition-colors text-xs font-medium"
+                            className="inline-flex items-center gap-1 px-3 py-1.5 bg-[var(--button-bg)] text-[var(--foreground)] border border-[var(--border-color)] rounded-md hover:bg-light-accent hover:text-white dark:hover:bg-dark-accent dark:hover:text-white transition-colors text-xs font-medium shadow-sm"
                             onClick={(e) => e.stopPropagation()}
                           >
                             Read Paper
                           </a>
                         )}
                         <button
-                          className="inline-flex items-center gap-1 px-3 py-1.5 bg-white dark:bg-neutral-700 text-neutral-800 dark:text-gray-200 border border-neutral-300 dark:border-neutral-600 rounded-md hover:bg-neutral-50 dark:hover:bg-neutral-600 hover:border-light-accent dark:hover:border-gumroad-pink transition-colors text-xs font-medium"
+                          className="inline-flex items-center gap-1 px-3 py-1.5 bg-[var(--button-bg)] text-[var(--foreground)] border border-[var(--border-color)] rounded-md hover:bg-light-accent hover:text-white dark:hover:bg-dark-accent dark:hover:text-white transition-colors text-xs font-medium shadow-sm"
                           onClick={(e) => {
                             e.stopPropagation();
                             navigator.clipboard.writeText(
@@ -155,7 +155,7 @@ export default function Projects() {
                     </div>
                   ) : (
                     project.imageLight && project.imageDark && (
-                      <div className="mb-4 p-3 bg-gradient-to-r from-light-accent/10 to-light-accent/5 dark:from-gumroad-pink/10 dark:to-gumroad-pink/5 rounded-lg border border-light-accent/20 dark:border-gumroad-pink/20 h-40 sm:h-44 md:h-48 lg:h-52 xl:h-56 2xl:h-60 flex items-center justify-center overflow-hidden">
+                      <div className="mb-4 p-3 bg-gradient-to-r from-light-accent/10 to-light-accent/5 dark:from-dark-accent/10 dark:to-dark-accent/5 rounded-lg border border-light-accent/20 dark:border-dark-accent/20 h-40 sm:h-44 md:h-48 lg:h-52 xl:h-56 2xl:h-60 flex items-center justify-center overflow-hidden">
                         <div
                           className="w-full h-full rounded-md flex items-center justify-center overflow-hidden"
                           style={{ backgroundColor: theme === 'dark' ? project.imageBgDark || '#161719' : project.imageBgLight || '#f8f8f5' }}
@@ -181,7 +181,7 @@ export default function Projects() {
                     {project.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 sm:px-3 py-0.5 sm:py-1 bg-light-accent/20 dark:bg-gumroad-pink/20 text-light-accent dark:text-gumroad-pink rounded-full text-xs sm:text-sm"
+                        className="px-2 sm:px-3 py-0.5 sm:py-1 bg-light-accent/20 dark:bg-dark-accent/20 text-light-accent dark:text-dark-accent rounded-full text-xs sm:text-sm"
                       >
                         {tech}
                       </span>
@@ -190,7 +190,7 @@ export default function Projects() {
 
                   {/* Animated arrow icon at bottom right */}
                   <motion.span
-                    className="absolute bottom-2 sm:bottom-3 right-3 sm:right-4 text-light-accent dark:text-gumroad-pink opacity-70 pointer-events-none"
+                    className="absolute bottom-2 sm:bottom-3 right-3 sm:right-4 text-light-accent dark:text-dark-accent opacity-70 pointer-events-none"
                     animate={{ rotate: isExpanded ? 180 : 0, opacity: 1 }}
                     transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                   >
@@ -216,7 +216,7 @@ export default function Projects() {
                         href={project.paperLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-block mr-4 text-light-accent dark:text-gumroad-pink hover:underline font-semibold text-sm sm:text-base"
+                        className="inline-block mr-4 text-light-accent dark:text-dark-accent hover:underline font-semibold text-sm sm:text-base"
                       >
                         📄 Read the Paper
                       </a>
@@ -226,7 +226,7 @@ export default function Projects() {
                         href={project.githubLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-light-accent dark:text-gumroad-pink hover:underline text-sm sm:text-base"
+                        className="text-light-accent dark:text-dark-accent hover:underline text-sm sm:text-base"
                       >
                         View on GitHub →
                       </a>

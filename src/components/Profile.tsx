@@ -151,7 +151,7 @@ export default function Profile() {
       <div className="container mx-auto px-4 sm:px-6 md:px-8">
         {/* Profile Picture */}
         <div className="flex justify-center mb-8">
-          <div className="w-36 h-36 rounded-full border-4 border-gray-200 dark:border-gray-700 shadow-inner bg-white dark:bg-neutral-900 flex items-center justify-center overflow-hidden">
+          <div className="w-36 h-36 rounded-full border-4 border-[var(--border-color)] shadow-inner bg-[var(--card-bg)] flex items-center justify-center overflow-hidden">
             <Image
               src={require('@/data/images/me.jpeg')}
               alt="Profile Picture"
@@ -171,18 +171,18 @@ export default function Profile() {
 
           {/* Skills & Technologies Section */}
           <div className="max-w-4xl mx-auto">
-            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-2xl p-3 sm:p-4 border border-neutral-200/50 dark:border-neutral-800/50 shadow dark:shadow-none">
+            <div className="bg-[var(--card-bg)] backdrop-blur-md rounded-2xl p-3 sm:p-4 border border-[var(--border-color)] shadow-card">
               <h2 className="text-xl font-semibold text-neutral-900 dark:text-white mb-6 text-center">Skills & Technologies</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {/* Backend Development */}
                 <div className="space-y-3">
-                  <h3 className="text-lg font-medium text-light-accent dark:text-gumroad-pink flex items-center gap-2">
+                  <h3 className="text-lg font-medium text-light-accent dark:text-dark-accent flex items-center gap-2">
                     Backend Development
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {['Java', 'Spring Boot', 'Python', 'Node.js', 'GraphQL', 'REST APIs', 'Microservices'].map((skill) => (
-                      <span key={skill} className="inline-flex items-center px-3 py-1 rounded-full bg-gray-100 dark:bg-white/5 text-neutral-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700 font-medium text-sm shadow-sm transition-all duration-200">
+                      <span key={skill} className="inline-flex items-center px-3 py-1 rounded-full bg-[var(--button-bg)] text-[var(--foreground)] border border-[var(--border-color)] font-medium text-sm shadow-sm transition-all duration-200">
                         {skill}
                       </span>
                     ))}
@@ -191,12 +191,12 @@ export default function Profile() {
 
                 {/* Cloud & Infrastructure */}
                 <div className="space-y-3">
-                  <h3 className="text-lg font-medium text-light-accent dark:text-gumroad-pink flex items-center gap-2">
+                  <h3 className="text-lg font-medium text-light-accent dark:text-dark-accent flex items-center gap-2">
                     Cloud & Infrastructure
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {['AWS', 'Kubernetes', 'Docker', 'Jenkins', 'GitLab CI/CD', 'Apache Airflow', 'Linux'].map((skill) => (
-                      <span key={skill} className="inline-flex items-center px-3 py-1 rounded-full bg-gray-100 dark:bg-white/5 text-neutral-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700 font-medium text-sm shadow-sm transition-all duration-200">
+                      <span key={skill} className="inline-flex items-center px-3 py-1 rounded-full bg-[var(--button-bg)] text-[var(--foreground)] border border-[var(--border-color)] font-medium text-sm shadow-sm transition-all duration-200">
                         {skill}
                       </span>
                     ))}
@@ -205,12 +205,12 @@ export default function Profile() {
 
                 {/* Data & Analytics */}
                 <div className="space-y-3">
-                  <h3 className="text-lg font-medium text-light-accent dark:text-gumroad-pink flex items-center gap-2">
+                  <h3 className="text-lg font-medium text-light-accent dark:text-dark-accent flex items-center gap-2">
                     Data & Analytics
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {['Machine Learning', 'TensorFlow', 'Python', 'SQL Server', 'AWS Kinesis', 'RedShift', 'QuickSight'].map((skill) => (
-                      <span key={skill} className="inline-flex items-center px-3 py-1 rounded-full bg-gray-100 dark:bg-white/5 text-neutral-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700 font-medium text-sm shadow-sm transition-all duration-200">
+                      <span key={skill} className="inline-flex items-center px-3 py-1 rounded-full bg-[var(--button-bg)] text-[var(--foreground)] border border-[var(--border-color)] font-medium text-sm shadow-sm transition-all duration-200">
                         {skill}
                       </span>
                     ))}
@@ -219,12 +219,12 @@ export default function Profile() {
 
                 {/* Database Technologies */}
                 <div className="space-y-3">
-                  <h3 className="text-lg font-medium text-light-accent dark:text-gumroad-pink flex items-center gap-2">
+                  <h3 className="text-lg font-medium text-light-accent dark:text-dark-accent flex items-center gap-2">
                   Database Technologies
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {['SQL Server', 'PostgreSQL', 'MySQL', 'RedShift', 'Database Design', 'ETL Pipelines'].map((skill) => (
-                      <span key={skill} className="inline-flex items-center px-3 py-1 rounded-full bg-gray-100 dark:bg-white/5 text-neutral-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700 font-medium text-sm shadow-sm transition-all duration-200">
+                      <span key={skill} className="inline-flex items-center px-3 py-1 rounded-full bg-[var(--button-bg)] text-[var(--foreground)] border border-[var(--border-color)] font-medium text-sm shadow-sm transition-all duration-200">
                         {skill}
                       </span>
                     ))}
@@ -233,12 +233,12 @@ export default function Profile() {
 
                 {/* DevOps & Tools */}
                 <div className="space-y-3">
-                  <h3 className="text-lg font-medium text-light-accent dark:text-gumroad-pink flex items-center gap-2">
+                  <h3 className="text-lg font-medium text-light-accent dark:text-dark-accent flex items-center gap-2">
                     DevOps & Tools
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {['Git', 'Maven', 'Jenkins', 'Packer', 'Prometheus', 'Grafana', 'Istio'].map((skill) => (
-                      <span key={skill} className="inline-flex items-center px-3 py-1 rounded-full bg-gray-100 dark:bg-white/5 text-neutral-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700 font-medium text-sm shadow-sm transition-all duration-200">
+                      <span key={skill} className="inline-flex items-center px-3 py-1 rounded-full bg-[var(--button-bg)] text-[var(--foreground)] border border-[var(--border-color)] font-medium text-sm shadow-sm transition-all duration-200">
                         {skill}
                       </span>
                     ))}
@@ -247,12 +247,12 @@ export default function Profile() {
 
                 {/* Specialized Skills */}
                 <div className="space-y-3">
-                  <h3 className="text-lg font-medium text-light-accent dark:text-gumroad-pink flex items-center gap-2">
+                  <h3 className="text-lg font-medium text-light-accent dark:text-dark-accent flex items-center gap-2">
                     Specialized Skills
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {['IoT Development', 'Arduino', 'Computer Vision', 'MATLAB', 'System Architecture', 'Algorithm Design'].map((skill) => (
-                      <span key={skill} className="inline-flex items-center px-3 py-1 rounded-full bg-gray-100 dark:bg-white/5 text-neutral-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 font-medium text-sm shadow-sm transition-all duration-200">
+                      <span key={skill} className="inline-flex items-center px-3 py-1 rounded-full bg-[var(--button-bg)] text-[var(--foreground)] border border-[var(--border-color)] font-medium text-sm shadow-sm transition-all duration-200">
                         {skill}
                       </span>
                     ))}
@@ -261,23 +261,23 @@ export default function Profile() {
               </div>
 
               {/* Quick Stats */}
-              <div className="mt-8 pt-6 border-t border-neutral-300/50 dark:border-neutral-700/50">
+              <div className="mt-8 pt-6 border-t border-[var(--border-color)]">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                  <div className="p-3 bg-light-accent/5 dark:bg-gumroad-pink/5 rounded-lg">
-                    <div className="text-2xl text-hero text-light-accent dark:text-gumroad-pink">6+</div>
-                    <div className="text-sm text-neutral-600 dark:text-gray-400">Years Experience</div>
+                  <div className="p-3 bg-light-accent/5 dark:bg-dark-accent/5 rounded-lg">
+                    <div className="text-2xl text-hero text-light-accent dark:text-dark-accent">6+</div>
+                    <div className="text-sm text-[var(--foreground)]">Years Experience</div>
                   </div>
-                  <div className="p-3 bg-light-accent/5 dark:bg-gumroad-pink/5 rounded-lg">
-                    <div className="text-2xl text-hero text-light-accent dark:text-gumroad-pink">15+</div>
-                    <div className="text-sm text-neutral-600 dark:text-gray-400">Technologies</div>
+                  <div className="p-3 bg-light-accent/5 dark:bg-dark-accent/5 rounded-lg">
+                    <div className="text-2xl text-hero text-light-accent dark:text-dark-accent">15+</div>
+                    <div className="text-sm text-[var(--foreground)]">Technologies</div>
                   </div>
-                  <div className="p-3 bg-light-accent/5 dark:bg-gumroad-pink/5 rounded-lg">
-                    <div className="text-2xl text-hero text-light-accent dark:text-gumroad-pink">3</div>
-                    <div className="text-sm text-neutral-600 dark:text-gray-400">Major Awards</div>
+                  <div className="p-3 bg-light-accent/5 dark:bg-dark-accent/5 rounded-lg">
+                    <div className="text-2xl text-hero text-light-accent dark:text-dark-accent">3</div>
+                    <div className="text-sm text-[var(--foreground)]">Major Awards</div>
                   </div>
-                  <div className="p-3 bg-light-accent/5 dark:bg-gumroad-pink/5 rounded-lg">
-                    <div className="text-2xl text-hero text-light-accent dark:text-gumroad-pink">1</div>
-                    <div className="text-sm text-neutral-600 dark:text-gray-400">Research Paper</div>
+                  <div className="p-3 bg-light-accent/5 dark:bg-dark-accent/5 rounded-lg">
+                    <div className="text-2xl text-hero text-light-accent dark:text-dark-accent">1</div>
+                    <div className="text-sm text-[var(--foreground)]">Research Paper</div>
                   </div>
                 </div>
               </div>
@@ -286,7 +286,7 @@ export default function Profile() {
 
           {/* LinkedIn Recommendations Section */}
           <div className="max-w-4xl mx-auto">
-              <div className="bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-2xl p-3 sm:p-4 border border-neutral-200/50 dark:border-neutral-800/50 shadow dark:shadow-none ">
+              <div className="bg-[var(--card-bg)] backdrop-blur-md rounded-2xl p-3 sm:p-4 border border-[var(--border-color)] shadow-card">
                 <div className="flex items-center gap-3 mb-6 text-center justify-center">
                 <FaLinkedin className="text-2xl text-[#0077B5]" />
                 <h2 className="text-xl font-semibold text-neutral-900 dark:text-white  text-center">
@@ -311,7 +311,7 @@ export default function Profile() {
                       className="relative"
                     >
                       <motion.div
-                        className="bg-neutral-50 dark:bg-neutral-900/50 rounded-xl p-4 border border-neutral-200/50 dark:border-neutral-800/50 cursor-pointer transition-all duration-300"
+                        className="bg-[var(--card-bg)] rounded-xl p-4 border border-[var(--border-color)] cursor-pointer transition-all duration-300"
                         whileHover={{ scale: 1.02 }}
                         onClick={(e) => {
                           if (window.getSelection && window.getSelection() && window.getSelection()!.toString()) return;
@@ -330,7 +330,7 @@ export default function Profile() {
                                 title={`View ${testimonial.name} on LinkedIn`}
                                 onClick={e => e.stopPropagation()}
                               >
-                                <div className="w-12 h-12 rounded-full overflow-hidden bg-gradient-to-br from-light-accent to-light-accent/70 dark:from-gumroad-pink dark:to-gumroad-pink/70 flex items-center justify-center group-hover:ring-2 group-hover:ring-[#0077B5] transition">
+                                <div className="w-12 h-12 rounded-full overflow-hidden bg-gradient-to-br from-light-accent to-light-accent/70 dark:from-dark-accent dark:to-dark-accent/70 flex items-center justify-center group-hover:ring-2 group-hover:ring-[#0077B5] transition">
                                   {testimonial.profileImagePath ? (
                                     <Image
                                       src={require(`@/data/images/${testimonial.profileImagePath}`)}
@@ -375,7 +375,7 @@ export default function Profile() {
 
                         {/* Animated arrow icon at bottom right */}
                         <motion.span
-                          className="absolute bottom-2 right-3 text-light-accent dark:text-gumroad-pink opacity-70 pointer-events-none"
+                          className="absolute bottom-2 right-3 text-light-accent dark:text-dark-accent opacity-70 pointer-events-none"
                           animate={{ rotate: isExpanded ? 180 : 0, opacity: 1 }}
                           transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                         >
@@ -388,7 +388,7 @@ export default function Profile() {
 
                         {/* Recommendation Content */}
                         <div className="relative">
-                          <FaQuoteLeft className="absolute -top-1 -left-1 text-light-accent/20 dark:text-gumroad-pink/20 text-lg" />
+                          <FaQuoteLeft className="absolute -top-1 -left-1 text-light-accent/20 dark:text-dark-accent/20 text-lg" />
                           <div className="pl-6">
                             <p className="text-neutral-700 dark:text-gray-300 leading-relaxed">
                               {isExpanded || !shouldTruncate 
@@ -399,7 +399,7 @@ export default function Profile() {
                             {shouldTruncate && (
                               <button
                                 onClick={() => setExpandedTestimonial(isExpanded ? null : testimonial.id)}
-                                className="mt-2 text-light-accent dark:text-gumroad-pink hover:underline text-sm font-medium"
+                                className="mt-2 text-light-accent dark:text-dark-accent hover:underline text-sm font-medium"
                               >
                                 {isExpanded ? 'Show less' : 'Read more'}
                               </button>
@@ -442,12 +442,12 @@ export default function Profile() {
           {/* Contribution Calendar Section */}
           
           <div className="max-w-4xl mx-auto">
-            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-2xl p-3 sm:p-4 border border-neutral-200/50 dark:border-neutral-800/50 shadow dark:shadow-none">
+            <div className="bg-[var(--card-bg)] backdrop-blur-md rounded-2xl p-3 sm:p-4 border border-[var(--border-color)] shadow-card">
               <div className="flex flex-col lg:flex-row items-center justify-center">
                 {/* Stacked layout: title above, grid, legend below, all centered */}
                 <div className="flex flex-col items-center w-full">
                   {/* Title */}
-                  <div className="mb-2 text-sm text-neutral-600 dark:text-gray-400">
+                  <div className="mb-2 text-sm text-[var(--foreground)]">
                     Contributions in {selectedYear}
                   </div>
                   {/* Calendar Grid */}
@@ -488,8 +488,8 @@ export default function Profile() {
                         key={year}
                         className={`px-3 py-1 my-1 rounded text-sm font-medium transition-colors duration-150 ${
                           selectedYear === year 
-                            ? 'bg-light-accent text-white dark:bg-gumroad-pink dark:text-white' 
-                            : 'bg-transparent text-[rgb(var(--foreground-rgb))] hover:bg-light-accent/10 dark:hover:bg-gumroad-pink/20'
+                            ? 'bg-light-accent text-white dark:bg-dark-accent dark:text-white' 
+                            : 'bg-[var(--button-bg)] text-[var(--foreground)] hover:bg-light-accent/10 dark:hover:bg-dark-accent/20'
                         }`}
                         onClick={() => setSelectedYear(year)}
                       >
@@ -506,23 +506,23 @@ export default function Profile() {
                       <button
                         onClick={() => handleYearChange(selectedYear - 1)}
                         disabled={selectedYear <= Math.min(...availableYears)}
-                        className="p-1.5 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                        className="p-1.5 rounded-md hover:bg-[var(--button-bg)] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                         title="Previous year"
                       >
-                        <svg className="w-4 h-4 text-neutral-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 text-[var(--foreground)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                         </svg>
                       </button>
-                      <span className="text-sm font-medium text-neutral-700 dark:text-gray-300 min-w-[60px] text-center">
+                      <span className="text-sm font-medium text-[var(--foreground)] min-w-[60px] text-center">
                         {selectedYear}
                       </span>
                       <button
                         onClick={() => handleYearChange(selectedYear + 1)}
                         disabled={selectedYear >= Math.max(...availableYears)}
-                        className="p-1.5 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                        className="p-1.5 rounded-md hover:bg-[var(--button-bg)] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                         title="Next year"
                       >
-                        <svg className="w-4 h-4 text-neutral-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 text-[var(--foreground)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
                       </button>
@@ -535,7 +535,7 @@ export default function Profile() {
 
           {/* README Content */}
           <div className="max-w-4xl mx-auto">
-            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-2xl p-3 sm:p-4 border border-neutral-200/50 dark:border-neutral-800/50 shadow dark:shadow-none">
+            <div className="bg-[var(--card-bg)] backdrop-blur-md rounded-2xl p-3 sm:p-4 border border-[var(--border-color)] shadow-card">
               <div className="prose dark:prose-invert max-w-none">
                 {/* GitHub Profile Trophy */}
                 <div className="flex justify-center mb-8">
@@ -580,7 +580,7 @@ export default function Profile() {
           {/* Pinned Repositories */}
           {pinnedRepos.length > 0 && (
             <div className="max-w-4xl mx-auto">
-            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-2xl p-3 sm:p-4 border border-neutral-200/50 dark:border-neutral-800/50 shadow dark:shadow-none">
+            <div className="bg-[var(--card-bg)] backdrop-blur-md rounded-2xl p-3 sm:p-4 border border-[var(--border-color)] shadow-card">
               <h2 className="text-xl font-semibold text-neutral-900 dark:text-white mb-6">Pinned</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {pinnedRepos.map((repo) => (
@@ -589,12 +589,12 @@ export default function Profile() {
                     href={repo.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block p-4 bg-[rgb(var(--card-bg))] rounded-lg border border-[rgb(var(--border-color))] hover:border-light-accent dark:hover:border-gumroad-pink transition-colors"
+                    className="block p-4 bg-[var(--card-bg)] rounded-lg border border-[var(--border-color)] hover:border-light-accent dark:hover:border-dark-accent transition-colors"
                   >
                     <div className="flex items-start justify-between mb-2">
                         <h3 className="text-lg font-semibold text-neutral-900 dark:text-white">{repo.repo}</h3>
                       {repo.language && (
-                        <span className="text-xs px-2 py-1 rounded-full bg-[rgb(var(--card-bg))] border border-[rgb(var(--border-color))] text-neutral-600 dark:text-gray-400">
+                        <span className="text-xs px-2 py-1 rounded-full bg-[var(--card-bg)] border border-[var(--border-color)] text-neutral-600 dark:text-gray-400">
                           {repo.language}
                         </span>
                       )}

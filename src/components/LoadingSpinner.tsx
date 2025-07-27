@@ -98,7 +98,7 @@ export default function LoadingSpinner() {
       const isDark = document.documentElement.classList.contains('dark');
       
       // Draw main circles with accent colors
-      ctx.strokeStyle = isDark ? 'rgb(255, 144, 232)' : 'rgb(195, 11, 78)'; // gumroad-pink / light-accent
+      ctx.strokeStyle = isDark ? 'rgb(255, 144, 232)' : 'rgb(195, 11, 78)'; // dark-accent / light-accent
       ctx.lineWidth = 4;
       drawCircles();
       
