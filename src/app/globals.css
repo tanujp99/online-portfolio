@@ -28,6 +28,10 @@
   --font-width-normal: 100%;
   --font-width-expanded: 125%;
   
+  /* Optical size variations */
+  --font-optical-size-small: 12;
+  --font-optical-size-large: 96;
+  
   /* Material UI Light Theme Colors */
   --foreground-rgb: 33, 33, 33; /* grey-900 */
   --background-rgb: 250, 250, 250; /* grey-50 */
@@ -42,6 +46,10 @@
 /* Bricolage Grotesque Variable Font Utility Classes */
 .font-bricolage {
   font-family: var(--font-bricolage);
+}
+
+.font-optical-sizing-auto {
+  font-optical-sizing: auto;
 }
 
 /* Font weight utilities */
@@ -90,30 +98,48 @@
   font-stretch: var(--font-width-expanded);
 }
 
+/* Optical size utilities */
+.font-optical-small {
+  font-optical-sizing: 12; /* Small optical size for body text */
+}
+
+.font-optical-large {
+  font-optical-sizing: 96; /* Large optical size for display text */
+}
+
+.font-optical-sizing-auto {
+  font-optical-sizing: auto; /* Fallback for auto sizing if needed */
+}
+
 /* Responsive font weight utilities for better typography */
 .text-hero {
   font-weight: var(--font-weight-black);
   font-stretch: var(--font-width-expanded);
+  font-optical-sizing: 96; /* Large optical size for display text */
 }
 
 .text-heading {
   font-weight: var(--font-weight-bold);
   font-stretch: var(--font-width-expanded);
+  font-optical-sizing: 96; /* Large optical size for headings */
 }
 
 .text-subheading {
   font-weight: var(--font-weight-semibold);
   font-stretch: var(--font-width-normal);
+  font-optical-sizing: 12; /* Small optical size for subheadings */
 }
 
 .text-body {
   font-weight: var(--font-weight-normal);
   font-stretch: var(--font-width-normal);
+  font-optical-sizing: 12; /* Small optical size for body text */
 }
 
 .text-caption {
   font-weight: var(--font-weight-medium);
   font-stretch: var(--font-width-condensed);
+  font-optical-sizing: 12; /* Small optical size for captions */
 }
 
 html.dark {
