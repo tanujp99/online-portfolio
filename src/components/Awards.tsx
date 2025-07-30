@@ -51,7 +51,7 @@ export default function Awards() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-[repeat(auto-fit,minmax(min(320px,100%),1fr))] max-w-[1200px] mx-auto gap-4 sm:gap-6 md:gap-8"
+          className="grid grid-cols-[repeat(auto-fit,minmax(min(240px,100%),1fr))] max-w-[640] mx-auto gap-8"
         >
           {awardsData.awards.map((award, index) => (
             <motion.div

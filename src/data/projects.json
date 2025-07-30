@@ -20,10 +20,9 @@
       "shortDescription": "Architected and benchmarked ML models for fraud detection, improving precision and reducing false positives.",
       "fullDescription": "• Architected and benchmarked efficacy of four machine learning models to detect anomalies evaluating their performance across six metrics.\n• Engineered an innovative feature selection methodology that achieved breakthrough performance with a 23% precision improvement and approximately 30% reduction in false positives compared to industry-standard systems, enabling mission-critical real-time transaction analysis for financial institutions.\n• Pioneered novel approaches to imbalanced dataset handling, implementing advanced sampling techniques and custom loss functions that dramatically improved model robustness when detecting rare fraudulent transactions within massive legitimate transaction volumes.\n• Published as first author in prestigious international journal: Study of Machine Learning Algorithms for Credit Card Fraud Detection (IRJMETS Vol 4. 2022), contributing significant advancements to the field of financial security and algorithmic fraud detection.",
       "technologies": ["Regression", "Random Forest", "Support Vector Machine", "Machine Learning", "Python"],
-      "githubLink": "https://github.com/tanujp99",
       "isResearch": true,
       "paperLink": "https://www.irjmets.com/uploadedfiles/paper//issue_4_april_2022/21641/final/fin_irjmets1653463905.pdf",
-      "showGithubLink": true
+      "showGithubLink": false
     },
     {
       "id": 3,
@@ -31,12 +30,13 @@
       "shortDescription": "Developed a stock price prediction system using time series regression, deep learning (LSTM), and Streamlit.",
       "fullDescription": "• Developed a stock price prediction system using time series regression and deep learning.\n• Engineered a real-time application with Streamlit for visualizations and forecasts.\n• Implemented FBProphet for time series forecasting.\n• Designed and implemented an LSTM network for enhanced prediction accuracy.",
       "technologies": ["Python", "FBProphet", "LSTM", "Streamlit"],
-      "githubLink": "https://github.com/tanujp99",
+      "githubLink": "https://github.com/tanujp99/Stock-Price-Prediction",
       "imageLight": "project-spp-light.png",
       "imageDark": "project-spp-dark.png",
       "imageAlt": "Stock Price Prediction",
       "imageBgLight": "#fffffa",
-      "imageBgDark": "#091117"
+      "imageBgDark": "#091117",
+      "showGithubLink": true
     },
     {
       "id": 4,

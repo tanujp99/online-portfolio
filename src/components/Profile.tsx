@@ -171,7 +171,7 @@ export default function Profile() {
 
           {/* Skills & Technologies Section */}
           <div className="max-w-4xl mx-auto">
-            <div className="bg-[var(--card-bg)] backdrop-blur-md rounded-2xl p-3 sm:p-4 shadow-panel">
+            <div className="backdrop-blur-md rounded-2xl p-3 sm:p-4 shadow-panel">
               <h2 className="text-xl font-semibold text-neutral-900 dark:text-white mb-6 text-center">Skills & Technologies</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -261,7 +261,7 @@ export default function Profile() {
               </div>
 
               {/* Quick Stats */}
-              <div className="mt-8 pt-6 border-t border-[var(--border-color)]">
+              <div className="mt-8 pt-6 border-t-2 border-[var(--border-color)]">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                   <div className="p-3 bg-light-accent/5 dark:bg-dark-accent/5 rounded-lg">
                     <div className="text-2xl text-hero text-light-accent dark:text-dark-accent">6+</div>
@@ -286,11 +286,11 @@ export default function Profile() {
 
           {/* LinkedIn Recommendations Section */}
           <div className="max-w-4xl mx-auto">
-              <div className="bg-[var(--card-bg)] backdrop-blur-md rounded-2xl p-3 sm:p-4 shadow-panel">
+              <div className="backdrop-blur-md rounded-2xl p-3 sm:p-4 shadow-panel">
                 <div className="flex items-center gap-3 mb-6 text-center justify-center">
                 <FaLinkedin className="text-2xl text-[#0077B5]" />
                 <h2 className="text-xl font-semibold text-neutral-900 dark:text-white  text-center">
-                  Recommendations
+                  Testimonials
                 </h2>
                 {/* <span className="px-2 py-1 bg-green-100 dark:bg-green-900/20 text-green-700 dark:text-green-400 text-xs rounded-full">
                   Verified
@@ -312,7 +312,7 @@ export default function Profile() {
                       className="relative"
                     >
                       <motion.div
-                        className="bg-[var(--card-bg)] rounded-xl p-4 border border-[var(--border-color)] cursor-pointer transition-all duration-300"
+                        className="bg-[var(--card-bg)] rounded-xl p-4 border-2 border-[var(--border-color)] cursor-pointer transition-all duration-300"
                         whileHover={{ scale: 1.02 }}
                         onClick={(e) => {
                           if (window.getSelection && window.getSelection() && window.getSelection()!.toString()) return;
@@ -410,7 +410,7 @@ export default function Profile() {
 
                         {/* Verification Badge */}
                         {testimonial.verified && (
-                          <div className="mt-3 pt-3 border-t border-neutral-200/50 dark:border-neutral-800/50">
+                          <div className="mt-3 pt-3 border-t-2 border-[var(--border-color)]">
                             <div className="flex items-center gap-2 text-xs text-neutral-500 dark:text-gray-500">
                               <div className="w-3 h-3 bg-green-500 rounded-full flex items-center justify-center">
                                 <span className="text-white text-[8px]">✓</span>
@@ -451,21 +451,26 @@ export default function Profile() {
                   <div className="mb-2 text-sm text-[var(--foreground)]">
                     Contributions in {selectedYear}
                   </div>
-                  {/* Calendar Grid */}
-                  <div className="overflow-x-auto custom-scrollbar w-full flex flex-col lg:items-center justify-center" style={{ WebkitOverflowScrolling: 'touch' }}>
-                    <div className="inline-block pb-4 lg:pb-0">
-                      <GitHubCalendar
-                        username="tanujp99"
-                        colorScheme={theme}
-                        blockSize={10}
-                        blockMargin={3}
-                        fontSize={12}
-                        year={selectedYear}
-                        hideTotalCount
-                        hideColorLegend
-                      />
+                  
+                  {/* Calendar Grid with constrained width for desktop scrolling */}
+                  <div className="w-full">
+                    {/* Mobile: natural overflow, Desktop: constrained width with scrollbar */}
+                    <div className="overflow-x-auto custom-scrollbar lg:max-w-[480px] lg:mx-auto" style={{ WebkitOverflowScrolling: 'touch' }}>
+                      <div className="inline-block pb-4 lg:pb-2 min-w-full lg:min-w-[480px]">
+                        <GitHubCalendar
+                          username="tanujp99"
+                          colorScheme={theme}
+                          blockSize={10}
+                          blockMargin={3}
+                          fontSize={12}
+                          year={selectedYear}
+                          hideTotalCount
+                          hideColorLegend
+                        />
+                      </div>
                     </div>
                   </div>
+                  
                   {/* Legend */}
                   <div className="mt-2 flex items-center gap-2 text-sm">
                     <span>Less</span>
@@ -487,7 +492,7 @@ export default function Profile() {
                     return (
                       <button
                         key={year}
-                        className={`px-3 py-1 my-1 rounded text-sm font-medium transition-colors duration-150 ${
+                        className={`px-3 py-1 my-1 rounded-md text-sm font-medium transition-colors duration-150 w-14 h-7 flex items-center justify-center ${
                           selectedYear === year 
                             ? 'bg-light-accent text-white dark:bg-dark-accent dark:text-white' 
                             : 'bg-[var(--button-bg)] text-[var(--foreground)] hover:bg-light-accent/10 dark:hover:bg-dark-accent/20'
@@ -520,7 +525,7 @@ export default function Profile() {
                       <button
                         onClick={() => handleYearChange(selectedYear + 1)}
                         disabled={selectedYear >= Math.max(...availableYears)}
-                        className="p-1.5 rounded-md hover:bg-[var(--button-bg)] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                        className="p-1.5 rounded-md hover:bg-[var(--button-bg)] disabled:opacity-15 disabled:cursor-not-allowed transition-colors"
                         title="Next year"
                       >
                         <svg className="w-4 h-4 text-[var(--foreground)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">

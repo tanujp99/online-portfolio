@@ -215,7 +215,7 @@ html.dark {
   --foreground: #fafafd; /* grey-50 */
   --background: #2c2f3e; /* New dark background */
   --card-bg: #3a3f53; /* #3a3f53 */
-  --border-color: #424245; /* grey-700 */
+  --border-color: #5f647855; /* grey-700 */
   --button-bg: #5f6478; /* New dark button/navbar pill color */
 
   /* Dark Theme Shadow Variables */
