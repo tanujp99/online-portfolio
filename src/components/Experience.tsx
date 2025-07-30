@@ -69,7 +69,7 @@ export default function Experience() {
                 <div className="absolute left-[1px] top-2 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-light-accent dark:bg-dark-accent transform -translate-x-1/2 shadow-sm" />
 
                 <motion.div
-                  className="bg-[var(--card-bg)] backdrop-blur-md rounded-2xl p-3 sm:p-4 cursor-pointer shadow-panel transition-all duration-300"
+                  className={`bg-[var(--card-bg)] backdrop-blur-md rounded-2xl p-3 sm:p-4 cursor-pointer transition-all duration-300 ${isExpanded ? 'shadow-panel-active' : 'shadow-panel'}`}
                   whileHover={{ scale: 1.02}}
                   onClick={(e) => {
                     if (window.getSelection && window.getSelection() && window.getSelection()!.toString()) return;

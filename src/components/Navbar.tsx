@@ -13,7 +13,7 @@ export default function Navbar({ setActiveTab, activeTab }: NavbarProps) {
   return (
     <nav className="w-full">
       <div className="flex items-center justify-center">
-        <div className="flex bg-[var(--background)] rounded-full p-1.5 backdrop-blur-md shadow-navbar">
+        <div className="flex bg-[var(--background)] rounded-full p-1 backdrop-blur-md shadow-navbar">
           {tabs.map((tab) => (
             <button
               key={tab}
