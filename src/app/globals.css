@@ -33,11 +33,11 @@
   --font-optical-size-large: 96;
   
   /* Material UI Light Theme Colors */
-  --foreground: #404040; /* grey-700 */
+  --foreground: #404043; /* grey-700 */
   --background: #d5d9e2; /* New light background */
   --card-bg: #eef0f2;
-  --border-color: #e0e0e0; /* grey-300 */
-  --button-bg: #f0f1f3; /* New button/navbar pill color */
+  --border-color: #e0e0e3; /* grey-300 */
+  --button-bg: #f0f1f4; /* New button/navbar pill color */
 
   /* Centralized Shadow Variables */
   --shadow-card: -10px -10px 30px 0 #fcfcff, 10px 10px 30px 0 #b8bccc66;
@@ -207,10 +207,10 @@
 
 html.dark {
   /* Material UI Dark Theme Colors (updated to hex) */
-  --foreground: #fafafa; /* grey-50 */
+  --foreground: #fafafd; /* grey-50 */
   --background: #2c2f3e; /* New dark background */
   --card-bg: #3a3f53; /* #3a3f53 */
-  --border-color: #424242; /* grey-700 */
+  --border-color: #424245; /* grey-700 */
   --button-bg: #5f6478; /* New dark button/navbar pill color */
 
   /* Dark Theme Shadow Variables */
