@@ -112,7 +112,7 @@ export default function About() {
                 <div>
                   <div className="text-[var(--foreground)] mb-3 text-sm sm:text-base">Frameworks & Libraries</div>
                   <div className="flex flex-wrap gap-2">
-                    {['Next.js', 'React', 'Framer Motion', 'React Icons', 'react-github-calendar'].map((tech) => (
+                    {['Next.js', 'React', 'Framer Motion'].map((tech) => (
                       <span key={tech} className="px-3 py-1 bg-[var(--button-bg)] text-[var(--foreground)] rounded-full text-xs sm:text-sm border border-[var(--border-color)] font-medium shadow-sm">{tech}</span>
                     ))}
                   </div>
@@ -143,7 +143,7 @@ export default function About() {
                     ))}
                   </div>
                 </div>
-                {/* Hosted On */}
+                {/* Hosted On
                 <div>
                   <div className="text-[var(--foreground)] mb-3 text-sm sm:text-base">Hosted On</div>
                   <div className="flex flex-wrap gap-2">
@@ -151,7 +151,7 @@ export default function About() {
                       <span key={tech} className="px-3 py-1 bg-[var(--button-bg)] text-[var(--foreground)] rounded-full text-xs sm:text-sm border border-[var(--border-color)] font-medium shadow-sm">{tech}</span>
                     ))}
                   </div>
-                </div>
+                </div> */}
                 {/* Additional Technologies */}
                 <div>
                   <div className="text-[var(--foreground)] mb-3 text-sm sm:text-base">Additional Technologies</div>

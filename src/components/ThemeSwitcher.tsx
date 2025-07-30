@@ -43,7 +43,7 @@ export default function ThemeSwitcher() {
     <button
       aria-label="Toggle theme"
       onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-      className="fixed top-4 right-4 lg:bottom-6 lg:left-6 lg:top-auto lg:right-auto z-50 w-12 h-12 rounded-full bg-[var(--button-bg)] shadow-card flex items-center justify-center border border-[var(--border-color)] transition-colors hover:bg-[var(--button-bg)] dark:hover:bg-[var(--button-bg)]"
+      className="fixed top-4 right-4 lg:bottom-6 lg:left-6 lg:top-auto lg:right-auto z-50 w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-[var(--button-bg)] shadow-pill flex items-center justify-center transition-all duration-300 hover:shadow-hover"
     >
       <motion.span
         key={theme}
@@ -54,7 +54,7 @@ export default function ThemeSwitcher() {
       >
         {theme === 'light' ? (
           // Sun icon with Material UI light mode color
-          <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 text-[#FFB74D]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 lg:w-10 lg:h-10 text-[#FFB74D]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <circle cx="12" cy="12" r="5" fill="currentColor" />
             <g stroke="currentColor" strokeLinecap="round" strokeWidth="2">
               <line x1="12" y1="1" x2="12" y2="3" />
@@ -69,7 +69,7 @@ export default function ThemeSwitcher() {
           </svg>
         ) : (
           // Moon icon with Material UI dark mode color
-          <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 text-[#90CAF9] transform rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 lg:w-10 lg:h-10 text-[#90CAF9] transform rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" fill="currentColor" />
           </svg>
         )}
