@@ -59,7 +59,7 @@ export default function Awards() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-[var(--card-bg)] backdrop-blur-md rounded-xl shadow-card p-4 sm:p-6 hover:shadow-xl transition-shadow duration-300 border border-[var(--border-color)]"
+              className="bg-[var(--card-bg)] backdrop-blur-md rounded-xl shadow-panel p-4 sm:p-6"
             >
               <div className="flex items-center mb-3 sm:mb-4">
                 {iconMap[award.title as keyof typeof iconMap] && (

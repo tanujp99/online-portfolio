@@ -86,7 +86,7 @@ export default function Projects() {
                 className="relative"
               >
                 <motion.div
-                  className="bg-[var(--card-bg)] backdrop-blur-md rounded-xl p-4 sm:p-6 cursor-pointer border border-[var(--border-color)] shadow-card"
+                  className="bg-[var(--card-bg)] backdrop-blur-md rounded-xl p-4 sm:p-6 cursor-pointer shadow-card"
                   whileHover={{ scale: 1.02 }}
                   onClick={(e) => {
                     if (window.getSelection && window.getSelection() && window.getSelection()!.toString()) return;
@@ -132,14 +132,14 @@ export default function Projects() {
                             href={project.paperLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 px-3 py-1.5 bg-[var(--button-bg)] text-[var(--foreground)] border border-[var(--border-color)] rounded-md hover:bg-light-accent hover:text-white dark:hover:bg-dark-accent dark:hover:text-white transition-colors text-xs font-medium shadow-sm"
+                            className="inline-flex items-center gap-1 px-3 py-1.5 bg-light-accent dark:bg-dark-accent text-[var(--card-bg)] border border-light-accent dark:border-dark-accent rounded-md hover:bg-light-accent/90 dark:hover:bg-dark-accent/90 transition-colors text-xs font-medium shadow-sm"
                             onClick={(e) => e.stopPropagation()}
                           >
                             Read Paper
                           </a>
                         )}
                         <button
-                          className="inline-flex items-center gap-1 px-3 py-1.5 bg-[var(--button-bg)] text-[var(--foreground)] border border-[var(--border-color)] rounded-md hover:bg-light-accent hover:text-white dark:hover:bg-dark-accent dark:hover:text-white transition-colors text-xs font-medium shadow-sm"
+                          className="inline-flex items-center gap-1 px-3 py-1.5 bg-[var(--card-bg)] text-[var(--foreground)] border border-[var(--border-color)] rounded-md hover:bg-light-accent hover:text-white dark:hover:bg-dark-accent dark:hover:text-white transition-colors text-xs font-medium shadow-sm"
                           onClick={(e) => {
                             e.stopPropagation();
                             navigator.clipboard.writeText(

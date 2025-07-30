@@ -171,7 +171,7 @@ export default function Profile() {
 
           {/* Skills & Technologies Section */}
           <div className="max-w-4xl mx-auto">
-            <div className="bg-[var(--card-bg)] backdrop-blur-md rounded-2xl p-3 sm:p-4 border border-[var(--border-color)] shadow-card">
+            <div className="bg-[var(--card-bg)] backdrop-blur-md rounded-2xl p-3 sm:p-4 shadow-panel">
               <h2 className="text-xl font-semibold text-neutral-900 dark:text-white mb-6 text-center">Skills & Technologies</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -286,7 +286,7 @@ export default function Profile() {
 
           {/* LinkedIn Recommendations Section */}
           <div className="max-w-4xl mx-auto">
-              <div className="bg-[var(--card-bg)] backdrop-blur-md rounded-2xl p-3 sm:p-4 border border-[var(--border-color)] shadow-card">
+              <div className="bg-[var(--card-bg)] backdrop-blur-md rounded-2xl p-3 sm:p-4 shadow-panel">
                 <div className="flex items-center gap-3 mb-6 text-center justify-center">
                 <FaLinkedin className="text-2xl text-[#0077B5]" />
                 <h2 className="text-xl font-semibold text-neutral-900 dark:text-white  text-center">
@@ -442,7 +442,7 @@ export default function Profile() {
           {/* Contribution Calendar Section */}
           
           <div className="max-w-4xl mx-auto">
-            <div className="bg-[var(--card-bg)] backdrop-blur-md rounded-2xl p-3 sm:p-4 border border-[var(--border-color)] shadow-card">
+            <div className="bg-[var(--card-bg)] backdrop-blur-md rounded-2xl p-3 sm:p-4 shadow-panel">
               <div className="flex flex-col lg:flex-row items-center justify-center">
                 {/* Stacked layout: title above, grid, legend below, all centered */}
                 <div className="flex flex-col items-center w-full">
@@ -535,7 +535,7 @@ export default function Profile() {
 
           {/* README Content */}
           <div className="max-w-4xl mx-auto">
-            <div className="bg-[var(--card-bg)] backdrop-blur-md rounded-2xl p-3 sm:p-4 border border-[var(--border-color)] shadow-card">
+            <div className="bg-[var(--card-bg)] backdrop-blur-md rounded-2xl p-3 sm:p-4 shadow-panel">
               <div className="prose dark:prose-invert max-w-none">
                 {/* GitHub Profile Trophy */}
                 <div className="flex justify-center mb-8">
@@ -580,7 +580,7 @@ export default function Profile() {
           {/* Pinned Repositories */}
           {pinnedRepos.length > 0 && (
             <div className="max-w-4xl mx-auto">
-            <div className="bg-[var(--card-bg)] backdrop-blur-md rounded-2xl p-3 sm:p-4 border border-[var(--border-color)] shadow-card">
+            <div className="bg-[var(--card-bg)] backdrop-blur-md rounded-2xl p-3 sm:p-4 shadow-panel">
               <h2 className="text-xl font-semibold text-neutral-900 dark:text-white mb-6">Pinned</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {pinnedRepos.map((repo) => (

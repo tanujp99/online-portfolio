@@ -23,7 +23,7 @@ export default function About() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-[var(--card-bg)] backdrop-blur-md rounded-xl p-5 sm:p-6 border border-[var(--border-color)] shadow-card"
+            className="bg-[var(--card-bg)] backdrop-blur-md rounded-xl p-5 sm:p-6 shadow-panel"
           >
             <div>
               <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-light-accent dark:text-dark-accent">Get in Touch</h3>
@@ -95,7 +95,7 @@ export default function About() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="bg-[var(--card-bg)] backdrop-blur-md rounded-xl p-5 sm:p-6 border border-[var(--border-color)] shadow-card"
+            className="bg-[var(--card-bg)] backdrop-blur-md rounded-xl p-5 sm:p-6 shadow-panel"
           >
             <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-light-accent dark:text-dark-accent">This website is built with</h3>
             <div className="space-y-4">
