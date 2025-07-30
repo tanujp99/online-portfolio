@@ -53,7 +53,7 @@ export default function RootLayout({
             
             {/* Content Section - Refined container */}
             <div className="flex-1 px-6 pb-6 min-h-0">
-              <div className="h-full bg-[var(--card-bg)] backdrop-blur-xl rounded-2xl border border-[var(--border-color)] p-5 flex flex-col overflow-hidden shadow-xl">
+              <div className="h-full bg-[var(--card-bg)] backdrop-blur-xl rounded-2xl p-5 flex flex-col overflow-hidden shadow-main">
                 <ContentWrapper />
               </div>
             </div>
@@ -70,7 +70,7 @@ export default function RootLayout({
             
             {/* Content Section - Refined container */}
             <div className="flex-1 flex items-start justify-center px-8 xl:px-12 py-8 xl:py-12 h-full">
-              <div className="w-full h-[calc(100vh-64px)] xl:h-[calc(100vh-96px)] bg-[var(--card-bg)] backdrop-blur-xl rounded-2xl border border-[var(--border-color)] p-8 flex flex-col overflow-hidden shadow-xl">
+              <div className="w-full h-[calc(100vh-64px)] xl:h-[calc(100vh-96px)] bg-[var(--card-bg)] backdrop-blur-xl rounded-2xl p-8 flex flex-col overflow-hidden shadow-main">
                 <ContentWrapper />
               </div>
             </div>
