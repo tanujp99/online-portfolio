@@ -40,6 +40,7 @@ export default function Awards() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
           className="text-2xl sm:text-3xl md:text-4xl text-heading text-center mb-8 sm:mb-12 md:mb-16 text-neutral-900 dark:text-white"
         >
           Awards & Recognition
@@ -50,7 +51,7 @@ export default function Awards() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
+          className="grid grid-cols-[repeat(auto-fit,minmax(min(320px,100%),1fr))] max-w-[1200px] mx-auto gap-4 sm:gap-6 md:gap-8"
         >
           {awardsData.awards.map((award, index) => (
             <motion.div

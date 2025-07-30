@@ -14,6 +14,7 @@ export default function About() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
           className="text-2xl sm:text-3xl md:text-4xl text-heading text-center mb-8 sm:mb-12 md:mb-16 text-neutral-900 dark:text-white"
         >
           About
@@ -23,6 +24,7 @@ export default function About() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
             className="bg-[var(--card-bg)] backdrop-blur-md rounded-xl p-5 sm:p-6 shadow-panel"
           >
             <div>
@@ -95,6 +97,7 @@ export default function About() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
+            viewport={{ once: true }}
             className="bg-[var(--card-bg)] backdrop-blur-md rounded-xl p-5 sm:p-6 shadow-panel"
           >
             <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-light-accent dark:text-dark-accent">This website is built with</h3>
@@ -103,7 +106,7 @@ export default function About() {
                 <div>
                   <div className="text-[var(--foreground)] mb-3 text-sm sm:text-base">Languages</div>
                   <div className="flex flex-wrap gap-2">
-                    {['TypeScript', 'JavaScript', 'CSS'].map((tech) => (
+                    {['TypeScript', 'CSS'].map((tech) => (
                       <span key={tech} className="px-3 py-1 bg-[var(--button-bg)] text-[var(--foreground)] rounded-full text-xs sm:text-sm border border-[var(--border-color)] font-medium shadow-sm">{tech}</span>
                     ))}
                   </div>
@@ -121,7 +124,7 @@ export default function About() {
                 <div>
                   <div className="text-[var(--foreground)] mb-3 text-sm sm:text-base">Styling & Animation</div>
                   <div className="flex flex-wrap gap-2">
-                    {['Tailwind CSS', 'PostCSS', 'Autoprefixer'].map((tech) => (
+                    {['Tailwind CSS'].map((tech) => (
                       <span key={tech} className="px-3 py-1 bg-[var(--button-bg)] text-[var(--foreground)] rounded-full text-xs sm:text-sm border border-[var(--border-color)] font-medium shadow-sm">{tech}</span>
                     ))}
                     <a 
@@ -135,14 +138,14 @@ export default function About() {
                   </div>
                 </div>
                 {/* Tooling & CI */}
-                <div>
+                {/* <div>
                   <div className="text-[var(--foreground)] mb-3 text-sm sm:text-base">Tooling & CI</div>
                   <div className="flex flex-wrap gap-2">
                     {['ESLint', 'Node.js'].map((tech) => (
                       <span key={tech} className="px-3 py-1 bg-[var(--button-bg)] text-[var(--foreground)] rounded-full text-xs sm:text-sm border border-[var(--border-color)] font-medium shadow-sm">{tech}</span>
                     ))}
                   </div>
-                </div>
+                </div> */}
                 {/* Hosted On
                 <div>
                   <div className="text-[var(--foreground)] mb-3 text-sm sm:text-base">Hosted On</div>
@@ -153,11 +156,10 @@ export default function About() {
                   </div>
                 </div> */}
                 {/* Additional Technologies */}
-                <div>
+                {/* <div>
                   <div className="text-[var(--foreground)] mb-3 text-sm sm:text-base">Additional Technologies</div>
                   <div className="flex flex-wrap gap-2">
                     {[
-                      'Next.js Image Optimization',
                       'Context API',
                       'JSON Data Management',
                       'Custom Hooks'
@@ -165,7 +167,7 @@ export default function About() {
                       <span key={tech} className="px-3 py-1 bg-[var(--button-bg)] text-[var(--foreground)] rounded-full text-xs sm:text-sm border border-[var(--border-color)] font-medium shadow-sm">{tech}</span>
                     ))}
                   </div>
-                </div>
+                </div> */}
             </div>
           </motion.div>
         </div>

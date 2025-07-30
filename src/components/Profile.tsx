@@ -181,7 +181,7 @@ export default function Profile() {
                     Backend Development
                   </h3>
                   <div className="flex flex-wrap gap-2">
-                    {['Java', 'Spring Boot', 'Python', 'Node.js', 'GraphQL', 'REST APIs', 'Microservices'].map((skill) => (
+                    {['Java', 'Spring Boot', 'Python', 'GraphQL', 'REST APIs', 'Microservices'].map((skill) => (
                       <span key={skill} className="inline-flex items-center px-3 py-1 rounded-full bg-[var(--button-bg)] text-[var(--foreground)] border border-[var(--border-color)] font-medium text-sm shadow-sm transition-all duration-200">
                         {skill}
                       </span>
@@ -308,6 +308,7 @@ export default function Profile() {
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
+                      viewport={{ once: true }}
                       className="relative"
                     >
                       <motion.div

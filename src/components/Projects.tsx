@@ -73,7 +73,7 @@ export default function Projects() {
           Projects
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(320px,100%),1fr))] max-w-[1200px] mx-auto gap-4 sm:gap-6 md:gap-8">
           {projects.map((project, index) => {
             const isExpanded = selectedProject === project.id;
             return (
