@@ -12,7 +12,8 @@
       "imageDark": "project-hls-dark.png",
       "imageAlt": "Home Lab Server",
       "imageBgLight": "#f8f8f5",
-      "imageBgDark": "#161719"
+      "imageBgDark": "#161618",
+      "presentButton": false
     },
     {
       "id": 2,
@@ -22,7 +23,13 @@
       "technologies": ["Regression", "Random Forest", "Support Vector Machine", "Machine Learning", "Python"],
       "isResearch": true,
       "paperLink": "https://www.irjmets.com/uploadedfiles/paper//issue_4_april_2022/21641/final/fin_irjmets1653463905.pdf",
-      "showGithubLink": false
+      "showGithubLink": false,
+      "journal": "International Research Journal of Modernization in Engineering Technology and Science (IRJMETS)",
+      "citation": "Study of Machine Learning Algorithms for Credit Card Fraud Detection - Vol 4, 2022",
+      "mainButton": "Read Paper",
+      "citationButton": "Copy Citation",
+      "citationContent": "Palaspagar, T. (2022). Study of Machine Learning Algorithms for Credit Card Fraud Detection. International Research Journal of Modernization in Engineering Technology and Science, 4.",
+      "presentButton": false
     },
     {
       "id": 3,
@@ -36,7 +43,8 @@
       "imageAlt": "Stock Price Prediction",
       "imageBgLight": "#fffffa",
       "imageBgDark": "#091117",
-      "showGithubLink": true
+      "showGithubLink": true,
+      "presentButton": false
     },
     {
       "id": 4,
@@ -49,7 +57,101 @@
       "imageDark": "project-swm-dark.png",
       "imageAlt": "Smart Solid Waste Management",
       "imageBgLight": "#f8f8f5",
-      "imageBgDark": "#0c131a"
+      "imageBgDark": "#0d151c",
+      "presentButton": false
+    },
+    {
+      "id": 5,
+      "title": "Aquarcade - Underwater Gaming Portal",
+      "shortDescription": "Responsive web application for underwater-themed arcade gaming zone with dark mode, multi-language support, and billing system.",
+      "fullDescription": "• Developed a responsive web application for IEEE & CSI SIES-GST INSPECT ELEMENT 1.0 competition with SubNautica theme.\n• Engineered a comprehensive gaming portal featuring game selection, player configuration, time slot booking, and dynamic cost calculation algorithms.\n• Implemented advanced UI/UX features including dark mode toggle and multi-language support (3+ languages) using vanilla JavaScript and CSS variables.\n• Designed and developed an automated billing and receipt generation system with real-time cost calculations based on game selection, player count, and time duration.\n• Built responsive design using Bootstrap framework ensuring cross-browser compatibility across Chrome, Firefox, and Safari.\n• Integrated search and filter functionality for enhanced user experience and game discovery.\n• Deployed on GitHub Pages with optimized performance and accessibility standards.",
+      "technologies": ["HTML", "CSS", "JavaScript", "Bootstrap", "jQuery", "GitHub Pages"],
+      "githubLink": "https://github.com/tanujp99/aquarcade",
+      "showGithubLink": true,
+      "imageLight": "project-aquarcade-light.png",
+      "imageDark": "project-aquarcade-dark.png",
+      "imageAlt": "Aquarcade Gaming Portal",
+      "imageBgLight": "#fffefa",
+      "imageBgDark": "#222730",
+      "presentButton": "View Deployment",
+      "presentContent": "https://tanujp99.github.io/aquarcade/"
+    },
+    {
+      "id": 6,
+      "title": "Fuzzy Logic-Based Fingerprint Recognition System",
+      "shortDescription": "Advanced biometric authentication system using Fuzzy C-Means clustering and statistical features for fingerprint segmentation and enhancement.",
+      "fullDescription": "• Developed an innovative fingerprint recognition system integrating Fuzzy C-Means (FCM) clustering algorithm with statistical feature extraction for enhanced biometric authentication accuracy.\n• Engineered advanced fingerprint segmentation methodology using fuzzy logic principles, statistical features (mean, variance, third and fourth order moments), and sliding window techniques to isolate regions of interest and eliminate background noise.\n• Implemented sophisticated fingerprint enhancement algorithms utilizing frame difference techniques between original images and variance/mean fingerprint images, significantly improving minutiae detection accuracy.\n• Designed and optimized clustering algorithms that outperformed traditional K-means segmentation methods, demonstrating superior accuracy in fingerprint feature extraction and classification.\n• Conducted comprehensive research and development under Prof. Surekha Janrao's guidance, contributing to advancements in biometric security systems for commercial, government, and forensic applications.\n• Architected complete biometric pipeline including fingerprint acquisition, segmentation, enhancement, minutiae extraction, orientation estimation, classification, and matching algorithms.",
+      "technologies": ["Fuzzy Logic", "Machine Learning", "Image Processing", "Pattern Recognition", "Biometrics", "MATLAB"],
+      "isResearch": true,
+      "paperLink": "https://www.irjmets.com/uploadedfiles/paper//issue_4_april_2022/21641/final/fin_irjmets1653463905.pdf",
+      "showGithubLink": false,
+      "journal": "Journal Ceased Existance",
+      "citation": "An Application of Fuzzy Logic to Fingerprint Recognition, 2019",
+      "mainButton": "Read Paper",
+      "citationButton": "View Presentation",
+      "citationContent": "Palaspagar, T. (2022). Study of Machine Learning Algorithms for Credit Card Fraud Detection. International Research Journal of Modernization in Engineering Technology and Science, 4.",
+      "presentButton": false
+    },
+    {
+      "id": 7,
+      "title": "Railway e-Ticketing Management System",
+      "shortDescription": "Full-stack web-based railway reservation system with real-time booking, cancellation, and status tracking capabilities.",
+      "fullDescription": "• Developed a comprehensive web-based railway reservation system using PHP, MySQL, and responsive front-end technologies to streamline ticket booking processes and eliminate traditional queue-based systems.\n• Engineered robust database architecture using MySQL with normalized tables for trains, passengers, bookings, and seat availability, implementing efficient data retrieval and real-time status updates.\n• Implemented advanced booking algorithms handling seat allocation, waiting list management, automatic confirmation upon cancellations, and PNR generation with unique ticket ID systems.\n• Designed intuitive user interface with HTML, CSS, and Bootstrap framework, enabling seamless ticket booking, cancellation, status checking, and train information retrieval through any web browser.\n• Built comprehensive booking validation system checking train numbers, travel dates, seat availability, and passenger details (supporting up to 10 passengers per booking with Aadhar verification).\n• Integrated automatic notification system for booking confirmations, waiting list updates, and cancellation processing, with real-time database synchronization using XAMPP server environment.\n• Developed administrative features for train schedule management, seat allocation tracking, and passenger record maintenance with secure PHP-based database connectivity.",
+      "technologies": ["PHP", "MySQL", "HTML", "CSS", "JavaScript", "Bootstrap", "XAMPP"],
+      "isAcademic": true,
+      "githubLink": "https://github.com/tanujp99/Railway-eTicketing-System",
+      "showGithubLink": true,
+      "imageLight": "project-railway-light.png",
+      "imageDark": "project-railway-dark.png",
+      "imageAlt": "Railway e-Ticketing System",
+      "imageBgLight": "#fffbf5",
+      "imageBgDark": "#1c2025",
+      "presentButton": false
+    },
+    {
+      "id": 8,
+      "title": "Bayesian Networks Inference Engine",
+      "shortDescription": "Command-line probabilistic inference engine implementing Bayesian Networks with conditional probability calculations and evidence-based reasoning.",
+      "fullDescription": "• Developed a comprehensive Bayesian Networks inference engine in Python implementing probabilistic reasoning and conditional probability calculations using enumeration algorithms.\n• Engineered sophisticated probability calculation system supporting both joint probability P(A∧B∧C∧D) and conditional probability P(Query|Evidence) computations with high precision (9 decimal places).\n• Implemented robust command-line interface supporting flexible query formats with evidence variables, enabling complex probabilistic queries like P(B=true, G=false | F=false).\n• Designed efficient data processing pipeline handling training data parsing, probability table generation, and dynamic variable enumeration for all possible variable combinations.\n• Built comprehensive inference by enumeration algorithm that systematically considers all variable states not explicitly specified in queries, ensuring accurate probabilistic calculations.\n• Architected modular codebase with specialized functions for numerical calculations (numcalc), probability enumeration, and conditional probability computation with error handling for edge cases.\n• Integrated advanced features including automatic probability normalization, zero-probability handling with epsilon correction, and precise floating-point arithmetic for reliable inference results.",
+      "technologies": ["Python", "Probability Theory", "Bayesian Networks", "Machine Learning", "Command Line Interface"],
+      "isAcademic": true,
+      "githubLink": "https://github.com/tanujp99/03_BayesianNetworks",
+      "showGithubLink": true,
+      "imageLight": "project-bayesian-light.png",
+      "imageDark": "project-bayesian-dark.png",
+      "imageAlt": "Bayesian Networks Inference",
+      "imageBgLight": "#fefdf7",
+      "imageBgDark": "#1b1e26"
+    },
+    {
+      "id": 9,
+      "title": "Minimum Spanning Tree Algorithms on Road Networks",
+      "shortDescription": "Comprehensive analysis and implementation of Prim's and Kruskal's MST algorithms with real-world road network datasets and performance benchmarking.",
+      "fullDescription": "• Implemented and benchmarked two fundamental graph algorithms - Prim's and Kruskal's algorithms for Minimum Spanning Tree construction using Python and NetworkX library.\n• Engineered comprehensive performance analysis framework utilizing real-world road network datasets ranging from 639 nodes (Maldives) to 898,430 nodes (Tokyo) to evaluate algorithmic efficiency across different graph densities.\n• Developed sophisticated data processing pipeline handling GraphML format datasets including Manhattan (4,426 nodes), New York (54,128 nodes), Los Angeles (297,333 nodes), and Tokyo road networks for realistic algorithm testing.\n• Designed automated benchmarking system using Python's built-in time functions to measure and compare execution times, generating detailed performance metrics and statistical analysis.\n• Created comprehensive visualization suite using Matplotlib to generate comparative graphs, original network visualizations, and MST output analysis for algorithmic performance evaluation.\n• Conducted extensive algorithmic analysis demonstrating Prim's algorithm superiority for dense graphs due to adjacent node traversal efficiency, while proving Kruskal's effectiveness for sparse graphs through optimized edge sorting.\n• Architected modular codebase with separate algorithm implementations (mst.py), main execution controller (main.py), and organized dataset management system with comprehensive documentation and results analysis.",
+      "technologies": ["Python", "NetworkX", "Matplotlib", "Graph Algorithms", "Data Analysis", "GraphML"],
+      "isAcademic": true,
+      "githubLink": "https://github.com/tanujp99",
+      "showGithubLink": true,
+      "imageLight": "project-mst-light.png",
+      "imageDark": "project-mst-dark.png",
+      "imageAlt": "Minimum Spanning Tree Algorithms",
+      "imageBgLight": "#fefefe",
+      "imageBgDark": "#1d232a"
+    },
+    {
+      "id": 10,
+      "title": "Red-Blue Nim Game with Minimax AI",
+      "shortDescription": "Interactive command-line game implementing Minimax algorithm with alpha-beta pruning for optimal strategy in two-pile marble game.",
+      "fullDescription": "• Developed an intelligent game-playing system implementing the classic Red-Blue Nim variant with sophisticated AI opponent using Minimax algorithm and custom evaluation heuristics.\n• Engineered advanced Minimax algorithm with configurable search depth and complete game tree generation, enabling optimal move selection through recursive state space exploration and strategic lookahead.\n• Designed comprehensive evaluation function incorporating weighted scoring system (red marbles: 2 points, blue marbles: 3 points) with game-state analysis and winning condition prioritization for strategic gameplay.\n• Implemented flexible command-line interface supporting human vs computer gameplay with customizable starting conditions, pile sizes, first player selection, and adjustable AI difficulty through depth limiting.\n• Architected robust game state management system handling turn-based mechanics, move validation, win/loss detection, and real-time score calculation with clear terminal-based user interaction.\n• Built intelligent evaluation heuristics that strategically balance immediate scoring opportunities with long-term winning potential, incorporating pile size optimization and endgame acceleration strategies.\n• Created comprehensive game logic handling edge cases, invalid moves, and optimal termination conditions while maintaining clean separation between game rules, AI strategy, and user interface components.",
+      "technologies": ["Python", "Minimax Algorithm", "Game Theory", "Artificial Intelligence", "Command Line Interface"],
+      "isAcademic": true,
+      "githubLink": "https://github.com/tanujp99",
+      "showGithubLink": true,
+      "imageLight": "project-nim-light.png",
+      "imageDark": "project-nim-dark.png",
+      "imageAlt": "Red-Blue Nim Game AI",
+      "imageBgLight": "#fdfcf5",
+      "imageBgDark": "#161c21"
     }
   ]
 }

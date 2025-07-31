@@ -22,6 +22,13 @@ interface Project {
   imageAlt?: string;
   imageBgLight?: string;
   imageBgDark?: string;
+  journal?: string;
+  citation?: string;
+  mainButton?: string;
+  citationButton?: string;
+  citationContent?: string;
+  presentButton?: string | boolean;
+  presentContent?: string;
 }
 
 const projects: Project[] = projectsData.projects;
@@ -104,10 +111,10 @@ export default function Projects() {
                         <span className="text-sm font-semibold text-light-accent dark:text-dark-accent">Published Research</span>
                       </div>
                       <p className="text-xs text-neutral-600 dark:text-gray-400 mb-2">
-                        <strong>Journal:</strong> International Research Journal of Modernization in Engineering Technology and Science (IRJMETS)
+                        <strong>Journal:</strong> {project.journal}
                       </p>
                       <p className="text-xs text-neutral-600 dark:text-gray-400 mb-3">
-                        <strong>Citation:</strong> "Study of Machine Learning Algorithms for Credit Card Fraud Detection" - Vol 4, 2022
+                        <strong>Citation:</strong> {project.citation}
                       </p>
                       <div className="flex gap-2 relative">
                         <AnimatePresence>
@@ -127,7 +134,7 @@ export default function Projects() {
                             </motion.div>
                           )}
                         </AnimatePresence>
-                        {project.paperLink && (
+                        {project.paperLink && project.mainButton && (
                           <a
                             href={project.paperLink}
                             target="_blank"
@@ -135,27 +142,38 @@ export default function Projects() {
                             className="inline-flex items-center gap-1 px-3 py-1.5 bg-light-accent dark:bg-dark-accent text-[var(--card-bg)] border border-light-accent dark:border-dark-accent rounded-md hover:bg-light-accent/90 dark:hover:bg-dark-accent/90 transition-colors text-xs font-medium shadow-sm"
                             onClick={(e) => e.stopPropagation()}
                           >
-                            Read Paper
+                            {project.mainButton}
                           </a>
                         )}
-                        <button
-                          className="inline-flex items-center gap-1 px-3 py-1.5 bg-[var(--card-bg)] text-[var(--foreground)] border border-[var(--border-color)] rounded-md hover:bg-light-accent hover:text-white dark:hover:bg-dark-accent dark:hover:text-white transition-colors text-xs font-medium shadow-sm"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            navigator.clipboard.writeText(
-                              'Palaspagar, T. (2022). Study of Machine Learning Algorithms for Credit Card Fraud Detection. International Research Journal of Modernization in Engineering Technology and Science, 4.'
-                            );
-                            setCopiedProject(project.id);
-                            setTimeout(() => setCopiedProject(null), 1000);
-                          }}
-                        >
-                          Copy Citation
-                        </button>
+                        {project.presentButton && typeof project.presentButton === 'string' && project.presentContent && (
+                          <a
+                            href={project.presentContent}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 px-3 py-1.5 bg-light-accent dark:bg-dark-accent text-[var(--card-bg)] border border-light-accent dark:border-dark-accent rounded-md hover:bg-light-accent/90 dark:hover:bg-dark-accent/90 transition-colors text-xs font-medium shadow-sm"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            {project.presentButton}
+                          </a>
+                        )}
+                        {project.citationButton && project.citationContent && (
+                          <button
+                            className="inline-flex items-center gap-1 px-3 py-1.5 bg-[var(--card-bg)] text-[var(--foreground)] border border-[var(--border-color)] rounded-md hover:bg-light-accent hover:text-white dark:hover:bg-dark-accent dark:hover:text-white transition-colors text-xs font-medium shadow-sm"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              navigator.clipboard.writeText(project.citationContent!);
+                              setCopiedProject(project.id);
+                              setTimeout(() => setCopiedProject(null), 1000);
+                            }}
+                          >
+                            {project.citationButton}
+                          </button>
+                        )}
                       </div>
                     </div>
                   ) : (
                     project.imageLight && project.imageDark && (
-                      <div className="mb-4 p-3 bg-gradient-to-r from-light-accent/10 to-light-accent/5 dark:from-dark-accent/10 dark:to-dark-accent/5 rounded-lg border border-light-accent/20 dark:border-dark-accent/20 h-40 sm:h-44 md:h-48 lg:h-52 xl:h-56 2xl:h-60 flex items-center justify-center overflow-hidden">
+                      <div className="mb-4 p-3 bg-gradient-to-r from-light-accent/10 to-light-accent/5 dark:from-dark-accent/10 dark:to-dark-accent/5 rounded-lg border border-light-accent/20 dark:border-dark-accent/20 h-40 sm:h-44 md:h-48 lg:h-52 xl:h-56 2xl:h-60 flex items-center justify-center overflow-hidden relative">
                         <div
                           className="w-full h-full rounded-md flex items-center justify-center overflow-hidden"
                           style={{ backgroundColor: theme === 'dark' ? project.imageBgDark || '#161719' : project.imageBgLight || '#f8f8f5' }}
@@ -172,6 +190,20 @@ export default function Projects() {
                             priority={project.id === 1}
                           />
                         </div>
+                        {/* Present button in bottom left corner */}
+                        {project.presentButton && typeof project.presentButton === 'string' && project.presentContent && (
+                          <div className="absolute bottom-5 left-5">
+                            <a
+                              href={project.presentContent}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="px-2 sm:px-3 py-0.5 sm:py-1 bg-light-accent/20 dark:bg-dark-accent/20 text-light-accent dark:text-dark-accent rounded-md text-xs sm:text-sm hover:bg-light-accent hover:text-[var(--card-bg)] dark:hover:bg-dark-accent dark:hover:text-[var(--card-bg)] transition-colors"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              {project.presentButton}
+                            </a>
+                          </div>
+                        )}
                       </div>
                     )
                   )}
