@@ -8,7 +8,6 @@ import Image from 'next/image';
 import { useTheme } from '../context/ThemeContext';
 
 interface Project {
-  id: number;
   title: string;
   shortDescription: string;
   fullDescription: string;
@@ -82,10 +81,10 @@ export default function Projects() {
 
         <div className="grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-8">
           {projects.map((project, index) => {
-            const isExpanded = selectedProject === project.id;
+            const isExpanded = selectedProject === index;
             return (
-              <motion.div
-                key={project.id}
+                              <motion.div
+                  key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -97,7 +96,7 @@ export default function Projects() {
                   whileHover={{ scale: 1.02 }}
                   onClick={(e) => {
                     if (window.getSelection && window.getSelection() && window.getSelection()!.toString()) return;
-                    setSelectedProject(isExpanded ? null : project.id);
+                    setSelectedProject(isExpanded ? null : index);
                   }}
                 >
                   <h3 className="text-lg sm:text-xl font-semibold mb-2 text-neutral-900 dark:text-white">{project.title}</h3>
@@ -118,7 +117,7 @@ export default function Projects() {
                       </p>
                       <div className="flex gap-2 relative">
                         <AnimatePresence>
-                          {copiedProject === project.id && (
+                          {copiedProject === index && (
                             <motion.div
                               initial={{ opacity: 0, y: 10, scale: 0.8 }}
                               animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -162,7 +161,7 @@ export default function Projects() {
                             onClick={(e) => {
                               e.stopPropagation();
                               navigator.clipboard.writeText(project.citationContent!);
-                              setCopiedProject(project.id);
+                              setCopiedProject(index);
                               setTimeout(() => setCopiedProject(null), 1000);
                             }}
                           >
@@ -187,7 +186,7 @@ export default function Projects() {
                             className="object-contain w-full h-full"
                             style={{ maxWidth: '100%', maxHeight: '100%' }}
                             sizes="(max-width: 768px) 100vw, 400px"
-                            priority={project.id === 1}
+                            priority={index === 0}
                           />
                         </div>
                         {/* Present button in bottom left corner */}

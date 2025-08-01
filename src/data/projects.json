@@ -1,7 +1,7 @@
 {
   "projects": [
     {
-      "id": 1,
+      "year": 2024,
       "title": "Home Lab Kubernetes Cluster",
       "shortDescription": "Enterprise-grade Kubernetes infrastructure with 9 HP Spectre SFF PC nodes, Calico CNI, and GitLab CI/CD.",
       "fullDescription": "• Architected an enterprise-grade Kubernetes infrastructure comprising 9 HP Spectre SFF PC nodes running Ubuntu 20.04 LTS, implementing network segmentation using Calico CNI.\n• Engineered robust high-availability configurations with a distributed control plane, load balancing, and resource scheduling algorithms to optimize workload distribution and ensure system reliability.\n• Implemented infrastructure-as-code principles using Hashicorp Packer and a GitLab CI/CD pipeline for zero-downtime deployments.\n• Designed and implemented networking solutions, including a service mesh with Istio, for advanced traffic management and security.\n• Established monitoring and observability infrastructure utilizing Prometheus and Grafana, creating dashboards and alerting systems.\n• Leveraged Lens as a centralized management interface, integrating custom resource definitions and operators.",
@@ -16,11 +16,11 @@
       "presentButton": false
     },
     {
-      "id": 2,
+      "year": 2022,
       "title": "Credit Card Fraud Detection",
       "shortDescription": "Architected and benchmarked ML models for fraud detection, improving precision and reducing false positives.",
       "fullDescription": "• Architected and benchmarked efficacy of four machine learning models to detect anomalies evaluating their performance across six metrics.\n• Engineered an innovative feature selection methodology that achieved breakthrough performance with a 23% precision improvement and approximately 30% reduction in false positives compared to industry-standard systems, enabling mission-critical real-time transaction analysis for financial institutions.\n• Pioneered novel approaches to imbalanced dataset handling, implementing advanced sampling techniques and custom loss functions that dramatically improved model robustness when detecting rare fraudulent transactions within massive legitimate transaction volumes.\n• Published as first author in prestigious international journal: Study of Machine Learning Algorithms for Credit Card Fraud Detection (IRJMETS Vol 4. 2022), contributing significant advancements to the field of financial security and algorithmic fraud detection.",
-      "technologies": ["Regression", "Random Forest", "Support Vector Machine", "Machine Learning", "Python"],
+      "technologies": ["Regression", "Random Forest", "Support Vector Machine", "Nearest Neighbour", "Machine Learning", "Python"],
       "isResearch": true,
       "paperLink": "https://www.irjmets.com/uploadedfiles/paper//issue_4_april_2022/21641/final/fin_irjmets1653463905.pdf",
       "showGithubLink": false,
@@ -32,7 +32,7 @@
       "presentButton": false
     },
     {
-      "id": 3,
+      "year": 2021,
       "title": "Advanced Stock Price Prediction System",
       "shortDescription": "Developed a stock price prediction system using time series regression, deep learning (LSTM), and Streamlit.",
       "fullDescription": "• Developed a stock price prediction system using time series regression and deep learning.\n• Engineered a real-time application with Streamlit for visualizations and forecasts.\n• Implemented FBProphet for time series forecasting.\n• Designed and implemented an LSTM network for enhanced prediction accuracy.",
@@ -47,11 +47,11 @@
       "presentButton": false
     },
     {
-      "id": 4,
+      "year": 2019,
       "title": "Smart Solid Waste Management and Composting System",
       "shortDescription": "Engineered an Arduino-based IoT prototype for automated organic waste composting.",
       "fullDescription": "• Engineered an Arduino-based waste management prototype with ESP32 microcontrollers.\n• Developed environmental control algorithms using sensor feeds.\n• Designed custom circuit architecture and power management systems.\n• Implemented data collection and analysis capabilities for system refinement.",
-      "technologies": ["IoT", "Arduino", "Hardware-based", "ESP32"],
+      "technologies": ["IoT", "C/C++", "MicroPython", "Arduino","Sensors", "Data Collection", "Hardware", "ESP32"],
       "githubLink": "https://github.com/tanujp99",
       "imageLight": "project-swm-light.png",
       "imageDark": "project-swm-dark.png",
@@ -61,7 +61,7 @@
       "presentButton": false
     },
     {
-      "id": 5,
+      "year": 2018,
       "title": "Aquarcade - Underwater Gaming Portal",
       "shortDescription": "Responsive web application for underwater-themed arcade gaming zone with dark mode, multi-language support, and billing system.",
       "fullDescription": "• Developed a responsive web application for IEEE & CSI SIES-GST INSPECT ELEMENT 1.0 competition with SubNautica theme.\n• Engineered a comprehensive gaming portal featuring game selection, player configuration, time slot booking, and dynamic cost calculation algorithms.\n• Implemented advanced UI/UX features including dark mode toggle and multi-language support (3+ languages) using vanilla JavaScript and CSS variables.\n• Designed and developed an automated billing and receipt generation system with real-time cost calculations based on game selection, player count, and time duration.\n• Built responsive design using Bootstrap framework ensuring cross-browser compatibility across Chrome, Firefox, and Safari.\n• Integrated search and filter functionality for enhanced user experience and game discovery.\n• Deployed on GitHub Pages with optimized performance and accessibility standards.",
@@ -77,7 +77,7 @@
       "presentContent": "https://tanujp99.github.io/aquarcade/"
     },
     {
-      "id": 6,
+      "year": 2019,
       "title": "Fuzzy Logic-Based Fingerprint Recognition System",
       "shortDescription": "Advanced biometric authentication system using Fuzzy C-Means clustering and statistical features for fingerprint segmentation and enhancement.",
       "fullDescription": "• Developed an innovative fingerprint recognition system integrating Fuzzy C-Means (FCM) clustering algorithm with statistical feature extraction for enhanced biometric authentication accuracy.\n• Engineered advanced fingerprint segmentation methodology using fuzzy logic principles, statistical features (mean, variance, third and fourth order moments), and sliding window techniques to isolate regions of interest and eliminate background noise.\n• Implemented sophisticated fingerprint enhancement algorithms utilizing frame difference techniques between original images and variance/mean fingerprint images, significantly improving minutiae detection accuracy.\n• Designed and optimized clustering algorithms that outperformed traditional K-means segmentation methods, demonstrating superior accuracy in fingerprint feature extraction and classification.\n• Conducted comprehensive research and development under Prof. Surekha Janrao's guidance, contributing to advancements in biometric security systems for commercial, government, and forensic applications.\n• Architected complete biometric pipeline including fingerprint acquisition, segmentation, enhancement, minutiae extraction, orientation estimation, classification, and matching algorithms.",
@@ -93,23 +93,7 @@
       "presentButton": false
     },
     {
-      "id": 7,
-      "title": "Railway e-Ticketing Management System",
-      "shortDescription": "Full-stack web-based railway reservation system with real-time booking, cancellation, and status tracking capabilities.",
-      "fullDescription": "• Developed a comprehensive web-based railway reservation system using PHP, MySQL, and responsive front-end technologies to streamline ticket booking processes and eliminate traditional queue-based systems.\n• Engineered robust database architecture using MySQL with normalized tables for trains, passengers, bookings, and seat availability, implementing efficient data retrieval and real-time status updates.\n• Implemented advanced booking algorithms handling seat allocation, waiting list management, automatic confirmation upon cancellations, and PNR generation with unique ticket ID systems.\n• Designed intuitive user interface with HTML, CSS, and Bootstrap framework, enabling seamless ticket booking, cancellation, status checking, and train information retrieval through any web browser.\n• Built comprehensive booking validation system checking train numbers, travel dates, seat availability, and passenger details (supporting up to 10 passengers per booking with Aadhar verification).\n• Integrated automatic notification system for booking confirmations, waiting list updates, and cancellation processing, with real-time database synchronization using XAMPP server environment.\n• Developed administrative features for train schedule management, seat allocation tracking, and passenger record maintenance with secure PHP-based database connectivity.",
-      "technologies": ["PHP", "MySQL", "HTML", "CSS", "JavaScript", "Bootstrap", "XAMPP"],
-      "isAcademic": true,
-      "githubLink": "https://github.com/tanujp99/Railway-eTicketing-System",
-      "showGithubLink": true,
-      "imageLight": "project-railway-light.png",
-      "imageDark": "project-railway-dark.png",
-      "imageAlt": "Railway e-Ticketing System",
-      "imageBgLight": "#fffbf5",
-      "imageBgDark": "#1c2025",
-      "presentButton": false
-    },
-    {
-      "id": 8,
+      "year": 2023,
       "title": "Bayesian Networks Inference Engine",
       "shortDescription": "Command-line probabilistic inference engine implementing Bayesian Networks with conditional probability calculations and evidence-based reasoning.",
       "fullDescription": "• Developed a comprehensive Bayesian Networks inference engine in Python implementing probabilistic reasoning and conditional probability calculations using enumeration algorithms.\n• Engineered sophisticated probability calculation system supporting both joint probability P(A∧B∧C∧D) and conditional probability P(Query|Evidence) computations with high precision (9 decimal places).\n• Implemented robust command-line interface supporting flexible query formats with evidence variables, enabling complex probabilistic queries like P(B=true, G=false | F=false).\n• Designed efficient data processing pipeline handling training data parsing, probability table generation, and dynamic variable enumeration for all possible variable combinations.\n• Built comprehensive inference by enumeration algorithm that systematically considers all variable states not explicitly specified in queries, ensuring accurate probabilistic calculations.\n• Architected modular codebase with specialized functions for numerical calculations (numcalc), probability enumeration, and conditional probability computation with error handling for edge cases.\n• Integrated advanced features including automatic probability normalization, zero-probability handling with epsilon correction, and precise floating-point arithmetic for reliable inference results.",
@@ -124,7 +108,7 @@
       "imageBgDark": "#1b1e26"
     },
     {
-      "id": 9,
+      "year": 2022,
       "title": "Minimum Spanning Tree Algorithms on Road Networks",
       "shortDescription": "Comprehensive analysis and implementation of Prim's and Kruskal's MST algorithms with real-world road network datasets and performance benchmarking.",
       "fullDescription": "• Implemented and benchmarked two fundamental graph algorithms - Prim's and Kruskal's algorithms for Minimum Spanning Tree construction using Python and NetworkX library.\n• Engineered comprehensive performance analysis framework utilizing real-world road network datasets ranging from 639 nodes (Maldives) to 898,430 nodes (Tokyo) to evaluate algorithmic efficiency across different graph densities.\n• Developed sophisticated data processing pipeline handling GraphML format datasets including Manhattan (4,426 nodes), New York (54,128 nodes), Los Angeles (297,333 nodes), and Tokyo road networks for realistic algorithm testing.\n• Designed automated benchmarking system using Python's built-in time functions to measure and compare execution times, generating detailed performance metrics and statistical analysis.\n• Created comprehensive visualization suite using Matplotlib to generate comparative graphs, original network visualizations, and MST output analysis for algorithmic performance evaluation.\n• Conducted extensive algorithmic analysis demonstrating Prim's algorithm superiority for dense graphs due to adjacent node traversal efficiency, while proving Kruskal's effectiveness for sparse graphs through optimized edge sorting.\n• Architected modular codebase with separate algorithm implementations (mst.py), main execution controller (main.py), and organized dataset management system with comprehensive documentation and results analysis.",
@@ -139,7 +123,7 @@
       "imageBgDark": "#1d232a"
     },
     {
-      "id": 10,
+      "year": 2023,
       "title": "Red-Blue Nim Game with Minimax AI",
       "shortDescription": "Interactive command-line game implementing Minimax algorithm with alpha-beta pruning for optimal strategy in two-pile marble game.",
       "fullDescription": "• Developed an intelligent game-playing system implementing the classic Red-Blue Nim variant with sophisticated AI opponent using Minimax algorithm and custom evaluation heuristics.\n• Engineered advanced Minimax algorithm with configurable search depth and complete game tree generation, enabling optimal move selection through recursive state space exploration and strategic lookahead.\n• Designed comprehensive evaluation function incorporating weighted scoring system (red marbles: 2 points, blue marbles: 3 points) with game-state analysis and winning condition prioritization for strategic gameplay.\n• Implemented flexible command-line interface supporting human vs computer gameplay with customizable starting conditions, pile sizes, first player selection, and adjustable AI difficulty through depth limiting.\n• Architected robust game state management system handling turn-based mechanics, move validation, win/loss detection, and real-time score calculation with clear terminal-based user interaction.\n• Built intelligent evaluation heuristics that strategically balance immediate scoring opportunities with long-term winning potential, incorporating pile size optimization and endgame acceleration strategies.\n• Created comprehensive game logic handling edge cases, invalid moves, and optimal termination conditions while maintaining clean separation between game rules, AI strategy, and user interface components.",
@@ -152,6 +136,22 @@
       "imageAlt": "Red-Blue Nim Game AI",
       "imageBgLight": "#fdfcf5",
       "imageBgDark": "#161c21"
+    },
+    {
+      "year": 2020,
+      "title": "Railway e-Ticketing Management System",
+      "shortDescription": "Full-stack web-based railway reservation system with real-time booking, cancellation, and status tracking capabilities.",
+      "fullDescription": "• Developed a comprehensive web-based railway reservation system using PHP, MySQL, and responsive front-end technologies to streamline ticket booking processes and eliminate traditional queue-based systems.\n• Engineered robust database architecture using MySQL with normalized tables for trains, passengers, bookings, and seat availability, implementing efficient data retrieval and real-time status updates.\n• Implemented advanced booking algorithms handling seat allocation, waiting list management, automatic confirmation upon cancellations, and PNR generation with unique ticket ID systems.\n• Designed intuitive user interface with HTML, CSS, and Bootstrap framework, enabling seamless ticket booking, cancellation, status checking, and train information retrieval through any web browser.\n• Built comprehensive booking validation system checking train numbers, travel dates, seat availability, and passenger details (supporting up to 10 passengers per booking with Aadhar verification).\n• Integrated automatic notification system for booking confirmations, waiting list updates, and cancellation processing, with real-time database synchronization using XAMPP server environment.\n• Developed administrative features for train schedule management, seat allocation tracking, and passenger record maintenance with secure PHP-based database connectivity.",
+      "technologies": ["PHP", "MySQL", "HTML", "CSS", "JavaScript", "Bootstrap", "XAMPP"],
+      "isAcademic": true,
+      "githubLink": "https://github.com/tanujp99/Railway-eTicketing-System",
+      "showGithubLink": true,
+      "imageLight": "project-railway-light.png",
+      "imageDark": "project-railway-dark.png",
+      "imageAlt": "Railway e-Ticketing System",
+      "imageBgLight": "#fffbf5",
+      "imageBgDark": "#1c2025",
+      "presentButton": false
     }
   ]
 }
