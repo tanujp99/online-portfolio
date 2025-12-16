@@ -43,7 +43,7 @@ function renderDescription(description: string) {
     return (
       <ul className="list-disc pl-6 marker:text-light-accent dark:marker:text-dark-accent text-neutral-800 dark:text-gray-300">
         {lines.map((line, idx) => (
-          <li key={idx}>{line.replace(/^•\s*/, '')}</li>
+          <li key={idx} dangerouslySetInnerHTML={{ __html: line.replace(/^•\s*/, '') }} />
         ))}
       </ul>
     );
@@ -52,10 +52,10 @@ function renderDescription(description: string) {
     return lines.map((line, idx) =>
       line.trim().startsWith('•') ? (
         <ul key={idx} className="list-disc pl-6 marker:text-light-accent dark:marker:text-dark-accent text-neutral-800 dark:text-gray-300">
-          <li>{line.replace(/^•\s*/, '')}</li>
+          <li dangerouslySetInnerHTML={{ __html: line.replace(/^•\s*/, '') }} />
         </ul>
       ) : (
-        <p key={idx} className="text-neutral-800 dark:text-gray-300">{line}</p>
+        <p key={idx} className="text-neutral-800 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: line }} />
       )
     );
   }
@@ -196,7 +196,7 @@ export default function Projects() {
                               href={project.presentContent}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="px-2 sm:px-3 py-0.5 sm:py-1 bg-light-accent/20 dark:bg-dark-accent/20 text-light-accent dark:text-dark-accent rounded-md text-xs sm:text-sm hover:bg-light-accent hover:text-[var(--card-bg)] dark:hover:bg-dark-accent dark:hover:text-[var(--card-bg)] transition-colors"
+                              className="px-2 sm:px-3 py-0.5 sm:py-1 bg-light-accent dark:bg-dark-accent text-[var(--card-bg)] rounded-full hover:bg-light-accent/90 dark:hover:bg-dark-accent/90 transition-colors text-xs sm:text-sm"
                               onClick={(e) => e.stopPropagation()}
                             >
                               {project.presentButton}

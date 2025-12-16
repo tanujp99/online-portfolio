@@ -47,6 +47,22 @@
       "presentButton": false
     },
     {
+      "year": 2025,
+      "title": "Conway's Game of Life in Go and HTMX",
+      "shortDescription": "Interactive cellular automaton simulation built with Go backend and HTMX frontend, featuring custom router implementation and real-time grid manipulation.",
+      "fullDescription": "•Why Go and HTMX? Because a famous Netflix employee once said: <a href=\"https://youtu.be/YI9vYH80DZo?t=1439\" target=\"_blank\" class=\"text-light-accent dark:text-dark-accent underline decoration-light-accent dark:decoration-dark-accent\">[link]</a>\n• Developed interactive Conway's Game of Life cellular automaton simulation using Go backend and HTMX frontend without JavaScript frameworks.\n• Engineered custom HTTP router from scratch with zero external dependencies for efficient request handling and static file serving.\n• Implemented real-time cellular evolution engine with optimized memory management and pre-allocated grid buffers for smooth 50x30 grid simulations.\n• Built comprehensive game controls including manual cell toggling, automatic stepping, random patterns, and grid clearing with HTMX partial updates.\n• Deployed production-ready application on Railway platform with template caching and environment-based configuration.",
+      "technologies": ["Go", "HTMX", "Cellular Automata"],
+      "githubLink": "https://github.com/tanujp99/GameOfLife",
+      "imageLight": "project-conway-light.png",
+      "imageDark": "project-conway-dark.png",
+      "imageAlt": "Stock Price Prediction",
+      "imageBgLight": "#fcfaf6",
+      "imageBgDark": "#11181a",
+      "showGithubLink": true,
+      "presentButton": "Visit App",
+      "presentContent": "https://gameoflife.tanujp.com"
+    },
+    {
       "year": 2019,
       "title": "Smart Solid Waste Management and Composting System",
       "shortDescription": "Engineered an Arduino-based IoT prototype for automated organic waste composting.",
@@ -59,22 +75,6 @@
       "imageBgLight": "#f8f8f5",
       "imageBgDark": "#0d151c",
       "presentButton": false
-    },
-    {
-      "year": 2018,
-      "title": "Aquarcade - Underwater Gaming Portal",
-      "shortDescription": "Responsive web application for underwater-themed arcade gaming zone with dark mode, multi-language support, and billing system.",
-      "fullDescription": "• Developed a responsive web application for IEEE & CSI SIES-GST INSPECT ELEMENT 1.0 competition with SubNautica theme.\n• Engineered a comprehensive gaming portal featuring game selection, player configuration, time slot booking, and dynamic cost calculation algorithms.\n• Implemented advanced UI/UX features including dark mode toggle and multi-language support (3+ languages) using vanilla JavaScript and CSS variables.\n• Designed and developed an automated billing and receipt generation system with real-time cost calculations based on game selection, player count, and time duration.\n• Built responsive design using Bootstrap framework ensuring cross-browser compatibility across Chrome, Firefox, and Safari.\n• Integrated search and filter functionality for enhanced user experience and game discovery.\n• Deployed on GitHub Pages with optimized performance and accessibility standards.",
-      "technologies": ["HTML", "CSS", "JavaScript", "Bootstrap", "jQuery", "GitHub Pages"],
-      "githubLink": "https://github.com/tanujp99/aquarcade",
-      "showGithubLink": true,
-      "imageLight": "project-aquarcade-light.png",
-      "imageDark": "project-aquarcade-dark.png",
-      "imageAlt": "Aquarcade Gaming Portal",
-      "imageBgLight": "#fffefa",
-      "imageBgDark": "#222730",
-      "presentButton": "View Deployment",
-      "presentContent": "https://tanujp99.github.io/aquarcade/"
     },
     {
       "year": 2019,
@@ -136,6 +136,22 @@
       "imageAlt": "Red-Blue Nim Game AI",
       "imageBgLight": "#fdfcf5",
       "imageBgDark": "#161c21"
+    },
+    {
+      "year": 2018,
+      "title": "Aquarcade - Underwater Gaming Portal",
+      "shortDescription": "Responsive web application for underwater-themed arcade gaming zone with dark mode, multi-language support, and billing system.",
+      "fullDescription": "• Developed a responsive web application for IEEE & CSI SIES-GST INSPECT ELEMENT 1.0 competition with SubNautica theme.\n• Engineered a comprehensive gaming portal featuring game selection, player configuration, time slot booking, and dynamic cost calculation algorithms.\n• Implemented advanced UI/UX features including dark mode toggle and multi-language support (3+ languages) using vanilla JavaScript and CSS variables.\n• Designed and developed an automated billing and receipt generation system with real-time cost calculations based on game selection, player count, and time duration.\n• Built responsive design using Bootstrap framework ensuring cross-browser compatibility across Chrome, Firefox, and Safari.\n• Integrated search and filter functionality for enhanced user experience and game discovery.\n• Deployed on GitHub Pages with optimized performance and accessibility standards.",
+      "technologies": ["HTML", "CSS", "JavaScript", "Bootstrap", "jQuery", "GitHub Pages"],
+      "githubLink": "https://github.com/tanujp99/aquarcade",
+      "showGithubLink": true,
+      "imageLight": "project-aquarcade-light.png",
+      "imageDark": "project-aquarcade-dark.png",
+      "imageAlt": "Aquarcade Gaming Portal",
+      "imageBgLight": "#fffefa",
+      "imageBgDark": "#222730",
+      "presentButton": "Launch Portal",
+      "presentContent": "https://tanujp99.github.io/aquarcade/"
     },
     {
       "year": 2020,
