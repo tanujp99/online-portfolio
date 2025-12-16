@@ -548,8 +548,8 @@ export default function Profile() {
                   <img
                     src={
                       theme=== 'light' 
-                        ? "https://github-profile-trophy.vercel.app/?username=tanujp99&rank=SECRET,SSS,SS,S,AAA,AA&theme=false&column=3&margin-w=32&margin-h=15&no-bg=true" 
-                        : "https://github-profile-trophy.vercel.app/?username=tanujp99&rank=SECRET,SSS,SS,S,AAA,AA&theme=apprentice&column=3&margin-w=32&margin-h=15&no-bg=false&no-frame=true"
+                        ? "https://github-profile-trophy-e8lb63f54-ryo-ma-s-team.vercel.app/?username=tanujp99&rank=SECRET,SSS,SS,S,AAA,AA&theme=false&column=3&margin-w=32&margin-h=15&no-bg=true" 
+                        : "https://github-profile-trophy-e8lb63f54-ryo-ma-s-team.vercel.app/?username=tanujp99&rank=SECRET,SSS,SS,S,AAA,AA&theme=apprentice&column=3&margin-w=32&margin-h=15&no-bg=false&no-frame=true"
                     }
                     alt="GitHub Profile Trophy"
                     className="w-full max-w-[450px]"
