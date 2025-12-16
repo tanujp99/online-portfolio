@@ -561,7 +561,7 @@ export default function Profile() {
                   <img
                     src={
                       theme === 'light'
-                        ? 'https://github-readme-activity-graph.vercel.app/graph?username=tanujp99&bg_color=FAFAFA&color=212121&title_color=212121&line=a3cfb4&point=c30b4e&area_color=E3F2FD'
+                        ? 'https://github-readme-activity-graph.vercel.app/graph?username=tanujp99&bg_color=eef0f2&color=212121&title_color=212121&line=a3cfb4&point=c30b4e&area_color=E3F2FD'
                         : 'https://github-readme-activity-graph.vercel.app/graph?username=tanujp99&theme=material'
                     }
                     alt="Activity Graph"
