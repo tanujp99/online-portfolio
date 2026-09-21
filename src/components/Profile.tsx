@@ -294,7 +294,7 @@ export default function Profile() {
             <div className="backdrop-blur-md rounded-2xl p-4 sm:p-6 shadow-panel">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 text-center">
                 {buildStats(profile.public_repos).map((stat) => (
-                  <div key={stat.label} className="p-3 rounded-xl bg-black/[0.04] dark:bg-white/[0.05]">
+                  <div key={stat.label} className="p-3 rounded-xl bg-light-accent/5 dark:bg-dark-accent/5">
                     <div className="text-2xl sm:text-3xl text-hero text-light-accent dark:text-dark-accent">
                       <CountUp value={stat.value} suffix={stat.suffix} />
                     </div>
