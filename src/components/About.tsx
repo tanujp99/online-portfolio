@@ -2,6 +2,24 @@
 
 import aboutData from '@/data/about.json';
 import Reveal from './Reveal';
+import { useId } from 'react';
+import type { IconType } from 'react-icons';
+
+// A filled circle in the icon's colour with the icon cut out of it, so whatever is behind shows through
+function CutoutIcon({ icon: Icon, className = '' }: { icon: IconType; className?: string }) {
+  const maskId = useId();
+  return (
+    <svg viewBox="0 0 24 24" className={`w-7 h-7 shrink-0 ${className}`} aria-hidden>
+      <defs>
+        <mask id={maskId}>
+          <rect width="24" height="24" fill="white" />
+          <Icon x={6.5} y={6.5} size={11} color="black" />
+        </mask>
+      </defs>
+      <circle cx="12" cy="12" r="12" fill="currentColor" mask={`url(#${maskId})`} />
+    </svg>
+  );
+}
 import { FaEnvelope, FaLinkedin, FaGithub, FaMapMarkerAlt, FaPhoneAlt } from 'react-icons/fa';
 
 const aboutInfo = aboutData;
@@ -23,15 +41,15 @@ export default function About() {
               <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-light-accent dark:text-dark-accent">Get in Touch</h3>
               <div className="detail-box space-y-2 sm:space-y-3">
                 <p className="flex items-center text-sm sm:text-base text-[var(--foreground)]">
-                  <FaMapMarkerAlt className="mr-2 shrink-0 text-[#F44336] dark:text-[#E57373]" aria-hidden />
+                  <CutoutIcon icon={FaMapMarkerAlt} className="mr-2 text-[#F44336] dark:text-[#E57373]" />
                   {aboutInfo.location}
                 </p>
                 <p className="flex items-center text-sm sm:text-base text-[var(--foreground)]">
-                  <FaPhoneAlt className="mr-2 shrink-0 text-[#4CAF50] dark:text-[#81C784]" aria-hidden />
+                  <CutoutIcon icon={FaPhoneAlt} className="mr-2 text-[#4CAF50] dark:text-[#81C784]" />
                   {aboutInfo.phone}
                 </p>
                 <p className="flex items-center text-sm sm:text-base text-[var(--foreground)]">
-                  <FaEnvelope className="mr-2 shrink-0 text-[#2196F3] dark:text-[#64B5F6]" aria-hidden />
+                  <CutoutIcon icon={FaEnvelope} className="mr-2 text-[#2196F3] dark:text-[#64B5F6]" />
                   {aboutInfo.email}
                 </p>
               </div>
