@@ -506,3 +506,20 @@ html.dark .flip-card:focus-visible .flip-card-face {
     transition: none;
   }
 }
+
+/* Quick fade for content that swaps in place */
+.fade-in {
+  animation: fade-in 0.3s ease;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in {
+    animation: none;
+  }
+}

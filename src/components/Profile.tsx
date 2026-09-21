@@ -383,31 +383,32 @@ export default function Profile() {
                           </a>
                         </div>
 
-                        {/* Pull quote */}
-                        {testimonial.pullQuote && (
-                          <blockquote className="relative pl-7 mb-2">
-                            <FaQuoteLeft className="absolute left-0 top-1 w-4 h-4 text-light-accent/50 dark:text-dark-accent/50" />
-                            <p className="text-base sm:text-lg font-medium leading-snug text-neutral-900 dark:text-white">
-                              {testimonial.pullQuote}
+                        {/* Pull quote, swapped for the whole recommendation when opened */}
+                        <blockquote key={isExpanded ? 'full' : 'quote'} className="relative pl-7 fade-in">
+                          <FaQuoteLeft className="absolute left-0 top-1 w-4 h-4 text-light-accent/50 dark:text-dark-accent/50" />
+                          {isExpanded || !testimonial.pullQuote ? (
+                            <p className={`${canExpand ? 'pr-10' : ''} text-sm sm:text-base text-neutral-700 dark:text-gray-300 leading-relaxed whitespace-pre-line`}>
+                              {testimonial.recommendation}
                             </p>
-                          </blockquote>
-                        )}
-
-                        {/* Full recommendation: two faded lines until opened */}
-                        <p
-                          className={`pl-7 ${canExpand ? 'pr-10' : ''} text-sm text-neutral-700 dark:text-gray-300 leading-relaxed whitespace-pre-line overflow-hidden transition-[max-height] duration-500 ease-in-out`}
-                          style={
-                            canExpand && !isExpanded
-                              ? {
+                          ) : (
+                            <>
+                              <p className="text-base sm:text-lg font-medium leading-snug text-neutral-900 dark:text-white mb-2">
+                                {testimonial.pullQuote}
+                              </p>
+                              {/* A taste of the full text, fading out, so it's clear there's more */}
+                              <p
+                                className="pr-10 text-sm text-neutral-700 dark:text-gray-300 leading-relaxed overflow-hidden"
+                                style={{
                                   maxHeight: '3.25em',
                                   maskImage: 'linear-gradient(to bottom, black 20%, transparent)',
                                   WebkitMaskImage: 'linear-gradient(to bottom, black 20%, transparent)',
-                                }
-                              : { maxHeight: '60rem' }
-                          }
-                        >
-                          {testimonial.recommendation}
-                        </p>
+                                }}
+                              >
+                                {testimonial.recommendation}
+                              </p>
+                            </>
+                          )}
+                        </blockquote>
 
                         {canExpand && (
                           <button
