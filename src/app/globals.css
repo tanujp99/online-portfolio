@@ -71,6 +71,13 @@
 
 @tailwind base;
 @tailwind components;
+
+@layer components {
+  /* Flat neutral box around details: experience, project and leadership backs, awards, about */
+  .detail-box {
+    @apply rounded-xl bg-black/[0.04] dark:bg-white/[0.05] p-3 sm:p-4;
+  }
+}
 @tailwind utilities;
 
 /* Bricolage Grotesque Variable Font Utility Classes */

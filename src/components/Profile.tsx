@@ -606,10 +606,10 @@ export default function Profile() {
                     <p className="text-neutral-700 dark:text-gray-300 mb-2">{repo.description}</p>
                     <div className="flex gap-4 text-sm text-neutral-600 dark:text-gray-400">
                       {repo.stars !== undefined && (
-                        <span>★ {repo.stars}</span>
+                        <span className="inline-flex items-center gap-1"><FaStar className="text-[#FFC107] dark:text-[#FFD54F]" aria-hidden /> {repo.stars}</span>
                       )}
                       {repo.forks !== undefined && (
-                        <span>🍴 {repo.forks}</span>
+                        <span className="inline-flex items-center gap-1"><FaCodeBranch className="text-[#009688] dark:text-[#4DB6AC]" aria-hidden /> {repo.forks}</span>
                       )}
                     </div>
                   </a>

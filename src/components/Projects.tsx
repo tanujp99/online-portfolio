@@ -7,6 +7,7 @@ import { AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useTheme } from '../context/ThemeContext';
 import FlipCard from './FlipCard';
+import { FaGraduationCap } from 'react-icons/fa';
 import Reveal from './Reveal';
 
 interface Project {
@@ -92,7 +93,7 @@ export default function Projects() {
                       {project.isResearch ? (
                         <div className="mb-4 p-3 bg-gradient-to-r from-light-accent/10 to-light-accent/5 dark:from-dark-accent/10 dark:to-dark-accent/5 rounded-lg border border-light-accent/20 dark:border-dark-accent/20">
                           <div className="flex items-center gap-2 mb-2">
-                            <span className="text-lg">🎓</span>
+                            <FaGraduationCap className="w-5 h-5 text-[#3F51B5] dark:text-[#7986CB]" aria-hidden />
                             <span className="text-sm font-semibold text-light-accent dark:text-dark-accent">Published Research</span>
                           </div>
                           <p className="text-xs text-neutral-600 dark:text-gray-400 mb-2">
@@ -209,7 +210,7 @@ export default function Projects() {
                   back={
                     <>
                       <h3 className="text-lg sm:text-xl font-semibold mb-2 text-neutral-900 dark:text-white">{project.title}</h3>
-                      <div className="text-sm sm:text-base text-neutral-700 dark:text-gray-300 mb-4 space-y-1">
+                      <div className="detail-box py-2 pl-0 pr-2 sm:py-2 sm:pl-0 sm:pr-2 text-sm text-neutral-700 dark:text-gray-300 mb-3 space-y-1">
                         {renderDescription(project.fullDescription)}
                       </div>
                       <div className="mt-auto pr-8 flex flex-wrap gap-2">

@@ -2,7 +2,7 @@
 
 import aboutData from '@/data/about.json';
 import Reveal from './Reveal';
-import { FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa';
+import { FaEnvelope, FaLinkedin, FaGithub, FaMapMarkerAlt, FaPhoneAlt } from 'react-icons/fa';
 
 const aboutInfo = aboutData;
 
@@ -21,17 +21,17 @@ export default function About() {
           >
             <div>
               <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-light-accent dark:text-dark-accent">Get in Touch</h3>
-              <div className="space-y-2 sm:space-y-3">
+              <div className="detail-box space-y-2 sm:space-y-3">
                 <p className="flex items-center text-sm sm:text-base text-[var(--foreground)]">
-                  <span className="mr-2">📍</span>
+                  <FaMapMarkerAlt className="mr-2 shrink-0 text-[#F44336] dark:text-[#E57373]" aria-hidden />
                   {aboutInfo.location}
                 </p>
                 <p className="flex items-center text-sm sm:text-base text-[var(--foreground)]">
-                  <span className="mr-2">📱</span>
+                  <FaPhoneAlt className="mr-2 shrink-0 text-[#4CAF50] dark:text-[#81C784]" aria-hidden />
                   {aboutInfo.phone}
                 </p>
                 <p className="flex items-center text-sm sm:text-base text-[var(--foreground)]">
-                  <span className="mr-2">✉️</span>
+                  <FaEnvelope className="mr-2 shrink-0 text-[#2196F3] dark:text-[#64B5F6]" aria-hidden />
                   {aboutInfo.email}
                 </p>
               </div>
@@ -63,7 +63,7 @@ export default function About() {
                 ))}
               </div> */}
               {/* Social Links */}
-              <div className="flex flex-wrap justify-center gap-2 mb-4">
+              <div className="detail-box flex flex-wrap justify-center gap-2">
                 {aboutInfo.social.map((social) => (
                   <a
                     key={social.name}
@@ -89,7 +89,7 @@ export default function About() {
             className="bg-[var(--card-bg)] backdrop-blur-md rounded-xl p-5 sm:p-6 shadow-panel"
           >
             <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-light-accent dark:text-dark-accent">This website is built with</h3>
-            <div className="space-y-4">
+            <div className="detail-box space-y-4">
                 {/* Languages */}
                 <div>
                   <div className="text-[var(--foreground)] mb-3 text-sm sm:text-base">Languages</div>

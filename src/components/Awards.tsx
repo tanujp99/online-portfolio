@@ -61,7 +61,7 @@ export default function Awards() {
               <div className="space-y-1.5 sm:space-y-2">
                 <p className="text-sm sm:text-base text-neutral-700 dark:text-gray-300 font-medium">{award.organization}</p>
                 <p className="text-xs sm:text-sm text-neutral-500 dark:text-gray-400">{award.date}</p>
-                <p className="text-sm sm:text-base text-neutral-700 dark:text-gray-300 mt-3 sm:mt-4">{award.description}</p>
+                <p className="detail-box text-sm sm:text-base text-neutral-700 dark:text-gray-300 mt-3 sm:mt-4">{award.description}</p>
               </div>
             </Reveal>
           ))}
@@ -97,7 +97,7 @@ export default function Awards() {
                   back={
                     <>
                       <h4 className="text-base font-semibold text-neutral-900 dark:text-white mb-2">{role.title}</h4>
-                      <ul className="list-disc pl-5 space-y-1 text-sm text-neutral-700 dark:text-gray-300 marker:text-light-accent dark:marker:text-dark-accent">
+                      <ul className="detail-box py-2 pr-2 pl-6 sm:py-2 sm:pr-2 sm:pl-6 list-disc space-y-1 text-sm text-neutral-700 dark:text-gray-300 marker:text-light-accent dark:marker:text-dark-accent">
                         {role.details.map((detail) => (
                           <li key={detail}>{detail}</li>
                         ))}
