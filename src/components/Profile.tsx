@@ -280,7 +280,7 @@ export default function Profile() {
                       </div>
                       <div className="flex flex-wrap gap-2">
                         {group.skills.map((skill) => (
-                          <span key={skill} className="skill-chip inline-flex items-center px-3 py-1 rounded-full bg-[var(--button-bg)] text-[var(--foreground)] border border-[var(--border-color)] font-medium text-xs sm:text-sm shadow-sm">
+                          <span key={skill} className="inline-flex items-center px-3 py-1 rounded-full bg-[var(--button-bg)] text-[var(--foreground)] border border-[var(--border-color)] font-medium text-xs sm:text-sm shadow-sm">
                             {skill}
                           </span>
                         ))}
