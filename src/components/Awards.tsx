@@ -2,14 +2,35 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaTrophy, FaMedal, FaAward } from 'react-icons/fa';
+import { FaTrophy, FaMedal, FaAward, FaCode, FaCoins, FaGlobe } from 'react-icons/fa';
 import awardsData from '@/data/awards.json';
+import FlipCard from './FlipCard';
 
 const iconMap = {
   'Distinguished Delegate': FaTrophy,
   'Most Innovative Prototype': FaMedal,
   'National Top-12 Semi-Finalist': FaAward,
 };
+
+const leadershipIcons = {
+  code: FaCode,
+  treasurer: FaCoins,
+  web: FaGlobe,
+};
+
+interface LeadershipRole {
+  id: number;
+  title: string;
+  organization: string;
+  date: string;
+  icon: string;
+  summary: string;
+  details: string[];
+  link?: string;
+  linkLabel?: string;
+}
+
+const leadership: LeadershipRole[] = awardsData.leadership;
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -78,6 +99,71 @@ export default function Awards() {
             </motion.div>
           ))}
         </motion.div>
+
+        <motion.h3
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="text-xl sm:text-2xl text-heading text-center mt-12 sm:mt-16 mb-6 sm:mb-8 text-neutral-900 dark:text-white"
+        >
+          Leadership
+        </motion.h3>
+
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(220px,100%),1fr))] gap-6">
+          {leadership.map((role, index) => {
+            const Icon = leadershipIcons[role.icon as keyof typeof leadershipIcons];
+            return (
+              <motion.div
+                key={role.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="h-full min-h-[180px]"
+              >
+                <FlipCard
+                  label={`${role.title}, ${role.organization}`}
+                  padding="p-4"
+                  front={
+                    <div className="pb-5">
+                      {Icon && (
+                        <div className="w-6 h-6 text-light-accent dark:text-dark-accent mb-3">
+                          <Icon className="w-full h-full" />
+                        </div>
+                      )}
+                      <h4 className="text-base sm:text-lg font-semibold text-neutral-900 dark:text-white">{role.title}</h4>
+                      <p className="text-sm text-neutral-700 dark:text-gray-300 font-medium">{role.organization}</p>
+                      <p className="text-xs text-neutral-500 dark:text-gray-400 mt-1">{role.date}</p>
+                      <p className="text-sm text-neutral-700 dark:text-gray-300 mt-3">{role.summary}</p>
+                    </div>
+                  }
+                  back={
+                    <>
+                      <h4 className="text-base font-semibold text-neutral-900 dark:text-white mb-2">{role.title}</h4>
+                      <ul className="list-disc pl-5 space-y-1 text-sm text-neutral-700 dark:text-gray-300 marker:text-light-accent dark:marker:text-dark-accent">
+                        {role.details.map((detail) => (
+                          <li key={detail}>{detail}</li>
+                        ))}
+                      </ul>
+                      {role.link && (
+                        <a
+                          href={role.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-auto pt-3 pr-8 text-sm text-light-accent dark:text-dark-accent hover:underline"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          {role.linkLabel ?? 'Learn more →'}
+                        </a>
+                      )}
+                    </>
+                  }
+                />
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

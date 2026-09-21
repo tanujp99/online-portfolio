@@ -24,5 +24,44 @@
       "date": "September 2019",
       "description": "Selected as a Top-12 Semi-Finalist at the national AICTE Vishwakarma Awards for developing an Arduino- and IoT-based smart solid waste management and composting system. The project featured sensor-driven motorized composting, environmental monitoring, and segregation algorithms that improved composting efficiency by 40%, showcasing innovation in sustainable technology solutions."
     }
+  ],
+  "leadership": [
+    {
+      "id": 1,
+      "title": "Contest Host",
+      "organization": "CSI-TEC: Clash of Codes",
+      "date": "2021",
+      "icon": "code",
+      "summary": "Hosted the chapter's first competitive programming contest.",
+      "details": [
+        "Ran a 3-hour, 5-problem HackerRank contest for CSI Terna.",
+        "₹3,500 prize pool; reopened to the public in 2024."
+      ],
+      "link": "https://www.hackerrank.com/clash-of-codes-21",
+      "linkLabel": "View the contest →"
+    },
+    {
+      "id": 2,
+      "title": "Treasurer",
+      "organization": "Computer Society of India, Terna Chapter",
+      "date": "2020 - 2021",
+      "icon": "treasurer",
+      "summary": "Managed the student chapter's finances.",
+      "details": [
+        "Managed the chapter's budget and event spending.",
+        "Helped fund and run chapter events, including Clash of Codes."
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Webmaster",
+      "organization": "IEEE Terna Student Branch",
+      "date": "2019 - 2020",
+      "icon": "web",
+      "summary": "Ran the student branch's website.",
+      "details": [
+        "Maintained the branch website and kept events and announcements up to date."
+      ]
+    }
   ]
-} 
+}
