@@ -524,19 +524,29 @@ html.dark .flip-card:focus-visible .flip-card-face {
   }
 }
 
-/* One gentle bob when a card first scrolls in, to say "this opens" without words */
+/* A gentle bob every few seconds once on screen, to say "this opens" without words.
+   Stops for good (.nudge-stop) as soon as the visitor opens any one of them. */
 .nudge-once.nudge-now {
-  animation: nudge 0.9s ease-in-out 0.3s 1;
+  animation: nudge 6s ease-in-out 0.3s infinite;
+}
+
+.nudge-once.nudge-stop {
+  animation: none;
 }
 
 @keyframes nudge {
-  30% {
-    transform: translateY(4px);
-  }
-  55% {
+  0%,
+  15%,
+  100% {
     transform: translateY(0);
   }
-  75% {
+  5% {
+    transform: translateY(4px);
+  }
+  9% {
+    transform: translateY(0);
+  }
+  12% {
     transform: translateY(2px);
   }
 }

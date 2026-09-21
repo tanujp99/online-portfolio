@@ -126,7 +126,8 @@ const skillIcons = {
   shield: FaShieldAlt,
 };
 
-// Bobs an element once (see .nudge-once in globals.css), the first time it is fully on screen
+// Starts the expand-arrow nudge (see .nudge-once in globals.css) once the arrow is fully on screen
+const NUDGES_DONE_KEY = 'testimonials-opened';
 let nudgeObserver: IntersectionObserver | null = null;
 
 function nudgeWhenSeen(el: HTMLElement | null) {
@@ -157,6 +158,21 @@ export default function Profile() {
   const [calendarLoading, setCalendarLoading] = useState(true);
   const testimonials: Testimonial[] = testimonialsData.testimonials;
   const [expandedTestimonial, setExpandedTestimonial] = useState<number | null>(null);
+  // The arrows keep nudging until the visitor opens any testimonial, remembered across visits
+  const [nudgesDone, setNudgesDone] = useState(false);
+
+  useEffect(() => {
+    try {
+      if (localStorage.getItem(NUDGES_DONE_KEY)) setNudgesDone(true);
+    } catch {}
+  }, []);
+
+  const stopNudges = () => {
+    setNudgesDone(true);
+    try {
+      localStorage.setItem(NUDGES_DONE_KEY, '1');
+    } catch {}
+  };
 
   const currentYear = new Date().getFullYear();
   const availableYears = Array.from({ length: 7 }, (_, i) => currentYear - i);
@@ -330,7 +346,10 @@ export default function Profile() {
                 {testimonials.map((testimonial) => {
                   const isExpanded = expandedTestimonial === testimonial.id;
                   const canExpand = testimonial.recommendation.length > 150;
-                  const toggle = () => setExpandedTestimonial(isExpanded ? null : testimonial.id);
+                  const toggle = () => {
+                    stopNudges();
+                    setExpandedTestimonial(isExpanded ? null : testimonial.id);
+                  };
                   return (
                     <Reveal key={testimonial.id}>
                       <div
@@ -425,7 +444,7 @@ export default function Profile() {
                               e.stopPropagation();
                               toggle();
                             }}
-                            className="nudge-once absolute bottom-3 right-3 w-8 h-8 rounded-full bg-light-accent/10 dark:bg-dark-accent/15 text-light-accent dark:text-dark-accent flex items-center justify-center hover:bg-light-accent/20 dark:hover:bg-dark-accent/25 transition-colors"
+                            className={`nudge-once ${nudgesDone ? 'nudge-stop' : ''} absolute bottom-3 right-3 w-8 h-8 rounded-full bg-light-accent/10 dark:bg-dark-accent/15 text-light-accent dark:text-dark-accent flex items-center justify-center hover:bg-light-accent/20 dark:hover:bg-dark-accent/25 transition-colors`}
                           >
                             <svg
                               viewBox="0 0 20 20"
