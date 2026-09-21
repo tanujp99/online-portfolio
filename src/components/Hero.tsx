@@ -1,31 +1,28 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import aboutData from '@/data/about.json';
+import ScrambleName from './ScrambleName';
+
+// The name scrambles into place letter by letter (see ScrambleName)
+const FIRST_NAME = 'Tanuj';
+const LAST_NAME = 'Palaspagar';
 
 export default function Hero() {
   return (
     <section id="home" className="w-full min-h-screen flex items-center justify-center bg-transparent py-4 sm:py-12 md:py-16">
       <div className="w-full max-w-2xl flex flex-col items-start justify-center gap-2 sm:gap-4 px-4 sm:px-6 md:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="w-full"
-        >
-          <span className="text-light-accent dark:text-dark-accent text-base sm:text-lg md:text-xl font-semibold mb-1 sm:mb-2">Hey there, I'm-</span>
-          <h1 className="flex flex-row sm:flex-col gap-x-2 sm:gap-x-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-hero text-neutral-900 dark:text-white leading-tight mb-1 sm:mb-2">
-            <span>Tanuj</span>
-            <span>
-              Palaspagar<span className="text-light-accent dark:text-dark-accent">.</span>
-            </span>
+        {/* Each line rises in turn (.hero-in, --i sets the order); see globals.css */}
+        <div className="w-full">
+          <span style={{ '--i': 0 } as React.CSSProperties} className="hero-in inline-block text-light-accent dark:text-dark-accent text-base sm:text-lg md:text-xl font-semibold mb-1 sm:mb-2">Hey there, I'm-</span>
+          <h1 aria-label={`${FIRST_NAME} ${LAST_NAME}.`} className="flex flex-row sm:flex-col gap-x-2 sm:gap-x-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-hero text-neutral-900 dark:text-white leading-tight mb-1 sm:mb-2">
+            <ScrambleName firstName={FIRST_NAME} lastName={LAST_NAME} />
           </h1>
-          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-heading text-neutral-900 dark:text-white mb-2 sm:mb-3">Software Developer Engineer.</h2>
-          <p className="hidden sm:block text-sm sm:text-base md:text-lg lg:text-xl text-neutral-700 dark:text-gray-400 font-medium mb-4">
+          <h2 style={{ '--i': 2 } as React.CSSProperties} className="hero-in text-lg sm:text-xl md:text-2xl lg:text-3xl text-heading text-neutral-900 dark:text-white mb-2 sm:mb-3">Software Developer Engineer.</h2>
+          <p style={{ '--i': 3 } as React.CSSProperties} className="hero-in hidden sm:block text-sm sm:text-base md:text-lg lg:text-xl text-neutral-700 dark:text-gray-400 font-medium mb-4">
             A graduate developer with an interest in Computer Science.
           </p>
           
-          <div className="space-y-1 sm:space-y-2 mb-3 sm:mb-6">
+          <div style={{ '--i': 4 } as React.CSSProperties} className="hero-in space-y-1 sm:space-y-2 mb-3 sm:mb-6">
             <div className="text-xs sm:text-sm md:text-base text-neutral-700 dark:text-gray-300">
               <div className="flex items-start gap-2">
                 {/* <span className="mt-0.5 flex-shrink-0">🚀</span>  */}
@@ -51,7 +48,7 @@ export default function Hero() {
             </div>
           </div>
           
-          <div className="flex flex-wrap gap-2 sm:gap-3">
+          <div style={{ '--i': 5 } as React.CSSProperties} className="hero-in flex flex-wrap gap-2 sm:gap-3">
             {aboutData.hero && aboutData.hero.map((social, idx) => (
               <a
                 key={social.name}
@@ -89,7 +86,7 @@ export default function Hero() {
               Resume
             </a>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

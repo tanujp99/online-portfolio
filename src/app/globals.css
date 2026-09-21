@@ -570,3 +570,42 @@ html.dark .flip-card:focus-visible .flip-card-face {
   animation-duration: 0.35s;
   animation-timing-function: ease;
 }
+
+/* Page entrance: hero lines rise in order (--i), the content panel follows, the name's dot pops last */
+.hero-in {
+  opacity: 0;
+  animation: hero-in 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation-delay: calc(var(--i, 0) * 70ms + 80ms);
+}
+
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* The name's accent dot pops in after the scramble finishes (delay set inline by ScrambleName) */
+.hero-dot {
+  display: inline-block;
+  animation: hero-dot 0.5s cubic-bezier(0.3, 1.6, 0.5, 1) both;
+}
+
+@keyframes hero-dot {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-in,
+  .hero-dot {
+    opacity: 1;
+    animation: none;
+  }
+}
