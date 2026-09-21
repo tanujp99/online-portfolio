@@ -1,6 +1,17 @@
 {
     "testimonials": [
       {
+        "id": 4,
+        "name": "Alan Moskowitz",
+        "title": "Engineering leader delivering at scale in cloud, media and consumer",
+        "relationship": "Alan managed Tanuj directly",
+        "recommendation": "I highly recommend Tanuj as a junior software developer. He is bright, energetic, and brings impressive knowledge of LLMs for audio and video applications. Beyond his curiosity and enthusiasm, he’s a solid developer who delivers thoughtfully implemented solutions and continues to grow quickly. Tanuj would be a strong addition to any engineering team.",
+        "linkedinUrl": "https://www.linkedin.com/in/alanmosk",
+        "profileImagePath": "rec-alan.jpeg",
+        "date": "April 7, 2026",
+        "verified": true
+      },
+      {
         "id": 1,
         "name": "Abhishek Ghosh",
         "title": "Principal Architect - Enterprise Product",
@@ -15,8 +26,8 @@
       {
         "id": 2,
         "name": "Yash Kumar",
-        "title": "Research Assistant at Indiana University, Bloomington",
-        "company": "Indiana University",
+        "title": "Unity, XR Developer",
+        "company": "CNS",
         "relationship": "Yash was senior to Tanuj but didn't manage Tanuj directly",
         "recommendation": "Having worked with Tanuj on an Image Processing and Wavelets workshop for the Summer of 2019, I immediately noticed he was inquisitive about learning new things. Even though he did not possess the know-how, he would push our team to achieve different results with the available tools and resources to see how things worked out in a controlled environment. I can safely say I learned a lot more having Tanuj on the team than if I would've attended the seminar by myself, since his curious nature allowed us to uncover more of the technology we were exploring (MATLAB) than I expected to learn.\n\nI have also collaborated with Tanuj on two other separate occasions an Industry project and a Hackathon, in both of which he proved to be a commendable ally to the success of the endeavour.",
         "linkedinUrl": "https://www.linkedin.com/in/kumar-yash",

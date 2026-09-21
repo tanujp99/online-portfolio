@@ -8,6 +8,7 @@ import GitHubCalendar from 'react-github-calendar';
 import { useTheme } from '../context/ThemeContext';
 import ThemedIcon from './ThemedIcon';
 import LoadingSpinner from './LoadingSpinner';
+import ActivityGraph from './ActivityGraph';
 import { FaQuoteLeft, FaExternalLinkAlt } from 'react-icons/fa';
 import testimonialsData from '@/data/testimonials.json';
 
@@ -53,7 +54,7 @@ interface Testimonial {
   id: number;
   name: string;
   title: string;
-  company: string;
+  company?: string;
   relationship: string;
   date: string;
   linkedinUrl: string;
@@ -91,21 +92,43 @@ export default function Profile() {
       try {
         const minLoadingTime = new Promise(resolve => setTimeout(resolve, 2000));
         
+        const fetchJson = async (url: string) => {
+          const response = await fetch(url);
+          if (!response.ok) throw new Error(`${url} responded with ${response.status}`);
+          return response.json();
+        };
+
+        // Fetched independently so a failing pinned-repos service can't take down the profile
         const fetchGitHubData = async () => {
-          const [profileResponse, pinnedReposResponse] = await Promise.all([
-            fetch('https://api.github.com/users/tanujp99'),
-            fetch('https://gh-pinned-repos.egoist.dev/api?username=tanujp99')
+          const [profileResult, pinnedReposResult] = await Promise.allSettled([
+            fetchJson('https://api.github.com/users/tanujp99'),
+            fetchJson('https://pinned.berrysauce.dev/get/tanujp99')
           ]);
-          
-          const profileData = await profileResponse.json();
-          const pinnedReposData = await pinnedReposResponse.json();
-          
-          cachedProfile = profileData;
-          cachedPinnedRepos = Array.isArray(pinnedReposData) ? pinnedReposData : [];
-          dataFetched = true;
-          
-          setProfile(profileData);
-          setPinnedRepos(cachedPinnedRepos);
+
+          if (profileResult.status === 'fulfilled') {
+            cachedProfile = profileResult.value;
+            setProfile(profileResult.value);
+          } else {
+            console.error('Error fetching GitHub profile:', profileResult.reason);
+          }
+
+          if (pinnedReposResult.status === 'fulfilled' && Array.isArray(pinnedReposResult.value)) {
+            cachedPinnedRepos = pinnedReposResult.value.map((repo: any): PinnedRepo => ({
+              repo: repo.name,
+              owner: repo.author,
+              description: repo.description,
+              link: `https://github.com/${repo.author}/${repo.name}`,
+              language: repo.language,
+              languageColor: repo.languageColor,
+              stars: repo.stars,
+              forks: repo.forks,
+            }));
+            setPinnedRepos(cachedPinnedRepos);
+          } else if (pinnedReposResult.status === 'rejected') {
+            console.error('Error fetching pinned repos:', pinnedReposResult.reason);
+          }
+
+          dataFetched = cachedProfile !== null;
         };
 
         await Promise.all([minLoadingTime, fetchGitHubData()]);
@@ -359,7 +382,7 @@ export default function Profile() {
                                   {testimonial.name}
                                 </a>
                                 <p className="text-sm text-neutral-600 dark:text-gray-400">
-                                  {testimonial.title} at {testimonial.company}
+                                  {testimonial.title}{testimonial.company && ` at ${testimonial.company}`}
                                 </p>
                                 <p className="text-xs text-neutral-500 dark:text-gray-500">
                                   {testimonial.relationship}
@@ -548,26 +571,18 @@ export default function Profile() {
                   <img
                     src={
                       theme=== 'light' 
-                        ? "https://github-profile-trophy-e8lb63f54-ryo-ma-s-team.vercel.app/?username=tanujp99&rank=SECRET,SSS,SS,S,AAA,AA&theme=false&column=3&margin-w=32&margin-h=15&no-bg=true" 
-                        : "https://github-profile-trophy-e8lb63f54-ryo-ma-s-team.vercel.app/?username=tanujp99&rank=SECRET,SSS,SS,S,AAA,AA&theme=apprentice&column=3&margin-w=32&margin-h=15&no-bg=false&no-frame=true"
+                        ? "https://github-trophies.vercel.app/?username=tanujp99&rank=SECRET,SSS,SS,S,AAA,AA&theme=false&column=3&margin-w=32&margin-h=15&no-bg=true" 
+                        : "https://github-trophies.vercel.app/?username=tanujp99&rank=SECRET,SSS,SS,S,AAA,AA&theme=apprentice&column=3&margin-w=32&margin-h=15&no-bg=false&no-frame=true"
                     }
                     alt="GitHub Profile Trophy"
+                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
                     className="w-full max-w-[450px]"
                   />
                 </div>
 
                 {/* Activity Graph */}
                 <div className="mb-8">
-                  <img
-                    src={
-                      theme === 'light'
-                        ? 'https://github-readme-activity-graph.vercel.app/graph?username=tanujp99&bg_color=eef0f2&color=212121&title_color=212121&line=a3cfb4&point=c30b4e&area_color=E3F2FD'
-                        : 'https://github-readme-activity-graph.vercel.app/graph?username=tanujp99&theme=material'
-                    }
-                    alt="Activity Graph"
-                    className="w-full rounded-2xl"
-                    style={{ clipPath: 'inset(2px)' }}
-                  />
+                  <ActivityGraph username={profile.login} name={profile.name ?? profile.login} theme={theme} />
                 </div>
 
                 {/* Profile Views Counter */}
@@ -577,6 +592,7 @@ export default function Profile() {
                       ? "https://komarev.com/ghpvc/?username=tanujp99&color=c30b4e&style=flat&label=Profile+Visits" 
                       : "https://komarev.com/ghpvc/?username=tanujp99&color=ff90e8&style=flat&label=Profile+Visits"}
                     alt="Profile Views"
+                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
                   />
                 </div>
               </div>
