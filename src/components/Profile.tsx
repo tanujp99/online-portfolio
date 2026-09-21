@@ -9,12 +9,14 @@ import { useTheme } from '../context/ThemeContext';
 import ThemedIcon from './ThemedIcon';
 import LoadingSpinner from './LoadingSpinner';
 import ActivityGraph from './ActivityGraph';
-import { FaQuoteLeft, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaQuoteLeft, FaExternalLinkAlt, FaMicrochip, FaServer, FaStream, FaCloud, FaBrain } from 'react-icons/fa';
 import testimonialsData from '@/data/testimonials.json';
 import experienceData from '@/data/experience.json';
 import projectsData from '@/data/projects.json';
 import awardsData from '@/data/awards.json';
 import skillsData from '@/data/skills.json';
+import CountUp from './CountUp';
+import { handleTilt, resetTilt } from './FlipCard';
 
 interface GitHubData {
   name: string;
@@ -106,11 +108,19 @@ function yearsInIndustry(now = new Date()) {
 const papers = (projectsData.projects as { isResearch?: boolean }[]).filter((project) => project.isResearch).length;
 
 const stats = [
-  { value: `${yearsInIndustry()}+`, label: 'Years in Industry' },
+  { value: yearsInIndustry(), suffix: '+', label: 'Years in Industry' },
   { value: projectsData.projects.length, label: 'Projects' },
   { value: awardsData.awards.length, label: 'Awards' },
   { value: papers, label: papers === 1 ? 'Research Paper' : 'Research Papers' },
 ];
+
+const skillIcons = {
+  chip: FaMicrochip,
+  server: FaServer,
+  stream: FaStream,
+  cloud: FaCloud,
+  brain: FaBrain,
+};
 
 let cachedProfile: GitHubData | null = null;
 let cachedPinnedRepos: PinnedRepo[] = [];
@@ -247,28 +257,40 @@ export default function Profile() {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 text-center">
                 {stats.map((stat) => (
                   <div key={stat.label} className="p-3 rounded-xl bg-light-accent/5 dark:bg-dark-accent/5">
-                    <div className="text-2xl sm:text-3xl text-hero text-light-accent dark:text-dark-accent">{stat.value}</div>
+                    <div className="text-2xl sm:text-3xl text-hero text-light-accent dark:text-dark-accent">
+                      <CountUp value={stat.value} suffix={stat.suffix} />
+                    </div>
                     <div className="text-xs sm:text-sm text-[var(--foreground)] mt-1">{stat.label}</div>
                   </div>
                 ))}
               </div>
 
               <h2 className="text-xl font-semibold text-neutral-900 dark:text-white mt-8 mb-5 text-center">What I work with</h2>
-              <div className="divide-y divide-[var(--border-color)]">
-                {skillsData.groups.map((group) => (
-                  <div key={group.name} className="py-3 first:pt-0 last:pb-0 flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4">
-                    <h3 className="sm:w-40 shrink-0 sm:pt-1.5 text-xs sm:text-sm font-semibold uppercase tracking-wide text-light-accent dark:text-dark-accent">
-                      {group.name}
-                    </h3>
-                    <div className="flex flex-wrap gap-2">
-                      {group.skills.map((skill) => (
-                        <span key={skill} className="inline-flex items-center px-3 py-1 rounded-full bg-[var(--button-bg)] text-[var(--foreground)] border border-[var(--border-color)] font-medium text-xs sm:text-sm shadow-sm">
-                          {skill}
-                        </span>
-                      ))}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {skillsData.groups.map((group) => {
+                  const Icon = skillIcons[group.icon as keyof typeof skillIcons];
+                  return (
+                    <div key={group.name} className="flip-card" onPointerMove={handleTilt} onPointerLeave={resetTilt}>
+                      <div className="flip-card-tilt">
+                        <div className="flip-card-face relative h-full rounded-xl bg-[var(--card-bg)] shadow-card p-4">
+                          <div className="flex items-center gap-3 mb-3">
+                            <span className="w-9 h-9 shrink-0 rounded-full bg-light-accent/10 dark:bg-dark-accent/15 text-light-accent dark:text-dark-accent flex items-center justify-center">
+                              {Icon && <Icon className="w-4 h-4" />}
+                            </span>
+                            <h3 className="text-base font-semibold text-neutral-900 dark:text-white">{group.name}</h3>
+                          </div>
+                          <div className="flex flex-wrap gap-2">
+                            {group.skills.map((skill) => (
+                              <span key={skill} className="skill-chip inline-flex items-center px-3 py-1 rounded-full bg-[var(--button-bg)] text-[var(--foreground)] border border-[var(--border-color)] font-medium text-xs sm:text-sm shadow-sm">
+                                {skill}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>

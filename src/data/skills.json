@@ -2,23 +2,65 @@
   "groups": [
     {
       "name": "Systems & Kernel",
-      "skills": ["C", "Linux kernel modules", "cdev · sysfs · ioctl", "Android GKI & NDK", "arm64 cross-compiling", "QEMU"]
+      "icon": "chip",
+      "skills": [
+        "C",
+        "Linux kernel modules",
+        "cdev · sysfs · ioctl",
+        "Android GKI & NDK",
+        "arm64 cross-compiling",
+        "QEMU"
+      ]
     },
     {
       "name": "Backend",
-      "skills": ["Java & Spring Boot", "Go", "Python", "FastAPI", "GraphQL", "REST & webhooks", "Microservices"]
+      "icon": "server",
+      "skills": [
+        "Java & Spring Boot",
+        "Go",
+        "Python",
+        "FastAPI",
+        "GraphQL",
+        "REST & webhooks",
+        "Microservices"
+      ]
     },
     {
       "name": "Data & Streaming",
-      "skills": ["Apache Kafka", "Apache Airflow", "AWS Kinesis", "Redshift", "SQL Server", "MySQL"]
+      "icon": "stream",
+      "skills": [
+        "Apache Kafka",
+        "Apache Airflow",
+        "AWS Kinesis",
+        "Redshift",
+        "SQL Server",
+        "MySQL"
+      ]
     },
     {
       "name": "Cloud & DevOps",
-      "skills": ["AWS", "Kubernetes", "Docker", "Istio", "Prometheus & Grafana", "Jenkins & GitLab CI", "GitHub Actions", "SonarQube · Trivy · Veracode"]
+      "icon": "cloud",
+      "skills": [
+        "AWS",
+        "Kubernetes",
+        "Docker",
+        "Istio",
+        "Prometheus & Grafana",
+        "Jenkins & GitLab CI",
+        "GitHub Actions",
+        "SonarQube · Trivy · Veracode"
+      ]
     },
     {
       "name": "AI & Media",
-      "skills": ["LLMs (Gemma)", "Self-hosted TTS (Dia)", "Audio/video sync", "GPU inference", "TensorFlow"]
+      "icon": "brain",
+      "skills": [
+        "LLMs (Gemma)",
+        "Self-hosted TTS (Dia)",
+        "Audio/video sync",
+        "GPU inference",
+        "TensorFlow"
+      ]
     }
   ]
 }
