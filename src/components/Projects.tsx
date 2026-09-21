@@ -6,6 +6,7 @@ import projectsData from '@/data/projects.json';
 import { AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useTheme } from '../context/ThemeContext';
+import FlipCard from './FlipCard';
 
 interface Project {
   title: string;
@@ -62,54 +63,9 @@ function renderDescription(description: string) {
   }
 }
 
-function FlipIcon() {
-  return (
-    <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 sm:w-5 sm:h-5">
-      <path d="M3.5 8.5A6.5 6.5 0 0 1 15 5.2M16.5 11.5A6.5 6.5 0 0 1 5 14.8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-      <path d="M15.5 2v3.5H12M4.5 18v-3.5H8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-// Tilts the card toward the pointer and moves the light with it; plain CSS variables, no re-renders
-const MAX_TILT = 9;
-
-function handleTilt(e: React.PointerEvent<HTMLDivElement>) {
-  if (e.pointerType !== 'mouse') return;
-  const card = e.currentTarget;
-  const rect = card.getBoundingClientRect();
-  const x = (e.clientX - rect.left) / rect.width;
-  const y = (e.clientY - rect.top) / rect.height;
-  card.classList.add('is-hovering');
-  card.style.setProperty('--rx', `${((0.5 - y) * MAX_TILT * 2).toFixed(2)}deg`);
-  card.style.setProperty('--ry', `${((x - 0.5) * MAX_TILT * 2).toFixed(2)}deg`);
-  card.style.setProperty('--lift', '1.03');
-  card.style.setProperty('--gx', `${(x * 100).toFixed(1)}%`);
-  card.style.setProperty('--gy', `${(y * 100).toFixed(1)}%`);
-}
-
-function resetTilt(e: React.PointerEvent<HTMLDivElement>) {
-  const card = e.currentTarget;
-  card.classList.remove('is-hovering');
-  ['--rx', '--ry', '--lift'].forEach((name) => card.style.removeProperty(name));
-}
-
-// Keyboard/screen readers must not reach the face that's turned away
-const hiddenFace = { inert: '', 'aria-hidden': true } as Record<string, unknown>;
-
 export default function Projects() {
-  const [flippedProjects, setFlippedProjects] = useState<Set<number>>(new Set());
   const [copiedProject, setCopiedProject] = useState<number | null>(null);
   const { theme } = useTheme();
-
-  const toggleFlip = (index: number) => {
-    setFlippedProjects((current) => {
-      const next = new Set(current);
-      if (next.has(index)) next.delete(index);
-      else next.add(index);
-      return next;
-    });
-  };
 
   return (
     <section id="projects" className="py-12 sm:py-16 md:py-20">
@@ -126,7 +82,6 @@ export default function Projects() {
 
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(320px,100%),1fr))] gap-8">
           {projects.map((project, index) => {
-            const isFlipped = flippedProjects.has(index);
             return (
               <motion.div
                 key={index}
@@ -136,200 +91,164 @@ export default function Projects() {
                 viewport={{ once: true }}
                 className="relative h-full"
               >
-                <div
-                  className={`flip-card h-full cursor-pointer ${isFlipped ? 'is-flipped' : ''}`}
-                  onPointerMove={handleTilt}
-                  onPointerLeave={resetTilt}
-                  role="button"
-                  tabIndex={0}
-                  aria-pressed={isFlipped}
-                  aria-label={`${project.title}: ${isFlipped ? 'hide' : 'show'} project details`}
-                  onClick={() => {
-                    if (window.getSelection && window.getSelection() && window.getSelection()!.toString()) return;
-                    toggleFlip(index);
-                  }}
-                  onKeyDown={(e) => {
-                    if (e.target !== e.currentTarget) return;
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      e.preventDefault();
-                      toggleFlip(index);
-                    }
-                  }}
-                >
-                  <div className="flip-card-tilt">
-                    <div className="flip-card-inner">
-                      {/* Front */}
-                      <div
-                        className="flip-card-face relative h-full bg-[var(--card-bg)] rounded-xl p-4 sm:p-6 shadow-card"
-                        {...(isFlipped ? hiddenFace : {})}
-                      >
-                        <h3 className="text-lg sm:text-xl font-semibold mb-2 text-neutral-900 dark:text-white">{project.title}</h3>
-                        <p className="text-sm sm:text-base text-neutral-700 dark:text-gray-300 mb-4">{project.shortDescription}</p>
+                <FlipCard
+                  label={project.title}
+                  front={
+                    <>
+                      <h3 className="text-lg sm:text-xl font-semibold mb-2 text-neutral-900 dark:text-white">{project.title}</h3>
+                      <p className="text-sm sm:text-base text-neutral-700 dark:text-gray-300 mb-4">{project.shortDescription}</p>
 
-                        {/* Research paper or image box at the same position for all projects */}
-                        {project.isResearch ? (
-                          <div className="mb-4 p-3 bg-gradient-to-r from-light-accent/10 to-light-accent/5 dark:from-dark-accent/10 dark:to-dark-accent/5 rounded-lg border border-light-accent/20 dark:border-dark-accent/20">
-                            <div className="flex items-center gap-2 mb-2">
-                              <span className="text-lg">🎓</span>
-                              <span className="text-sm font-semibold text-light-accent dark:text-dark-accent">Published Research</span>
-                            </div>
-                            <p className="text-xs text-neutral-600 dark:text-gray-400 mb-2">
-                              <strong>Journal:</strong> {project.journal}
-                            </p>
-                            <p className="text-xs text-neutral-600 dark:text-gray-400 mb-3">
-                              <strong>Citation:</strong> {project.citation}
-                            </p>
-                            <div className="flex gap-2 relative">
-                              <AnimatePresence>
-                                {copiedProject === index && (
-                                  <motion.div
-                                    initial={{ opacity: 0, y: 10, scale: 0.8 }}
-                                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                                    exit={{ opacity: 0, y: 10, scale: 0.8 }}
-                                    className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-neutral-900/75 text-white px-3 py-1.5 rounded-md text-xs font-medium shadow-lg z-10"
-                                  >
-                                    <div className="flex items-center gap-1">
-                                      <span>✓</span>
-                                      Copied!
-                                    </div>
-                                    {/* Arrow pointing down */}
-                                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-neutral-900/75"></div>
-                                  </motion.div>
-                                )}
-                              </AnimatePresence>
-                              {project.paperLink && project.mainButton && (
-                                <a
-                                  href={project.paperLink}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="inline-flex items-center gap-1 px-3 py-1.5 bg-light-accent dark:bg-dark-accent text-[var(--card-bg)] border border-light-accent dark:border-dark-accent rounded-md hover:bg-light-accent/90 dark:hover:bg-dark-accent/90 transition-colors text-xs font-medium shadow-sm"
-                                  onClick={(e) => e.stopPropagation()}
-                                >
-                                  {project.mainButton}
-                                </a>
-                              )}
-                              {project.presentButton && typeof project.presentButton === 'string' && project.presentContent && (
-                                <a
-                                  href={project.presentSlug ? `/go/${project.presentSlug}` : project.presentContent}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="inline-flex items-center gap-1 px-3 py-1.5 bg-light-accent dark:bg-dark-accent text-[var(--card-bg)] border border-light-accent dark:border-dark-accent rounded-md hover:bg-light-accent/90 dark:hover:bg-dark-accent/90 transition-colors text-xs font-medium shadow-sm"
-                                  onClick={(e) => e.stopPropagation()}
-                                >
-                                  {project.presentButton}
-                                </a>
-                              )}
-                              {project.citationButton && project.citationContent && (
-                                <button
-                                  className="inline-flex items-center gap-1 px-3 py-1.5 bg-[var(--card-bg)] text-[var(--foreground)] border border-[var(--border-color)] rounded-md hover:bg-light-accent hover:text-white dark:hover:bg-dark-accent dark:hover:text-white transition-colors text-xs font-medium shadow-sm"
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    navigator.clipboard.writeText(project.citationContent!);
-                                    setCopiedProject(index);
-                                    setTimeout(() => setCopiedProject(null), 1000);
-                                  }}
-                                >
-                                  {project.citationButton}
-                                </button>
-                              )}
-                            </div>
+                      {/* Research paper or image box at the same position for all projects */}
+                      {project.isResearch ? (
+                        <div className="mb-4 p-3 bg-gradient-to-r from-light-accent/10 to-light-accent/5 dark:from-dark-accent/10 dark:to-dark-accent/5 rounded-lg border border-light-accent/20 dark:border-dark-accent/20">
+                          <div className="flex items-center gap-2 mb-2">
+                            <span className="text-lg">🎓</span>
+                            <span className="text-sm font-semibold text-light-accent dark:text-dark-accent">Published Research</span>
                           </div>
-                        ) : (
-                          project.imageLight && project.imageDark && (
-                            <div className="mb-4 p-3 bg-gradient-to-r from-light-accent/10 to-light-accent/5 dark:from-dark-accent/10 dark:to-dark-accent/5 rounded-lg border border-light-accent/20 dark:border-dark-accent/20 h-40 sm:h-44 md:h-48 lg:h-52 xl:h-56 2xl:h-60 flex items-center justify-center overflow-hidden relative">
-                              <div
-                                className="w-full h-full rounded-md flex items-center justify-center overflow-hidden"
-                                style={{ backgroundColor: theme === 'dark' ? project.imageBgDark || '#161719' : project.imageBgLight || '#f8f8f5' }}
-                              >
-                                <Image
-                                  src={theme === 'dark'
-                                    ? require(`@/data/images/${project.imageDark}`)
-                                    : require(`@/data/images/${project.imageLight}`)}
-                                  alt={project.imageAlt || project.title}
-                                  fill={false}
-                                  className="object-contain w-full h-full"
-                                  style={{ maxWidth: '100%', maxHeight: '100%' }}
-                                  sizes="(max-width: 768px) 100vw, 400px"
-                                  priority={index === 0}
-                                />
-                              </div>
-                              {/* Present button in bottom left corner */}
-                              {project.presentButton && typeof project.presentButton === 'string' && project.presentContent && (
-                                <div className="absolute bottom-5 left-5">
-                                  <a
-                                    href={project.presentSlug ? `/go/${project.presentSlug}` : project.presentContent}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="px-2 sm:px-3 py-0.5 sm:py-1 bg-light-accent dark:bg-dark-accent text-[var(--card-bg)] rounded-full hover:bg-light-accent/90 dark:hover:bg-dark-accent/90 transition-colors text-xs sm:text-sm"
-                                    onClick={(e) => e.stopPropagation()}
-                                  >
-                                    {project.presentButton}
-                                  </a>
-                                </div>
+                          <p className="text-xs text-neutral-600 dark:text-gray-400 mb-2">
+                            <strong>Journal:</strong> {project.journal}
+                          </p>
+                          <p className="text-xs text-neutral-600 dark:text-gray-400 mb-3">
+                            <strong>Citation:</strong> {project.citation}
+                          </p>
+                          <div className="flex gap-2 relative">
+                            <AnimatePresence>
+                              {copiedProject === index && (
+                                <motion.div
+                                  initial={{ opacity: 0, y: 10, scale: 0.8 }}
+                                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                                  exit={{ opacity: 0, y: 10, scale: 0.8 }}
+                                  className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-neutral-900/75 text-white px-3 py-1.5 rounded-md text-xs font-medium shadow-lg z-10"
+                                >
+                                  <div className="flex items-center gap-1">
+                                    <span>✓</span>
+                                    Copied!
+                                  </div>
+                                  {/* Arrow pointing down */}
+                                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-neutral-900/75"></div>
+                                </motion.div>
                               )}
-                            </div>
-                          )
-                        )}
-
-                        {/* Technologies section */}
-                        <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4">
-                          {project.technologies.map((tech) => (
-                            <span
-                              key={tech}
-                              className="px-2 sm:px-3 py-0.5 sm:py-1 bg-light-accent/20 dark:bg-dark-accent/20 text-light-accent dark:text-dark-accent rounded-full text-xs sm:text-sm"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-
-                        <span className="absolute bottom-2 sm:bottom-3 right-3 sm:right-4 text-light-accent dark:text-dark-accent pointer-events-none">
-                          <FlipIcon />
-                        </span>
-                      </div>
-
-                      {/* Back */}
-                      <div
-                        className="flip-card-face flip-card-back bg-[var(--card-bg)] rounded-xl shadow-card"
-                        {...(isFlipped ? {} : hiddenFace)}
-                      >
-                        <div className="custom-scrollbar h-full overflow-y-auto p-4 sm:p-6 flex flex-col">
-                          <h3 className="text-lg sm:text-xl font-semibold mb-3 text-neutral-900 dark:text-white">{project.title}</h3>
-                          <div className="text-sm sm:text-base text-neutral-700 dark:text-gray-300 mb-4 space-y-1">
-                            {renderDescription(project.fullDescription)}
-                          </div>
-                          <div className="mt-auto pr-8">
-                            {project.paperLink && (
+                            </AnimatePresence>
+                            {project.paperLink && project.mainButton && (
                               <a
                                 href={project.paperLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-block mr-4 text-light-accent dark:text-dark-accent hover:underline font-semibold text-sm sm:text-base"
+                                className="inline-flex items-center gap-1 px-3 py-1.5 bg-light-accent dark:bg-dark-accent text-[var(--card-bg)] border border-light-accent dark:border-dark-accent rounded-md hover:bg-light-accent/90 dark:hover:bg-dark-accent/90 transition-colors text-xs font-medium shadow-sm"
                                 onClick={(e) => e.stopPropagation()}
                               >
-                                📄 Read the Paper
+                                {project.mainButton}
                               </a>
                             )}
-                            {project.showGithubLink && project.githubLink && (
+                            {project.presentButton && typeof project.presentButton === 'string' && project.presentContent && (
                               <a
-                                href={project.githubLink}
+                                href={project.presentSlug ? `/go/${project.presentSlug}` : project.presentContent}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-light-accent dark:text-dark-accent hover:underline text-sm sm:text-base"
+                                className="inline-flex items-center gap-1 px-3 py-1.5 bg-light-accent dark:bg-dark-accent text-[var(--card-bg)] border border-light-accent dark:border-dark-accent rounded-md hover:bg-light-accent/90 dark:hover:bg-dark-accent/90 transition-colors text-xs font-medium shadow-sm"
                                 onClick={(e) => e.stopPropagation()}
                               >
-                                View on GitHub →
+                                {project.presentButton}
                               </a>
                             )}
+                            {project.citationButton && project.citationContent && (
+                              <button
+                                className="inline-flex items-center gap-1 px-3 py-1.5 bg-[var(--card-bg)] text-[var(--foreground)] border border-[var(--border-color)] rounded-md hover:bg-light-accent hover:text-white dark:hover:bg-dark-accent dark:hover:text-white transition-colors text-xs font-medium shadow-sm"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  navigator.clipboard.writeText(project.citationContent!);
+                                  setCopiedProject(index);
+                                  setTimeout(() => setCopiedProject(null), 1000);
+                                }}
+                              >
+                                {project.citationButton}
+                              </button>
+                            )}
                           </div>
-                          <span className="sticky bottom-0 self-end -mb-1 sm:-mb-3 -mr-1 sm:-mr-2 text-light-accent dark:text-dark-accent pointer-events-none">
-                            <FlipIcon />
-                          </span>
                         </div>
+                      ) : (
+                        project.imageLight && project.imageDark && (
+                          <div className="mb-4 p-3 bg-gradient-to-r from-light-accent/10 to-light-accent/5 dark:from-dark-accent/10 dark:to-dark-accent/5 rounded-lg border border-light-accent/20 dark:border-dark-accent/20 h-40 sm:h-44 md:h-48 lg:h-52 xl:h-56 2xl:h-60 flex items-center justify-center overflow-hidden relative">
+                            <div
+                              className="w-full h-full rounded-md flex items-center justify-center overflow-hidden"
+                              style={{ backgroundColor: theme === 'dark' ? project.imageBgDark || '#161719' : project.imageBgLight || '#f8f8f5' }}
+                            >
+                              <Image
+                                src={theme === 'dark'
+                                  ? require(`@/data/images/${project.imageDark}`)
+                                  : require(`@/data/images/${project.imageLight}`)}
+                                alt={project.imageAlt || project.title}
+                                fill={false}
+                                className="object-contain w-full h-full"
+                                style={{ maxWidth: '100%', maxHeight: '100%' }}
+                                sizes="(max-width: 768px) 100vw, 400px"
+                                priority={index === 0}
+                              />
+                            </div>
+                            {/* Present button in bottom left corner */}
+                            {project.presentButton && typeof project.presentButton === 'string' && project.presentContent && (
+                              <div className="absolute bottom-5 left-5">
+                                <a
+                                  href={project.presentSlug ? `/go/${project.presentSlug}` : project.presentContent}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="px-2 sm:px-3 py-0.5 sm:py-1 bg-light-accent dark:bg-dark-accent text-[var(--card-bg)] rounded-full hover:bg-light-accent/90 dark:hover:bg-dark-accent/90 transition-colors text-xs sm:text-sm"
+                                  onClick={(e) => e.stopPropagation()}
+                                >
+                                  {project.presentButton}
+                                </a>
+                              </div>
+                            )}
+                          </div>
+                        )
+                      )}
+
+                      {/* Technologies section */}
+                      <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4">
+                        {project.technologies.map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-2 sm:px-3 py-0.5 sm:py-1 bg-light-accent/20 dark:bg-dark-accent/20 text-light-accent dark:text-dark-accent rounded-full text-xs sm:text-sm"
+                          >
+                            {tech}
+                          </span>
+                        ))}
                       </div>
-                    </div>
-                  </div>
-                </div>
+                    </>
+                  }
+                  back={
+                    <>
+                      <h3 className="text-lg sm:text-xl font-semibold mb-3 text-neutral-900 dark:text-white">{project.title}</h3>
+                      <div className="text-sm sm:text-base text-neutral-700 dark:text-gray-300 mb-4 space-y-1">
+                        {renderDescription(project.fullDescription)}
+                      </div>
+                      <div className="mt-auto pr-8">
+                        {project.paperLink && (
+                          <a
+                            href={project.paperLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block mr-4 text-light-accent dark:text-dark-accent hover:underline font-semibold text-sm sm:text-base"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            📄 Read the Paper
+                          </a>
+                        )}
+                        {project.showGithubLink && project.githubLink && (
+                          <a
+                            href={project.githubLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-light-accent dark:text-dark-accent hover:underline text-sm sm:text-base"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            View on GitHub →
+                          </a>
+                        )}
+                      </div>
+                    </>
+                  }
+                />
               </motion.div>
             );
           })}
