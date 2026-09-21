@@ -11,6 +11,10 @@ import LoadingSpinner from './LoadingSpinner';
 import ActivityGraph from './ActivityGraph';
 import { FaQuoteLeft, FaExternalLinkAlt } from 'react-icons/fa';
 import testimonialsData from '@/data/testimonials.json';
+import experienceData from '@/data/experience.json';
+import projectsData from '@/data/projects.json';
+import awardsData from '@/data/awards.json';
+import skillsData from '@/data/skills.json';
 
 interface GitHubData {
   name: string;
@@ -66,6 +70,47 @@ interface Testimonial {
 // TODO: GitHub pinned repos are turned off for now; the Projects tab is used as the showcase instead.
 // Flip this to true to fetch and show them again.
 const SHOW_PINNED_REPOS = false;
+
+const RECOMMENDATIONS_URL = 'https://www.linkedin.com/in/tanujp/details/recommendations/?detailScreenTabIndex=0';
+
+// Stats are computed from the site's own data so they can't drift out of date
+const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+
+function toMonthIndex(value: string, now: Date) {
+  const text = value.trim();
+  if (text === 'PRESENT') return now.getFullYear() * 12 + now.getMonth();
+  const [month, year] = text.split(' ');
+  return Number(year) * 12 + MONTHS.indexOf(month);
+}
+
+// Whole years across roles flagged "industry", with overlapping roles counted once
+function yearsInIndustry(now = new Date()) {
+  const spans = (experienceData.experiences as { period: string; industry?: boolean }[])
+    .filter((role) => role.industry)
+    .map((role) => {
+      const [from, to] = role.period.split(' - ');
+      return [toMonthIndex(from, now), toMonthIndex(to, now) + 1];
+    })
+    .sort((a, b) => a[0] - b[0]);
+
+  let months = 0;
+  let coveredUntil = -Infinity;
+  for (const [start, end] of spans) {
+    const from = Math.max(start, coveredUntil);
+    if (end > from) months += end - from;
+    coveredUntil = Math.max(coveredUntil, end);
+  }
+  return Math.floor(months / 12);
+}
+
+const papers = (projectsData.projects as { isResearch?: boolean }[]).filter((project) => project.isResearch).length;
+
+const stats = [
+  { value: `${yearsInIndustry()}+`, label: 'Years in Industry' },
+  { value: projectsData.projects.length, label: 'Projects' },
+  { value: awardsData.awards.length, label: 'Awards' },
+  { value: papers, label: papers === 1 ? 'Research Paper' : 'Research Papers' },
+];
 
 let cachedProfile: GitHubData | null = null;
 let cachedPinnedRepos: PinnedRepo[] = [];
@@ -196,117 +241,34 @@ export default function Profile() {
           className="space-y-8"
         >
 
-          {/* Skills & Technologies Section */}
+          {/* Stats & Skills */}
           <div className="max-w-4xl mx-auto">
-            <div className="backdrop-blur-md rounded-2xl p-3 sm:p-4 shadow-panel">
-              <h2 className="text-xl font-semibold text-neutral-900 dark:text-white mb-6 text-center">Skills & Technologies</h2>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {/* Backend Development */}
-                <div className="space-y-3">
-                  <h3 className="text-lg font-medium text-light-accent dark:text-dark-accent flex items-center gap-2">
-                    Backend Development
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {['Java', 'Spring Boot', 'Python', 'GraphQL', 'REST APIs', 'Microservices'].map((skill) => (
-                      <span key={skill} className="inline-flex items-center px-3 py-1 rounded-full bg-[var(--button-bg)] text-[var(--foreground)] border border-[var(--border-color)] font-medium text-sm shadow-sm transition-all duration-200">
-                        {skill}
-                      </span>
-                    ))}
+            <div className="backdrop-blur-md rounded-2xl p-4 sm:p-6 shadow-panel">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 text-center">
+                {stats.map((stat) => (
+                  <div key={stat.label} className="p-3 rounded-xl bg-light-accent/5 dark:bg-dark-accent/5">
+                    <div className="text-2xl sm:text-3xl text-hero text-light-accent dark:text-dark-accent">{stat.value}</div>
+                    <div className="text-xs sm:text-sm text-[var(--foreground)] mt-1">{stat.label}</div>
                   </div>
-                </div>
-
-                {/* Cloud & Infrastructure */}
-                <div className="space-y-3">
-                  <h3 className="text-lg font-medium text-light-accent dark:text-dark-accent flex items-center gap-2">
-                    Cloud & Infrastructure
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {['AWS', 'Kubernetes', 'Docker', 'Jenkins', 'GitLab CI/CD', 'Apache Airflow', 'Linux'].map((skill) => (
-                      <span key={skill} className="inline-flex items-center px-3 py-1 rounded-full bg-[var(--button-bg)] text-[var(--foreground)] border border-[var(--border-color)] font-medium text-sm shadow-sm transition-all duration-200">
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Data & Analytics */}
-                <div className="space-y-3">
-                  <h3 className="text-lg font-medium text-light-accent dark:text-dark-accent flex items-center gap-2">
-                    Data & Analytics
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {['Machine Learning', 'TensorFlow', 'Python', 'SQL Server', 'AWS Kinesis', 'RedShift', 'QuickSight'].map((skill) => (
-                      <span key={skill} className="inline-flex items-center px-3 py-1 rounded-full bg-[var(--button-bg)] text-[var(--foreground)] border border-[var(--border-color)] font-medium text-sm shadow-sm transition-all duration-200">
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Database Technologies */}
-                <div className="space-y-3">
-                  <h3 className="text-lg font-medium text-light-accent dark:text-dark-accent flex items-center gap-2">
-                  Database Technologies
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {['SQL Server', 'PostgreSQL', 'MySQL', 'RedShift', 'Database Design', 'ETL Pipelines'].map((skill) => (
-                      <span key={skill} className="inline-flex items-center px-3 py-1 rounded-full bg-[var(--button-bg)] text-[var(--foreground)] border border-[var(--border-color)] font-medium text-sm shadow-sm transition-all duration-200">
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* DevOps & Tools */}
-                <div className="space-y-3">
-                  <h3 className="text-lg font-medium text-light-accent dark:text-dark-accent flex items-center gap-2">
-                    DevOps & Tools
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {['Git', 'Maven', 'Jenkins', 'Packer', 'Prometheus', 'Grafana', 'Istio'].map((skill) => (
-                      <span key={skill} className="inline-flex items-center px-3 py-1 rounded-full bg-[var(--button-bg)] text-[var(--foreground)] border border-[var(--border-color)] font-medium text-sm shadow-sm transition-all duration-200">
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Specialized Skills */}
-                <div className="space-y-3">
-                  <h3 className="text-lg font-medium text-light-accent dark:text-dark-accent flex items-center gap-2">
-                    Specialized Skills
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {['IoT Development', 'Arduino', 'Computer Vision', 'MATLAB', 'System Architecture', 'Algorithm Design'].map((skill) => (
-                      <span key={skill} className="inline-flex items-center px-3 py-1 rounded-full bg-[var(--button-bg)] text-[var(--foreground)] border border-[var(--border-color)] font-medium text-sm shadow-sm transition-all duration-200">
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                ))}
               </div>
 
-              {/* Quick Stats */}
-              <div className="mt-8 pt-6 border-t-2 border-[var(--border-color)]">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                  <div className="p-3 bg-light-accent/5 dark:bg-dark-accent/5 rounded-lg">
-                    <div className="text-2xl text-hero text-light-accent dark:text-dark-accent">6+</div>
-                    <div className="text-sm text-[var(--foreground)]">Years Experience</div>
+              <h2 className="text-xl font-semibold text-neutral-900 dark:text-white mt-8 mb-5 text-center">What I work with</h2>
+              <div className="divide-y divide-[var(--border-color)]">
+                {skillsData.groups.map((group) => (
+                  <div key={group.name} className="py-3 first:pt-0 last:pb-0 flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4">
+                    <h3 className="sm:w-40 shrink-0 sm:pt-1.5 text-xs sm:text-sm font-semibold uppercase tracking-wide text-light-accent dark:text-dark-accent">
+                      {group.name}
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {group.skills.map((skill) => (
+                        <span key={skill} className="inline-flex items-center px-3 py-1 rounded-full bg-[var(--button-bg)] text-[var(--foreground)] border border-[var(--border-color)] font-medium text-xs sm:text-sm shadow-sm">
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                  <div className="p-3 bg-light-accent/5 dark:bg-dark-accent/5 rounded-lg">
-                    <div className="text-2xl text-hero text-light-accent dark:text-dark-accent">15+</div>
-                    <div className="text-sm text-[var(--foreground)]">Technologies</div>
-                  </div>
-                  <div className="p-3 bg-light-accent/5 dark:bg-dark-accent/5 rounded-lg">
-                    <div className="text-2xl text-hero text-light-accent dark:text-dark-accent">3</div>
-                    <div className="text-sm text-[var(--foreground)]">Major Awards</div>
-                  </div>
-                  <div className="p-3 bg-light-accent/5 dark:bg-dark-accent/5 rounded-lg">
-                    <div className="text-2xl text-hero text-light-accent dark:text-dark-accent">1</div>
-                    <div className="text-sm text-[var(--foreground)]">Research Paper</div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
@@ -435,17 +397,19 @@ export default function Profile() {
                           </div>
                         </div>
 
-                        {/* Verification Badge */}
-                        {testimonial.verified && (
-                          <div className="mt-3 pt-3 border-t-2 border-[var(--border-color)]">
-                            <div className="flex items-center gap-2 text-xs text-neutral-500 dark:text-gray-500">
-                              <div className="w-3 h-3 bg-green-500 rounded-full flex items-center justify-center">
-                                <span className="text-white text-[8px]">✓</span>
-                              </div>
-                              <span>Verified LinkedIn recommendation</span>
-                            </div>
-                          </div>
-                        )}
+                        {/* Where the recommendation lives, so anyone can check it */}
+                        <div className="mt-3 pt-3 border-t-2 border-[var(--border-color)]">
+                          <a
+                            href={RECOMMENDATIONS_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="inline-flex items-center gap-1.5 text-xs text-neutral-500 dark:text-gray-400 hover:text-[#0077B5] dark:hover:text-[#4ba3d9] transition-colors"
+                          >
+                            <FaLinkedin className="w-3.5 h-3.5" />
+                            Read it on LinkedIn
+                          </a>
+                        </div>
                       </motion.div>
                     </motion.div>
                   );

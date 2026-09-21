@@ -6,6 +6,7 @@
       "position": "Intermediate Software Engineer",
       "location": "Berkeley, CA (Remote)",
       "period": "APR 2025 - PRESENT",
+      "industry": true,
       "shortDescription": "AI Media Pipeline Engineer",
       "fullDescription": "• Built a live sports-commentary pipeline on Apache Kafka that turns raw game events into a full audio-visual broadcast.\n• Made it 73% faster by letting audio and video run in parallel and reusing match state between turns.\n• Wrote the stage that stitches AI-generated video back to its voice, frame by frame, down to the exact slice of audio.\n• Taught a Gemma model to actually watch the match: live game state and emotion cues cut bad output by 80%. A goal gets a roar; a throw-in gets a shrug.\n• Swapped ElevenLabs for a self-hosted Dia voice model and brought video generation in-house: cheaper per call, and one less network hop mid-broadcast.\n• Picked the GPUs (which ones, how many, how they're arranged) to run it all on a fixed budget.\n• Designed the \"director's switch\" that picks what viewers see: commentary, the leaderboard, or the crowd losing it.\n• Locked down the inference fleet with TOTP 2FA and rotating JWTs, and kept our GPU box humming."
     },
@@ -15,6 +16,7 @@
       "position": "System Software Engineer",
       "location": "Houston, TX",
       "period": "JUN 2024 - MAR 2025",
+      "industry": true,
       "shortDescription": "Back-End Developer",
       "fullDescription": "• Built Spring Boot microservices for HP's Workforce Experience Platform, the thing enterprises use to wrangle thousands of devices scattered across the globe.\n• Folded a sprawl of REST endpoints into one GraphQL API on AWS: 35% less complexity.\n• Helped design the Standard-to-Elite subscription tiers, with an estimated 28% bump in adoption to show for it.\n• Made alerts land where people actually look: per-tenant Slack and Teams widgets that cut response times by 45%.\n• Kept HP's Go translation service fluent in 20+ languages, and automated its string syncing across five services.\n• Chased a mysterious cross-environment login failure down to an HTTP header size limit, then caught it again when a redeploy quietly undid the fix.\n• Wired Trivy, Veracode and SonarQube into CI, then fixed what they flagged.\n• Cleaned up Maven dependency management and builds, cutting deployment cycles by about 40%.\n• Juggled three teams at once: platform, subscriptions and localization."
     },
@@ -24,6 +26,7 @@
       "position": "Software Developer Intern",
       "location": "Houston, TX",
       "period": "MAY 2023 - AUG 2023",
+      "industry": true,
       "shortDescription": "Cloud Engineer",
       "fullDescription": "• Rebuilt HP TechPulse's reporting so IT teams could see fleet health and fix devices before they broke.\n• Piped telemetry through AWS Kinesis and Redshift: reporting got 65% more efficient.\n• Hooked into Windows WMI events for real-time updates, taking latency from 60 ms to under 17 ms.\n• Built custom integrations on the AWS QuickSight API for dashboards that scale across the enterprise.\n• Crunched millions of telemetry data points into structured analytics.\n• That data fed maintenance strategies that cut support escalations.\n• Found savings projected at $250,000 a year for enterprise clients, through smarter device lifecycle management."
     },
@@ -33,6 +36,7 @@
       "position": "Software Developer",
       "location": "Remote / India",
       "period": "JAN 2022 - JUL 2022",
+      "industry": true,
       "shortDescription": "Backend Software Engineer",
       "fullDescription": "• Went digging through SQL Server execution plans and untangled multi-table joins: billing runs got 40% faster.\n• Built a Python ETL framework that pulls billing data from multiple upstream systems.\n• It wiped out 95% of manual billing corrections along the way.\n• Put the billing pipelines on Apache Airflow with SLA-aware schedules, live monitoring and alerts.\n• Set up CI/CD with Git, Jenkins and Airflow, so dev and prod stopped drifting apart.\n• Wrote Linux scripts that spot failing jobs early and automate the logs: 78% fewer failed billing runs.\n• Scaled billing on AWS (S3, EC2, Lambda) to take 3x the peak traffic while spending 30% less."
     },

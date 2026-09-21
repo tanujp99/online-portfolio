@@ -99,13 +99,9 @@
       "fullDescription": "• Recognized fingerprints with Fuzzy C-Means clustering and statistical features (mean, variance, higher-order moments).\n• Sliding-window segmentation cuts the print out of the background noise, and beat K-means at it.\n• The full pipeline: segment, enhance, find the minutiae, estimate orientation, classify, match.\n• Research under Prof. Surekha Janrao.\n• Enhanced prints by diffing the original against its variance and mean images, for cleaner minutiae.",
       "technologies": ["Fuzzy Logic", "Machine Learning", "Image Processing", "Pattern Recognition", "Biometrics", "MATLAB"],
       "isResearch": true,
-      "paperLink": "https://www.irjmets.com/uploadedfiles/paper//issue_4_april_2022/21641/final/fin_irjmets1653463905.pdf",
       "showGithubLink": false,
-      "journal": "Journal Ceased Existance",
+      "journal": "No longer in publication",
       "citation": "An Application of Fuzzy Logic to Fingerprint Recognition, 2019",
-      "mainButton": "Read Paper",
-      "citationButton": "View Presentation",
-      "citationContent": "Palaspagar, T. (2022). Study of Machine Learning Algorithms for Credit Card Fraud Detection. International Research Journal of Modernization in Engineering Technology and Science, 4.",
       "presentButton": false
     },
     {
