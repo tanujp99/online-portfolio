@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" fill="none">
+  <rect width="1024" height="1024" fill="#f8f8f5"/>
+  <!-- userspace: terminal with the watchman's eye -->
+  <rect x="297" y="120" width="430" height="180" rx="34" fill="#3a3a3c"/>
+  <rect x="337" y="168" width="180" height="26" rx="13" fill="#2a2a2c"/>
+  <rect x="337" y="224" width="128" height="26" rx="13" fill="#2a2a2c"/>
+  <path d="M572 210 Q630 150 688 210 Q630 270 572 210 Z" stroke="#ff3366" stroke-width="12" stroke-linejoin="round"/>
+  <circle cx="630" cy="210" r="18" fill="#ff3366"/>
+  <!-- the syscall boundary -->
+  <path d="M512 300 V424" stroke="#ff3366" stroke-width="12" stroke-linecap="round"/>
+  <path d="M120 372 H904" stroke="#ff3366" stroke-width="8" stroke-linecap="round" stroke-dasharray="4 26"/>
+  <!-- the driver: chip -->
+  <rect x="222" y="424" width="580" height="190" rx="34" fill="#3a3a3c"/>
+  <rect x="272" y="469" width="100" height="100" rx="14" stroke="#ffffff" stroke-width="10"/>
+  <rect x="300" y="497" width="44" height="44" rx="6" fill="#ffffff"/>
+  <path d="M297 469 V449 M322 469 V449 M347 469 V449 M297 569 V589 M322 569 V589 M347 569 V589 M272 494 H252 M272 519 H252 M272 544 H252 M372 494 H392 M372 519 H392 M372 544 H392" stroke="#ffffff" stroke-width="8" stroke-linecap="round"/>
+  <rect x="432" y="478" width="320" height="26" rx="13" fill="#2a2a2c"/>
+  <rect x="432" y="534" width="220" height="26" rx="13" fill="#2a2a2c"/>
+  <!-- the seam, fanning out to swappable sources -->
+  <path d="M512 614 V700 M270 760 V728 Q270 700 298 700 H726 Q754 700 754 728 V760" stroke="#ff3366" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M512 700 V760" stroke="#ff3366" stroke-width="12" stroke-linecap="round"/>
+  <rect x="180" y="760" width="180" height="160" rx="28" fill="#3a3a3c"/>
+  <rect x="422" y="760" width="180" height="160" rx="28" fill="#3a3a3c"/>
+  <rect x="664" y="760" width="180" height="160" rx="28" fill="#3a3a3c"/>
+  <!-- timer -->
+  <circle cx="270" cy="840" r="46" stroke="#ffffff" stroke-width="10"/>
+  <path d="M270 810 V840 L292 856" stroke="#ffffff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- replay -->
+  <path d="M552 840 A40 40 0 1 1 540 811" stroke="#ffffff" stroke-width="10" stroke-linecap="round"/>
+  <path d="M532 790 L544 812 L520 822" stroke="#ffffff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M504 822 V858 L534 840 Z" fill="#ffffff"/>
+  <!-- sensor, still to come -->
+  <path d="M700 840 H718 L734 808 L754 872 L772 824 L784 840 H808" stroke="#9a9a9e" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
