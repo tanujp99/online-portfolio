@@ -17,7 +17,7 @@ function FlipIcon() {
 // Tilts the card toward the pointer and moves the light with it; plain CSS variables, no re-renders
 const MAX_TILT = 9;
 
-export function handleTilt(e: React.PointerEvent<HTMLDivElement>) {
+function handleTilt(e: React.PointerEvent<HTMLDivElement>) {
   if (e.pointerType !== 'mouse') return;
   const card = e.currentTarget;
   const rect = card.getBoundingClientRect();
@@ -31,7 +31,7 @@ export function handleTilt(e: React.PointerEvent<HTMLDivElement>) {
   card.style.setProperty('--gy', `${(y * 100).toFixed(1)}%`);
 }
 
-export function resetTilt(e: React.PointerEvent<HTMLDivElement>) {
+function resetTilt(e: React.PointerEvent<HTMLDivElement>) {
   const card = e.currentTarget;
   card.classList.remove('is-hovering');
   ['--rx', '--ry', '--lift'].forEach((name) => card.style.removeProperty(name));

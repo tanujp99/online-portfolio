@@ -16,7 +16,6 @@ import projectsData from '@/data/projects.json';
 import awardsData from '@/data/awards.json';
 import skillsData from '@/data/skills.json';
 import CountUp from './CountUp';
-import { handleTilt, resetTilt } from './FlipCard';
 
 interface GitHubData {
   name: string;
@@ -107,12 +106,14 @@ function yearsInIndustry(now = new Date()) {
 
 const papers = (projectsData.projects as { isResearch?: boolean }[]).filter((project) => project.isResearch).length;
 
-const stats = [
-  { value: yearsInIndustry(), suffix: '+', label: 'Years in Industry' },
-  { value: projectsData.projects.length, label: 'Projects' },
-  { value: awardsData.awards.length, label: 'Awards' },
-  { value: papers, label: papers === 1 ? 'Research Paper' : 'Research Papers' },
-];
+function buildStats(publicRepos: number) {
+  return [
+    { value: yearsInIndustry(), suffix: '+', label: 'Years in Industry' },
+    { value: publicRepos, label: 'Public Repos' },
+    { value: awardsData.awards.length, label: 'Awards' },
+    { value: papers, label: papers === 1 ? 'Research Paper' : 'Research Papers' },
+  ];
+}
 
 const skillIcons = {
   chip: FaMicrochip,
@@ -255,7 +256,7 @@ export default function Profile() {
           <div className="max-w-4xl mx-auto">
             <div className="backdrop-blur-md rounded-2xl p-4 sm:p-6 shadow-panel">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 text-center">
-                {stats.map((stat) => (
+                {buildStats(profile.public_repos).map((stat) => (
                   <div key={stat.label} className="p-3 rounded-xl bg-light-accent/5 dark:bg-dark-accent/5">
                     <div className="text-2xl sm:text-3xl text-hero text-light-accent dark:text-dark-accent">
                       <CountUp value={stat.value} suffix={stat.suffix} />
@@ -270,23 +271,19 @@ export default function Profile() {
                 {skillsData.groups.map((group) => {
                   const Icon = skillIcons[group.icon as keyof typeof skillIcons];
                   return (
-                    <div key={group.name} className="flip-card" onPointerMove={handleTilt} onPointerLeave={resetTilt}>
-                      <div className="flip-card-tilt">
-                        <div className="flip-card-face relative h-full rounded-xl bg-[var(--card-bg)] shadow-card p-4">
-                          <div className="flex items-center gap-3 mb-3">
-                            <span className="w-9 h-9 shrink-0 rounded-full bg-light-accent/10 dark:bg-dark-accent/15 text-light-accent dark:text-dark-accent flex items-center justify-center">
-                              {Icon && <Icon className="w-4 h-4" />}
-                            </span>
-                            <h3 className="text-base font-semibold text-neutral-900 dark:text-white">{group.name}</h3>
-                          </div>
-                          <div className="flex flex-wrap gap-2">
-                            {group.skills.map((skill) => (
-                              <span key={skill} className="skill-chip inline-flex items-center px-3 py-1 rounded-full bg-[var(--button-bg)] text-[var(--foreground)] border border-[var(--border-color)] font-medium text-xs sm:text-sm shadow-sm">
-                                {skill}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
+                    <div key={group.name} className="h-full rounded-xl bg-light-accent/5 dark:bg-dark-accent/5 p-4">
+                      <div className="flex items-center gap-3 mb-3">
+                        <span className="w-9 h-9 shrink-0 rounded-full bg-light-accent/10 dark:bg-dark-accent/15 text-light-accent dark:text-dark-accent flex items-center justify-center">
+                          {Icon && <Icon className="w-4 h-4" />}
+                        </span>
+                        <h3 className="text-base font-semibold text-neutral-900 dark:text-white">{group.name}</h3>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {group.skills.map((skill) => (
+                          <span key={skill} className="skill-chip inline-flex items-center px-3 py-1 rounded-full bg-[var(--button-bg)] text-[var(--foreground)] border border-[var(--border-color)] font-medium text-xs sm:text-sm shadow-sm">
+                            {skill}
+                          </span>
+                        ))}
                       </div>
                     </div>
                   );
