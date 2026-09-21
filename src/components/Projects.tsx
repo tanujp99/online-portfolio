@@ -212,20 +212,20 @@ export default function Projects() {
                   }
                   back={
                     <>
-                      <h3 className="text-lg sm:text-xl font-semibold mb-3 text-neutral-900 dark:text-white">{project.title}</h3>
+                      <h3 className="text-base sm:text-lg leading-snug font-semibold mb-2 text-neutral-900 dark:text-white">{project.title}</h3>
                       <div className="text-sm sm:text-base text-neutral-700 dark:text-gray-300 mb-4 space-y-1">
                         {renderDescription(project.fullDescription)}
                       </div>
-                      <div className="mt-auto pr-8">
+                      <div className="mt-auto pr-8 flex flex-wrap gap-2">
                         {project.paperLink && (
                           <a
                             href={project.paperLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-block mr-4 text-light-accent dark:text-dark-accent hover:underline font-semibold text-sm sm:text-base"
+                            className="inline-flex items-center px-3 py-1 rounded-full bg-light-accent dark:bg-dark-accent text-[var(--card-bg)] text-xs sm:text-sm font-medium hover:opacity-90 transition-opacity"
                             onClick={(e) => e.stopPropagation()}
                           >
-                            📄 Read the Paper
+                            Read the Paper
                           </a>
                         )}
                         {project.showGithubLink && project.githubLink && (
@@ -233,10 +233,10 @@ export default function Projects() {
                             href={project.githubLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-light-accent dark:text-dark-accent hover:underline text-sm sm:text-base"
+                            className="inline-flex items-center px-3 py-1 rounded-full bg-light-accent dark:bg-dark-accent text-[var(--card-bg)] text-xs sm:text-sm font-medium hover:opacity-90 transition-opacity"
                             onClick={(e) => e.stopPropagation()}
                           >
-                            View on GitHub →
+                            View on GitHub
                           </a>
                         )}
                       </div>

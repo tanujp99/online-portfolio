@@ -151,10 +151,10 @@ export default function Awards() {
                           href={role.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="mt-auto pt-3 pr-8 text-sm text-light-accent dark:text-dark-accent hover:underline"
+                          className="mt-auto self-start inline-flex items-center px-3 py-1 rounded-full bg-light-accent dark:bg-dark-accent text-[var(--card-bg)] text-xs sm:text-sm font-medium hover:opacity-90 transition-opacity"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          {role.linkLabel ?? 'Learn more →'}
+                          {role.linkLabel ?? 'Learn more'}
                         </a>
                       )}
                     </>

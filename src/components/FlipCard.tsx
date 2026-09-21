@@ -89,10 +89,10 @@ export default function FlipCard({ label, front, back, padding = 'p-4 sm:p-6' }:
           >
             <div className={`custom-scrollbar h-full overflow-y-auto flex flex-col ${padding}`}>
               {back}
-              <span className="sticky bottom-0 self-end -mb-1 sm:-mb-3 -mr-1 sm:-mr-2 text-light-accent dark:text-dark-accent pointer-events-none">
-                <FlipIcon />
-              </span>
             </div>
+            <span className="absolute bottom-2 sm:bottom-3 right-3 sm:right-4 text-light-accent dark:text-dark-accent pointer-events-none">
+              <FlipIcon />
+            </span>
           </div>
         </div>
       </div>
