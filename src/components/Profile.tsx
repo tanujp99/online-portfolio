@@ -278,7 +278,7 @@ export default function Profile() {
             <div className="backdrop-blur-md rounded-2xl p-4 sm:p-6 shadow-panel">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 text-center">
                 {buildStats(profile.public_repos).map((stat) => (
-                  <div key={stat.label} className="p-3 rounded-xl bg-light-accent/5 dark:bg-dark-accent/5">
+                  <div key={stat.label} className="p-3 rounded-xl bg-black/[0.04] dark:bg-white/[0.05]">
                     <div className="text-2xl sm:text-3xl text-hero text-light-accent dark:text-dark-accent">
                       <CountUp value={stat.value} suffix={stat.suffix} />
                     </div>
@@ -292,9 +292,9 @@ export default function Profile() {
                 {skillsData.groups.map((group) => {
                   const Icon = skillIcons[group.icon as keyof typeof skillIcons];
                   return (
-                    <div key={group.name} className="h-full rounded-xl bg-light-accent/5 dark:bg-dark-accent/5 p-4">
+                    <div key={group.name} className="h-full rounded-xl bg-black/[0.04] dark:bg-white/[0.05] p-4">
                       <div className="flex items-center gap-3 mb-3">
-                        <span className="w-9 h-9 shrink-0 rounded-full bg-light-accent/10 dark:bg-dark-accent/15 text-light-accent dark:text-dark-accent flex items-center justify-center">
+                        <span className="w-9 h-9 shrink-0 rounded-full bg-black/[0.05] dark:bg-white/[0.07] text-light-accent dark:text-dark-accent flex items-center justify-center">
                           {Icon && <Icon className="w-4 h-4" />}
                         </span>
                         <h3 className="text-base font-semibold text-neutral-900 dark:text-white">{group.name}</h3>
@@ -334,7 +334,7 @@ export default function Profile() {
                   return (
                     <Reveal key={testimonial.id}>
                       <div
-                        className={`relative rounded-xl bg-light-accent/5 dark:bg-dark-accent/5 p-4 ${canExpand ? 'cursor-pointer' : ''}`}
+                        className={`relative rounded-xl bg-black/[0.04] dark:bg-white/[0.05] p-4 ${canExpand ? 'cursor-pointer' : ''}`}
                         onClick={() => {
                           if (!canExpand) return;
                           if (window.getSelection && window.getSelection() && window.getSelection()!.toString()) return;
