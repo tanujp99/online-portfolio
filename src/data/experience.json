@@ -37,6 +37,15 @@
       "fullDescription": "• Optimized financial processing by refactoring SQL Server stored procedures with improved execution plans, accelerating billing cycles by 40%.\n• Automated Python-based ETL framework for billing data integration, reducing manual corrections by 95% and enhancing invoice accuracy.\n• Orchestrated billing pipeline using Apache Airflow, ensuring reliable financial delivery and total compliance with reporting SLAs.\n• Fortified deployment infrastructure with Git, Jenkins and Linux monitoring scripts, reducing failures by 65% for critical billing services.\n• Architected scalable billing on AWS services (S3, EC2, Lambda), supporting 3x transaction volume during peaks while decreasing costs by 30%.\n• Developed a comprehensive Python-based ETL automation framework for data extraction, transformation, and loading across multiple upstream systems, creating intelligent data pipelines that improved billing accuracy, reduced manual processing time by 55%, and ensured data integrity throughout the financial reconciliation lifecycle.\n• Designed and deployed Apache Airflow orchestration infrastructure to schedule, monitor, and maintain critical billing data pipelines, ensuring precise SLA compliance, automating alerts for potential processing delays, and enabling timely delivery of financial reports.\n• Implemented enterprise-grade CI/CD practices using Git, Jenkins, and Airflow to create robust, self-healing release automation across development, staging, and production environments, enhancing deployment consistency, eliminating manual configuration errors, and reducing rollback risks during critical updates to core billing logic.\n• Developed sophisticated Linux/Unix shell scripts for comprehensive system management, including automated log rotation, intelligent job monitoring with predictive failure detection, and environment-level automation tasks, significantly improving overall platform stability and creating proactive alerting systems that reduced billing run failures by 78%."
     },
     {
+      "id": 8,
+      "company": "RKdemy",
+      "position": "Technical & Administrative Intern",
+      "location": "Thane, India",
+      "period": "MAY 2020 - DEC 2020",
+      "shortDescription": "EdTech Operations Intern",
+      "fullDescription": "• Supported RK Vaishnavi Academy's move to remote teaching, administering Google Workspace, the Admin Console and YouTube Studio.\n• Coordinated online events and ran the academy's online learning platform day to day.\n• Worked with the founding director on planning and the technology setup for the academy's online programs.\n• Produced lecture and event videos in Adobe Premiere Pro."
+    },
+    {
       "id": 4,
       "company": "Techobytes Technologies",
       "position": "Data Science Intern",
@@ -44,6 +53,15 @@
       "period": "MAY 2020 - AUG 2020",
       "shortDescription": "Data Science Intern",
       "fullDescription": "• Devised time-series ML models using TensorFlow on COVID-19 case data, improving forecast accuracy by 35%, enabling outbreak alerts.\n• Performed risk-pattern analysis using data visualization pipelines, uncovering high-transmission clusters and enhancing epidemiological insight.\n• Built dashboards with FBProphet, automating daily trend updates - streamlining projection delivery for public health researchers and stakeholders.\n• Pioneered advanced machine learning models using TensorFlow for COVID-19 data analysis, achieving a remarkable 35% improvement in predictive trend accuracy through innovative algorithmic approaches and sophisticated feature engineering techniques.\n• Executed comprehensive Data Visualization and Analysis of novel COVID-19 datasets, uncovering critical transmission risk patterns through rigorous statistical methodologies that directly informed public health decision-making strategies and intervention planning.\n• Applied advanced time-series analysis techniques to epidemiological datasets, creating models that predicted regional outbreak patterns with precision substantially exceeding previous methodologies, directly supporting targeted public health interventions.\n• Collaborated with cross-functional teams of epidemiologists and public health officials to translate complex statistical findings into actionable insights, bridging the gap between data science and practical pandemic response strategies."
+    },
+    {
+      "id": 9,
+      "company": "SIES Graduate School of Technology",
+      "position": "Software Research & Design Intern",
+      "location": "Navi Mumbai, India",
+      "period": "DEC 2019 - JAN 2020",
+      "shortDescription": "Software Design Research Intern",
+      "fullDescription": "• Designed the software concept for a Depression Coping Service, drawing on training from the Education Research cell at IIT Bombay.\n• Turned research on mental-health interventions into a system design: user flows, core components and engagement features.\n• Framed the platform around evidence-based support for people managing depression."
     },
     {
       "id": 5,
