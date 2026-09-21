@@ -1,7 +1,9 @@
 import projectsData from '@/data/projects.json';
+import linksData from '@/data/links.json';
 
-// Live demos are hosted elsewhere (e.g. Railway). Check the demo first: if it answers, send the visitor
-// straight there; if not, show our own offline page instead of the host's error.
+// Outbound links that might not be there: live demos hosted elsewhere (e.g. Railway) and papers or
+// slides that aren't online yet. If the target answers, send the visitor straight there; if it's
+// down or there is no target yet, show our own page instead of someone else's error.
 export const dynamic = 'force-dynamic';
 
 const CHECK_TIMEOUT_MS = 5000;
@@ -13,7 +15,28 @@ interface LiveProject {
   presentContent?: string;
 }
 
-const projects = projectsData.projects as LiveProject[];
+interface Destination {
+  url: string | null;
+  heading: string;
+  message: string;
+  githubLink?: string;
+}
+
+function findDestination(slug: string): Destination | null {
+  const link = (linksData.links as { slug: string; url: string | null; heading: string; message: string }[]).find(
+    (l) => l.slug === slug,
+  );
+  if (link) return link;
+
+  const project = (projectsData.projects as LiveProject[]).find((p) => p.presentSlug === slug && p.presentContent);
+  if (!project?.presentContent) return null;
+  return {
+    url: project.presentContent,
+    heading: `${project.title} is offline right now`,
+    message: "The live demo isn't answering at the moment. It's usually back soon, and the code is always on GitHub.",
+    githubLink: project.githubLink,
+  };
+}
 
 async function isUp(url: string): Promise<boolean> {
   try {
@@ -28,20 +51,22 @@ async function isUp(url: string): Promise<boolean> {
   }
 }
 
-export async function GET(_request: Request, { params }: { params: { slug: string } }) {
-  const project = projects.find((p) => p.presentSlug === params.slug && p.presentContent);
-  if (!project?.presentContent) {
+export async function GET(request: Request, { params }: { params: { slug: string } }) {
+  const destination = findDestination(params.slug);
+  if (!destination) {
     return new Response('Not found', { status: 404 });
   }
 
-  if (await isUp(project.presentContent)) {
+  // Relative targets (e.g. a PDF in /public) are checked against this site
+  const target = destination.url ? new URL(destination.url, request.url).toString() : null;
+  if (target && (await isUp(target))) {
     return new Response(null, {
       status: 307,
-      headers: { Location: project.presentContent, 'Cache-Control': 'no-store' },
+      headers: { Location: target, 'Cache-Control': 'no-store' },
     });
   }
 
-  return new Response(offlinePage(project, params.slug), {
+  return new Response(unavailablePage(destination, params.slug, Boolean(target)), {
     status: 503,
     headers: {
       'Content-Type': 'text/html; charset=utf-8',
@@ -57,15 +82,17 @@ const escapeHtml = (value: string) =>
 // A glider, drawn as a 5x5 grid of cells
 const GLIDER = ['.#...', '..#..', '###..', '.....', '.....'];
 
-function offlinePage(project: LiveProject, slug: string) {
-  const title = escapeHtml(project.title);
+function unavailablePage(destination: Destination, slug: string, canRetry: boolean) {
+  const heading = escapeHtml(destination.heading);
   const cells = GLIDER.join('')
     .split('')
     .map((cell) => `<i${cell === '#' ? ' class="on"' : ''}></i>`)
     .join('');
-  const github = project.githubLink
-    ? `<a class="btn" href="${escapeHtml(project.githubLink)}">View the code</a>`
+  const github = destination.githubLink
+    ? `<a class="btn${canRetry ? '' : ' primary'}" href="${escapeHtml(destination.githubLink)}">View the code</a>`
     : '';
+  const retry = canRetry ? `<a class="btn primary" href="/go/${escapeHtml(slug)}">Try again</a>` : '';
+  const actions = retry || github ? `<div class="actions">${retry}${github}</div>` : '';
 
   return `<!doctype html>
 <html lang="en">
@@ -73,7 +100,7 @@ function offlinePage(project: LiveProject, slug: string) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>${title} is offline · tanuj palaspagar</title>
+<title>${heading} · tanuj palaspagar</title>
 <link rel="icon" href="/icon.svg" type="image/svg+xml">
 <script>
   try {
@@ -162,12 +189,9 @@ function offlinePage(project: LiveProject, slug: string) {
 <body>
 <main>
   <div class="grid" aria-hidden="true">${cells}</div>
-  <h1>${title} is offline right now</h1>
-  <p>The live demo isn't answering at the moment. It's usually back soon, and the code is always on GitHub.</p>
-  <div class="actions">
-    <a class="btn primary" href="/go/${escapeHtml(slug)}">Try again</a>
-    ${github}
-  </div>
+  <h1>${heading}</h1>
+  <p>${escapeHtml(destination.message)}</p>
+  ${actions}
   <a class="home" href="/">← Back to the portfolio</a>
 </main>
 </body>

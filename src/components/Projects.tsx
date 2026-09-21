@@ -134,7 +134,7 @@ export default function Projects() {
                                 {project.mainButton}
                               </a>
                             )}
-                            {project.presentButton && typeof project.presentButton === 'string' && project.presentContent && (
+                            {project.presentButton && typeof project.presentButton === 'string' && (project.presentSlug || project.presentContent) && (
                               <a
                                 href={project.presentSlug ? `/go/${project.presentSlug}` : project.presentContent}
                                 target="_blank"
@@ -180,7 +180,7 @@ export default function Projects() {
                               />
                             </div>
                             {/* Present button in bottom left corner */}
-                            {project.presentButton && typeof project.presentButton === 'string' && project.presentContent && (
+                            {project.presentButton && typeof project.presentButton === 'string' && (project.presentSlug || project.presentContent) && (
                               <div className="absolute bottom-5 left-5">
                                 <a
                                   href={project.presentSlug ? `/go/${project.presentSlug}` : project.presentContent}

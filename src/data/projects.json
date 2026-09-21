@@ -100,9 +100,12 @@
       "technologies": ["Fuzzy Logic", "Machine Learning", "Image Processing", "Pattern Recognition", "Biometrics", "MATLAB"],
       "isResearch": true,
       "showGithubLink": false,
+      "paperLink": "/go/fingerprint-paper",
       "journal": "No longer in publication",
       "citation": "An Application of Fuzzy Logic to Fingerprint Recognition, 2019",
-      "presentButton": false
+      "mainButton": "Read Paper",
+      "presentButton": "View Presentation",
+      "presentSlug": "fingerprint-presentation"
     },
     {
       "year": 2023,
