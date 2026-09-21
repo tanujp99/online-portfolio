@@ -7,7 +7,7 @@
       "location": "Berkeley, CA (Remote)",
       "period": "APR 2025 - PRESENT",
       "shortDescription": "AI Media Pipeline Engineer",
-      "fullDescription": "• Built a live sports-commentary pipeline on Kafka that turns raw game events into a full audio-visual broadcast, then made it 73% faster by letting audio and video run in parallel instead of waiting on each other.\n• Wrote the stage that stitches AI-generated video back to its voice, frame by frame, down to the exact slice of audio, so the commentator never drifts out of sync.\n• Taught a Gemma model to actually watch the match: feeding it live game state and emotion cues cut bad output by 80%. A goal gets a roar; a throw-in gets a shrug.\n• Swapped our TTS vendor (ElevenLabs) for a self-hosted Dia model and brought video generation in-house too: cheaper per call and one less network hop mid-broadcast. Then picked the GPUs to run it all on a fixed budget.\n• Designed the \"director's switch\" that decides what viewers see at any moment: commentary, the leaderboard, or the crowd losing it.\n• Locked down the inference fleet with TOTP 2FA and rotating JWTs, and kept our GPU box humming day to day."
+      "fullDescription": "• Built a live sports-commentary pipeline on Apache Kafka that turns raw game events into a full audio-visual broadcast.\n• Made it 73% faster by letting audio and video run in parallel and reusing match state between turns.\n• Wrote the stage that stitches AI-generated video back to its voice, frame by frame, down to the exact slice of audio.\n• Taught a Gemma model to actually watch the match: live game state and emotion cues cut bad output by 80%. A goal gets a roar; a throw-in gets a shrug.\n• Swapped ElevenLabs for a self-hosted Dia voice model and brought video generation in-house: cheaper per call, and one less network hop mid-broadcast.\n• Picked the GPUs (which ones, how many, how they're arranged) to run it all on a fixed budget.\n• Designed the \"director's switch\" that picks what viewers see: commentary, the leaderboard, or the crowd losing it.\n• Locked down the inference fleet with TOTP 2FA and rotating JWTs, and kept our GPU box humming."
     },
     {
       "id": 1,
@@ -16,7 +16,7 @@
       "location": "Houston, TX",
       "period": "JUN 2024 - MAR 2025",
       "shortDescription": "Back-End Developer",
-      "fullDescription": "• Built Spring Boot microservices for HP's Workforce Experience Platform, the thing enterprises use to wrangle thousands of devices scattered across the globe.\n• Folded a sprawl of REST endpoints into one GraphQL API on AWS: 35% less complexity to untangle.\n• Helped design the subscription tiers, with an estimated 28% bump in adoption to show for it.\n• Made alerts land where people actually look: per-tenant Slack and Teams widgets that cut response times by 45%.\n• Kept HP's Go translation service fluent in 20+ languages, with proper access control, and every tenant's data in its own lane.\n• Cleaned up Maven dependency management and builds, cutting deployment cycle times by about 40%."
+      "fullDescription": "• Built Spring Boot microservices for HP's Workforce Experience Platform, the thing enterprises use to wrangle thousands of devices scattered across the globe.\n• Folded a sprawl of REST endpoints into one GraphQL API on AWS: 35% less complexity.\n• Helped design the Standard-to-Elite subscription tiers, with an estimated 28% bump in adoption to show for it.\n• Made alerts land where people actually look: per-tenant Slack and Teams widgets that cut response times by 45%.\n• Kept HP's Go translation service fluent in 20+ languages, and automated its string syncing across five services.\n• Chased a mysterious cross-environment login failure down to an HTTP header size limit, then caught it again when a redeploy quietly undid the fix.\n• Wired Trivy, Veracode and SonarQube into CI, then fixed what they flagged.\n• Cleaned up Maven dependency management and builds, cutting deployment cycles by about 40%.\n• Juggled three teams at once: platform, subscriptions and localization."
     },
     {
       "id": 2,
@@ -25,7 +25,7 @@
       "location": "Houston, TX",
       "period": "MAY 2023 - AUG 2023",
       "shortDescription": "Cloud Engineer",
-      "fullDescription": "• Rebuilt HP TechPulse's reporting so IT teams could see fleet health and fix devices before they broke.\n• Piped telemetry through AWS Kinesis and Redshift: reporting got 65% more efficient.\n• Hooked into Windows WMI events for real-time updates, taking latency from 60 ms to under 17 ms.\n• Turned millions of telemetry points into QuickSight dashboards for the whole enterprise.\n• Found savings projected at $250,000 a year for enterprise clients."
+      "fullDescription": "• Rebuilt HP TechPulse's reporting so IT teams could see fleet health and fix devices before they broke.\n• Piped telemetry through AWS Kinesis and Redshift: reporting got 65% more efficient.\n• Hooked into Windows WMI events for real-time updates, taking latency from 60 ms to under 17 ms.\n• Built custom integrations on the AWS QuickSight API for dashboards that scale across the enterprise.\n• Crunched millions of telemetry data points into structured analytics.\n• That data fed maintenance strategies that cut support escalations.\n• Found savings projected at $250,000 a year for enterprise clients, through smarter device lifecycle management."
     },
     {
       "id": 3,
@@ -34,7 +34,7 @@
       "location": "Remote / India",
       "period": "JAN 2022 - JUL 2022",
       "shortDescription": "Backend Software Engineer",
-      "fullDescription": "• Went digging through SQL Server execution plans and rewrote the stored procedures: billing runs got 40% faster.\n• Built a Python ETL framework that wiped out 95% of manual billing corrections.\n• Put the billing pipelines on Apache Airflow with SLA-aware schedules and alerts, so nothing slipped by quietly.\n• Git + Jenkins CI/CD, plus Linux scripts that catch trouble early: 78% fewer failed billing runs.\n• Scaled billing on AWS to take 3x the peak traffic while spending 30% less."
+      "fullDescription": "• Went digging through SQL Server execution plans and untangled multi-table joins: billing runs got 40% faster.\n• Built a Python ETL framework that pulls billing data from multiple upstream systems.\n• It wiped out 95% of manual billing corrections along the way.\n• Put the billing pipelines on Apache Airflow with SLA-aware schedules, live monitoring and alerts.\n• Set up CI/CD with Git, Jenkins and Airflow, so dev and prod stopped drifting apart.\n• Wrote Linux scripts that spot failing jobs early and automate the logs: 78% fewer failed billing runs.\n• Scaled billing on AWS (S3, EC2, Lambda) to take 3x the peak traffic while spending 30% less."
     },
     {
       "id": 8,
@@ -43,7 +43,7 @@
       "location": "Thane, India",
       "period": "MAY 2020 - DEC 2020",
       "shortDescription": "EdTech Operations Intern",
-      "fullDescription": "• Helped RK Vaishnavi Academy move its whole classroom online in 2020, running Google Workspace, the Admin Console and YouTube Studio.\n• Ran the online events and kept the learning platform ticking.\n• Planned the tech setup with the founding director.\n• Edited lecture and event videos in Premiere Pro."
+      "fullDescription": "• Helped RK Vaishnavi Academy move its whole classroom online in 2020.\n• Ran Google Workspace, the Admin Console and YouTube Studio behind the scenes.\n• Organized online events and kept the learning platform ticking.\n• Planned the academy's tech setup with the founding director.\n• Edited lecture and event videos in Premiere Pro.\n• Made the learning materials and presentations look the part."
     },
     {
       "id": 4,
@@ -52,7 +52,7 @@
       "location": "Mumbai, India",
       "period": "MAY 2020 - AUG 2020",
       "shortDescription": "Data Science Intern",
-      "fullDescription": "• Trained TensorFlow models on COVID-19 data in the thick of 2020, making trend predictions 35% more accurate.\n• Dug through case data for transmission hotspots and patterns.\n• Built FBProphet forecast dashboards to see where things were heading next.\n• Turned the numbers into plain answers for epidemiologists and public-health officials."
+      "fullDescription": "• Trained TensorFlow models on COVID-19 data in the thick of 2020.\n• Feature engineering made the trend predictions 35% more accurate.\n• Dug through case data for transmission hotspots and risk patterns.\n• Built time-series models to predict regional outbreaks.\n• Built FBProphet forecast dashboards to spot emerging hotspots and plan resources ahead.\n• Turned the numbers into plain answers for epidemiologists and public-health officials."
     },
     {
       "id": 9,
@@ -61,7 +61,7 @@
       "location": "Navi Mumbai, India",
       "period": "DEC 2019 - JAN 2020",
       "shortDescription": "Software Design Research Intern",
-      "fullDescription": "• Designed a Depression Coping Service from scratch, using training from IIT Bombay's Education Research cell.\n• Turned mental-health research into an actual system design: user flows, components, and features that keep people coming back.\n• Built it around evidence-based support for people managing depression."
+      "fullDescription": "• Designed a Depression Coping Service from scratch.\n• Brought in training from IIT Bombay's Education Research cell.\n• Turned research on mental-health interventions into an actual system design.\n• Mapped out the user flows and the architecture.\n• Put engagement front and center, so the platform keeps people coming back.\n• Grounded it all in evidence-based support for people managing depression."
     },
     {
       "id": 5,
@@ -70,7 +70,7 @@
       "location": "Navi Mumbai, India",
       "period": "NOV 2019 - FEB 2020",
       "shortDescription": "Medical Research Intern",
-      "fullDescription": "• Wrangled medical-device data into HL7 with Python, so different monitoring systems could finally talk to each other.\n• Turned raw physiological sensor readings into something doctors could act on in real time.\n• Built a real-time pipeline that made patient monitoring 28% more accurate.\n• Added sanity checks for bad sensor readings, and worked with clinicians on the dashboards."
+      "fullDescription": "• Wrangled medical-device data into HL7 with Python, so different monitoring systems could finally talk to each other.\n• Wrote algorithms that turn raw physiological sensor readings into something doctors can act on.\n• Built a real-time pipeline that made patient monitoring 28% more accurate.\n• Added validation that catches bad sensor readings before they reach anyone.\n• Sat with clinicians to learn their workflows, then turned them into specs for the data dashboards."
     },
     {
       "id": 6,
@@ -79,7 +79,7 @@
       "location": "Navi Mumbai, India",
       "period": "MAY 2019 - JUL 2019",
       "shortDescription": "Computer Research Intern",
-      "fullDescription": "• Mixed wavelet transforms with clustering to segment images without supervision: 20% more accurate than the established methods.\n• Built adaptive mask filters in MATLAB that tune themselves to each image for sharper edges.\n• Benchmarked it all against the standard techniques on precision and speed.\n• Worked with senior researchers through round after round of feedback, sharpening the approach each time."
+      "fullDescription": "• Segmented images without supervision by mixing wavelet transforms with clustering.\n• Beat the established methods by 20% on accuracy.\n• Built adaptive mask filters in MATLAB that tune themselves to each image.\n• Got sharper edges and features, even on images where the traditional methods fell over.\n• Benchmarked everything against the standard techniques on precision and speed.\n• Worked with senior researchers through round after round of feedback, sharpening the approach each time."
     }
   ]
 }
