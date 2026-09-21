@@ -1,7 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import aboutData from '@/data/about.json';
+import Reveal from './Reveal';
 import { FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa';
 
 const aboutInfo = aboutData;
@@ -10,21 +10,13 @@ export default function About() {
   return (
     <section id="about" className="py-12 sm:py-16 md:py-20">
       <div className="container mx-auto px-4 sm:px-6 md:px-8">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
+        <h2
           className="text-2xl sm:text-3xl md:text-4xl text-heading text-center mb-8 sm:mb-12 md:mb-16 text-neutral-900 dark:text-white"
         >
           About
-        </motion.h2>
+        </h2>
         <div className="max-w-2xl mx-auto space-y-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
+          <Reveal
             className="bg-[var(--card-bg)] backdrop-blur-md rounded-xl p-5 sm:p-6 shadow-panel"
           >
             <div>
@@ -89,15 +81,11 @@ export default function About() {
               </div>
             </div>
             
-            </motion.div>
+            </Reveal>
           </div>
         {/* Technologies Used Section */}
         <div className="max-w-2xl mx-auto mt-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            viewport={{ once: true }}
+          <Reveal
             className="bg-[var(--card-bg)] backdrop-blur-md rounded-xl p-5 sm:p-6 shadow-panel"
           >
             <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-light-accent dark:text-dark-accent">This website is built with</h3>
@@ -169,7 +157,7 @@ export default function About() {
                   </div>
                 </div> */}
             </div>
-          </motion.div>
+          </Reveal>
         </div>
       </div>
     </section>

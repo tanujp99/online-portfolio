@@ -1,13 +1,11 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { FaGithub, FaMapMarkerAlt, FaLink, FaUsers, FaCode, FaStar, FaCodeBranch, FaTwitter, FaLinkedin, FaDiscord, FaReddit, FaSpotify, FaCoffee, FaPatreon, FaXbox, FaSteam } from 'react-icons/fa';
 import Image from 'next/image';
 import GitHubCalendar from 'react-github-calendar';
 import { useTheme } from '../context/ThemeContext';
 import ThemedIcon from './ThemedIcon';
-import LoadingSpinner from './LoadingSpinner';
 import ActivityGraph from './ActivityGraph';
 import { FaQuoteLeft, FaExternalLinkAlt, FaMicrochip, FaServer, FaStream, FaCloud, FaBrain, FaShieldAlt } from 'react-icons/fa';
 import testimonialsData from '@/data/testimonials.json';
@@ -74,6 +72,7 @@ interface Testimonial {
 // Flip this to true to fetch and show them again.
 const SHOW_PINNED_REPOS = false;
 
+const GITHUB_USERNAME = 'tanujp99';
 const RECOMMENDATIONS_URL = 'https://www.linkedin.com/in/tanujp/details/recommendations/?detailScreenTabIndex=0';
 
 // Stats are computed from the site's own data so they can't drift out of date
@@ -108,7 +107,7 @@ function yearsInIndustry(now = new Date()) {
 
 const papers = (projectsData.projects as { isResearch?: boolean }[]).filter((project) => project.isResearch).length;
 
-function buildStats(publicRepos: number) {
+function buildStats(publicRepos: number | null) {
   return [
     { value: yearsInIndustry(), suffix: '+', label: 'Years in Industry' },
     { value: publicRepos, label: 'Public Repos' },
@@ -153,7 +152,6 @@ export default function Profile() {
   const { theme } = useTheme();
   const [profile, setProfile] = useState<GitHubData | null>(cachedProfile);
   const [pinnedRepos, setPinnedRepos] = useState<PinnedRepo[]>(cachedPinnedRepos);
-  const [loading, setLoading] = useState(!dataFetched);
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const [calendarLoading, setCalendarLoading] = useState(true);
   const testimonials: Testimonial[] = testimonialsData.testimonials;
@@ -182,13 +180,10 @@ export default function Profile() {
       if (dataFetched && cachedProfile) {
         setProfile(cachedProfile);
         setPinnedRepos(cachedPinnedRepos);
-        setLoading(false);
         return;
       }
 
       try {
-        const minLoadingTime = new Promise(resolve => setTimeout(resolve, 2000));
-        
         const fetchJson = async (url: string) => {
           const response = await fetch(url);
           if (!response.ok) throw new Error(`${url} responded with ${response.status}`);
@@ -198,7 +193,7 @@ export default function Profile() {
         // Fetched independently so a failing pinned-repos service can't take down the profile
         const fetchGitHubData = async () => {
           const [profileResult, pinnedReposResult] = await Promise.allSettled([
-            fetchJson('https://api.github.com/users/tanujp99'),
+            fetchJson(`https://api.github.com/users/${GITHUB_USERNAME}`),
             SHOW_PINNED_REPOS ? fetchJson('https://pinned.berrysauce.dev/get/tanujp99') : Promise.resolve([])
           ]);
 
@@ -228,37 +223,15 @@ export default function Profile() {
           dataFetched = cachedProfile !== null;
         };
 
-        await Promise.all([minLoadingTime, fetchGitHubData()]);
+        await fetchGitHubData();
       } catch (error) {
         console.error('Error fetching GitHub data:', error);
         setPinnedRepos([]);
-      } finally {
-        setLoading(false);
       }
     };
 
     fetchData();
   }, []);
-
-  if (loading) {
-    return (
-      <section id="profile" className="absolute inset-0 flex items-center justify-center">
-        <LoadingSpinner />
-      </section>
-    );
-  }
-
-  if (!profile) {
-    return (
-      <section id="profile" className="py-8 sm:py-12 md:py-16 overflow-y-auto h-full">
-        <div className="container mx-auto px-4 sm:px-6 md:px-8">
-          <div className="flex items-center justify-center h-full min-h-[400px]">
-            <p className="text-neutral-700 dark:text-gray-300">Failed to load GitHub profile</p>
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   function handleYearChange(year: number) {
     if (year >= Math.min(...availableYears) && year <= Math.max(...availableYears)) {
@@ -282,21 +255,16 @@ export default function Profile() {
             />
           </div>
         </div>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="space-y-8"
-        >
+        <div className="space-y-8">
 
           {/* Stats & Skills */}
           <div className="max-w-4xl mx-auto">
             <div className="backdrop-blur-md rounded-2xl p-4 sm:p-6 shadow-panel">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 text-center">
-                {buildStats(profile.public_repos).map((stat) => (
+                {buildStats(profile?.public_repos ?? null).map((stat) => (
                   <div key={stat.label} className="p-3 rounded-xl bg-light-accent/5 dark:bg-dark-accent/5">
                     <div className="text-2xl sm:text-3xl text-hero text-light-accent dark:text-dark-accent">
-                      <CountUp value={stat.value} suffix={stat.suffix} />
+                      {stat.value === null ? '–' : <CountUp value={stat.value} suffix={stat.suffix} />}
                     </div>
                     <div className="text-xs sm:text-sm text-[var(--foreground)] mt-1">{stat.label}</div>
                   </div>
@@ -596,7 +564,7 @@ export default function Profile() {
 
                 {/* Activity Graph */}
                 <div className="mb-8">
-                  <ActivityGraph username={profile.login} name={profile.name ?? profile.login} theme={theme} />
+                  <ActivityGraph username={GITHUB_USERNAME} name={profile?.name ?? 'Tanuj Palaspagar'} theme={theme} />
                 </div>
 
                 {/* Profile Views Counter */}
@@ -650,7 +618,7 @@ export default function Profile() {
               </div>
             </div>
           )}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

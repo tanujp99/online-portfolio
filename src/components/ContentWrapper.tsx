@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Profile from '@/components/Profile';
 import Experience from '@/components/Experience';
@@ -21,6 +21,13 @@ export default function ContentWrapper() {
     { name: 'About', component: About },
   ], []);
 
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  // A new tab starts at the top, not wherever the last one was scrolled to
+  useEffect(() => {
+    scrollRef.current?.scrollTo({ top: 0 });
+  }, [activeTab]);
+
   const currentTab = TABS.find(tab => tab.name === activeTab);
   const CurrentComponent = currentTab?.component;
 
@@ -32,8 +39,8 @@ export default function ContentWrapper() {
       </div>
       
       {/* Content Area - Better scrolling */}
-      <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden">
-        <div className="w-full pr-full">
+      <div ref={scrollRef} className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden">
+        <div key={activeTab} className="w-full pr-full fade-in">
           <ErrorBoundary>
             {CurrentComponent && <CurrentComponent />}
           </ErrorBoundary>

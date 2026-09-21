@@ -1,12 +1,28 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
 
 export default function ThemeSwitcher() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  // The icon spins when tapped, not on page load
+  const hasToggled = useRef(false);
+
+  const toggleTheme = () => {
+    const next = theme === 'light' ? 'dark' : 'light';
+    hasToggled.current = true;
+    const apply = () => {
+      document.documentElement.classList.toggle('dark', next === 'dark');
+      setTheme(next);
+    };
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Crossfade the whole page with the browser's View Transitions, where supported
+    const doc = document as Document & { startViewTransition?: (cb: () => void) => unknown };
+    if (doc.startViewTransition && !reduceMotion) doc.startViewTransition(apply);
+    else apply();
+  };
 
   useEffect(() => {
     setMounted(true);
@@ -42,12 +58,12 @@ export default function ThemeSwitcher() {
   return (
     <button
       aria-label="Toggle theme"
-      onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+      onClick={toggleTheme}
       className="fixed top-4 right-4 lg:bottom-6 lg:left-6 lg:top-auto lg:right-auto z-50 w-12 h-12 rounded-full bg-[var(--button-bg)] shadow-pill flex items-center justify-center transition-all duration-300 hover:shadow-hover"
     >
       <motion.span
         key={theme}
-        initial={{ rotate: 0, scale: 1 }}
+        initial={hasToggled.current ? { rotate: 0, scale: 1 } : false}
         animate={{ rotate: 180, scale: [1, 1.2, 0.9, 1] }}
         transition={{ type: 'spring', stiffness: 400, damping: 20, duration: 0.6 }}
         style={{ display: 'flex' }}

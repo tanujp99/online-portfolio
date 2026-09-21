@@ -1,10 +1,10 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
 import { FaTrophy, FaMedal, FaAward, FaCode, FaCoins, FaGlobe } from 'react-icons/fa';
 import awardsData from '@/data/awards.json';
 import FlipCard from './FlipCard';
+import Reveal from './Reveal';
 
 const iconMap = {
   'Distinguished Delegate': FaTrophy,
@@ -32,55 +32,22 @@ interface LeadershipRole {
 
 const leadership: LeadershipRole[] = awardsData.leadership;
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-    },
-  },
-};
-
 export default function Awards() {
   return (
     <section id="awards" className="py-12 sm:py-16 md:py-20">
       <div className="container mx-auto px-4 sm:px-6 md:px-8">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
+        <h2
           className="text-2xl sm:text-3xl md:text-4xl text-heading text-center mb-8 sm:mb-12 md:mb-16 text-neutral-900 dark:text-white"
         >
           Awards & Recognition
-        </motion.h2>
+        </h2>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
+        <div
           className="grid grid-cols-[repeat(auto-fit,minmax(min(240px,100%),1fr))] max-w-[640] mx-auto gap-8"
         >
-          {awardsData.awards.map((award, index) => (
-            <motion.div
+          {awardsData.awards.map((award) => (
+            <Reveal
               key={award.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
               className="bg-[var(--card-bg)] backdrop-blur-md rounded-xl shadow-panel p-4 sm:p-6"
             >
               <div className="flex items-center mb-3 sm:mb-4">
@@ -96,32 +63,21 @@ export default function Awards() {
                 <p className="text-xs sm:text-sm text-neutral-500 dark:text-gray-400">{award.date}</p>
                 <p className="text-sm sm:text-base text-neutral-700 dark:text-gray-300 mt-3 sm:mt-4">{award.description}</p>
               </div>
-            </motion.div>
+            </Reveal>
           ))}
-        </motion.div>
+        </div>
 
-        <motion.h3
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
+        <h3
           className="text-xl sm:text-2xl text-heading text-center mt-12 sm:mt-16 mb-6 sm:mb-8 text-neutral-900 dark:text-white"
         >
           Leadership
-        </motion.h3>
+        </h3>
 
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(220px,100%),1fr))] gap-6">
-          {leadership.map((role, index) => {
+          {leadership.map((role) => {
             const Icon = leadershipIcons[role.icon as keyof typeof leadershipIcons];
             return (
-              <motion.div
-                key={role.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="h-full min-h-[180px]"
-              >
+              <Reveal key={role.id} className="h-full min-h-[180px]">
                 <FlipCard
                   label={`${role.title}, ${role.organization}`}
                   padding="p-4"
@@ -160,7 +116,7 @@ export default function Awards() {
                     </>
                   }
                 />
-              </motion.div>
+              </Reveal>
             );
           })}
         </div>
