@@ -2,7 +2,7 @@
   "projects": [
     {
       "year": 2026,
-      "title": "Heimdall - Telemetry Character Device Driver",
+      "title": "Heimdall - Telemetry Driver",
       "shortDescription": "Linux character-device driver in C for Android, with swappable sensor sources behind a versioned seam and a headless QEMU test harness.",
       "fullDescription": "• Shows up as <code>/dev/telemetry0</code> and streams samples over read, ioctl and <code>copy_to_user</code>.\n• Real and fake sensors swap in behind a versioned <code>source_ops</code> seam.\n• Two backends prove it: a timer-fed ring buffer and a replay.\n• Four ioctls (version, reset, rate, stats) plus sysfs knobs, guarded by a mutex and an IRQ-safe spinlock.\n• Cross-compiled for arm64 and run on an Android GKI emulator with a C NDK client.\n• A headless QEMU test harness, plus modules that crash on purpose.",
       "technologies": ["C", "Linux Kernel Module", "Kbuild", "arm64", "cdev/sysfs/ioctl", "Android GKI/NDK", "QEMU"],

@@ -212,7 +212,7 @@ export default function Projects() {
                   }
                   back={
                     <>
-                      <h3 className="text-base sm:text-lg leading-snug font-semibold mb-2 text-neutral-900 dark:text-white">{project.title}</h3>
+                      <h3 className="text-lg sm:text-xl font-semibold mb-2 text-neutral-900 dark:text-white">{project.title}</h3>
                       <div className="text-sm sm:text-base text-neutral-700 dark:text-gray-300 mb-4 space-y-1">
                         {renderDescription(project.fullDescription)}
                       </div>
