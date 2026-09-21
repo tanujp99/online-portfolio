@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import experienceData from '@/data/experience.json';
+import Reveal from './Reveal';
 
 const experiences = experienceData.experiences;
 
@@ -52,15 +53,12 @@ export default function Experience() {
         </motion.h2>
 
         <div className="max-w-4xl mx-auto">
-          {experiences.map((exp, index) => {
+          {experiences.map((exp) => {
             const isExpanded = expandedId === exp.id;
             return (
-              <motion.div
+              <Reveal
                 key={exp.id}
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
+                from="left"
                 className="relative pl-4 sm:pl-6 pb-6 sm:pb-8 last:pb-0"
               >
                 {/* Timeline line */}
@@ -111,7 +109,7 @@ export default function Experience() {
                     </div>
                   </motion.div>
                 </motion.div>
-              </motion.div>
+              </Reveal>
             );
           })}
         </div>

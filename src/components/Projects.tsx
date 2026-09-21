@@ -7,6 +7,7 @@ import { AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useTheme } from '../context/ThemeContext';
 import FlipCard from './FlipCard';
+import Reveal from './Reveal';
 
 interface Project {
   title: string;
@@ -83,14 +84,7 @@ export default function Projects() {
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(320px,100%),1fr))] gap-8">
           {projects.map((project, index) => {
             return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="relative h-full"
-              >
+              <Reveal key={index} className="relative h-full">
                 <FlipCard
                   label={project.title}
                   front={
@@ -249,7 +243,7 @@ export default function Projects() {
                     </>
                   }
                 />
-              </motion.div>
+              </Reveal>
             );
           })}
         </div>
