@@ -375,3 +375,49 @@ html.dark ::-webkit-scrollbar-track {
   scrollbar-width: thin;
   scrollbar-color: var(--border-color) var(--card-bg);
 }
+/* Project trading cards: pure CSS 3D flip */
+.flip-card {
+  perspective: 1600px;
+}
+
+.flip-card-inner {
+  position: relative;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.3, 1.35, 0.5, 1);
+}
+
+.flip-card.is-flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-face {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+  overflow-y: auto;
+}
+
+.flip-card:focus-visible {
+  outline: none;
+}
+
+.flip-card:focus-visible .flip-card-face {
+  outline: 2px solid #c30b4e;
+  outline-offset: 3px;
+}
+
+html.dark .flip-card:focus-visible .flip-card-face {
+  outline-color: #ff90e8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flip-card-inner {
+    transition: none;
+  }
+}
