@@ -14,7 +14,8 @@ function FlipIcon() {
   );
 }
 
-// Tilts the card toward the pointer and moves the light with it; plain CSS variables, no re-renders
+// Lifts the corner under the pointer toward the viewer, with the light on that raised spot;
+// plain CSS variables, no re-renders
 const MAX_TILT = 9;
 
 function handleTilt(e: React.PointerEvent<HTMLDivElement>) {
@@ -24,8 +25,8 @@ function handleTilt(e: React.PointerEvent<HTMLDivElement>) {
   const x = (e.clientX - rect.left) / rect.width;
   const y = (e.clientY - rect.top) / rect.height;
   card.classList.add('is-hovering');
-  card.style.setProperty('--rx', `${((0.5 - y) * MAX_TILT * 2).toFixed(2)}deg`);
-  card.style.setProperty('--ry', `${((x - 0.5) * MAX_TILT * 2).toFixed(2)}deg`);
+  card.style.setProperty('--rx', `${((y - 0.5) * MAX_TILT * 2).toFixed(2)}deg`);
+  card.style.setProperty('--ry', `${((0.5 - x) * MAX_TILT * 2).toFixed(2)}deg`);
   card.style.setProperty('--lift', '1.03');
   card.style.setProperty('--gx', `${(x * 100).toFixed(1)}%`);
   card.style.setProperty('--gy', `${(y * 100).toFixed(1)}%`);
