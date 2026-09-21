@@ -6,7 +6,7 @@
       "organization": "Model United Nations (UNHRC)",
       "category": "Award for outstanding delegate",
       "date": "March 2020",
-      "description": "Awarded \"Distinguished Delegate\" for outstanding representation of Argentina at the Model United Nations (UNHRC) conference hosted by SIES Graduate School of Technology, demonstrating exceptional skills in diplomacy, public speaking, lobbying, and negotiation."
+      "description": "Represented Argentina on the UN Human Rights Council at SIES GST's Model United Nations, and came away as Distinguished Delegate after a lot of diplomacy, lobbying and negotiating."
     },
     {
       "id": 2,
@@ -14,7 +14,7 @@
       "organization": "Tech Alegria 36hr Hackathon",
       "category": "Hackathon Prize",
       "date": "February 2020",
-      "description": "Awarded \"Most Innovative Prototype\" for designing and delivering a fully operational portable positioning device leveraging a mesh network of NodeMCU units. Engineered absolute GPS-based positioning for the master node, while implementing real-time relative triangulation across secondary nodes. Award recognized the solution's seamless hardware-software integration and its potential for scalable real-world deployment."
+      "description": "Built a portable positioning device in 36 hours: a mesh of NodeMCU boards where the master node knows its GPS position and the rest triangulate themselves off each other in real time. The judges called it the most innovative prototype."
     },
     {
       "id": 3,
@@ -22,7 +22,7 @@
       "organization": "AICTE Vishwakarma Award",
       "category": "National-Level Competition",
       "date": "September 2019",
-      "description": "Selected as a Top-12 Semi-Finalist at the national AICTE Vishwakarma Awards for developing an Arduino- and IoT-based smart solid waste management and composting system. The project featured sensor-driven motorized composting, environmental monitoring, and segregation algorithms that improved composting efficiency by 40%, showcasing innovation in sustainable technology solutions."
+      "description": "Our Arduino + IoT smart waste and composting system made the national Top 12 at the AICTE Vishwakarma Awards. Sensor-driven motorized composting and smart segregation made composting 40% more efficient."
     }
   ],
   "leadership": [
@@ -32,10 +32,10 @@
       "organization": "CSI-TEC: Clash of Codes",
       "date": "2021",
       "icon": "code",
-      "summary": "Hosted the chapter's first competitive programming contest.",
+      "summary": "Threw the chapter's first ever coding contest.",
       "details": [
-        "Ran a 3-hour, 5-problem HackerRank contest for CSI Terna.",
-        "₹3,500 prize pool; reopened to the public in 2024."
+        "Three hours, five problems, one HackerRank leaderboard.",
+        "₹3,500 in prizes for the top three."
       ],
       "link": "https://www.hackerrank.com/clash-of-codes-21",
       "linkLabel": "View the contest →"
@@ -46,10 +46,10 @@
       "organization": "Computer Society of India, Terna Chapter",
       "date": "2020 - 2021",
       "icon": "treasurer",
-      "summary": "Managed the student chapter's finances.",
+      "summary": "Kept the chapter's books.",
       "details": [
-        "Managed the chapter's budget and event spending.",
-        "Helped fund and run chapter events, including Clash of Codes."
+        "Looked after the budget and event spending.",
+        "Helped fund the chapter's events, Clash of Codes included."
       ]
     },
     {
@@ -58,9 +58,9 @@
       "organization": "IEEE Terna Student Branch",
       "date": "2019 - 2020",
       "icon": "web",
-      "summary": "Ran the student branch's website.",
+      "summary": "Kept the IEEE branch's website alive.",
       "details": [
-        "Maintained the branch website and kept events and announcements up to date."
+        "Maintained the site and kept the events and announcements fresh."
       ]
     }
   ]
