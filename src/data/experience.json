@@ -1,6 +1,15 @@
 {
   "experiences": [
     {
+      "id": 7,
+      "company": "Fayble Inc.",
+      "position": "Intermediate Software Engineer",
+      "location": "Berkeley, CA (Remote)",
+      "period": "APR 2025 - PRESENT",
+      "shortDescription": "AI Media Pipeline Engineer",
+      "fullDescription": "• Built a live sports-commentary broadcast pipeline over Apache Kafka, turning a game engine's event stream into synchronized audio-visual broadcasts, and cut end-to-end latency by 73% by running the audio and video branches in parallel and reusing match state across turns.\n• Engineered the sample-level audio/video alignment stage that matches each generated video frame to its exact slice of TTS audio, by sample rate and bit depth, before muxing into the output stream.\n• Grounded a Gemma-based commentary model in live match state with structured prompts and emotion labels, cutting output degradation by 80%, so a goal and a throw-in are never called in the same tone.\n• Moved speech synthesis from ElevenLabs to a self-hosted Dia model and brought video generation in-house, removing per-call vendor costs and a network round trip from the live path; planned the GPU hardware for both workloads within a fixed budget.\n• Designed the monitor/selector stage that picks what the viewer sees at any moment (commentary, leaderboard or crowd reaction), so the pipeline can feed a live director instead of a single screen.\n• Secured the distributed inference infrastructure with FastAPI credential management, TOTP multi-factor authentication and rotating JWTs, and ran the team's GPU inference server day to day."
+    },
+    {
       "id": 1,
       "company": "HP Inc.",
       "position": "System Software Engineer",
