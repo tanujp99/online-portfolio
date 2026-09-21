@@ -80,7 +80,7 @@ export default function Experience() {
                 <div className="absolute left-[1px] top-2 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-light-accent dark:bg-dark-accent transform -translate-x-1/2 shadow-sm" />
 
                 <motion.div
-                  className={`bg-[var(--card-bg)] backdrop-blur-md rounded-2xl p-3 sm:p-4 cursor-pointer transition-all duration-300 ${isExpanded ? 'shadow-panel-active' : 'shadow-panel'}`}
+                  className={`bg-[var(--card-bg)] backdrop-blur-md rounded-card p-3 sm:p-4 cursor-pointer transition-all duration-300 ${isExpanded ? 'shadow-panel-active' : 'shadow-panel'}`}
                   onClick={(e) => {
                     if (window.getSelection && window.getSelection() && window.getSelection()!.toString()) return;
                     setExpandedId(isExpanded ? null : exp.id);
@@ -93,7 +93,7 @@ export default function Experience() {
                       <p className="text-neutral-500 dark:text-gray-400 text-xs sm:text-sm">{exp.location}</p>
                     </div>
                     <div className="text-left sm:text-right flex items-center gap-1.5">
-                      <p className="text-xs sm:text-sm text-[var(--foreground)] bg-[var(--button-bg)] px-2 py-0.5 rounded-lg">{formatPeriod(exp.period)}</p>
+                      <p className="text-xs sm:text-sm text-[var(--foreground)] bg-[var(--button-bg)] px-2.5 py-0.5 rounded-full">{formatPeriod(exp.period)}</p>
                     </div>
                   </div>
 
@@ -118,7 +118,7 @@ export default function Experience() {
                     className="mt-3 overflow-hidden"
                   >
                     {/* Details in their own box; the bottom margin leaves room for the arrow below it */}
-                    <div className={`detail-box mb-6 ${isExpanded ? '' : 'pointer-events-none select-none opacity-0'}`}>
+                    <div className={`detail-box mb-10 ${isExpanded ? '' : 'pointer-events-none select-none opacity-0'}`}>
                       {renderDescription(exp.fullDescription)}
                     </div>
                   </motion.div>

@@ -35,7 +35,7 @@ export default function About() {
         </h2>
         <div className="max-w-2xl mx-auto space-y-6">
           <Reveal
-            className="bg-[var(--card-bg)] backdrop-blur-md rounded-xl p-5 sm:p-6 shadow-panel"
+            className="bg-[var(--card-bg)] backdrop-blur-md rounded-card p-5 sm:p-6 shadow-panel"
           >
             <div>
               <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-light-accent dark:text-dark-accent">Get in Touch</h3>
@@ -104,7 +104,7 @@ export default function About() {
         {/* Technologies Used Section */}
         <div className="max-w-2xl mx-auto mt-6">
           <Reveal
-            className="bg-[var(--card-bg)] backdrop-blur-md rounded-xl p-5 sm:p-6 shadow-panel"
+            className="bg-[var(--card-bg)] backdrop-blur-md rounded-card p-5 sm:p-6 shadow-panel"
           >
             <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-light-accent dark:text-dark-accent">This website is built with</h3>
             <div className="detail-box space-y-4">

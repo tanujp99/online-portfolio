@@ -265,10 +265,10 @@ export default function Profile() {
 
           {/* Stats & Skills */}
           <div className="max-w-4xl mx-auto">
-            <div className="backdrop-blur-md rounded-2xl p-4 sm:p-6 shadow-panel">
+            <div className="backdrop-blur-md rounded-card p-4 sm:p-6 shadow-panel">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 text-center">
                 {buildStats(profile?.public_repos ?? null).map((stat) => (
-                  <div key={stat.label} className="p-3 rounded-xl bg-light-accent/5 dark:bg-dark-accent/5">
+                  <div key={stat.label} className="p-3 rounded-box bg-light-accent/5 dark:bg-dark-accent/5">
                     <div className="text-2xl sm:text-3xl text-hero text-light-accent dark:text-dark-accent">
                       {stat.value === null ? '–' : <CountUp value={stat.value} suffix={stat.suffix} />}
                     </div>
@@ -282,7 +282,7 @@ export default function Profile() {
                 {skillsData.groups.map((group) => {
                   const Icon = skillIcons[group.icon as keyof typeof skillIcons];
                   return (
-                    <div key={group.name} className="h-full rounded-xl bg-black/[0.04] dark:bg-white/[0.05] p-4">
+                    <div key={group.name} className="h-full rounded-box bg-black/[0.04] dark:bg-white/[0.05] p-4">
                       <div className="flex items-center gap-3 mb-3">
                         <span className="w-9 h-9 shrink-0 rounded-full bg-black/[0.05] dark:bg-white/[0.07] text-light-accent dark:text-dark-accent flex items-center justify-center">
                           {Icon && <Icon className="w-4 h-4" />}
@@ -305,7 +305,7 @@ export default function Profile() {
 
           {/* LinkedIn Recommendations Section */}
           <div className="max-w-4xl mx-auto">
-              <div className="backdrop-blur-md rounded-2xl p-3 sm:p-4 shadow-panel">
+              <div className="backdrop-blur-md rounded-card p-3 sm:p-4 shadow-panel">
                 <div className="flex items-center gap-3 mb-6 text-center justify-center">
                 <FaLinkedin className="text-2xl text-[#0077B5]" />
                 <h2 className="text-xl font-semibold text-neutral-900 dark:text-white  text-center">
@@ -327,7 +327,7 @@ export default function Profile() {
                   return (
                     <Reveal key={testimonial.id}>
                       <div
-                        className={`relative rounded-xl bg-black/[0.04] dark:bg-white/[0.05] p-4 ${canExpand ? 'cursor-pointer' : ''}`}
+                        className={`relative rounded-box bg-black/[0.04] dark:bg-white/[0.05] p-4 ${canExpand ? 'cursor-pointer' : ''}`}
                         onClick={() => {
                           if (!canExpand) return;
                           if (window.getSelection && window.getSelection() && window.getSelection()!.toString()) return;
@@ -442,7 +442,7 @@ export default function Profile() {
                   href="https://www.linkedin.com/in/tanujp/details/recommendations/?detailScreenTabIndex=0"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-[#0077B5] text-white rounded-lg hover:bg-[#0077B5]/90 transition-colors font-medium"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-[#0077B5] text-white rounded-full hover:bg-[#0077B5]/90 transition-colors font-medium"
                 >
                   <FaLinkedin />
                   View All Recommendations on LinkedIn
@@ -454,7 +454,7 @@ export default function Profile() {
           {/* Contribution Calendar Section */}
           
           <div className="max-w-4xl mx-auto">
-            <div className="bg-[var(--card-bg)] backdrop-blur-md rounded-2xl p-3 sm:p-4 shadow-panel">
+            <div className="bg-[var(--card-bg)] backdrop-blur-md rounded-card p-3 sm:p-4 shadow-panel">
               <div className="flex flex-col lg:flex-row items-center justify-center">
                 {/* Stacked layout: title above, grid, legend below, all centered */}
                 <div className="flex flex-col items-center w-full">
@@ -504,7 +504,7 @@ export default function Profile() {
                     return (
                       <button
                         key={year}
-                        className={`px-3 py-1 my-1 rounded-md text-sm font-medium transition-colors duration-150 w-14 h-7 flex items-center justify-center ${
+                        className={`px-3 py-1 my-1 rounded-full text-sm font-medium transition-colors duration-150 w-14 h-7 flex items-center justify-center ${
                           selectedYear === year 
                             ? 'bg-light-accent text-white dark:bg-dark-accent dark:text-white' 
                             : 'bg-[var(--button-bg)] text-[var(--foreground)] hover:bg-light-accent/10 dark:hover:bg-dark-accent/20'
@@ -524,7 +524,7 @@ export default function Profile() {
                       <button
                         onClick={() => handleYearChange(selectedYear - 1)}
                         disabled={selectedYear <= Math.min(...availableYears)}
-                        className="p-1.5 rounded-md hover:bg-[var(--button-bg)] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                        className="p-1.5 rounded-full hover:bg-[var(--button-bg)] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                         title="Previous year"
                       >
                         <svg className="w-4 h-4 text-[var(--foreground)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -537,7 +537,7 @@ export default function Profile() {
                       <button
                         onClick={() => handleYearChange(selectedYear + 1)}
                         disabled={selectedYear >= Math.max(...availableYears)}
-                        className="p-1.5 rounded-md hover:bg-[var(--button-bg)] disabled:opacity-15 disabled:cursor-not-allowed transition-colors"
+                        className="p-1.5 rounded-full hover:bg-[var(--button-bg)] disabled:opacity-15 disabled:cursor-not-allowed transition-colors"
                         title="Next year"
                       >
                         <svg className="w-4 h-4 text-[var(--foreground)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -553,7 +553,7 @@ export default function Profile() {
 
           {/* README Content */}
           <div className="max-w-4xl mx-auto">
-            <div className="bg-[var(--card-bg)] backdrop-blur-md rounded-2xl p-3 sm:p-4 shadow-panel">
+            <div className="bg-[var(--card-bg)] backdrop-blur-md rounded-card p-3 sm:p-4 shadow-panel">
               <div className="prose dark:prose-invert max-w-none">
                 {/* GitHub Profile Trophy */}
                 <div className="flex justify-center mb-8">
@@ -591,7 +591,7 @@ export default function Profile() {
           {/* Pinned Repositories */}
           {SHOW_PINNED_REPOS && pinnedRepos.length > 0 && (
             <div className="max-w-4xl mx-auto">
-            <div className="bg-[var(--card-bg)] backdrop-blur-md rounded-2xl p-3 sm:p-4 shadow-panel">
+            <div className="bg-[var(--card-bg)] backdrop-blur-md rounded-card p-3 sm:p-4 shadow-panel">
               <h2 className="text-xl font-semibold text-neutral-900 dark:text-white mb-6">Pinned</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {pinnedRepos.map((repo) => (
@@ -600,7 +600,7 @@ export default function Profile() {
                     href={repo.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block p-4 bg-[var(--card-bg)] rounded-lg border border-[var(--border-color)] hover:border-light-accent dark:hover:border-dark-accent transition-colors"
+                    className="block p-4 bg-[var(--card-bg)] rounded-box border border-[var(--border-color)] hover:border-light-accent dark:hover:border-dark-accent transition-colors"
                   >
                     <div className="flex items-start justify-between mb-2">
                         <h3 className="text-lg font-semibold text-neutral-900 dark:text-white">{repo.repo}</h3>

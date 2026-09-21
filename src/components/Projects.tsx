@@ -92,7 +92,7 @@ export default function Projects() {
 
                       {/* Research paper or image box at the same position for all projects */}
                       {project.isResearch ? (
-                        <div className="mb-4 p-3 bg-gradient-to-r from-light-accent/10 to-light-accent/5 dark:from-dark-accent/10 dark:to-dark-accent/5 rounded-lg border border-light-accent/20 dark:border-dark-accent/20">
+                        <div className="mb-4 p-3 bg-gradient-to-r from-light-accent/10 to-light-accent/5 dark:from-dark-accent/10 dark:to-dark-accent/5 rounded-box border border-light-accent/20 dark:border-dark-accent/20">
                           <div className="flex items-center gap-2 mb-2">
                             <FaGraduationCap className="w-5 h-5 text-[#3F51B5] dark:text-[#7986CB]" aria-hidden />
                             <span className="text-sm font-semibold text-light-accent dark:text-dark-accent">Published Research</span>
@@ -110,7 +110,7 @@ export default function Projects() {
                                   initial={{ opacity: 0, y: 10, scale: 0.8 }}
                                   animate={{ opacity: 1, y: 0, scale: 1 }}
                                   exit={{ opacity: 0, y: 10, scale: 0.8 }}
-                                  className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-neutral-900/75 text-white px-3 py-1.5 rounded-md text-xs font-medium shadow-lg z-10"
+                                  className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-neutral-900/75 text-white px-3 py-1.5 rounded-inset text-xs font-medium shadow-lg z-10"
                                 >
                                   <div className="flex items-center gap-1">
                                     <span>✓</span>
@@ -171,9 +171,9 @@ export default function Projects() {
                         </div>
                       ) : (
                         project.imageLight && project.imageDark && (
-                          <div className="mb-4 p-3 bg-gradient-to-r from-light-accent/10 to-light-accent/5 dark:from-dark-accent/10 dark:to-dark-accent/5 rounded-lg border border-light-accent/20 dark:border-dark-accent/20 h-40 sm:h-44 md:h-48 lg:h-52 xl:h-56 2xl:h-60 flex items-center justify-center overflow-hidden relative">
+                          <div className="mb-4 p-3 bg-gradient-to-r from-light-accent/10 to-light-accent/5 dark:from-dark-accent/10 dark:to-dark-accent/5 rounded-box border border-light-accent/20 dark:border-dark-accent/20 h-40 sm:h-44 md:h-48 lg:h-52 xl:h-56 2xl:h-60 flex items-center justify-center overflow-hidden relative">
                             <div
-                              className="w-full h-full rounded-md flex items-center justify-center overflow-hidden"
+                              className="w-full h-full rounded-inset flex items-center justify-center overflow-hidden"
                               style={{ backgroundColor: theme === 'dark' ? project.imageBgDark || '#161719' : project.imageBgLight || '#f8f8f5' }}
                             >
                               <Image

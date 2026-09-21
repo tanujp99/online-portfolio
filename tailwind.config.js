@@ -8,6 +8,15 @@ module.exports = {
   ],
   theme: {
     extend: {
+      // Shape scale: one radius per element role, Material 3 style.
+      // shell = the main content panel, card = any raised surface, box = flat box inside a card,
+      // inset = small things inside a box (tooltips, thumbnails). Chips and buttons are rounded-full.
+      borderRadius: {
+        shell: '1.75rem',
+        card: '1rem',
+        box: '0.75rem',
+        inset: '0.5rem',
+      },
       fontFamily: {
         'bricolage': ['Bricolage Grotesque', 'sans-serif'],
       },

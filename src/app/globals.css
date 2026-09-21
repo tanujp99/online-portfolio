@@ -75,7 +75,7 @@
 @layer components {
   /* Flat neutral box around details: experience, project and leadership backs, awards, about */
   .detail-box {
-    @apply rounded-xl bg-black/[0.04] dark:bg-white/[0.05] p-3 sm:p-4;
+    @apply rounded-box bg-black/[0.04] dark:bg-white/[0.05] p-3 sm:p-4;
   }
 }
 @tailwind utilities;
@@ -417,28 +417,19 @@ html.dark ::-webkit-scrollbar-track {
   backface-visibility: hidden;
 }
 
-/* Light catching the card, following the pointer */
+/* Light catching the card; it slides the opposite way to the pointer sideways, same on both faces */
 .flip-card-face::after {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
   pointer-events: none;
-  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 255, 255, 0.45), transparent 55%);
+  background: radial-gradient(circle at calc(100% - var(--gx, 50%)) var(--gy, 50%), rgba(255, 255, 255, 0.45), transparent 55%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-.flip-card-back::after {
-  /* the back face is mirrored, so its light moves the other way */
-  background: radial-gradient(circle at calc(100% - var(--gx, 50%)) var(--gy, 50%), rgba(255, 255, 255, 0.45), transparent 55%);
-}
-
 html.dark .flip-card-face::after {
-  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 255, 255, 0.1), transparent 55%);
-}
-
-html.dark .flip-card-back::after {
   background: radial-gradient(circle at calc(100% - var(--gx, 50%)) var(--gy, 50%), rgba(255, 255, 255, 0.1), transparent 55%);
 }
 

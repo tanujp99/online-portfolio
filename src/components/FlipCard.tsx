@@ -14,8 +14,8 @@ function FlipIcon() {
   );
 }
 
-// Lifts the corner under the pointer toward the viewer, with the light on that raised spot;
-// plain CSS variables, no re-renders
+// Lifts the corner under the pointer toward the viewer; the light slides the other way (globals.css).
+// Plain CSS variables, no re-renders
 const MAX_TILT = 9;
 
 function handleTilt(e: React.PointerEvent<HTMLDivElement>) {
@@ -75,7 +75,7 @@ export default function FlipCard({ label, front, back, padding = 'p-4 sm:p-6' }:
       <div className="flip-card-tilt">
         <div className="flip-card-inner">
           <div
-            className={`flip-card-face relative h-full bg-[var(--card-bg)] rounded-xl shadow-card ${padding} pb-12 sm:pb-12`}
+            className={`flip-card-face relative h-full bg-[var(--card-bg)] rounded-card shadow-card ${padding} pb-12 sm:pb-12`}
             {...(isFlipped ? hiddenFace : {})}
           >
             {front}
@@ -85,7 +85,7 @@ export default function FlipCard({ label, front, back, padding = 'p-4 sm:p-6' }:
           </div>
 
           <div
-            className="flip-card-face flip-card-back bg-[var(--card-bg)] rounded-xl shadow-card"
+            className="flip-card-face flip-card-back bg-[var(--card-bg)] rounded-card shadow-card"
             {...(isFlipped ? {} : hiddenFace)}
           >
             <div className={`custom-scrollbar h-full overflow-y-auto flex flex-col ${padding}`}>

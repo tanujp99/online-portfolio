@@ -70,7 +70,7 @@ export default function ActivityGraph({ username, name, theme }: ActivityGraphPr
     <img
       src={src}
       alt="Activity Graph"
-      className="w-full rounded-2xl"
+      className="w-full rounded-card"
       style={{ clipPath: 'inset(2px)' }}
     />
   );

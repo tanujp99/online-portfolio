@@ -48,7 +48,7 @@ export default function Awards() {
           {awardsData.awards.map((award) => (
             <Reveal
               key={award.id}
-              className="bg-[var(--card-bg)] backdrop-blur-md rounded-xl shadow-panel p-4 sm:p-6"
+              className="bg-[var(--card-bg)] backdrop-blur-md rounded-card shadow-panel p-4 sm:p-6"
             >
               <div className="flex items-center gap-3 mb-3 sm:mb-4">
                 {iconMap[award.title as keyof typeof iconMap] && (
