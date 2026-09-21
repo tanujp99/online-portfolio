@@ -74,7 +74,8 @@
       "imageBgLight": "#fcfaf6",
       "imageBgDark": "#11181a",
       "showGithubLink": true,
-      "presentButton": false,
+      "presentButton": "Visit App",
+      "presentSlug": "game-of-life",
       "presentContent": "https://gameoflife.tanujp.com"
     },
     {

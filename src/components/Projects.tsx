@@ -28,6 +28,7 @@ interface Project {
   citationContent?: string;
   presentButton?: string | boolean;
   presentContent?: string;
+  presentSlug?: string; // routes the demo link through /go/<slug>, which checks the demo is up first
 }
 
 const projects: Project[] = projectsData.projects;
@@ -209,7 +210,7 @@ export default function Projects() {
                               )}
                               {project.presentButton && typeof project.presentButton === 'string' && project.presentContent && (
                                 <a
-                                  href={project.presentContent}
+                                  href={project.presentSlug ? `/go/${project.presentSlug}` : project.presentContent}
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   className="inline-flex items-center gap-1 px-3 py-1.5 bg-light-accent dark:bg-dark-accent text-[var(--card-bg)] border border-light-accent dark:border-dark-accent rounded-md hover:bg-light-accent/90 dark:hover:bg-dark-accent/90 transition-colors text-xs font-medium shadow-sm"
@@ -256,7 +257,7 @@ export default function Projects() {
                               {project.presentButton && typeof project.presentButton === 'string' && project.presentContent && (
                                 <div className="absolute bottom-5 left-5">
                                   <a
-                                    href={project.presentContent}
+                                    href={project.presentSlug ? `/go/${project.presentSlug}` : project.presentContent}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="px-2 sm:px-3 py-0.5 sm:py-1 bg-light-accent dark:bg-dark-accent text-[var(--card-bg)] rounded-full hover:bg-light-accent/90 dark:hover:bg-dark-accent/90 transition-colors text-xs sm:text-sm"
