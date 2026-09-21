@@ -13,7 +13,7 @@ const bricolageGrotesque = {
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://tanujp.com'),
-  title: 'Tanuj Palaspagar - Software Developer Engineer',
+  title: 'tanuj palaspagar',
   description: 'Portfolio website of Tanuj Palaspagar, a Software Developer Engineer specializing in Algorithms, Databases, and Intelligent Systems.',
   keywords: ['Software Developer', 'Cloud Engineer', 'Backend Developer', 'Algorithms', 'Databases', 'Intelligent Systems'],
   authors: [{ name: 'Tanuj Palaspagar' }],
