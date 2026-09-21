@@ -41,15 +41,15 @@ export default function About() {
               <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-light-accent dark:text-dark-accent">Get in Touch</h3>
               <div className="detail-box space-y-2 sm:space-y-3">
                 <p className="flex items-center text-sm sm:text-base text-[var(--foreground)]">
-                  <CutoutIcon icon={FaMapMarkerAlt} className="mr-2 text-[#F44336] dark:text-[#E57373]" />
+                  <CutoutIcon icon={FaMapMarkerAlt} className="mr-2 text-[#EF7D6E] dark:text-[#FFB4A9]" />
                   {aboutInfo.location}
                 </p>
                 <p className="flex items-center text-sm sm:text-base text-[var(--foreground)]">
-                  <CutoutIcon icon={FaPhoneAlt} className="mr-2 text-[#4CAF50] dark:text-[#81C784]" />
+                  <CutoutIcon icon={FaPhoneAlt} className="mr-2 text-[#5DB98A] dark:text-[#9DDBB0]" />
                   {aboutInfo.phone}
                 </p>
                 <p className="flex items-center text-sm sm:text-base text-[var(--foreground)]">
-                  <CutoutIcon icon={FaEnvelope} className="mr-2 text-[#2196F3] dark:text-[#64B5F6]" />
+                  <CutoutIcon icon={FaEnvelope} className="mr-2 text-[#7A9EF0] dark:text-[#AFC6FF]" />
                   {aboutInfo.email}
                 </p>
               </div>
