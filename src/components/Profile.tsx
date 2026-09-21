@@ -16,6 +16,7 @@ import projectsData from '@/data/projects.json';
 import awardsData from '@/data/awards.json';
 import skillsData from '@/data/skills.json';
 import CountUp from './CountUp';
+import Reveal from './Reveal';
 
 interface GitHubData {
   name: string;
@@ -64,6 +65,7 @@ interface Testimonial {
   date: string;
   linkedinUrl: string;
   profileImagePath?: string; // Updated to use profileImagePath
+  pullQuote?: string;
   recommendation: string;
   verified?: boolean;
 }
@@ -307,131 +309,129 @@ export default function Profile() {
               </div>
 
               <div className="space-y-4">
-                {testimonials.map((testimonial, index) => {
+                {testimonials.map((testimonial) => {
                   const isExpanded = expandedTestimonial === testimonial.id;
-                  const preview = testimonial.recommendation.slice(0, 150);
-                  const shouldTruncate = testimonial.recommendation.length > 150;
+                  const canExpand = testimonial.recommendation.length > 150;
+                  const toggle = () => setExpandedTestimonial(isExpanded ? null : testimonial.id);
                   return (
-                    <motion.div
-                      key={testimonial.id}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                      className="relative"
-                    >
-                      <motion.div
-                        className="bg-[var(--card-bg)] rounded-xl p-4 border-2 border-[var(--border-color)] cursor-pointer transition-all duration-300"
-                        whileHover={{ scale: 1.02 }}
-                        onClick={(e) => {
+                    <Reveal key={testimonial.id}>
+                      <div
+                        className={`relative rounded-xl bg-light-accent/5 dark:bg-dark-accent/5 p-4 ${canExpand ? 'cursor-pointer' : ''}`}
+                        onClick={() => {
+                          if (!canExpand) return;
                           if (window.getSelection && window.getSelection() && window.getSelection()!.toString()) return;
-                          setExpandedTestimonial(isExpanded ? null : testimonial.id);
+                          toggle();
                         }}
                       >
                         {/* Header */}
-                        <div className="flex items-start justify-between mb-3">
-                          <div className="flex items-center gap-3">
-                            <div className="flex items-center gap-3">
+                        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 sm:gap-3 mb-3">
+                          <div className="flex items-center gap-3 min-w-0">
+                            <a
+                              href={testimonial.linkedinUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="group shrink-0"
+                              title={`View ${testimonial.name} on LinkedIn`}
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <div className="w-12 h-12 rounded-full overflow-hidden bg-gradient-to-br from-light-accent to-light-accent/70 dark:from-dark-accent dark:to-dark-accent/70 flex items-center justify-center group-hover:ring-2 group-hover:ring-[#0077B5] transition">
+                                {testimonial.profileImagePath ? (
+                                  <Image
+                                    src={require(`@/data/images/${testimonial.profileImagePath}`)}
+                                    alt={`${testimonial.name} profile picture`}
+                                    width={48}
+                                    height={48}
+                                    className="w-full h-full object-cover"
+                                  />
+                                ) : (
+                                  <span className="text-white font-semibold">
+                                    {testimonial.name.split(' ').map((n: string) => n[0]).join('')}
+                                  </span>
+                                )}
+                              </div>
+                            </a>
+                            <div className="min-w-0">
                               <a
                                 href={testimonial.linkedinUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group"
+                                className="font-semibold text-neutral-900 dark:text-white hover:text-[#0077B5] dark:hover:text-[#0077B5] transition"
                                 title={`View ${testimonial.name} on LinkedIn`}
-                                onClick={e => e.stopPropagation()}
+                                onClick={(e) => e.stopPropagation()}
                               >
-                                <div className="w-12 h-12 rounded-full overflow-hidden bg-gradient-to-br from-light-accent to-light-accent/70 dark:from-dark-accent dark:to-dark-accent/70 flex items-center justify-center group-hover:ring-2 group-hover:ring-[#0077B5] transition">
-                                  {testimonial.profileImagePath ? (
-                                    <Image
-                                      src={require(`@/data/images/${testimonial.profileImagePath}`)}
-                                      alt={`${testimonial.name} profile picture`}
-                                      width={48}
-                                      height={48}
-                                      className="w-full h-full object-cover"
-                                    />
-                                  ) : (
-                                    <span className="text-white font-semibold">
-                                      {testimonial.name.split(' ').map((n: string) => n[0]).join('')}
-                                    </span>
-                                  )}
-                                </div>
+                                {testimonial.name}
                               </a>
-                              <div>
-                                <a
-                                  href={testimonial.linkedinUrl}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="font-semibold text-neutral-900 dark:text-white hover:text-[#0077B5] dark:hover:text-[#0077B5] transition"
-                                  title={`View ${testimonial.name} on LinkedIn`}
-                                  onClick={e => e.stopPropagation()}
-                                >
-                                  {testimonial.name}
-                                </a>
-                                <p className="text-sm text-neutral-600 dark:text-gray-400">
-                                  {testimonial.title}{testimonial.company && ` at ${testimonial.company}`}
-                                </p>
-                                <p className="text-xs text-neutral-500 dark:text-gray-500">
-                                  {testimonial.relationship}
-                                </p>
-                              </div>
+                              <p className="text-sm text-neutral-600 dark:text-gray-400">
+                                {testimonial.title}{testimonial.company && ` at ${testimonial.company}`}
+                              </p>
+                              <p className="text-xs text-neutral-500 dark:text-gray-500">
+                                {testimonial.relationship}
+                              </p>
                             </div>
                           </div>
-                          <div className="flex items-center gap-2">
-                            <span className="text-xs text-neutral-500 dark:text-gray-500">
-                              {testimonial.date}
-                            </span>
-                          </div>
-                        </div>
-
-                        {/* Animated arrow icon at bottom right */}
-                        <motion.span
-                          className="absolute bottom-2 right-3 text-light-accent dark:text-dark-accent opacity-70 pointer-events-none"
-                          animate={{ rotate: isExpanded ? 180 : 0, opacity: 1 }}
-                          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                        >
-                          <div className="w-4 h-4">
-                            <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-                              <path d="M5 8L10 13L15 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                            </svg>
-                          </div>
-                        </motion.span>
-
-                        {/* Recommendation Content */}
-                        <div className="relative">
-                          <FaQuoteLeft className="absolute -top-1 -left-1 text-light-accent/20 dark:text-dark-accent/20 text-lg" />
-                          <div className="pl-6">
-                            <p className="text-neutral-700 dark:text-gray-300 leading-relaxed">
-                              {isExpanded || !shouldTruncate 
-                                ? testimonial.recommendation
-                                : `${preview}...`
-                              }
-                            </p>
-                            {shouldTruncate && (
-                              <button
-                                onClick={() => setExpandedTestimonial(isExpanded ? null : testimonial.id)}
-                                className="mt-2 text-light-accent dark:text-dark-accent hover:underline text-sm font-medium"
-                              >
-                                {isExpanded ? 'Show less' : 'Read more'}
-                              </button>
-                            )}
-                          </div>
-                        </div>
-
-                        {/* Where the recommendation lives, so anyone can check it */}
-                        <div className="mt-3 pt-3 border-t-2 border-[var(--border-color)]">
+                          {/* The date doubles as the link to where the recommendation lives */}
                           <a
                             href={RECOMMENDATIONS_URL}
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}
-                            className="inline-flex items-center gap-1.5 text-xs text-neutral-500 dark:text-gray-400 hover:text-[#0077B5] dark:hover:text-[#4ba3d9] transition-colors"
+                            title="Read it on LinkedIn"
+                            className="shrink-0 self-start ml-[60px] sm:ml-0 inline-flex items-center gap-1.5 text-xs text-neutral-500 dark:text-gray-400 hover:text-[#0077B5] dark:hover:text-[#4ba3d9] transition-colors"
                           >
                             <FaLinkedin className="w-3.5 h-3.5" />
-                            Read it on LinkedIn
+                            {testimonial.date}
                           </a>
                         </div>
-                      </motion.div>
-                    </motion.div>
+
+                        {/* Pull quote */}
+                        {testimonial.pullQuote && (
+                          <blockquote className="relative pl-7 mb-2">
+                            <FaQuoteLeft className="absolute left-0 top-1 w-4 h-4 text-light-accent/50 dark:text-dark-accent/50" />
+                            <p className="text-base sm:text-lg font-medium leading-snug text-neutral-900 dark:text-white">
+                              {testimonial.pullQuote}
+                            </p>
+                          </blockquote>
+                        )}
+
+                        {/* Full recommendation: two faded lines until opened */}
+                        <p
+                          className={`pl-7 ${canExpand ? 'pr-10' : ''} text-sm text-neutral-700 dark:text-gray-300 leading-relaxed whitespace-pre-line overflow-hidden transition-[max-height] duration-500 ease-in-out`}
+                          style={
+                            canExpand && !isExpanded
+                              ? {
+                                  maxHeight: '3.25em',
+                                  maskImage: 'linear-gradient(to bottom, black 20%, transparent)',
+                                  WebkitMaskImage: 'linear-gradient(to bottom, black 20%, transparent)',
+                                }
+                              : { maxHeight: '60rem' }
+                          }
+                        >
+                          {testimonial.recommendation}
+                        </p>
+
+                        {canExpand && (
+                          <button
+                            type="button"
+                            aria-expanded={isExpanded}
+                            aria-label={isExpanded ? 'Show less' : `Read the full recommendation from ${testimonial.name}`}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              toggle();
+                            }}
+                            className="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-light-accent/10 dark:bg-dark-accent/15 text-light-accent dark:text-dark-accent flex items-center justify-center hover:bg-light-accent/20 dark:hover:bg-dark-accent/25 transition-colors"
+                          >
+                            <svg
+                              viewBox="0 0 20 20"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                              className={`w-4 h-4 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}
+                            >
+                              <path d="M5 8L10 13L15 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          </button>
+                        )}
+                      </div>
+                    </Reveal>
                   );
                 })}
               </div>
