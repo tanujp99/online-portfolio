@@ -73,6 +73,12 @@ interface Testimonial {
 const SHOW_PINNED_REPOS = false;
 
 const GITHUB_USERNAME = 'tanujp99';
+// GitHub's greens, with a lighter "no contributions" square in dark mode to suit this site's lighter panel
+const CALENDAR_THEME = {
+  light: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'],
+  dark: ['#30344a', '#0e4429', '#006d32', '#26a641', '#39d353'],
+};
+
 const RECOMMENDATIONS_URL = 'https://www.linkedin.com/in/tanujp/details/recommendations/?detailScreenTabIndex=0';
 
 // Stats are computed from the site's own data so they can't drift out of date
@@ -240,7 +246,7 @@ export default function Profile() {
   }
 
   return (
-    <section id="profile" className="py-8 sm:py-12 md:py-16 overflow-y-auto">
+    <section id="profile" className="pt-6 sm:pt-8 md:pt-10 pb-12 sm:pb-16 md:pb-20 overflow-y-auto">
       <div className="container mx-auto px-4 sm:px-6 md:px-8">
         {/* Profile Picture */}
         <div className="flex justify-center mb-8">
@@ -465,6 +471,7 @@ export default function Profile() {
                         <GitHubCalendar
                           username="tanujp99"
                           colorScheme={theme}
+                          theme={CALENDAR_THEME}
                           blockSize={10}
                           blockMargin={3}
                           fontSize={12}
@@ -480,11 +487,11 @@ export default function Profile() {
                   <div className="mt-2 flex items-center gap-2 text-sm">
                     <span>Less</span>
                     <span className="flex gap-1">
-                      <span className="inline-block w-4 h-4 rounded bg-[#ebedf0] dark:bg-[#161b22] border border-[#d1d5da] dark:border-[#30363d]"></span>
-                      <span className="inline-block w-4 h-4 rounded bg-[#9be9a8] dark:bg-[#0e4429] border border-[#d1d5da] dark:border-[#30363d]"></span>
-                      <span className="inline-block w-4 h-4 rounded bg-[#40c463] dark:bg-[#006d32] border border-[#d1d5da] dark:border-[#30363d]"></span>
-                      <span className="inline-block w-4 h-4 rounded bg-[#30a14e] dark:bg-[#26a641] border border-[#d1d5da] dark:border-[#30363d]"></span>
-                      <span className="inline-block w-4 h-4 rounded bg-[#216e39] dark:bg-[#39d353] border border-[#d1d5da] dark:border-[#30363d]"></span>
+                      <span className="inline-block w-4 h-4 rounded bg-[#ebedf0] dark:bg-[#30344a] outline outline-1 -outline-offset-1 outline-black/[0.08] dark:outline-white/[0.04]"></span>
+                      <span className="inline-block w-4 h-4 rounded bg-[#9be9a8] dark:bg-[#0e4429] outline outline-1 -outline-offset-1 outline-black/[0.08] dark:outline-white/[0.04]"></span>
+                      <span className="inline-block w-4 h-4 rounded bg-[#40c463] dark:bg-[#006d32] outline outline-1 -outline-offset-1 outline-black/[0.08] dark:outline-white/[0.04]"></span>
+                      <span className="inline-block w-4 h-4 rounded bg-[#30a14e] dark:bg-[#26a641] outline outline-1 -outline-offset-1 outline-black/[0.08] dark:outline-white/[0.04]"></span>
+                      <span className="inline-block w-4 h-4 rounded bg-[#216e39] dark:bg-[#39d353] outline outline-1 -outline-offset-1 outline-black/[0.08] dark:outline-white/[0.04]"></span>
                     </span>
                     <span>More</span>
                   </div>

@@ -34,10 +34,10 @@ const leadership: LeadershipRole[] = awardsData.leadership;
 
 export default function Awards() {
   return (
-    <section id="awards" className="py-12 sm:py-16 md:py-20">
+    <section id="awards" className="pt-6 sm:pt-8 md:pt-10 pb-12 sm:pb-16 md:pb-20">
       <div className="container mx-auto px-4 sm:px-6 md:px-8">
         <h2
-          className="text-2xl sm:text-3xl md:text-4xl text-heading text-center mb-8 sm:mb-12 md:mb-16 text-neutral-900 dark:text-white"
+          className="text-2xl sm:text-3xl md:text-4xl text-heading text-center mb-6 sm:mb-8 md:mb-10 text-neutral-900 dark:text-white"
         >
           Awards & Recognition
         </h2>
