@@ -9,7 +9,7 @@ import { useTheme } from '../context/ThemeContext';
 import ThemedIcon from './ThemedIcon';
 import LoadingSpinner from './LoadingSpinner';
 import ActivityGraph from './ActivityGraph';
-import { FaQuoteLeft, FaExternalLinkAlt, FaMicrochip, FaServer, FaStream, FaCloud, FaBrain } from 'react-icons/fa';
+import { FaQuoteLeft, FaExternalLinkAlt, FaMicrochip, FaServer, FaStream, FaCloud, FaBrain, FaShieldAlt } from 'react-icons/fa';
 import testimonialsData from '@/data/testimonials.json';
 import experienceData from '@/data/experience.json';
 import projectsData from '@/data/projects.json';
@@ -121,6 +121,7 @@ const skillIcons = {
   stream: FaStream,
   cloud: FaCloud,
   brain: FaBrain,
+  shield: FaShieldAlt,
 };
 
 let cachedProfile: GitHubData | null = null;
@@ -267,7 +268,7 @@ export default function Profile() {
               </div>
 
               <h2 className="text-xl font-semibold text-neutral-900 dark:text-white mt-8 mb-5 text-center">What I work with</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-5">
                 {skillsData.groups.map((group) => {
                   const Icon = skillIcons[group.icon as keyof typeof skillIcons];
                   return (

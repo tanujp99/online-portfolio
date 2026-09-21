@@ -47,7 +47,18 @@
         "Istio",
         "Prometheus & Grafana",
         "Jenkins & GitLab CI",
-        "GitHub Actions",
+        "GitHub Actions"
+      ]
+    },
+    {
+      "name": "Security",
+      "icon": "shield",
+      "skills": [
+        "TOTP 2FA",
+        "Rotating JWTs",
+        "Zero-trust access",
+        "AWS Secrets Manager",
+        "Multi-tenant isolation",
         "SonarQube · Trivy · Veracode"
       ]
     },
