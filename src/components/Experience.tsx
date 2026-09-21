@@ -104,7 +104,8 @@ export default function Experience() {
                     transition={{ duration: 0.3 }}
                     className="mt-3 overflow-hidden"
                   >
-                    <div className={isExpanded ? '' : 'pointer-events-none select-none opacity-0'}>
+                    {/* Details in their own box; the bottom margin leaves room for the arrow below it */}
+                    <div className={`rounded-xl bg-black/[0.04] dark:bg-white/[0.05] p-3 sm:p-4 mb-6 ${isExpanded ? '' : 'pointer-events-none select-none opacity-0'}`}>
                       {renderDescription(exp.fullDescription)}
                     </div>
                   </motion.div>
