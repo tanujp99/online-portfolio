@@ -246,7 +246,7 @@ export default function Profile() {
   }
 
   return (
-    <section id="profile" className="pt-6 sm:pt-8 md:pt-10 pb-12 sm:pb-16 md:pb-20 overflow-y-auto">
+    <section id="profile" className="pt-6 sm:pt-10 md:pt-14 lg:pt-16 pb-12 sm:pb-16 md:pb-20 overflow-y-auto">
       <div className="container mx-auto px-4 sm:px-6 md:px-8">
         {/* Profile Picture */}
         <div className="flex justify-center mb-8">

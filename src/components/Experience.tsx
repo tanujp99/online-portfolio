@@ -57,10 +57,10 @@ export default function Experience() {
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
   return (
-    <section id="experience" className="pt-6 sm:pt-8 md:pt-10 pb-12 sm:pb-16 md:pb-20">
+    <section id="experience" className="pt-6 sm:pt-10 md:pt-14 lg:pt-16 pb-12 sm:pb-16 md:pb-20">
       <div className="container mx-auto px-4 sm:px-6 md:px-8">
         <h2
-          className="text-2xl sm:text-3xl md:text-4xl text-heading text-center mb-6 sm:mb-8 md:mb-10 text-neutral-900 dark:text-white"
+          className="text-2xl sm:text-3xl md:text-4xl text-heading text-center mb-6 sm:mb-10 md:mb-12 lg:mb-14 text-neutral-900 dark:text-white"
         >
           Experience
         </h2>
