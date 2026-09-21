@@ -104,8 +104,9 @@
       "journal": "No longer in publication",
       "citation": "An Application of Fuzzy Logic to Fingerprint Recognition, 2019",
       "mainButton": "Read Paper",
-      "presentButton": "View Presentation",
-      "presentSlug": "fingerprint-presentation"
+      "citationButton": "View Presentation",
+      "citationLink": "/go/fingerprint-presentation",
+      "presentButton": false
     },
     {
       "year": 2023,

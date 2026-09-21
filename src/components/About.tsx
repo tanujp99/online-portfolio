@@ -70,7 +70,7 @@ export default function About() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-3 py-2 rounded-full bg-[var(--button-bg)] text-[var(--foreground)] hover:bg-light-accent hover:text-white dark:hover:bg-dark-accent dark:hover:text-white font-medium text-xs sm:text-sm shadow-sm transition-all duration-200 border border-[var(--border-color)] hover:shadow-md hover:scale-105"
+                    className="inline-flex items-center px-3 py-2 rounded-full bg-[var(--button-bg)] text-[var(--foreground)] hover:bg-light-accent hover:text-white dark:hover:bg-dark-accent dark:hover:text-white font-medium text-xs sm:text-sm shadow-sm transition-all duration-200 border border-[var(--border-color)] hover:shadow-md"
                   >
                     <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
                       <path d={social.icon} />

@@ -58,7 +58,7 @@ export default function Hero() {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-3 sm:px-4 py-2 rounded-full bg-[var(--card-bg)] text-[var(--foreground)] hover:bg-light-accent hover:text-white dark:hover:bg-dark-accent dark:hover:text-white font-medium text-xs sm:text-sm md:text-base shadow-sm transition-all duration-200 border border-[var(--border-color)] hover:shadow-md hover:scale-105"
+                className="inline-flex items-center px-3 sm:px-4 py-2 rounded-full bg-[var(--card-bg)] text-[var(--foreground)] hover:bg-light-accent hover:text-white dark:hover:bg-dark-accent dark:hover:text-white font-medium text-xs sm:text-sm md:text-base shadow-sm transition-all duration-200 border border-[var(--border-color)] hover:shadow-md"
               >
                 <svg
                   className={`w-5 h-5 ${idx < 3 ? 'mr-0 sm:mr-1' : 'mr-1'}`}
@@ -79,7 +79,7 @@ export default function Hero() {
             <a
               href="/data/Tanuj_Palaspagar-resume.pdf"
               download
-              className="inline-flex items-center px-4 py-1.5 rounded-full bg-light-accent/20 text-light-accent font-semibold text-base shadow-sm transition-all duration-200 border-none hover:bg-light-accent hover:text-white dark:bg-dark-accent/20 dark:text-dark-accent dark:hover:bg-dark-accent dark:hover:text-white hover:shadow-md hover:scale-105"
+              className="inline-flex items-center px-4 py-1.5 rounded-full bg-light-accent/20 text-light-accent font-semibold text-base shadow-sm transition-all duration-200 border-none hover:bg-light-accent hover:text-white dark:bg-dark-accent/20 dark:text-dark-accent dark:hover:bg-dark-accent dark:hover:text-white hover:shadow-md"
               target="_blank"
               rel="noopener noreferrer"
             >

@@ -7,7 +7,7 @@ import { ReactNode, useState } from 'react';
 
 function FlipIcon() {
   return (
-    <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 sm:w-5 sm:h-5">
+    <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-4 h-4">
       <path d="M3.5 8.5A6.5 6.5 0 0 1 15 5.2M16.5 11.5A6.5 6.5 0 0 1 5 14.8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
       <path d="M15.5 2v3.5H12M4.5 18v-3.5H8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
@@ -75,11 +75,11 @@ export default function FlipCard({ label, front, back, padding = 'p-4 sm:p-6' }:
       <div className="flip-card-tilt">
         <div className="flip-card-inner">
           <div
-            className={`flip-card-face relative h-full bg-[var(--card-bg)] rounded-xl shadow-card ${padding}`}
+            className={`flip-card-face relative h-full bg-[var(--card-bg)] rounded-xl shadow-card ${padding} pb-12 sm:pb-12`}
             {...(isFlipped ? hiddenFace : {})}
           >
             {front}
-            <span className="absolute bottom-2 sm:bottom-3 right-3 sm:right-4 text-light-accent dark:text-dark-accent pointer-events-none">
+            <span className="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-light-accent/10 dark:bg-dark-accent/15 text-light-accent dark:text-dark-accent flex items-center justify-center pointer-events-none">
               <FlipIcon />
             </span>
           </div>
@@ -91,7 +91,7 @@ export default function FlipCard({ label, front, back, padding = 'p-4 sm:p-6' }:
             <div className={`custom-scrollbar h-full overflow-y-auto flex flex-col ${padding}`}>
               {back}
             </div>
-            <span className="absolute bottom-2 sm:bottom-3 right-3 sm:right-4 text-light-accent dark:text-dark-accent pointer-events-none">
+            <span className="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-light-accent/10 dark:bg-dark-accent/15 text-light-accent dark:text-dark-accent flex items-center justify-center pointer-events-none">
               <FlipIcon />
             </span>
           </div>

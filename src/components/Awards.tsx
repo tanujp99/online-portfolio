@@ -50,13 +50,13 @@ export default function Awards() {
               key={award.id}
               className="bg-[var(--card-bg)] backdrop-blur-md rounded-xl shadow-panel p-4 sm:p-6"
             >
-              <div className="flex items-center mb-3 sm:mb-4">
+              <div className="flex items-center gap-3 mb-3 sm:mb-4">
                 {iconMap[award.title as keyof typeof iconMap] && (
-                  <div className="w-6 h-6 sm:w-8 sm:h-8 text-light-accent dark:text-dark-accent mr-2 sm:mr-3">
-                    {React.createElement(iconMap[award.title as keyof typeof iconMap])}
-                  </div>
+                  <span className="w-11 h-11 sm:w-12 sm:h-12 shrink-0 rounded-full bg-black/[0.05] dark:bg-white/[0.07] text-light-accent dark:text-dark-accent flex items-center justify-center">
+                    {React.createElement(iconMap[award.title as keyof typeof iconMap], { className: 'w-5 h-5 sm:w-6 sm:h-6' })}
+                  </span>
                 )}
-                <h3 className="text-lg sm:text-xl font-semibold text-light-accent dark:text-dark-accent">{award.title}</h3>
+                <h3 className="text-lg sm:text-xl font-semibold leading-snug text-neutral-900 dark:text-white">{award.title}</h3>
               </div>
               <div className="space-y-1.5 sm:space-y-2">
                 <p className="text-sm sm:text-base text-neutral-700 dark:text-gray-300 font-medium">{award.organization}</p>
@@ -82,7 +82,7 @@ export default function Awards() {
                   label={`${role.title}, ${role.organization}`}
                   padding="p-4"
                   front={
-                    <div className="pb-5">
+                    <div>
                       {Icon && (
                         <div className="w-6 h-6 text-light-accent dark:text-dark-accent mb-3">
                           <Icon className="w-full h-full" />

@@ -29,6 +29,7 @@ interface Project {
   mainButton?: string;
   citationButton?: string;
   citationContent?: string;
+  citationLink?: string; // if set, the citation-style button opens this link instead of copying citationContent
   presentButton?: string | boolean;
   presentContent?: string;
   presentSlug?: string; // routes the demo link through /go/<slug>, which checks the demo is up first
@@ -125,7 +126,7 @@ export default function Projects() {
                                 href={project.paperLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1 px-3 py-1.5 bg-light-accent dark:bg-dark-accent text-[var(--card-bg)] border border-light-accent dark:border-dark-accent rounded-md hover:bg-light-accent/90 dark:hover:bg-dark-accent/90 transition-colors text-xs font-medium shadow-sm"
+                                className="inline-flex items-center gap-1 px-3 py-1.5 bg-light-accent dark:bg-dark-accent text-[var(--card-bg)] border border-light-accent dark:border-dark-accent rounded-full hover:bg-light-accent/90 dark:hover:bg-dark-accent/90 transition-colors text-xs font-medium shadow-sm"
                                 onClick={(e) => e.stopPropagation()}
                               >
                                 {project.mainButton}
@@ -136,15 +137,26 @@ export default function Projects() {
                                 href={project.presentSlug ? `/go/${project.presentSlug}` : project.presentContent}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1 px-3 py-1.5 bg-light-accent dark:bg-dark-accent text-[var(--card-bg)] border border-light-accent dark:border-dark-accent rounded-md hover:bg-light-accent/90 dark:hover:bg-dark-accent/90 transition-colors text-xs font-medium shadow-sm"
+                                className="inline-flex items-center gap-1 px-3 py-1.5 bg-light-accent dark:bg-dark-accent text-[var(--card-bg)] border border-light-accent dark:border-dark-accent rounded-full hover:bg-light-accent/90 dark:hover:bg-dark-accent/90 transition-colors text-xs font-medium shadow-sm"
                                 onClick={(e) => e.stopPropagation()}
                               >
                                 {project.presentButton}
                               </a>
                             )}
-                            {project.citationButton && project.citationContent && (
+                            {project.citationButton && project.citationLink && (
+                              <a
+                                href={project.citationLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1 px-3 py-1.5 bg-[var(--card-bg)] text-[var(--foreground)] border border-[var(--border-color)] rounded-full hover:bg-light-accent hover:text-white dark:hover:bg-dark-accent dark:hover:text-white transition-colors text-xs font-medium shadow-sm"
+                                onClick={(e) => e.stopPropagation()}
+                              >
+                                {project.citationButton}
+                              </a>
+                            )}
+                            {project.citationButton && !project.citationLink && project.citationContent && (
                               <button
-                                className="inline-flex items-center gap-1 px-3 py-1.5 bg-[var(--card-bg)] text-[var(--foreground)] border border-[var(--border-color)] rounded-md hover:bg-light-accent hover:text-white dark:hover:bg-dark-accent dark:hover:text-white transition-colors text-xs font-medium shadow-sm"
+                                className="inline-flex items-center gap-1 px-3 py-1.5 bg-[var(--card-bg)] text-[var(--foreground)] border border-[var(--border-color)] rounded-full hover:bg-light-accent hover:text-white dark:hover:bg-dark-accent dark:hover:text-white transition-colors text-xs font-medium shadow-sm"
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   navigator.clipboard.writeText(project.citationContent!);

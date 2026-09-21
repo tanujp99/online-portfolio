@@ -7,6 +7,23 @@ import Reveal from './Reveal';
 
 const experiences = experienceData.experiences;
 
+// "MAY 2019 - JUL 2019" -> "May 2019 – July 2019", matching the awards' date style
+const MONTH_NAMES: Record<string, string> = {
+  JAN: 'January', FEB: 'February', MAR: 'March', APR: 'April', MAY: 'May', JUN: 'June',
+  JUL: 'July', AUG: 'August', SEP: 'September', OCT: 'October', NOV: 'November', DEC: 'December',
+};
+
+function formatPeriod(period: string) {
+  return period
+    .split(' - ')
+    .map((part) => {
+      const [month, year] = part.trim().split(' ');
+      if (month === 'PRESENT') return 'Present';
+      return `${MONTH_NAMES[month] ?? month} ${year}`;
+    })
+    .join(' – ');
+}
+
 function renderDescription(description: string) {
   // Split by lines and check if they start with a bullet
   const lines = description.split('\n');
@@ -64,7 +81,6 @@ export default function Experience() {
 
                 <motion.div
                   className={`bg-[var(--card-bg)] backdrop-blur-md rounded-2xl p-3 sm:p-4 cursor-pointer transition-all duration-300 ${isExpanded ? 'shadow-panel-active' : 'shadow-panel'}`}
-                  whileHover={{ scale: 1.02}}
                   onClick={(e) => {
                     if (window.getSelection && window.getSelection() && window.getSelection()!.toString()) return;
                     setExpandedId(isExpanded ? null : exp.id);
@@ -77,19 +93,22 @@ export default function Experience() {
                       <p className="text-neutral-500 dark:text-gray-400 text-xs sm:text-sm">{exp.location}</p>
                     </div>
                     <div className="text-left sm:text-right flex items-center gap-1.5">
-                      <p className="text-xs sm:text-sm text-[var(--foreground)] bg-[var(--button-bg)] px-2 py-0.5 rounded-lg">{exp.period}</p>
+                      <p className="text-xs sm:text-sm text-[var(--foreground)] bg-[var(--button-bg)] px-2 py-0.5 rounded-lg">{formatPeriod(exp.period)}</p>
                     </div>
                   </div>
 
                   {/* Animated arrow icon at bottom right */}
                   <span
-                    className={`absolute bottom-2 sm:bottom-3 right-3 sm:right-4 text-light-accent dark:text-dark-accent pointer-events-none transition-transform duration-300 ease-out ${isExpanded ? 'rotate-180' : ''}`}
+                    className="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-light-accent/10 dark:bg-dark-accent/15 text-light-accent dark:text-dark-accent flex items-center justify-center pointer-events-none"
                   >
-                    <div className="w-4 h-4 sm:w-5 sm:h-5">
-                      <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-                        <path d="M5 8L10 13L15 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </div>
+                    <svg
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className={`w-4 h-4 transition-transform duration-300 ease-out ${isExpanded ? 'rotate-180' : ''}`}
+                    >
+                      <path d="M5 8L10 13L15 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
                   </span>
 
                   <motion.div
