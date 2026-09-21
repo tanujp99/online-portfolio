@@ -523,3 +523,26 @@ html.dark .flip-card:focus-visible .flip-card-face {
     animation: none;
   }
 }
+
+/* One gentle bob when a card first scrolls in, to say "this opens" without words */
+.nudge-once.nudge-now {
+  animation: nudge 0.9s ease-in-out 0.3s 1;
+}
+
+@keyframes nudge {
+  30% {
+    transform: translateY(4px);
+  }
+  55% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nudge-once.nudge-now {
+    animation: none;
+  }
+}

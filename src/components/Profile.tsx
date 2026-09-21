@@ -126,6 +126,24 @@ const skillIcons = {
   shield: FaShieldAlt,
 };
 
+// Bobs an element once (see .nudge-once in globals.css), the first time it is fully on screen
+let nudgeObserver: IntersectionObserver | null = null;
+
+function nudgeWhenSeen(el: HTMLElement | null) {
+  if (!el || typeof IntersectionObserver === 'undefined') return;
+  nudgeObserver ??= new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('nudge-now');
+        nudgeObserver?.unobserve(entry.target);
+      });
+    },
+    { threshold: 1 },
+  );
+  nudgeObserver.observe(el);
+}
+
 let cachedProfile: GitHubData | null = null;
 let cachedPinnedRepos: PinnedRepo[] = [];
 let dataFetched = false;
@@ -391,27 +409,15 @@ export default function Profile() {
                               {testimonial.recommendation}
                             </p>
                           ) : (
-                            <>
-                              <p className="text-base sm:text-lg font-medium leading-snug text-neutral-900 dark:text-white mb-2">
-                                {testimonial.pullQuote}
-                              </p>
-                              {/* A taste of the full text, fading out, so it's clear there's more */}
-                              <p
-                                className="pr-10 text-sm text-neutral-700 dark:text-gray-300 leading-relaxed overflow-hidden"
-                                style={{
-                                  maxHeight: '3.25em',
-                                  maskImage: 'linear-gradient(to bottom, black 20%, transparent)',
-                                  WebkitMaskImage: 'linear-gradient(to bottom, black 20%, transparent)',
-                                }}
-                              >
-                                {testimonial.recommendation}
-                              </p>
-                            </>
+                            <p className={`${canExpand ? 'pr-10' : ''} text-base sm:text-lg font-medium leading-snug text-neutral-900 dark:text-white`}>
+                              {testimonial.pullQuote}
+                            </p>
                           )}
                         </blockquote>
 
                         {canExpand && (
                           <button
+                            ref={nudgeWhenSeen}
                             type="button"
                             aria-expanded={isExpanded}
                             aria-label={isExpanded ? 'Show less' : `Read the full recommendation from ${testimonial.name}`}
@@ -419,7 +425,7 @@ export default function Profile() {
                               e.stopPropagation();
                               toggle();
                             }}
-                            className="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-light-accent/10 dark:bg-dark-accent/15 text-light-accent dark:text-dark-accent flex items-center justify-center hover:bg-light-accent/20 dark:hover:bg-dark-accent/25 transition-colors"
+                            className="nudge-once absolute bottom-3 right-3 w-8 h-8 rounded-full bg-light-accent/10 dark:bg-dark-accent/15 text-light-accent dark:text-dark-accent flex items-center justify-center hover:bg-light-accent/20 dark:hover:bg-dark-accent/25 transition-colors"
                           >
                             <svg
                               viewBox="0 0 20 20"
