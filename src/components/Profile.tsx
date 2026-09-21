@@ -63,6 +63,10 @@ interface Testimonial {
   verified?: boolean;
 }
 
+// TODO: GitHub pinned repos are turned off for now; the Projects tab is used as the showcase instead.
+// Flip this to true to fetch and show them again.
+const SHOW_PINNED_REPOS = false;
+
 let cachedProfile: GitHubData | null = null;
 let cachedPinnedRepos: PinnedRepo[] = [];
 let dataFetched = false;
@@ -102,7 +106,7 @@ export default function Profile() {
         const fetchGitHubData = async () => {
           const [profileResult, pinnedReposResult] = await Promise.allSettled([
             fetchJson('https://api.github.com/users/tanujp99'),
-            fetchJson('https://pinned.berrysauce.dev/get/tanujp99')
+            SHOW_PINNED_REPOS ? fetchJson('https://pinned.berrysauce.dev/get/tanujp99') : Promise.resolve([])
           ]);
 
           if (profileResult.status === 'fulfilled') {
@@ -600,7 +604,7 @@ export default function Profile() {
           </div>
 
           {/* Pinned Repositories */}
-          {pinnedRepos.length > 0 && (
+          {SHOW_PINNED_REPOS && pinnedRepos.length > 0 && (
             <div className="max-w-4xl mx-auto">
             <div className="bg-[var(--card-bg)] backdrop-blur-md rounded-2xl p-3 sm:p-4 shadow-panel">
               <h2 className="text-xl font-semibold text-neutral-900 dark:text-white mb-6">Pinned</h2>
