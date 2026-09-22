@@ -8,6 +8,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      // Landscape phones and other short, wide screens: the hero goes compact there (see Hero.tsx)
+      screens: {
+        'short-wide': { raw: '(orientation: landscape) and (max-height: 500px)' },
+      },
       // Shape scale: one radius per element role, Material 3 style.
       // shell = the main content panel, card = any raised surface, box = flat box inside a card,
       // inset = small things inside a box (tooltips, thumbnails). Chips and buttons are rounded-full.

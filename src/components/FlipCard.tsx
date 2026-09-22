@@ -69,7 +69,7 @@ export default function FlipCard({ label, front, back, padding = 'p-4 sm:p-6', g
       <div className="flip-card-tilt">
         <div className="flip-card-inner">
           <div
-            className={`flip-card-face relative h-full bg-[var(--card-bg)] rounded-card shadow-card ${padding} pb-12 sm:pb-12`}
+            className={`flip-card-face relative h-full flex flex-col bg-[var(--card-bg)] rounded-card shadow-card ${padding} pb-12 sm:pb-12`}
             {...(isFlipped ? hiddenFace : {})}
           >
             {front}

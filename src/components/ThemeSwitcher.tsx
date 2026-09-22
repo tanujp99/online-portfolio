@@ -55,11 +55,14 @@ export default function ThemeSwitcher() {
 
   if (!mounted) return null;
 
+  // On very small screens (narrow and short) the name would run under the button, so it steps aside;
+  // the theme then follows the system setting, as it does by default
+
   return (
     <button
       aria-label="Toggle theme"
       onClick={toggleTheme}
-      className="fixed top-4 right-4 lg:bottom-6 lg:left-6 lg:top-auto lg:right-auto z-50 w-12 h-12 rounded-full bg-[var(--button-bg)] shadow-pill flex items-center justify-center transition-all duration-300 hover:shadow-hover"
+      className="fixed top-4 right-4 [@media(max-width:339px)_and_(max-height:699px)]:hidden lg:bottom-6 lg:left-6 lg:top-auto lg:right-auto z-50 w-12 h-12 rounded-full bg-[var(--button-bg)] shadow-pill flex items-center justify-center transition-all duration-300 hover:shadow-hover"
     >
       <motion.span
         key={theme}

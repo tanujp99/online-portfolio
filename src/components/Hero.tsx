@@ -9,20 +9,23 @@ const LAST_NAME = 'Palaspagar';
 
 export default function Hero() {
   return (
-    <section id="home" className="w-full min-h-screen flex items-center justify-center bg-transparent py-4 sm:py-12 md:py-16">
+    <section id="home" className="w-full lg:min-h-screen flex items-center justify-center bg-transparent lg:py-16">
       <div className="w-full max-w-2xl flex flex-col items-start justify-center gap-2 sm:gap-4 px-4 sm:px-6 md:px-8">
-        {/* Each line rises in turn (.hero-in, --i sets the order); see globals.css */}
+        {/* Each line rises in turn (.hero-in, --i sets the order); see globals.css.
+            On short landscape screens (short-wide) the name sits on one line and the tagline and specialties hide.
+            On short phone screens (under 700px tall) the greeting hides; the specialties never wrap, so they drop
+            below 360px wide; and the buttons shrink with the screen below ~400px wide */}
         <div className="w-full">
-          <span style={{ '--i': 0 } as React.CSSProperties} className="hero-in inline-block text-light-accent dark:text-dark-accent text-base sm:text-lg md:text-xl font-semibold mb-1 sm:mb-2">Hey there, I'm-</span>
-          <h1 aria-label={`${FIRST_NAME} ${LAST_NAME}.`} className="flex flex-row sm:flex-col gap-x-2 sm:gap-x-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-hero text-neutral-900 dark:text-white leading-tight mb-1 sm:mb-2">
+          <span style={{ '--i': 0 } as React.CSSProperties} className="hero-in inline-block [@media(max-width:1023px)_and_(max-height:699px)]:hidden text-light-accent dark:text-dark-accent text-base sm:text-lg md:text-xl font-semibold mb-1 sm:mb-2">Hey there, I'm-</span>
+          <h1 aria-label={`${FIRST_NAME} ${LAST_NAME}.`} className="flex flex-row sm:flex-col short-wide:flex-row gap-x-2 sm:gap-x-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-hero text-neutral-900 dark:text-white leading-tight mb-1 sm:mb-2">
             <ScrambleName firstName={FIRST_NAME} lastName={LAST_NAME} />
           </h1>
           <h2 style={{ '--i': 2 } as React.CSSProperties} className="hero-in text-lg sm:text-xl md:text-2xl lg:text-3xl text-heading text-neutral-900 dark:text-white mb-2 sm:mb-3">Software Developer Engineer.</h2>
-          <p style={{ '--i': 3 } as React.CSSProperties} className="hero-in hidden sm:block text-sm sm:text-base md:text-lg lg:text-xl text-neutral-700 dark:text-gray-400 font-medium mb-4">
+          <p style={{ '--i': 3 } as React.CSSProperties} className="hero-in hidden sm:block short-wide:hidden text-sm sm:text-base md:text-lg lg:text-xl text-neutral-700 dark:text-gray-400 font-medium mb-4">
             A graduate developer with an interest in Computer Science.
           </p>
           
-          <div style={{ '--i': 4 } as React.CSSProperties} className="hero-in space-y-1 sm:space-y-2 mb-3 sm:mb-6">
+          <div style={{ '--i': 4 } as React.CSSProperties} className="hero-in space-y-1 sm:space-y-2 mb-3 sm:mb-6 short-wide:hidden [@media(max-width:359px)]:hidden">
             <div className="text-xs sm:text-sm md:text-base text-neutral-700 dark:text-gray-300">
               <div className="flex items-start gap-2">
                 {/* <span className="mt-0.5 flex-shrink-0">🚀</span>  */}
@@ -55,10 +58,10 @@ export default function Hero() {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-3 sm:px-4 py-2 rounded-full bg-[var(--card-bg)] text-[var(--foreground)] hover:bg-light-accent hover:text-white dark:hover:bg-dark-accent dark:hover:text-white font-medium text-xs sm:text-sm md:text-base shadow-sm transition-all duration-200 border border-[var(--border-color)] hover:shadow-md"
+                className="inline-flex items-center px-[clamp(8px,3vw,12px)] sm:px-4 py-[clamp(6px,2vw,8px)] sm:py-2 rounded-full bg-[var(--card-bg)] text-[var(--foreground)] hover:bg-light-accent hover:text-white dark:hover:bg-dark-accent dark:hover:text-white font-medium text-xs sm:text-sm md:text-base shadow-sm transition-all duration-200 border border-[var(--border-color)] hover:shadow-md"
               >
                 <svg
-                  className={`w-5 h-5 ${idx < 3 ? 'mr-0 sm:mr-1' : 'mr-1'}`}
+                  className={`w-[clamp(16px,5vw,20px)] h-[clamp(16px,5vw,20px)] sm:w-5 sm:h-5 ${idx < 3 ? 'mr-0 sm:mr-1' : 'mr-1'}`}
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -76,11 +79,11 @@ export default function Hero() {
             <a
               href="/data/Tanuj_Palaspagar-resume.pdf"
               download
-              className="inline-flex items-center px-4 py-1.5 rounded-full bg-light-accent/20 text-light-accent font-semibold text-base shadow-sm transition-all duration-200 border-none hover:bg-light-accent hover:text-white dark:bg-dark-accent/20 dark:text-dark-accent dark:hover:bg-dark-accent dark:hover:text-white hover:shadow-md"
+              className="inline-flex items-center px-[clamp(10px,4vw,16px)] sm:px-4 py-[clamp(4px,1.5vw,6px)] sm:py-1.5 rounded-full bg-light-accent/20 text-light-accent font-semibold text-[length:clamp(12px,3.5vw,1rem)] sm:text-base shadow-sm transition-all duration-200 border-none hover:bg-light-accent hover:text-white dark:bg-dark-accent/20 dark:text-dark-accent dark:hover:bg-dark-accent dark:hover:text-white hover:shadow-md"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <svg className="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-[clamp(16px,5vw,20px)] h-[clamp(16px,5vw,20px)] sm:w-5 sm:h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
               Resume
