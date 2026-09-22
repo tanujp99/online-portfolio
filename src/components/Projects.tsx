@@ -127,11 +127,11 @@ export default function Projects() {
         <div ref={gridRef} className="grid grid-cols-[repeat(auto-fit,minmax(min(320px,100%),1fr))] gap-8">
           {projects.map((project, index) => {
             return (
-              // From 2xl the cards sit two or more to a row. There each card is at least 1.5x as tall as it is
-              // wide (a 2:3 trading card), measured from its own width; taller content still wins. The picture box
+              // From 2xl the cards sit two or more to a row. There each card is at least 4/3 as tall as it is
+              // wide (3:4), measured from its own width; taller content still wins. The picture box
               // keeps its size on every card.
               <Reveal key={index} className="relative h-full 2xl:[container-type:inline-size]">
-                <div className="h-full 2xl:min-h-[150cqw]">
+                <div className="h-full 2xl:min-h-[133.33cqw]">
                   <FlipCard
                     group="projects"
                     label={project.title}

@@ -16,8 +16,8 @@ export default function Hero() {
             On short phone screens (under 700px tall) the greeting hides; the specialties never wrap, so they drop
             below 360px wide; and the buttons shrink with the screen below ~400px wide */}
         <div className="w-full">
-          <span style={{ '--i': 0 } as React.CSSProperties} className="hero-in inline-block [@media(max-width:1023px)_and_(max-height:699px)]:hidden text-light-accent dark:text-dark-accent text-base sm:text-lg md:text-xl font-semibold mb-1 sm:mb-2">Hey there, I'm-</span>
-          <h1 aria-label={`${FIRST_NAME} ${LAST_NAME}.`} className="flex flex-row sm:flex-col short-wide:flex-row gap-x-2 sm:gap-x-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-hero text-neutral-900 dark:text-white leading-tight mb-1 sm:mb-2">
+          <span style={{ '--i': 0 } as React.CSSProperties} className="hero-in inline-block [@media(max-width:1023px)_and_(max-height:699px)]:hidden short-wide:hidden text-light-accent dark:text-dark-accent text-base sm:text-lg md:text-xl font-semibold mb-1 sm:mb-2">Hey there, I'm-</span>
+          <h1 aria-label={`${FIRST_NAME} ${LAST_NAME}.`} className="flex flex-row sm:flex-col [@media(orientation:landscape)_and_(max-height:500px)_and_(max-width:1023px)]:flex-row gap-x-2 sm:gap-x-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-hero text-neutral-900 dark:text-white leading-tight mb-1 sm:mb-2">
             <ScrambleName firstName={FIRST_NAME} lastName={LAST_NAME} />
           </h1>
           <h2 style={{ '--i': 2 } as React.CSSProperties} className="hero-in text-lg sm:text-xl md:text-2xl lg:text-3xl text-heading text-neutral-900 dark:text-white mb-2 sm:mb-3">Software Developer Engineer.</h2>

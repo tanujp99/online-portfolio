@@ -69,7 +69,7 @@ export default function RootLayout({
             </div>
             
             {/* Content Section - Refined container */}
-            <div className="flex-1 flex items-start justify-center px-8 xl:px-12 py-8 xl:py-12 h-full">
+            <div className="flex-1 min-w-0 flex items-start justify-center px-8 xl:px-12 py-8 xl:py-12 h-full">
               <div style={{ '--i': 3 } as React.CSSProperties} className="hero-in w-full h-[calc(100vh-64px)] xl:h-[calc(100vh-96px)] bg-[var(--card-bg)] backdrop-blur-xl rounded-shell p-8 flex flex-col overflow-hidden shadow-main">
                 <ContentWrapper />
               </div>
