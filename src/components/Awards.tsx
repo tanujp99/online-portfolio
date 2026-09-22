@@ -43,7 +43,7 @@ export default function Awards() {
         </h2>
 
         <div
-          className="grid grid-cols-[repeat(auto-fit,minmax(min(240px,100%),1fr))] max-w-[640] mx-auto gap-8"
+          className="grid grid-cols-[repeat(auto-fit,minmax(min(15rem,100%),1fr))] max-w-[640] mx-auto gap-8"
         >
           {awardsData.awards.map((award) => (
             <Reveal
@@ -73,7 +73,7 @@ export default function Awards() {
           Leadership
         </h3>
 
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(220px,100%),1fr))] gap-6">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(13.75rem,100%),1fr))] gap-6">
           {leadership.map((role) => {
             const Icon = leadershipIcons[role.icon as keyof typeof leadershipIcons];
             return (

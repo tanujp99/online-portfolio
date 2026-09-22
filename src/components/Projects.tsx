@@ -66,9 +66,9 @@ function renderDescription(description: string) {
   }
 }
 
-// From 2xl, cards share rows. In each row the tag area takes the height of the row's tallest tag block,
-// so every picture's bottom edge and every first row of tags line up across the row; the spare height
-// goes under the description. Re-measured whenever the grid changes width.
+// From 2xl, cards share rows. In each row the description block and the tag area each take the height of
+// the row's tallest one, so the picture fills whatever is left and is the same size on every card in the
+// row, with the pictures' edges and the tags lined up. Re-measured whenever the grid changes width.
 const ALIGN_FROM_PX = 1536;
 
 function useRowAlignedTags() {
@@ -81,19 +81,20 @@ function useRowAlignedTags() {
 
     const align = () => {
       const cards = Array.from(grid.children) as HTMLElement[];
-      const tags = cards.map((card) => card.querySelector<HTMLElement>('[data-tags]'));
-      tags.forEach((t) => t && (t.style.minHeight = ''));
+      const parts = (card: HTMLElement) =>
+        ['[data-head]', '[data-tags]'].map((sel) => card.querySelector<HTMLElement>(sel));
+      cards.forEach((card) => parts(card).forEach((el) => el && (el.style.minHeight = '')));
       if (!window.matchMedia(`(min-width: ${ALIGN_FROM_PX}px)`).matches) return;
       // cards in the same row share offsetTop (unlike getBoundingClientRect, it ignores the reveal animation)
       const rows = new Map<number, HTMLElement[]>();
-      cards.forEach((card, i) => {
-        const t = tags[i];
-        if (!t) return;
-        rows.set(card.offsetTop, [...(rows.get(card.offsetTop) ?? []), t]);
-      });
+      cards.forEach((card) => rows.set(card.offsetTop, [...(rows.get(card.offsetTop) ?? []), card]));
       rows.forEach((row) => {
-        const tallest = Math.max(...row.map((t) => t.offsetHeight));
-        row.forEach((t) => (t.style.minHeight = `${tallest}px`));
+        [0, 1].forEach((part) => {
+          const els = row.map((card) => parts(card)[part]).filter(Boolean) as HTMLElement[];
+          if (!els.length) return;
+          const tallest = Math.max(...els.map((el) => el.offsetHeight));
+          els.forEach((el) => (el.style.minHeight = `${tallest}px`));
+        });
       });
     };
 
@@ -124,7 +125,7 @@ export default function Projects() {
           Projects
         </h2>
 
-        <div ref={gridRef} className="grid grid-cols-[repeat(auto-fit,minmax(min(320px,100%),1fr))] gap-8">
+        <div ref={gridRef} className="grid grid-cols-[repeat(auto-fit,minmax(min(20rem,100%),1fr))] gap-8">
           {projects.map((project, index) => {
             return (
               // From 2xl the cards sit two or more to a row. There each card is at least 4/3 as tall as it is
@@ -137,15 +138,15 @@ export default function Projects() {
                     label={project.title}
                     front={
                       <>
-                        {/* On 2xl this part takes the spare height, so the picture and tags below line up across a row */}
-                        <div className="2xl:grow">
+                        {/* On 2xl every card in a row gets the same height here, so their pictures below match (useRowAlignedTags) */}
+                        <div data-head>
                           <h3 className="text-lg sm:text-xl font-semibold mb-2 text-neutral-900 dark:text-white">{project.title}</h3>
                           <p className="text-sm sm:text-base text-neutral-700 dark:text-gray-300 mb-4">{project.shortDescription}</p>
                         </div>
 
                         {/* Research paper or image box: same position and the same size on every card */}
                         {project.isResearch ? (
-                          <div className="mb-4 p-3 bg-gradient-to-r from-light-accent/10 to-light-accent/5 dark:from-dark-accent/10 dark:to-dark-accent/5 rounded-box border border-light-accent/20 dark:border-dark-accent/20 h-56 [@media(max-width:374px)]:h-[19rem] sm:h-44 md:h-48 lg:h-52 xl:h-56 2xl:h-60 shrink-0 flex flex-col justify-center">
+                          <div className="mb-4 p-3 bg-gradient-to-r from-light-accent/10 to-light-accent/5 dark:from-dark-accent/10 dark:to-dark-accent/5 rounded-box border border-light-accent/20 dark:border-dark-accent/20 h-56 [@media(max-width:374px)]:h-[19rem] sm:h-44 md:h-48 lg:h-52 xl:h-56 2xl:h-60 2xl:grow shrink-0 flex flex-col justify-center">
                             <div className="flex items-center gap-2 mb-2">
                               <FaGraduationCap className="w-5 h-5 text-[#3F51B5] dark:text-[#7986CB]" aria-hidden />
                               <span className="text-sm font-semibold text-light-accent dark:text-dark-accent">Published Research</span>
@@ -224,7 +225,7 @@ export default function Projects() {
                           </div>
                         ) : (
                           project.imageLight && project.imageDark && (
-                            <div className="mb-4 p-3 bg-gradient-to-r from-light-accent/10 to-light-accent/5 dark:from-dark-accent/10 dark:to-dark-accent/5 rounded-box border border-light-accent/20 dark:border-dark-accent/20 h-56 [@media(max-width:374px)]:h-[19rem] sm:h-44 md:h-48 lg:h-52 xl:h-56 2xl:h-60 flex items-center justify-center overflow-hidden relative">
+                            <div className="mb-4 p-3 bg-gradient-to-r from-light-accent/10 to-light-accent/5 dark:from-dark-accent/10 dark:to-dark-accent/5 rounded-box border border-light-accent/20 dark:border-dark-accent/20 h-56 [@media(max-width:374px)]:h-[19rem] sm:h-44 md:h-48 lg:h-52 xl:h-56 2xl:h-60 2xl:grow flex items-center justify-center overflow-hidden relative">
                               <div
                                 className="w-full h-full rounded-inset flex items-center justify-center overflow-hidden"
                                 style={{ backgroundColor: theme === 'dark' ? project.imageBgDark || '#161719' : project.imageBgLight || '#f8f8f5' }}

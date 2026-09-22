@@ -377,9 +377,11 @@ html.dark ::-webkit-scrollbar-track {
   }
 }
 
+/* Desktop scales with the screen: full size from 2194px wide (a 4K screen at 175%), and smaller below
+   that, so a 1080p screen shows the same layout a little scaled down. Never below 14px. */
 @media (min-width: 1024px) {
   html {
-    font-size: 16px;
+    font-size: clamp(14px, 0.729vw, 16px);
   }
 }
 
