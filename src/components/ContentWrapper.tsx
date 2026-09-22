@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import Navbar from '@/components/Navbar';
 import Profile from '@/components/Profile';
 import Experience from '@/components/Experience';
@@ -9,6 +10,7 @@ import Awards from '@/components/Awards';
 import About from './About';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import LoadingSpinner from '@/components/LoadingSpinner';
+import ScrollRail from '@/components/ScrollRail';
 
 // The loading animation plays alongside the hero's name scramble on page load, then hands off to the
 // content. It lands on the spinner's resting pose (its loop holds still from 1.5s to 2s).
@@ -17,6 +19,9 @@ const INTRO_MS = 1500;
 export default function ContentWrapper() {
   const [activeTab, setActiveTab] = useState('Profile');
   const [intro, setIntro] = useState(true);
+  // The rail is drawn on the page beside the panel, not inside it, so it goes to the anchor the layout
+  // leaves out there
+  const [railAnchor, setRailAnchor] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -45,6 +50,14 @@ export default function ContentWrapper() {
   ], []);
 
   const scrollRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  // The rail is drawn on the page beside the panel, not inside it, so it goes to the anchor the layout
+  // leaves out there
+  useEffect(() => {
+    const shell = panelRef.current?.closest('[data-shell]');
+    setRailAnchor(shell?.parentElement?.querySelector<HTMLElement>('[data-rail-anchor]') ?? null);
+  }, []);
 
   // A new tab starts at the top, not wherever the last one was scrolled to
   useEffect(() => {
@@ -55,14 +68,15 @@ export default function ContentWrapper() {
   const CurrentComponent = currentTab?.component;
 
   return (
-    <div className="flex flex-col h-full min-h-0">
+    <div ref={panelRef} className="flex flex-col h-full min-h-0">
       {/* Navigation - More refined */}
       <div className="flex-shrink-0 mb-4">
         <Navbar setActiveTab={selectTab} activeTab={activeTab} />
       </div>
       
       {/* Content Area - Better scrolling */}
-      <div ref={scrollRef} className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden">
+      <div className="flex-1 min-h-0">
+        <div ref={scrollRef} className="scroll-host h-full overflow-y-auto overflow-x-hidden">
         {intro ? (
           <div className="h-full flex items-center justify-center">
             <LoadingSpinner />
@@ -74,7 +88,10 @@ export default function ContentWrapper() {
             </ErrorBoundary>
           </div>
         )}
+        </div>
       </div>
+      {railAnchor &&
+        createPortal(<ScrollRail targetRef={scrollRef} resetKey={intro ? 'intro' : activeTab} />, railAnchor)}
     </div>
   );
 }

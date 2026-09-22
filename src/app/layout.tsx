@@ -52,9 +52,13 @@ export default function RootLayout({
             </div>
             
             {/* Content Section - Refined container */}
-            <div className="flex-1 px-6 pb-6 min-h-0">
-              <div style={{ '--i': 3 } as React.CSSProperties} className="hero-in h-full bg-[var(--card-bg)] backdrop-blur-xl rounded-shell p-5 flex flex-col overflow-hidden shadow-main">
+            <div className="flex-1 px-6 pb-6 min-h-0 relative">
+              <div data-shell style={{ '--i': 3 } as React.CSSProperties} className="hero-in h-full bg-[var(--card-bg)] backdrop-blur-xl rounded-shell p-5 flex flex-col overflow-hidden shadow-main">
                 <ContentWrapper />
+              </div>
+              {/* The scroll rail lives out here, on the page beside the panel, not inside it */}
+              <div className="pointer-events-none absolute inset-0 px-6 pb-6">
+                <div data-rail-anchor className="relative w-full h-full" />
               </div>
             </div>
           </div>
@@ -69,9 +73,13 @@ export default function RootLayout({
             </div>
             
             {/* Content Section - Refined container */}
-            <div className="flex-1 min-w-0 flex items-start justify-center px-8 xl:px-12 py-8 xl:py-12 h-full">
-              <div style={{ '--i': 3 } as React.CSSProperties} className="hero-in w-full h-[calc(100vh-64px)] xl:h-[calc(100vh-96px)] bg-[var(--card-bg)] backdrop-blur-xl rounded-shell p-8 flex flex-col overflow-hidden shadow-main">
+            <div className="flex-1 min-w-0 flex items-start justify-center px-8 xl:px-12 py-8 xl:py-12 h-full relative">
+              <div data-shell style={{ '--i': 3 } as React.CSSProperties} className="hero-in w-full h-[calc(100vh-64px)] xl:h-[calc(100vh-96px)] bg-[var(--card-bg)] backdrop-blur-xl rounded-shell p-8 flex flex-col overflow-hidden shadow-main">
                 <ContentWrapper />
+              </div>
+              {/* The scroll rail lives out here, on the page beside the panel, not inside it */}
+              <div className="pointer-events-none absolute inset-0 px-8 xl:px-12 py-8 xl:py-12">
+                <div data-rail-anchor className="relative w-full h-full" />
               </div>
             </div>
           </div>

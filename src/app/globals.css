@@ -332,6 +332,119 @@ html, body {
   transform: scale(1.5);
 }
 
+/* Scroll rail
+   The content panel hides its own bar (the rounded corners clipped it) and ScrollRail draws this one
+   instead: the pill bar in miniature, stood on end. The track is sunken the way the nav bar is and the
+   thumb is its pill, raised, in the same button colour, and neither ever changes size.
+   It stands outside the panel, on the page: the layout leaves an anchor out there and the rail is drawn
+   into it. --rail-gutter is the page's own padding beside the panel; the rail sits halfway across it,
+   and never further out than --rail-inset, so a wide gutter doesn't strand it away from what it scrolls. */
+:root {
+  --rail-gutter: 1.5rem;
+  --rail-inset: 1rem;
+  --rail-width: 12px;       /* the bar's thickness */
+  --rail-thumb: 44px;       /* the pill reads as progress, so its size is fixed: content never changes it */
+  --rail-thumb-width: 20px; /* wider than the bar, so it straddles it like the cap on a fader */
+  --rail-groove-dark: #00000324;
+  --rail-groove-light: #fcfcffcc;
+  /* The cap's own shading. On narrow screens the gutter is thinner than the cap, so it overhangs the
+     panel and a full cast shadow would wash across the panel's inner highlight; there it keeps a short,
+     soft one instead: still a cap floating above the page, without the spill. */
+  --shadow-rail-pill: var(--shadow-pill);
+}
+
+@media (max-width: 1023px) {
+  :root {
+    --shadow-rail-pill:
+      0 1px 3px #00000320,
+      inset 0 2px 1px #fcfcff,
+      inset 0 -2px 1px #0000035a;
+  }
+
+  html.dark {
+    --shadow-rail-pill:
+      0 1px 3px #00000326,
+      inset 0 2px 1px #fcfcff42,
+      inset 0 -2px 1px #0000036f;
+  }
+}
+
+html.dark {
+  --rail-groove-dark: #0f121b8c;
+  --rail-groove-light: #454a62cc;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --rail-gutter: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --rail-gutter: 3rem;
+  }
+}
+
+.scroll-host {
+  scrollbar-width: none;
+}
+.scroll-host::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-rail {
+  position: absolute;
+  top: 25%;
+  height: 50%;
+  right: calc(-1 * min(calc(var(--rail-gutter) / 2), var(--rail-inset)));
+  transform: translateX(50%);
+  pointer-events: auto;
+  width: var(--rail-width);
+  border-radius: 999px;
+  background: var(--background);
+  /* the bar's own shading, unturned: the page is lit from above, and so is the cap that rides in here */
+  box-shadow: var(--shadow-navbar);
+  cursor: pointer;
+  touch-action: none;
+}
+
+/* A tab that fits on one screen leaves the rail with nothing to do, so it sits there inert */
+.scroll-rail.is-idle {
+  cursor: default;
+}
+
+/* The nav pill stood on end, running along the bar and wider than it, so it crosses the edges on both
+   sides the way a fader's cap sits across its slot. */
+.scroll-rail-thumb {
+  position: absolute;
+  left: 50%;
+  width: var(--rail-thumb-width);
+  height: var(--rail-thumb);
+  margin-left: calc(var(--rail-thumb-width) / -2);
+  border-radius: 999px;
+  background: var(--button-bg);
+  box-shadow: var(--shadow-rail-pill);
+}
+
+/* Three grooves across the cap, cut in the way the rest of the surfaces are: a dark line with a lit one
+   under it */
+.scroll-rail-thumb::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 10px;
+  height: 12px;
+  transform: translate(-50%, -50%);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--rail-groove-dark) 0 1px,
+    var(--rail-groove-light) 1px 2px,
+    transparent 2px 5px
+  );
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
