@@ -84,6 +84,7 @@ export default function Projects() {
             return (
               <Reveal key={index} className="relative h-full">
                 <FlipCard
+                  group="projects"
                   label={project.title}
                   front={
                     <>
@@ -126,7 +127,7 @@ export default function Projects() {
                                 href={project.paperLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1 px-3 py-1.5 bg-light-accent dark:bg-dark-accent text-[var(--card-bg)] border border-light-accent dark:border-dark-accent rounded-full hover:bg-light-accent/90 dark:hover:bg-dark-accent/90 transition-colors text-xs font-medium shadow-sm"
+                                className="pill-button"
                                 onClick={(e) => e.stopPropagation()}
                               >
                                 {project.mainButton}
@@ -137,7 +138,7 @@ export default function Projects() {
                                 href={project.presentSlug ? `/go/${project.presentSlug}` : project.presentContent}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1 px-3 py-1.5 bg-light-accent dark:bg-dark-accent text-[var(--card-bg)] border border-light-accent dark:border-dark-accent rounded-full hover:bg-light-accent/90 dark:hover:bg-dark-accent/90 transition-colors text-xs font-medium shadow-sm"
+                                className="pill-button"
                                 onClick={(e) => e.stopPropagation()}
                               >
                                 {project.presentButton}
@@ -148,7 +149,7 @@ export default function Projects() {
                                 href={project.citationLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1 px-3 py-1.5 bg-[var(--card-bg)] text-[var(--foreground)] border border-[var(--border-color)] rounded-full hover:bg-light-accent hover:text-white dark:hover:bg-dark-accent dark:hover:text-white transition-colors text-xs font-medium shadow-sm"
+                                className="pill-link"
                                 onClick={(e) => e.stopPropagation()}
                               >
                                 {project.citationButton}
@@ -156,7 +157,7 @@ export default function Projects() {
                             )}
                             {project.citationButton && !project.citationLink && project.citationContent && (
                               <button
-                                className="inline-flex items-center gap-1 px-3 py-1.5 bg-[var(--card-bg)] text-[var(--foreground)] border border-[var(--border-color)] rounded-full hover:bg-light-accent hover:text-white dark:hover:bg-dark-accent dark:hover:text-white transition-colors text-xs font-medium shadow-sm"
+                                className="pill-link"
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   navigator.clipboard.writeText(project.citationContent!);
@@ -171,7 +172,7 @@ export default function Projects() {
                         </div>
                       ) : (
                         project.imageLight && project.imageDark && (
-                          <div className="mb-4 p-3 bg-gradient-to-r from-light-accent/10 to-light-accent/5 dark:from-dark-accent/10 dark:to-dark-accent/5 rounded-box border border-light-accent/20 dark:border-dark-accent/20 h-40 sm:h-44 md:h-48 lg:h-52 xl:h-56 2xl:h-60 flex items-center justify-center overflow-hidden relative">
+                          <div className="mb-4 p-3 bg-gradient-to-r from-light-accent/10 to-light-accent/5 dark:from-dark-accent/10 dark:to-dark-accent/5 rounded-box border border-light-accent/20 dark:border-dark-accent/20 h-56 sm:h-44 md:h-48 lg:h-52 xl:h-56 2xl:h-60 flex items-center justify-center overflow-hidden relative">
                             <div
                               className="w-full h-full rounded-inset flex items-center justify-center overflow-hidden"
                               style={{ backgroundColor: theme === 'dark' ? project.imageBgDark || '#161719' : project.imageBgLight || '#f8f8f5' }}
@@ -195,7 +196,7 @@ export default function Projects() {
                                   href={project.presentSlug ? `/go/${project.presentSlug}` : project.presentContent}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="px-2 sm:px-3 py-0.5 sm:py-1 bg-light-accent dark:bg-dark-accent text-[var(--card-bg)] rounded-full hover:bg-light-accent/90 dark:hover:bg-dark-accent/90 transition-colors text-xs sm:text-sm"
+                                  className="pill-button"
                                   onClick={(e) => e.stopPropagation()}
                                 >
                                   {project.presentButton}
@@ -211,7 +212,7 @@ export default function Projects() {
                         {project.technologies.map((tech) => (
                           <span
                             key={tech}
-                            className="px-2 sm:px-3 py-0.5 sm:py-1 bg-light-accent/20 dark:bg-dark-accent/20 text-light-accent dark:text-dark-accent rounded-full text-xs sm:text-sm"
+                            className="chip-accent"
                           >
                             {tech}
                           </span>
@@ -231,7 +232,7 @@ export default function Projects() {
                             href={project.paperLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center px-3 py-1 rounded-full bg-light-accent dark:bg-dark-accent text-[var(--card-bg)] text-xs sm:text-sm font-medium hover:opacity-90 transition-opacity"
+                            className="pill-button"
                             onClick={(e) => e.stopPropagation()}
                           >
                             Read the Paper
@@ -242,7 +243,7 @@ export default function Projects() {
                             href={project.githubLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center px-3 py-1 rounded-full bg-light-accent dark:bg-dark-accent text-[var(--card-bg)] text-xs sm:text-sm font-medium hover:opacity-90 transition-opacity"
+                            className="pill-button"
                             onClick={(e) => e.stopPropagation()}
                           >
                             View on GitHub

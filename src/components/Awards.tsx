@@ -79,6 +79,7 @@ export default function Awards() {
             return (
               <Reveal key={role.id} className="h-full min-h-[180px]">
                 <FlipCard
+                  group="leadership"
                   label={`${role.title}, ${role.organization}`}
                   padding="p-4"
                   front={
@@ -107,7 +108,7 @@ export default function Awards() {
                           href={role.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="mt-auto self-start inline-flex items-center px-3 py-1 rounded-full bg-light-accent dark:bg-dark-accent text-[var(--card-bg)] text-xs sm:text-sm font-medium hover:opacity-90 transition-opacity"
+                          className="pill-button mt-auto self-start"
                           onClick={(e) => e.stopPropagation()}
                         >
                           {role.linkLabel ?? 'Learn more'}

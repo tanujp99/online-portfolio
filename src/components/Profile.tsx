@@ -15,6 +15,7 @@ import awardsData from '@/data/awards.json';
 import skillsData from '@/data/skills.json';
 import CountUp from './CountUp';
 import Reveal from './Reveal';
+import CardControl from './CardControl';
 
 interface GitHubData {
   name: string;
@@ -131,25 +132,6 @@ const skillIcons = {
   shield: FaShieldAlt,
 };
 
-// Starts the expand-arrow nudge (see .nudge-once in globals.css) once the arrow is fully on screen
-const NUDGES_DONE_KEY = 'testimonials-opened';
-let nudgeObserver: IntersectionObserver | null = null;
-
-function nudgeWhenSeen(el: HTMLElement | null) {
-  if (!el || typeof IntersectionObserver === 'undefined') return;
-  nudgeObserver ??= new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('nudge-now');
-        nudgeObserver?.unobserve(entry.target);
-      });
-    },
-    { threshold: 1 },
-  );
-  nudgeObserver.observe(el);
-}
-
 let cachedProfile: GitHubData | null = null;
 let cachedPinnedRepos: PinnedRepo[] = [];
 let dataFetched = false;
@@ -162,22 +144,6 @@ export default function Profile() {
   const [calendarLoading, setCalendarLoading] = useState(true);
   const testimonials: Testimonial[] = testimonialsData.testimonials;
   const [expandedTestimonial, setExpandedTestimonial] = useState<number | null>(null);
-  // The arrows keep nudging until the visitor opens any testimonial, remembered across visits
-  const [nudgesDone, setNudgesDone] = useState(false);
-
-  useEffect(() => {
-    try {
-      if (localStorage.getItem(NUDGES_DONE_KEY)) setNudgesDone(true);
-    } catch {}
-  }, []);
-
-  const stopNudges = () => {
-    setNudgesDone(true);
-    try {
-      localStorage.setItem(NUDGES_DONE_KEY, '1');
-    } catch {}
-  };
-
   const currentYear = new Date().getFullYear();
   const availableYears = Array.from({ length: 7 }, (_, i) => currentYear - i);
 
@@ -291,7 +257,7 @@ export default function Profile() {
                       </div>
                       <div className="flex flex-wrap gap-2">
                         {group.skills.map((skill) => (
-                          <span key={skill} className="inline-flex items-center px-3 py-1 rounded-full bg-[var(--button-bg)] text-[var(--foreground)] border border-[var(--border-color)] font-medium text-xs sm:text-sm shadow-sm">
+                          <span key={skill} className="chip">
                             {skill}
                           </span>
                         ))}
@@ -321,13 +287,12 @@ export default function Profile() {
                   const isExpanded = expandedTestimonial === testimonial.id;
                   const canExpand = testimonial.recommendation.length > 150;
                   const toggle = () => {
-                    stopNudges();
                     setExpandedTestimonial(isExpanded ? null : testimonial.id);
                   };
                   return (
                     <Reveal key={testimonial.id}>
                       <div
-                        className={`relative rounded-box bg-black/[0.04] dark:bg-white/[0.05] p-4 ${canExpand ? 'cursor-pointer' : ''}`}
+                        className={`relative rounded-box bg-black/[0.04] dark:bg-white/[0.05] p-4 ${canExpand ? 'card-control-host cursor-pointer' : ''}`}
                         onClick={() => {
                           if (!canExpand) return;
                           if (window.getSelection && window.getSelection() && window.getSelection()!.toString()) return;
@@ -409,26 +374,13 @@ export default function Profile() {
                         </blockquote>
 
                         {canExpand && (
-                          <button
-                            ref={nudgeWhenSeen}
-                            type="button"
-                            aria-expanded={isExpanded}
-                            aria-label={isExpanded ? 'Show less' : `Read the full recommendation from ${testimonial.name}`}
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              toggle();
-                            }}
-                            className={`nudge-once ${nudgesDone ? 'nudge-stop' : ''} absolute bottom-3 right-3 w-8 h-8 rounded-full bg-light-accent/10 dark:bg-dark-accent/15 text-light-accent dark:text-dark-accent flex items-center justify-center hover:bg-light-accent/20 dark:hover:bg-dark-accent/25 transition-colors`}
-                          >
-                            <svg
-                              viewBox="0 0 20 20"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                              className={`w-4 h-4 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}
-                            >
-                              <path d="M5 8L10 13L15 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                          </button>
+                          <CardControl
+                            kind="expand"
+                            active={isExpanded}
+                            group="testimonials"
+                            onClick={toggle}
+                            label={isExpanded ? 'Show less' : `Read the full recommendation from ${testimonial.name}`}
+                          />
                         )}
                       </div>
                     </Reveal>

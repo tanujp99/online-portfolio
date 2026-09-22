@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import experienceData from '@/data/experience.json';
 import Reveal from './Reveal';
+import CardControl from './CardControl';
 
 const experiences = experienceData.experiences;
 
@@ -80,7 +81,7 @@ export default function Experience() {
                 <div className="absolute left-[1px] top-2 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-light-accent dark:bg-dark-accent transform -translate-x-1/2 shadow-sm" />
 
                 <motion.div
-                  className={`bg-[var(--card-bg)] backdrop-blur-md rounded-card p-3 sm:p-4 cursor-pointer transition-all duration-300 ${isExpanded ? 'shadow-panel-active' : 'shadow-panel'}`}
+                  className={`card-control-host bg-[var(--card-bg)] backdrop-blur-md rounded-card p-3 sm:p-4 cursor-pointer transition-all duration-300 ${isExpanded ? 'shadow-panel-active' : 'shadow-panel'}`}
                   onClick={(e) => {
                     if (window.getSelection && window.getSelection() && window.getSelection()!.toString()) return;
                     setExpandedId(isExpanded ? null : exp.id);
@@ -93,23 +94,11 @@ export default function Experience() {
                       <p className="text-neutral-500 dark:text-gray-400 text-xs sm:text-sm">{exp.location}</p>
                     </div>
                     <div className="text-left sm:text-right flex items-center gap-1.5">
-                      <p className="text-xs sm:text-sm text-[var(--foreground)] bg-[var(--button-bg)] px-2.5 py-0.5 rounded-full">{formatPeriod(exp.period)}</p>
+                      <p className="chip">{formatPeriod(exp.period)}</p>
                     </div>
                   </div>
 
-                  {/* Animated arrow icon at bottom right */}
-                  <span
-                    className="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-light-accent/10 dark:bg-dark-accent/15 text-light-accent dark:text-dark-accent flex items-center justify-center pointer-events-none"
-                  >
-                    <svg
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className={`w-4 h-4 transition-transform duration-300 ease-out ${isExpanded ? 'rotate-180' : ''}`}
-                    >
-                      <path d="M5 8L10 13L15 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </span>
+                  <CardControl kind="expand" active={isExpanded} group="experience" />
 
                   <motion.div
                     initial={false}

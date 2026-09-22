@@ -88,9 +88,9 @@ export default function About() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-3 py-2 rounded-full bg-[var(--button-bg)] text-[var(--foreground)] hover:bg-light-accent hover:text-white dark:hover:bg-dark-accent dark:hover:text-white font-medium text-xs sm:text-sm shadow-sm transition-all duration-200 border border-[var(--border-color)] hover:shadow-md"
+                    className="pill-link"
                   >
-                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                       <path d={social.icon} />
                     </svg>
                     {social.name}
@@ -113,7 +113,7 @@ export default function About() {
                   <div className="text-[var(--foreground)] mb-3 text-sm sm:text-base">Languages</div>
                   <div className="flex flex-wrap gap-2">
                     {['TypeScript', 'CSS'].map((tech) => (
-                      <span key={tech} className="px-3 py-1 bg-[var(--button-bg)] text-[var(--foreground)] rounded-full text-xs sm:text-sm border border-[var(--border-color)] font-medium shadow-sm">{tech}</span>
+                      <span key={tech} className="chip">{tech}</span>
                     ))}
                   </div>
                 </div>
@@ -122,7 +122,7 @@ export default function About() {
                   <div className="text-[var(--foreground)] mb-3 text-sm sm:text-base">Frameworks & Libraries</div>
                   <div className="flex flex-wrap gap-2">
                     {['Next.js', 'React', 'Framer Motion'].map((tech) => (
-                      <span key={tech} className="px-3 py-1 bg-[var(--button-bg)] text-[var(--foreground)] rounded-full text-xs sm:text-sm border border-[var(--border-color)] font-medium shadow-sm">{tech}</span>
+                      <span key={tech} className="chip">{tech}</span>
                     ))}
                   </div>
                 </div>
@@ -131,13 +131,13 @@ export default function About() {
                   <div className="text-[var(--foreground)] mb-3 text-sm sm:text-base">Styling & Animation</div>
                   <div className="flex flex-wrap gap-2">
                     {['Tailwind CSS'].map((tech) => (
-                      <span key={tech} className="px-3 py-1 bg-[var(--button-bg)] text-[var(--foreground)] rounded-full text-xs sm:text-sm border border-[var(--border-color)] font-medium shadow-sm">{tech}</span>
+                      <span key={tech} className="chip">{tech}</span>
                     ))}
                     <a 
                       href="https://ateliertriay.github.io/bricolage" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="px-3 py-1 bg-[var(--button-bg)] text-[var(--foreground)] rounded-full text-xs sm:text-sm border border-[var(--border-color)] font-medium shadow-sm hover:bg-light-accent hover:text-white dark:hover:bg-dark-accent dark:hover:text-white transition-all duration-200"
+                      className="pill-link"
                     >
                       Bricolage Grotesque
                     </a>
@@ -148,7 +148,7 @@ export default function About() {
                   <div className="text-[var(--foreground)] mb-3 text-sm sm:text-base">Tooling & CI</div>
                   <div className="flex flex-wrap gap-2">
                     {['ESLint', 'Node.js'].map((tech) => (
-                      <span key={tech} className="px-3 py-1 bg-[var(--button-bg)] text-[var(--foreground)] rounded-full text-xs sm:text-sm border border-[var(--border-color)] font-medium shadow-sm">{tech}</span>
+                      <span key={tech} className="chip">{tech}</span>
                     ))}
                   </div>
                 </div> */}
@@ -157,7 +157,7 @@ export default function About() {
                   <div className="text-[var(--foreground)] mb-3 text-sm sm:text-base">Hosted On</div>
                   <div className="flex flex-wrap gap-2">
                     {['Vercel'].map((tech) => (
-                      <span key={tech} className="px-3 py-1 bg-[var(--button-bg)] text-[var(--foreground)] rounded-full text-xs sm:text-sm border border-[var(--border-color)] font-medium shadow-sm">{tech}</span>
+                      <span key={tech} className="chip">{tech}</span>
                     ))}
                   </div>
                 </div> */}
@@ -170,7 +170,7 @@ export default function About() {
                       'JSON Data Management',
                       'Custom Hooks'
                     ].map((tech) => (
-                      <span key={tech} className="px-3 py-1 bg-[var(--button-bg)] text-[var(--foreground)] rounded-full text-xs sm:text-sm border border-[var(--border-color)] font-medium shadow-sm">{tech}</span>
+                      <span key={tech} className="chip">{tech}</span>
                     ))}
                   </div>
                 </div> */}

@@ -18,7 +18,9 @@ export default function Navbar({ setActiveTab, activeTab }: NavbarProps) {
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+              // Phones: on narrow or zoomed-in screens the padding gives way first, then the text shrinks,
+              // only as much as the bar needs to fit; wide phones and up keep the full size
+              className={`relative px-[clamp(4px,calc((100vw_-_325px)/10),1rem)] sm:px-4 py-2 rounded-full text-[length:min(0.875rem,calc((100vw_-_135px)*0.0533))] sm:text-sm font-medium transition-all duration-200 ${
                 activeTab === tab 
                   ? 'text-light-accent dark:text-dark-accent' 
                   : 'text-[var(--foreground)] text-neutral-700 dark:text-gray-400 hover:text-[var(--foreground)]'

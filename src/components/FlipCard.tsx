@@ -1,18 +1,10 @@
 'use client';
 
 import { ReactNode, useState } from 'react';
+import CardControl from './CardControl';
 
 // A trading card: click (or Enter/Space) turns it over, and it tilts toward the mouse.
 // The flip and tilt are plain CSS (see .flip-card in globals.css); this only toggles classes and variables.
-
-function FlipIcon() {
-  return (
-    <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-4 h-4">
-      <path d="M3.5 8.5A6.5 6.5 0 0 1 15 5.2M16.5 11.5A6.5 6.5 0 0 1 5 14.8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-      <path d="M15.5 2v3.5H12M4.5 18v-3.5H8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
 
 // Lifts the corner under the pointer toward the viewer; the light slides the other way (globals.css).
 // Plain CSS variables, no re-renders
@@ -46,14 +38,16 @@ interface FlipCardProps {
   front: ReactNode;
   back: ReactNode;
   padding?: string;
+  // cards in the same group share their corner control's nudge (see CardControl)
+  group: string;
 }
 
-export default function FlipCard({ label, front, back, padding = 'p-4 sm:p-6' }: FlipCardProps) {
+export default function FlipCard({ label, front, back, padding = 'p-4 sm:p-6', group }: FlipCardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   return (
     <div
-      className={`flip-card h-full cursor-pointer ${isFlipped ? 'is-flipped' : ''}`}
+      className={`flip-card card-control-host h-full cursor-pointer ${isFlipped ? 'is-flipped' : ''}`}
       onPointerMove={handleTilt}
       onPointerLeave={resetTilt}
       role="button"
@@ -79,9 +73,7 @@ export default function FlipCard({ label, front, back, padding = 'p-4 sm:p-6' }:
             {...(isFlipped ? hiddenFace : {})}
           >
             {front}
-            <span className="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-light-accent/10 dark:bg-dark-accent/15 text-light-accent dark:text-dark-accent flex items-center justify-center pointer-events-none">
-              <FlipIcon />
-            </span>
+            <CardControl kind="flip" active={isFlipped} group={group} />
           </div>
 
           <div
@@ -91,9 +83,7 @@ export default function FlipCard({ label, front, back, padding = 'p-4 sm:p-6' }:
             <div className={`custom-scrollbar h-full overflow-y-auto flex flex-col ${padding}`}>
               {back}
             </div>
-            <span className="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-light-accent/10 dark:bg-dark-accent/15 text-light-accent dark:text-dark-accent flex items-center justify-center pointer-events-none">
-              <FlipIcon />
-            </span>
+            <CardControl kind="flip" active={isFlipped} group={group} />
           </div>
         </div>
       </div>

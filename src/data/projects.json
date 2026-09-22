@@ -3,9 +3,9 @@
     {
       "year": 2026,
       "title": "Heimdall - Telemetry Character Device Driver",
-      "shortDescription": "Linux character-device driver in C for Android, with swappable sensor sources behind a versioned seam and a headless QEMU test harness.",
-      "fullDescription": "• Shows up as <code>/dev/telemetry0</code>; streams samples via read, ioctl and <code>copy_to_user</code>.\n• Real and fake sensors swap behind a versioned <code>source_ops</code> seam.\n• Two backends prove it: a timer-fed ring buffer and a replay.\n• Four ioctls (version, reset, rate, stats) plus sysfs knobs, guarded by a mutex and an IRQ-safe spinlock.\n• Cross-compiled for arm64 and run on an Android GKI emulator with a C NDK client.\n• A headless QEMU harness, plus modules that crash on purpose.",
-      "technologies": ["C", "Linux Kernel Module", "Kbuild", "arm64", "cdev/sysfs/ioctl", "Android GKI/NDK", "QEMU"],
+      "shortDescription": "Linux character-device driver in C for Android, with swappable sources behind a versioned seam and a test suite that runs in QEMU and CI.",
+      "fullDescription": "• Shows up as <code>/dev/telemetry0</code>; streams samples via read, ioctl and <code>copy_to_user</code>.\n• Three sources (a counter, a timer-fed ring buffer and a replay) swap in behind a versioned <code>source_ops</code> seam.\n• Four ioctls (version, reset, rate, stats) plus sysfs knobs, guarded by a mutex and an IRQ-safe spinlock.\n• A Linux CLI drives all of it, and refuses a driver whose ABI doesn't match.\n• 23 checks run from a cold kernel in QEMU, and fail if the kernel log so much as grumbles.\n• CI builds on kernels 5.15 and 6.8, cross-compiles for arm64, then loads the module and runs every check.",
+      "technologies": ["C", "Linux Kernel Module", "Kbuild", "arm64", "cdev/sysfs/ioctl", "QEMU", "GitHub Actions"],
       "githubLink": "https://github.com/tanujp99/heimdall",
       "showGithubLink": true,
       "imageLight": "project-heimdall-light.svg",
