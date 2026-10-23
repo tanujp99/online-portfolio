@@ -5,7 +5,7 @@
       "company": "Fayble Inc.",
       "position": "Intermediate Software Engineer",
       "location": "Berkeley, CA (Remote)",
-      "period": "APR 2025 - PRESENT",
+      "period": "NOV 2025 - MAR 2026",
       "industry": true,
       "shortDescription": "AI Media Pipeline Engineer",
       "fullDescription": "• Built a live sports-commentary pipeline on Apache Kafka that turns raw game events into a full audio-visual broadcast.\n• Made it 73% faster by letting audio and video run in parallel and reusing match state between turns.\n• Wrote the stage that stitches AI-generated video back to its voice, frame by frame, down to the exact slice of audio.\n• Taught a Gemma model to actually watch the match: live game state and emotion cues cut bad output by 80%. A goal gets a roar; a throw-in gets a shrug.\n• Swapped ElevenLabs for a self-hosted Dia voice model and brought video generation in-house: cheaper per call, and one less network hop mid-broadcast.\n• Picked the GPUs (which ones, how many, how they're arranged) to run it all on a fixed budget.\n• Designed the \"director's switch\" that picks what viewers see: commentary, the leaderboard, or the crowd losing it.\n• Locked down the inference fleet with TOTP 2FA and rotating JWTs, and kept our GPU box humming."
