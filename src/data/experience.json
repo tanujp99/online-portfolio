@@ -1,6 +1,16 @@
 {
   "experiences": [
     {
+      "id": 10,
+      "company": "Zennith Technologies Inc.",
+      "position": "Software Engineer",
+      "location": "Houston, TX",
+      "period": "MAR 2025 - PRESENT",
+      "industry": true,
+      "shortDescription": "Data Platform Engineer",
+      "fullDescription": "• Shipped the Kafka consumer that records every client payment exactly once, even when a server dies halfway through writing it.\n• Proved it the blunt way: killed it 50 times in the middle of 10,000 events. Zero duplicates, zero missing. About 120 million events later, still none.\n• Owned the Python SDK clients use to send us their events, then rebuilt it on aiokafka for twice the throughput, without anyone changing a line of their code.\n• Put security checks in front of every release: leaked secrets, vulnerable libraries and signed builds, with critical findings blocking the deploy. 63 serious ones caught so far.\n• Turned \"were we paid twice?\" from a 20-minute dig into a 5-minute report that walks a payment through every step it took.\n• Wrote a timezone bug that flagged 186 payouts as missing (they weren't). Fixed it the same day, then added a CI check so no Airflow job runs outside UTC again. It found two more straight away.\n• Raced Polars against PySpark and set the rule for which one runs reconciliation: the daily job takes a minute instead of six.\n• Built the evidence pack a client's SOC 2 auditor pulls straight from their own AWS account: 24 of 25 sampled changes complete, and the one gap shown, not hidden.\n• On the primary on-call rotation for live-event weekends."
+    },
+    {
       "id": 7,
       "company": "Fayble Inc.",
       "position": "Intermediate Software Engineer",
